@@ -1,27 +1,421 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-	  layout:decorator="base/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="base/layout">
 <head>
-    <title>Home Page</title>
- 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="description" content="Blog www.ciceroednilson.com.br"/>
-	<meta name="author" content="Prefeitura"/>        
+<title>Home Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Prefeitura" />
+<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYMJk65pzbscAc6L-hLlcGQyVMv1jJUY0&amp;callback=initMap" async="defer"></script>
+
+
+
+<script th:src="@{/js/moment.min.js}"></script>
+
+
 </head>
 <body>
-<section layout:fragment="content">
- 
-    <!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->   
-   <div class="mdl-grid">   
-    <div class="mdl-layout-spacer"></div>    
-    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">    	
-    	<h4>&nbsp;Sistema de Cadastro de Usuários&nbsp;</h4>    	
-	</section>	
-    <div class="mdl-layout-spacer"></div>
-</div>
- 
-</section>
- 
+	<section layout:fragment="content">
+
+		<!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->
+		<div class="mdl-grid">
+			<div class="mdl-layout-spacer"></div>
+			<section
+				class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
+				
+
+				<div class="row bg-img mb0">
+
+
+					<div class="col s12 m12 l12">
+						<div class="big-blank-hole"></div>
+					</div>
+
+					<!-- SHORTCUT BUTTONS -->
+					<div class="col s12 m12 no-spacing">
+
+						<div class="row">
+							<div class="col s12 m12 no-pad">
+
+								<a class="col s3 m2 shortcut-size shortcut-button btn1 hoverable button-effect" >
+									<img src="/img/certif.png" class="pl20 pr20 pb10 center" height="45" />
+									<p class="center-align mt0 mb0">CONTRATOS</p>
+								</a> 
+								
+								<a class="col s3 m2 shortcut-size shortcut-button btn5"> <img
+									src="/img/auction.png" class="pl20 pr20 pb10 center" height="45"/>
+									<p class="center-align mt0 mb0">LICITAÇÕES</p>
+								</a> <a
+									class="col s3 m2 shortcut-size shortcut-button btn3 hoverable">
+									<img src="/img/constr.png" class="pl20 pr20 pb10 center" height="45"/>
+									<p class="center-align mt0 mb0">OBRAS</p>
+								</a> <a
+									class="col s3 m2 shortcut-size shortcut-button btn7 hoverable">
+									<img src="/img/garg.png" class="pl20 pr20 pb10 center" height="45"/>
+									<p class="center-align mt0 mb0">COLETA DE LIXO</p>
+								</a> <a href="#"
+									class="col s3 m2 shortcut-size shortcut-button btn5 hoverable">
+									<img src="/img/legis.png" class="pl20 pr20 pb10 center" height="45"/>
+									<p class="center-align mt0 mb0">LEGISLAÇÃO</p>
+								</a> <a
+									class="col s3 m2 shortcut-size shortcut-button btn1 hoverable">
+									<img src="/img/contract.png" class="pl20 pr20 pb10 center" height="45"/>
+									<p class="center-align mt0 mb0">E-SIC</p>
+								</a>
+
+							</div>
+
+						</div>
+
+					</div>
+					<!-- END SHORTCUT BUTTONS -->
+
+					<!-- CITY PHOTOS -->
+
+
+				</div>
+				<!-- END PHOTOS -->
+
+				<!-- GRAPH -->
+				<div class="row mb0">
+
+					<div class="col s6 m6 pl0 pr0">
+						<div class="row pl0 pr0 mb0">
+							<div class="col s12 pr0 pl0">
+								<ul class="tabs">
+									<li class="tab col s4 m4"><a class="active" href="#test1">Gráfico</a></li>
+									<li class="tab col s4 m4 z-depth-2"><a href="#test2">Licitações</a></li>
+									<li class="tab col s4 m4 "><a href="#test3">Roubos</a></li>
+								</ul>
+							</div>
+							<div id="test1" class="col s12 pl0 pr0 input-bg bg-test white">
+								<canvas id="myChart" class="col s5 m5 chart-size"></canvas>
+
+								<script>
+									var ctx = document
+											.getElementById("myChart");
+									var myChart = new Chart(document.getElementById("myChart"), {
+										  type: 'line',
+										  data: {
+										    labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+										    datasets: [{ 
+										        data: [86,114,106,106,107,111,133,221,783,2478],
+										        label: "Prefeito",
+										        borderColor: "#3e95cd",
+										        fill: false
+										      }, { 
+										        data: [282,350,411,502,635,809,947,1402,3700,5267],
+										        label: "Polícia",
+										        borderColor: "#8e5ea2",
+										        fill: false
+										      }, { 
+										        data: [168,170,178,190,203,276,408,547,675,734],
+										        label: "Açougue em Frente",
+										        borderColor: "#3cba9f",
+										        fill: false
+										      }, { 
+										        data: [40,20,10,16,24,38,74,167,508,784],
+										        label: "Cleanto",
+										        borderColor: "#e8c3b9",
+										        fill: false
+										      }, { 
+										        data: [6,3,2,2,7,26,82,172,312,433],
+										        label: "Médicos",
+										        borderColor: "#c45850",
+										        fill: false
+										      }
+										    ]
+										  },
+										  options: {
+										    title: {
+										      display: true,
+										      text: 'Propinas de Araguaçu(Em Milhoes)'
+										    },
+										    legend: {
+									            display: true,
+									            position: 'right',
+									            labels: {
+									                fontColor: '#333'
+									            }
+									        }
+										  }
+										});
+
+
+								</script>
+							</div>
+							<div id="test2" class="col s12">Test 2</div>
+							<div id="test3" class="col s12">Test 3</div>
+						</div>
+
+					</div>
+
+					<!-- NEWS -->
+					<div class="news white">
+						<div class="col s6 m6 mt0">
+							<div class="row mb0">
+
+								<div class="col s12 m12 z-depth-2">
+									<a href="#" onmouseover="addTagEffect($(this))"
+										onmouseout="removeTagEffect($(this))"
+										class="valign-wrapper left-align news-link-conf">
+
+
+										<div class="row col s6 m6 p20">
+											<span class="news-sub-date">25 JAN 2018</span><span
+												class="pl12 news-sub-theme">INDIOS</span>
+											<h5 class="link-text mt5">Dança da Chuva</h5>
+										</div> <img class="col s6 m6 news-link-conf" src="/img/i3.jpg" />
+									</a>
+
+								</div>
+
+								<div class="col s12 m12">
+									<a href="#" onmouseover="addTagEffect($(this))"
+										onmouseout="removeTagEffect($(this))"
+										class="valign-wrapper left-align news-link-conf"> <img
+										class="col s6 m6 news-link-conf" src="/img/i4.jpg" />
+										<div class="col s6 m6 p20">
+											<span class="news-sub-date">27 JAN 2018</span><span
+												class="pl12 news-sub-theme">racismo</span>
+											<h5 class="link-text mt5">Dança da Chuva</h5>
+										</div>
+									</a>
+
+								</div>
+
+								<div class="col s12 m12 z-depth-2">
+									<a href="#" onmouseover="addTagEffect($(this))"
+										onmouseout="removeTagEffect($(this))"
+										class="valign-wrapper left-align news-link-conf">
+										<div class="col s6 m6 p20">
+											<span class="news-sub-date">22 JAN 2018</span><span
+												class="pl12 news-sub-theme">beleza</span>
+											<h5 class="link-text mt5">Dança da Chuva grande e bonita
+												que me merece oscar de melhor chuva do ano e do milenio</h5>
+										</div> <img class="col s6 m6 news-link-conf" src="/img/i5.jpg" />
+									</a>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+				<!-- GREEN BOX -->
+				<div class="row mb0 trd-block-h">
+					<div class="col s6 m6 pl0 pr0 ">
+
+						<div class="row input-processos mt0 green darken-3 mb0 trd-block-h">
+							<h5 class="col s12 m12 white-text">CONSULTA DE PROCESSOS</h5>
+
+
+
+							<h6 class="white-text consulta mt0">Consulte o andamento
+								informando o número do processo/ano e o CPF ou CNPJ de um dos
+								interessados.</h6>
+
+							<form class="col s12">
+								<div class="row input-box-conf">
+									<div class=" col s12 m12 lbl-cpf white-text">
+										<h6 class="col s6 m6 pl0">NÚMERO/ANO</h6>
+										<h6 class="col s6 m6">CPF</h6>
+									</div>
+
+									<div class="input-field col s6">
+										<input placeholder="Número do processo/Ano" type="text"
+											class="validate input-config grey-text darken-3" />
+									</div>
+
+									<div class="input-field col s6">
+										<input placeholder="CPF" type="text"
+											class="validate input-config grey-text darken-3" />
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s6 offset-m3 captcha-box mt0 mb0">
+
+										<input type="checkbox" id="test5" /> <label for="test5">Eu
+											sou um Robô</label>
+										<p class="grey-text darken-3"></p>
+
+									</div>
+								</div>
+
+								<div class="row">
+
+									<a
+										class="col m10 offset-m1 waves-effect waves-light btn-large green darken-4 ">CONSULTAR</a>
+								</div>
+
+							</form>
+
+
+
+						</div>
+
+
+					</div>
+
+					<!-- GOOGLE MAPS -->
+					<div class="col s6 m6 trd-block-h  pl0 pr0">
+						<div class="row mb0">
+							<div class="col s9 m9 grey">
+								 <div id="map" class="trd-block-h  pl0 pr0"></div>
+
+								
+							</div>
+
+							<div class="col s3 m3 pl0 pr0">
+								<div class="col s12 m12 mini-maps-conf blue darken-1 waves-effect" onclick="initMap(0)">
+									<a class="shortcut-size shortcut-button btn1 hoverable " >
+										<img src="/img/city-hall.png" class="pl20 pr20 pb10 center" height="120" />
+										<p class="center-align mt0 mb0 bold">PREFEITURA</p>
+									</a> 
+									 
+								</div>
+								<div class="col s12 m12 mini-maps-conf blue darken-4 waves-effect" onclick="initMap(1)">
+									<a class="shortcut-size shortcut-button btn1 hoverable" >
+										<img src="/img/police.png" class="pl20 pt10 pr20 pb15 center" height="122" />
+										<p class="center-align mt0 mb0 bold">POLÍCIA</p>
+									</a> 
+									 
+								</div>
+								<div class="col s12 m12 mini-maps-conf blue darken-2 waves-effect" onclick="initMap(2)">
+									<a class="shortcut-size shortcut-button btn1 hoverable" >
+										<img src="/img/hospital.png" class="pl20 pr20 pb10 center" height="110" />
+										<p class="center-align mt0 mb0 bold">HOSPITAL</p>
+									</a> 
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col s6 m6 mt15">
+
+						<h5 class="facebook-div mb20">FACEBOOK</h5>
+						<script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5" async ="defer"></script>  
+						<div id="fb-root"></div>
+							<script> window.fbAsyncInit = function() {
+							    FB.init({
+							        appId            : 'your-app-id',
+							        autoLogAppEvents : true,
+							        xfbml            : true,
+							        version          : 'v2.12'
+							      });
+							    };
+
+							    (function(d, s, id){
+							       var js, fjs = d.getElementsByTagName(s)[0];
+							       if (d.getElementById(id)) {return;}
+							       js = d.createElement(s); js.id = id;
+							       js.src = "https://connect.facebook.net/en_US/sdk.js";
+							       fjs.parentNode.insertBefore(js, fjs);
+							     }(document, 'script', 'facebook-jssdk'));
+							</script>
+
+							<div class="fb-page col s10 m10 offset-s2 offset-m2" data-href="https://www.facebook.com/Eu-moro-em-aragua%C3%A7u-1395710157341266/" 
+								data-tabs="timeline" 
+								data-small-header="false" 
+								data-adapt-container-width="true"  
+								data-width="600" 
+								data-hide-cover="false" 
+								data-show-facepile="true">
+								<blockquote cite="https://www.facebook.com/Eu-moro-em-aragua%C3%A7u-1395710157341266/" class="fb-xfbml-parse-ignore">
+									<a href="https://www.facebook.com/Eu-moro-em-aragua%C3%A7u-1395710157341266/">Prefeitura de Araguaçu</a>
+								</blockquote>
+							</div>
+
+					</div>
+
+					<div class="col s6 m6 mt15">
+
+						<h5 class="facebook-div mb20">CALENDARIO</h5>
+						
+						<div class="col s8 m8 offset-s2 offset-m2 board-conf">
+						
+							<div>
+								<div class="col s3 m3 ml20 mt20 block-conf pl0 pr0">
+									<div class="top center-align">
+										<p class="mt0 mb0 pt20 pb20">14</p>
+									</div>
+									
+									<div class="botton center-align">
+										<p class="mt0 mb0">FEV</p>
+									</div>
+								</div>
+								
+								<div class="col s9 m9 mt25 pl20 board-message-conf">
+									CARNAVAL COM SATANÁS
+								</div>
+							
+								<hr class="col s12 m12"></hr>
+							</div>
+								
+							<div>
+								<div class="col s3 m3 ml20 mt20 block-conf pl0 pr0">
+									<div class="top center-align">
+										<p class="mt0 mb0 pt20 pb20">15</p>
+									</div>
+									
+									<div class="botton center-align">
+										<p class="mt0 mb0">NOV</p>
+									</div>
+								</div>
+								
+								<div class="col s9 m9 mt25 pl20 board-message-conf">
+									NASCIMENTO FILHOS DO CARNAVAL
+								</div>
+							
+								<hr class="col s12 m12"></hr>
+							</div>
+							
+							<div>
+								<div class="col s3 m3 ml20 mt20 block-conf pl0 pr0">
+									<div class="top center-align">
+										<p class="mt0 mb0 pt20 pb20">29</p>
+									</div>
+									
+									<div class="botton center-align">
+										<p class="mt0 mb0">DEZ</p>
+									</div>
+								</div>
+								
+								<div class="col s9 m9 mt25 pl20 board-message-conf">
+									FIM DO MUNDO
+								</div>
+							
+								<hr class="col s12 m12"></hr>
+							</div>
+							
+							<div class="col s5 m5 offset-m7 offset-s7">
+								<a class="waves-effect waves-light btn"> MAIS EVENTOS</a>
+							</div>
+							
+						</div>
+						
+						
+						
+						
+					</div>
+				</div>
+
+
+			</section>
+			<div class="mdl-layout-spacer"></div>
+		</div>
+
+	</section>
+
 </body>
 </html>

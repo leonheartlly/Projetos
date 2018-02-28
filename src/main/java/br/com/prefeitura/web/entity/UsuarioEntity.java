@@ -8,6 +8,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -25,6 +27,7 @@ public class UsuarioEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_usuario")
 	private Long codigo;
 	
@@ -44,7 +47,5 @@ public class UsuarioEntity implements Serializable{
 			inverseJoinColumns = {@JoinColumn(	name = "ID_GRUPO", referencedColumnName="ID_GRUPO")})
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE })	
 	private List<GrupoEntity> grupos;
-	
-	
 
 }

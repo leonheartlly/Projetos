@@ -1,80 +1,239 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="description" content="Blog www.ciceroednilson.com.br"/>
-	<meta name="author" content="Cícero Ednilson"/>
- 
-    <title>Prefeitura</title>
- 
-    <link  rel="stylesheet" th:href="@{/css/material.min.css}"/>
-    <link  rel="stylesheet" th:href="@{/css/geral.css}"/>
- 
-    <script type="text/javascript" th:src="@{/js/material.min.js}"></script>
- 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
- 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Prefeitura</title>
+
+<link rel="icon" href="/img/brasaoleft.png"/>
+<link rel="stylesheet" th:href="@{/css/materialize.min.css}" />
+<link rel="stylesheet" th:href="@{/css/geral.css}" />
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet" th:href="@{/css/header/header.css}" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/geral.js}"></script>
+
 </head>
 <body>
- 
-<!-- FORM QUE VAI SER USADO PARA REALIZAR O LOGOUT -->
-<form th:action="@{/logout}" id="form_logou"	th:method="post">
-<input type="hidden"	th:name="${_csrf.parameterName}"	th:value="${_csrf.token}"/>
-</form>
- 
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
- 
-  <!-- header->MONTA O MENU SUPERIOR -->  
-  <header class="mdl-layout__header">   	   	
-    <div class="mdl-layout__header-row">
- 
-      <a class="mdl-navigation__link" th:href="@{/home}">    
-      	<span class="mdl-layout-title">Prefeitura</span>
-	  </a>          
- 
-      <div class="mdl-layout-spacer"></div>      
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
- 
-      	<!-- REDIRECIONA PARA A HOME PAGE -->
-      	<a class="mdl-navigation__link" th:href="@{/home}">Home</a>
- 
-      	 <!-- REDIRECIONA PARA A PÁGINA DE CADASTRO -->
-        <a class="mdl-navigation__link" th:href="@{/usuario/novoCadastro}">Cadastro</a>
- 
-        <!-- REDIRECIONA PARA A PÁGINA DE CONSULTA -->
-        <a class="mdl-navigation__link" th:href="@{/usuario/consultar}">Consulta</a>
- 
-        <!-- SAI DA APLICAÇÃO E VOLTA PARA A PÁGINA DE LOGIN -->
-        <a class="mdl-navigation__link" href="#" onclick="document.getElementById('form_logou').submit();">Logout</a>        
-      </nav>
-    </div>
-  </header>
- 
-  <!-- MONTA O MENU LATERAL -->
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">MENU</span>
-    <nav class="mdl-navigation">
-      <!-- REDIRECIONA PARA A HOME PAGE -->
-      <a class="mdl-navigation__link" th:href="@{/home}">Home</a>
-      <!-- REDIRECIONA PARA A PÁGINA DE CADASTRO -->
-      <a class="mdl-navigation__link" th:href="@{/usuario/novoCadastro}">Cadastro</a>
-      <!-- REDIRECIONA PARA A PÁGINA DE CONSULTA -->
-      <a class="mdl-navigation__link" th:href="@{/usuario/consultar}">Consulta</a>
-       <!-- SAI DA APLICAÇÃO E VOLTA PARA A PÁGINA DE LOGIN -->     
-      <a class="mdl-navigation__link" href="#" onclick="document.getElementById('form_logou').submit();">Logout</a>      
-    </nav>
-  </div>
- 
-  <!-- PARTE QUE VAI SER SUBSTITUÍDA PELO CONTEUDO DAS PÁGINAS -->
-  <main class="mdl-layout__content mdl-color--blue-grey-100">
-    <div class="page-content">
- 
-    	 <!-- CONTEUDO A SER SUBSTITUÍDO -->
-    	  <div layout:fragment="content">Essa parte vai ser substituída </div>
-    </div>
-  </main>
-</div>
- 
+
+<script type="text/javascript">
+
+
+
+</script>
+
+	<!-- FORM QUE VAI SER USADO PARA REALIZAR O LOGOUT -->
+	<form th:action="@{/logout}" id="form_logou" th:method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}"
+			th:value="${_csrf.token}" />
+	</form>
+
+		<div class="card-panel grey lighten-5 z-depth-1">
+			<div class="row valign-wrapper">
+				<div class="col s12">
+
+					<div class="ar-upper-bar ar-upper-text">
+						<ul  class="left ">
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-275 current_page_item menu-item-2025">
+								<a href="">Intranet</a>
+							</li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5057"><a
+								href="">Contatos</a></li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5639"><a
+								href="">Portal do
+									Servidor</a></li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5638"><a
+								href="">Portal do Cidadão</a></li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5637"><a
+								href="">WebMail</a></li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5637"><a
+								href="">Mapa do Site</a></li>
+						</ul>
+					</div>
+
+					<div class="ar-upper-bar ml50">
+						<ul class="right ">
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-275 current_page_item menu-item-2025">
+								<a><i class="material-icons">format_strikethrough</i></a>
+							</li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5057"><a
+								href="https://adbeus.com/blog/"><i class="material-icons">format_size</i>
+							</a></li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5639"><a
+								href="https://adbeus.com/owner-dashboard/"><i
+									class="material-icons">accessible</i></a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	<div class="ar-upper-nav-card">
+		<nav class="white ar-nav-card valign-wrapper">
+			<div class="container">
+				<div class=" row nav-wrapper ar-nav-menu">
+
+					<div id="logo-container" class="col s1">
+						<a href="#"> <img width="60"
+							class="ml15 icon hide-on-med-and-down" src="/img/brasaoleft.png"
+							alt="" />
+						</a>
+					</div>
+
+					<div class="col s8">
+						<a href="" class="dropdown-button mr15 ml15" onmouseover="teste2('serviceMenu')">Serviços</a> 
+						<a href="" class="mr15 ml15" onmouseover="teste2('')">Editais</a>
+						<a href="" class="mr15 ml15" onmouseover="teste2('prefectureMenu')">A Prefeitura</a> 
+						<a class="mr15 ml15" th:href="@{/licitacao}">Secretarias</a> 
+						<a class="mr15 ml15" th:href="@{/noticia}">Transparência</a>
+					</div>
+
+					<div class="col s3 btn-hover">
+						<p class="fl mr15" style="color: black;">Serviços para:</p>
+						<div class="fr">
+							<a class="ar-upper-buttons">Cidadão</a>
+						</div>
+						<div class="fr">
+							<a class="ar-upper-buttons">Empresa</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+
+	<div id="menuBox" class="ar-box ar-box-display uper-index">
+		<div class="row">
+			<div class="col s12 teste">
+			
+				<div id="serviceMenu" class="header-options-box inactive">
+					<div class="col s3 offset-s1 ar-box-mrbt">
+							<h5>Serviços</h5>
+							<ul>
+								<li><a id="byAservices" href="#" onclick="showBlock('todos-os-servicos', this.id)" class="has-second-tier ar-box-active">Todos os serviços</a></li>
+								<li><a  id="byAccessed" href="#" onclick="showBlock('mais-acessados',this.id)" class="has-second-tier">Mais acessados</a></li>
+								<li><a  id="bySecretary" href="#" onclick="showBlock('por-secretaria')" class="has-second-tier">Por secretaria</a></li>
+								<li><a  id="bySubject" href="#" onclick="showBlock('por-assunto')" class="has-second-tier">Por assunto</a></li>
+								<li><a href="#" class="consulta-de-processos">Consulta online de processos</a></li>
+							</ul>
+					</div>
+					<div id="todos-os-servicos" class="col s7 ar-box-vline ar-box-mrbt ar-box-is-selected">
+							<h5>Todos os serviços</h5>
+							<ul class="col s5 ar-box-mb">
+								<li class="ml4p"><a href="">PESQUISA ACORDÃO TAT</a></li>
+								<li><a href="">CONSULTA DE IMÓVEIS POR IMOBILIÁRIA</a></li>
+								<li><a href="">CERTIDÃO NEGATIVA - PESSOA FÍSICA</a></li>
+								<li><a href="">TAXAS</a></li>
+								<li><a href="">APROVAÇÃO DE PROJETO E ALVARÁ </a></li>
+								<li><a href="">CERTIDÃO DE CADASTRO IMOBILIÁRIO</a></li>
+							</ul>	
+							<ul class="col s6">
+								<li><a href="">CERTIDÃO DE INSCRIÇÃO IMOBILIÁRIA CORRETA</a></li>
+								<li><a href="">AUTORIZAÇÃO ESPAÇO PÚBLICO PARA PANFLETAGEM</a></li>
+								<li><a href="">CERTIDÃO DE INEXISTÊNCIA DE CADASTRO IMOBILIÁRIO</a></li>
+								<li><a href="">CERTIDÃO DE VALOR VENAL DE ITBI</a></li>
+								<li><a href="">CERTIDÃO DE VALOR VENAL DO IPTU</a></li>
+								<li><a href="">COMPENSAÇÃO: TRIBUTOS MOBILIÁRIOS (ISS/GIF/TAXAS EM GERAL)</a></li>					
+							</ul>
+					</div>
+					<div id="mais-acessados" class="col s7 ar-box-vline ar-box-mrbt">
+							<h5>Mais acessados</h5>
+							<ul class="col s5 ar-box-mb">
+								<li><a href="">SEGUNDA VIA DE IPTU E TAXA DE COLETA DE LIXO</a></li>
+								<li><a href="">CONSULTA DE DÉBITOS DE IPTU E TAXA DE COLETA DE LIXO</a></li>
+								<li><a href="">SEGUNDA VIA DE DAM</a></li>
+								<li><a href="">CERTIDÃO NEGATIVA - PESSOA JURÍDICA</a></li>
+								<li><a href="">COLETA DE RESÍDUOS DOMICILIARES</a></li>
+								<li><a href="">CERTIDÃO NEGATIVA - IMÓVEIS</a></li>
+							</ul>
+							<ul class="col s6">
+								<li><a href="">CERTIDÃO NEGATIVA - PESSOA FÍSICA</a></li>
+								<li><a href="">REGISTRO DE PESSOA FÍSICA/JURÍDICA ESTABELECIDA</a></li>
+								<li><a href="">TAXAS</a></li>
+								<li><a href="">CONSULTA DE VIABILIDADE PARA INSTALAÇÃO</a></li>
+								<li><a href="">EMISSÃO DE ALVARÁ</a></li>
+								<li><a href="">APROVAÇÃO DE PROJETO E ALVARÁ </a></li>			
+							</ul>
+					</div>
+				</div>
+				
+				<div id="prefectureMenu" class="header-options-box inactive">
+					<div class="col s3 offset-s1 ar-box-mrbt">
+						<h5>Prefeitura</h5>
+						<ul>
+							<li><a id="byAservices" href="#" onclick="showBlock('todos-os-servicos', this.id)" class="has-second-tier ar-box-active">A Prefeitura</a></li>
+							<li><a  id="byAccessed" href="#" onclick="showBlock('mais-acessados',this.id)" class="has-second-tier">Mais acessados</a></li>
+							<li><a  id="bySecretary" href="#" onclick="showBlock('por-secretaria')" class="has-second-tier">Por secretaria</a></li>
+							<li><a  id="bySubject" href="#" onclick="showBlock('por-assunto')" class="has-second-tier">Por assunto</a></li>
+							<li><a href="#" class="consulta-de-processos">Consulta online de processos</a></li>
+						</ul>
+					</div>
+					
+				</div>
+				
+			</div>	
+		</div>
+	</div>
+	
+			
+		
+	
+		<!-- PARTE QUE VAI SER SUBSTITUÍDA PELO CONTEUDO DAS PÁGINAS -->
+		<main class="mdl-layout__content mdl-color--blue-grey-100">
+			<div class="page-content">
+
+				<!-- CONTEUDO A SER SUBSTITUÍDO -->
+				<div layout:fragment="content">Essa parte vai ser substituída</div>
+			</div>
+		</main>
+		
+	 <footer class="page-footer green darken-3">
+	 
+          <div class="container green darken-3">
+            <div class="row">
+	            <div>
+		              <div class="col l2 m6 footer-conf offset-m3 offset-l3">
+		                <div class="white-text footer-title">PREFEITURA DE ARAGUAÇU</div>
+		                <p class="grey-text text-lighten-4">Rua do Postinho, 10. Esq. Açougue do zé</p>
+		                <p class="grey-text text-lighten-4">(44) 3235-3354</p>
+		                <p class="grey-text text-lighten-4 ">Funcionamento:</p>
+		                <p class="grey-text text-lighten-4 mt0">de 9h às 18h</p>
+		              </div>
+		              
+		              <div class=" col l2 m4 brasao">
+		              
+		              	<img src="/img/brasaoleft.png"/>
+		              </div>
+		              
+		              <div class="col l2">
+		               <div class="white-text">Sobre a prefeitura</div>
+		               
+		                  <a class="grey-text text-lighten-3" href="#!">Mapa do site</a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!">Fale conosco</a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!">Ouvidoria</a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!">Telefones úteis</a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!">Email institucional</a><br/>
+		                
+		              </div>
+	              </div>
+            </div>
+          </div>
+          
+          <div class="footer-copyright green darken-4">
+            <div class="container right">
+            	<a class="grey-text text-lighten-4 right" href="#!">© 2018 Blacksmith</a>
+            </div>
+          </div>
+          
+        </footer>
+
 </body>
 </html>

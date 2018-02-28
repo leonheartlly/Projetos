@@ -1,0 +1,279 @@
+.bg-img {
+	background-image: url('/img/i5.jpg');
+}
+
+.big-blank-hole {
+	margin: 500px;
+}
+
+.no-spacing {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.no-spacing a div {
+	margin-top: 70px;
+	text-align: right;
+	padding-right: 5px;
+}
+
+.button-effect {
+	min-height: 261px;
+}
+
+.button-effect:HOVER p {
+	font-weight: bolder;
+}
+
+.btn1 {
+	background-color: #04773b;
+}
+
+.btn3 {
+	background-color: #03440c;
+}
+
+.btn5 {
+	background-color: #058e3f;
+}
+
+.btn7 {
+	background-color: #088a08;
+}
+
+.no-pad {
+	padding: 0px !important;
+}
+
+.no-spacing .row {
+	margin-bottom: 0px !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.no-spacing .row {
+	margin-bottom: 0px !important;
+}
+
+.shortcut-button {
+	padding-top: 20px !important;
+	color: white !important;
+	font-size: 15px;
+}
+
+.shortcut-button i {
+	text-align: right;
+	padding-right: 0px !important;
+	font-size: 20px;
+}
+
+.shortcut-size:HOVER {
+	transform: translate3d(0, 0, 0) scale(1.1, 1.1);
+	/** default is 1, scale it to 1.5 */
+	opacity: 1;
+	z-index: 999 !important;
+}
+
+/*******************************/
+/*		DIV PHOTOS  			*/
+/*******************************/
+.photos-bg-color {
+	background-color: rgba(100, 100, 100, 0.5);
+}
+
+.ar-photo-carousel {
+	width: 50% !important;
+}
+
+.ar-options-btn {
+	text-align: center;
+	padding-top: 9px !important;
+	padding-bottom: 9px !important;
+	background-color: #0dab76;
+	color: white !important;
+	font-weight: bold;
+}
+
+.chart-size {
+	height: 450px !important;
+	/*width: 80% !important; */
+}
+
+.bg-test {
+	background-color: #f1f1f1;
+}
+
+/*******************************/
+/*		NEWS         			*/
+/*******************************/
+.last-news {
+	font-weight: bold;
+	color: #04773b;
+}
+
+.news {
+	min-height: 498px !important;
+}
+
+.news .col {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.card .card-image>img {
+	height: 175px !important;
+}
+
+.news  .card {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.news  .card:HOVER {
+	transform: translate3d(0, 0, 0) scale(1.1, 1.1);
+	/** default is 1, scale it to 1.5 */
+	opacity: 1;
+	z-index: 999 !important;
+}
+
+.news-btn {
+	background-color: #04773b;
+}
+
+.news-link-conf {
+	max-height: 166px;
+}
+
+.news-link-conf span {
+	text-transform: uppercase;
+}
+
+.link-text {
+	font-size: 18px;
+}
+
+.news-hover-conf {
+	transition: color 0.5s ease;
+	text-decoration: underline !important;
+	color: #DF7401;
+}
+
+.news-sub-date {
+	color: #ffa000;
+}
+
+.news-sub-theme {
+	color: #bdbdbd;
+}
+/*******************************/
+/*		INPUTS      			*/
+/*******************************/
+.trd-block-h {
+	height: 467px;
+}
+
+.input-processos {
+	
+}
+
+.input-processos h5 {
+	padding: 20px !important;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.input-field input {
+	height: 58px !important;
+	font-size: 20px !important;
+	padding-left: 7px !important;
+	border-radius: 2px !important;
+}
+
+.consulta {
+	padding-left: 20px;
+}
+
+.input-bg p {
+	padding: 20px;
+	padding-top: 0px;
+}
+
+.input-config {
+	background-color: white !important;
+}
+
+.input-box-conf {
+	padding-top: 40px;
+}
+
+.input-color {
+	color: white;
+}
+
+.lbl-cpf h6 {
+	font-weight: bold;
+}
+
+.captcha-box {
+	background-color: white;
+	border-radius: 2px;
+	margin-bottom: 30px;
+}
+/*******************************/
+/*		MAPS	      			*/
+/*******************************/
+.mini-maps-conf {
+	height: 155px;
+	/*border: 2px solid #9e9e9e !important;*/
+}
+
+.mini-map-button {
+	background-color: #08088A;
+}
+
+/*******************************/
+/*		FACEBOOK     			*/
+/*******************************/
+.facebook-div {
+	font-weight: bold;
+	padding-left: 20px;
+}
+
+/*******************************/
+/*		calendario     			*/
+/*******************************/
+.board-conf {
+	height: 500px;
+}
+
+.block-conf {
+	border-radius: 6px;
+}
+
+.top {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background-color: white;
+	font-size: 35px;
+	color: #04773b;
+	font-weight: 900;
+}
+
+.botton {
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	background-color: #04773b;
+	font-size: 20px;
+	color: white;
+}
+
+.board-message-conf {
+	font-size: 20px;
+}
+
+hr {
+	height: 3px;
+	background: #f1f1f1;
+	background: linear-gradient(to right, transparent,#689f38,#558b2f,#33691e, #558b2f ,#689f38 ,transparent);
+}

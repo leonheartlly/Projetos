@@ -22,6 +22,9 @@ import br.com.prefeitura.web.model.UsuarioSecurityModel;
 import br.com.prefeitura.web.repository.IGrupoRepository;
 import br.com.prefeitura.web.repository.IPermissaoRepository;
 import br.com.prefeitura.web.repository.IUsuarioRepository;
+import no.finn.unleash.DefaultUnleash;
+import no.finn.unleash.Unleash;
+import no.finn.unleash.util.UnleashConfig;
 
 @Component
 public class UsuarioService implements UserDetailsService {
@@ -34,12 +37,27 @@ public class UsuarioService implements UserDetailsService {
 
 	@Autowired
 	private IPermissaoRepository permissaoRepository;
+	
+
 
 	/**
 	 * Consulta Usuário por login.
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String login) throws BadCredentialsException,DisabledException {
+		
+		UnleashConfig config = UnleashConfig.builder()
+	            .appName("Prefeitura")
+	            .instanceId("LogDeLogin")
+	            .unleashAPI("http://localhost:4242/Prefeitura/")
+	            .build();
+		Unleash unleash = new DefaultUnleash(config);
+		
+		if(unleash.isEnabled("activateLog")) {
+			  System.out.println("ligado");
+			} else {
+			  System.out.println("desligado");
+			}
 
 		UsuarioEntity usuarioEntity = usuarioRepository.findByLogin(login);
 
@@ -55,6 +73,7 @@ public class UsuarioService implements UserDetailsService {
 				this.buscarPermissoesUsuario(usuarioEntity));
 	}
 
+	
 	/**
 	 * 
 	 * @param usuarioEntity
@@ -104,6 +123,7 @@ public class UsuarioService implements UserDetailsService {
 		UsuarioEntity usuarioEntity =  new UsuarioEntity();
 		
 		usuarioEntity.setAtivo(true);
+		usuarioEntity.setNome(usuarioModel.getNome());
 		usuarioEntity.setLogin(usuarioModel.getLogin());
 		usuarioEntity.setSenha(new BCryptPasswordEncoder().encode(usuarioModel.getSenha()));
 		

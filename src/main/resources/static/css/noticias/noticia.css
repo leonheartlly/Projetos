@@ -1,0 +1,22 @@
+.title-conf{
+	font-weight: bolder;
+	padding: 20px;
+	padding-top: 40px;
+	margin: 0px !important; 
+}
+
+.news-board{
+	margin: 40px;
+	margin-left: 40px !important;
+}
+
+.news-img {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 5px;
+    height: 180px;
+}
+
+.news-img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}

@@ -17,6 +17,16 @@ public class MainController {
 		
 		return "index";
 	}
+	
+	/***
+	 * ESSE MÉTODO CARREGA A PÁGINA (index.html) DE LOGIN DA NOSSA APLICAÇÃO
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/acessoNegado2", method = RequestMethod.GET)
+	public String index2() {
+		return "acessoNegado2";
+	}
 
 	/***
 	 * CARREGA À PÁGINA INICIAL DA APLICAÇÃO APÓS EFETUARMOS O LOGIN
@@ -27,6 +37,28 @@ public class MainController {
 	public String home() {
 
 		return "home";
+	}
+	
+	/***
+	 * CARREGA À PÁGINA NOTÍCIA
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/noticia", method = RequestMethod.GET)
+	public String noticia() {
+
+		return "noticia";
+	}
+	
+	/***
+	 * CARREGA À PÁGINA NOTÍCIA
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/licitacao", method = RequestMethod.GET)
+	public String licitacao() {
+
+		return "licitacao";
 	}
 
 	/***

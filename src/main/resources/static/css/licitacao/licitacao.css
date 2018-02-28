@@ -1,0 +1,11 @@
+.background{
+	background-color: #fff;
+}
+
+.table-licitacoes{
+	
+}
+
+.table-licitacoes tbody > tr:HOVER{
+	background-color: #c8e6c9 !important;
+}

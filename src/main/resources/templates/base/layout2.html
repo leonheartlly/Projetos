@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ 
+    <title>Prefeitura</title>
+ 
+   <!--  <link  rel="stylesheet" th:href="@{/css/material.min.css}"/> -->
+    <link  rel="stylesheet" th:href="@{/css/materialize.min.css}"/>
+    <link  rel="stylesheet" th:href="@{/css/geral.css}"/>
+    <link  rel="stylesheet" th:href="@{/css/style.css}"/>
+ 
+    <!-- <script type="text/javascript" th:src="@{/js/material.min.js}"></script> -->
+    <script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
+ 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+ 
+</head>
+<body>
+ 
+<!-- FORM QUE VAI SER USADO PARA REALIZAR O LOGOUT -->
+<form th:action="@{/logout}" id="form_logou"	th:method="post">
+<input type="hidden"	th:name="${_csrf.parameterName}"	th:value="${_csrf.token}"/>
+</form>
+<div class="navbar-fixed">
+	<nav class="white " role="navigation">
+		<div class="container">
+		  <div class="nav-wrapper">
+		  	<div id="logo-container">
+				<a  href="https://adbeus.com"><img width="40" class="icon hide-on-med-and-down" src="/img/brasaoleft.png" alt=""/></a>
+			  	<a  href="https://adbeus.com" class="brand-logo">Prefeitura</a>
+		  	</div>
+
+			  <div id="message-us" class="fb-messengermessageus right hide-on-med-and-down"
+				   messenger_app_id="1597071747242627"
+				   page_id="139310122748224"
+				   color="blue"
+				   size="large" >
+			  </div>
+
+			  <div class="menu-adbeus-container"><ul id="menu-adbeus" class="right hide-on-med-and-down"><li id="menu-item-2025" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-275 current_page_item menu-item-2025"><a href="https://adbeus.com/about-adbeus-best-coffee-montreal/">About</a></li>
+<li id="menu-item-5057" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5057"><a href="https://adbeus.com/blog/">Intranet</a></li>
+<li id="menu-item-5639" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5639"><a href="https://adbeus.com/owner-dashboard/">Owner Dashboard</a></li>
+<li id="menu-item-5638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5638"><a href="https://adbeus.com/join-adbeus/">Join Adbeus</a></li>
+<li id="menu-item-5637" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5637"><a href="https://adbeus.com/suggest/">Add Shop</a></li>
+</ul></div>
+		  <div class="menu-adbeus-container"><ul id="slide-out" class="side-nav"><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-275 current_page_item menu-item-2025"><a href="https://adbeus.com/about-adbeus-best-coffee-montreal/">About</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5057"><a href="https://adbeus.com/blog/">Intranet</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5639"><a href="https://adbeus.com/owner-dashboard/">Owner Dashboard</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5638"><a href="https://adbeus.com/join-adbeus/">Join Adbeus</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5637"><a href="https://adbeus.com/suggest/">Add Shop</a></li>
+</ul></div>			<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+		    <!-- <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a> -->
+		  </div>
+		</div>
+	</nav>
+ </div>
+ 
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+ 
+  <!-- header->MONTA O MENU SUPERIOR -->  
+  <header class="mdl-layout__header">   	   	
+    <div class="mdl-layout__header-row">
+ 
+      <a class="mdl-navigation__link" th:href="@{/home}">    
+      	<span class="mdl-layout-title">Prefeitura</span>
+	  </a>          
+ 
+      <div class="mdl-layout-spacer"></div>      
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+ 
+      	<!-- REDIRECIONA PARA A HOME PAGE -->
+      	<a class="mdl-navigation__link" th:href="@{/home}">Home</a>
+ 
+      	 <!-- REDIRECIONA PARA A PÁGINA DE CADASTRO -->
+        <a class="mdl-navigation__link" th:href="@{/usuario/novoCadastro}">Cadastro</a>
+ 
+        <!-- REDIRECIONA PARA A PÁGINA DE CONSULTA -->
+        <a class="mdl-navigation__link" th:href="@{/usuario/consultar}">Consulta</a>
+ 
+        <!-- SAI DA APLICAÇÃO E VOLTA PARA A PÁGINA DE LOGIN -->
+        <a class="mdl-navigation__link" href="#" onclick="document.getElementById('form_logou').submit();">Logout</a>        
+      </nav>
+    </div>
+  </header>
+ 
+  <!-- MONTA O MENU LATERAL -->
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">MENU</span>
+    <nav class="mdl-navigation">
+      <!-- REDIRECIONA PARA A HOME PAGE -->
+      <a class="mdl-navigation__link" th:href="@{/home}">Home</a>
+      <!-- REDIRECIONA PARA A PÁGINA DE CADASTRO -->
+      <a class="mdl-navigation__link" th:href="@{/usuario/novoCadastro}">Cadastro</a>
+      <!-- REDIRECIONA PARA A PÁGINA DE CONSULTA -->
+      <a class="mdl-navigation__link" th:href="@{/usuario/consultar}">Consulta</a>
+       <!-- SAI DA APLICAÇÃO E VOLTA PARA A PÁGINA DE LOGIN -->     
+      <a class="mdl-navigation__link" href="#" onclick="document.getElementById('form_logou').submit();">Logout</a>      
+    </nav>
+  </div>
+ 
+  <!-- PARTE QUE VAI SER SUBSTITUÍDA PELO CONTEUDO DAS PÁGINAS -->
+  <main class="mdl-layout__content mdl-color--blue-grey-100">
+    <div class="page-content">
+ 
+    	 <!-- CONTEUDO A SER SUBSTITUÍDO -->
+    	  <div layout:fragment="content">Essa parte vai ser substituída </div>
+    </div>
+  </main>
+</div>
+ 
+</body>
+</html>

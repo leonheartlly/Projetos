@@ -1,14 +1,7 @@
 package br.com.prefeitura.web;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,90 +23,61 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	/**
 	 * Configurações de acesso.
 	 */
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		
-//		http.authorizeRequests()
-//			/*
-//			 * DETERMINA QUE PARA REALIZAR ESSA REQUEST PRECISA TER UMA DAS PERMISSÕES ABAIXO
-//			 * EXEMPLO DA URL: http://localhost:8095/usuario/novoCadastro
-//			 */
-//			.antMatchers("/usuario/novoCadastro").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
-//			/*
-//			 * DETERMINA QUE PARA REALIZAR ESSA REQUEST PRECISA TER UMA DAS PERMISSÕES ABAIXO
-//			 * EXEMPLO DA URL: http://localhost:8095/usuario/consultar
-//			 */
-//			.antMatchers("/usuario/consultar").access("hasRole('ADMIN') or hasRole('CONSULTA_USUARIO')")
-//			/*DETERMINA QUE PARA ACESSAR A PÁGINA INICIAL DA APLICAÇÃO PRECISA ESTÁ AUTENTICADO
-//			 */
-//			.antMatchers("/home").authenticated()
-//			.anyRequest().authenticated()
-//			.and()
-//				.formLogin()
-//				/*INFORMANDO O CAMINHO DA PÁGINA DE LOGIN, E SE O LOGIN FOR EFETUADO COM SUCESSO
-//				 * O USUÁRIO DEVE SER REDIRECIONADO PARA /home(http://localhost:8095/home)
-//				 */
-//				.loginPage("/").defaultSuccessUrl("/home", true)
-//				/*TODOS TEM ACESSO A PAGINA DE LOGIN
-//				 */
-//				.permitAll()
-//			
-//			.and()
-//				/*
-//				 * AQUI ESTAMOS INFORMANDO QUE QUANDO FOR REDIRECIONADO PARA  O LINK http://localhost:8095/logout
-//			     *O USUÁRIO DEVE TER SUA SESSÃO FINALIZADA E REDIRECIONADO PARA A PÁGINA DE LOGIN 
-//				 */
-//				.logout()
-//				.logoutSuccessUrl("/")
-//				.logoutUrl("/logout")
-//				.permitAll();
-//		
-//		/* PÁGINA COM A MENSAGEM DE ACESSO NEGADO
-//		 * QUANDO O USUÁRIO NÃO TIVER UMA DETERMINADA PERMISSÃO DE ACESSO AO SISTEMA ELE VAI SER REDIRECIONADO
-//		 * PARA A URL ABAIXO */
-//		http.exceptionHandling().accessDeniedPage("/acessoNegado");
-//			
-//		/* AQUI ESTOU INFORMANDO QUE QUALQUER REQUEST TEM ACESSO AO DIRETÓRIO src/main/resources 
-//		 * */
-//		http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().permitAll();
-//			
-//	}
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		
+		http.authorizeRequests()
+			/*
+			 * DETERMINA QUE PARA REALIZAR ESSA REQUEST PRECISA TER UMA DAS PERMISSÕES ABAIXO
+			 * EXEMPLO DA URL: http://localhost:8095/usuario/novoCadastro
+			 */
+			.antMatchers("/usuario/novoCadastro").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
+			/*
+			 * DETERMINA QUE PARA REALIZAR ESSA REQUEST PRECISA TER UMA DAS PERMISSÕES ABAIXO
+			 * EXEMPLO DA URL: http://localhost:8095/usuario/consultar
+			 */
+			.antMatchers("/usuario/consultar").access("hasRole('ADMIN') or hasRole('CONSULTA_USUARIO')")
+			
+			/*DETERMINA QUE PARA ACESSAR A PÁGINA INICIAL DA APLICAÇÃO PRECISA ESTÁ AUTENTICADO
+			 */
+			.antMatchers("/home").authenticated()
+			.anyRequest().authenticated()
+			.and()
+				.formLogin()
+				/*INFORMANDO O CAMINHO DA PÁGINA DE LOGIN, E SE O LOGIN FOR EFETUADO COM SUCESSO
+				 * O USUÁRIO DEVE SER REDIRECIONADO PARA /home(http://localhost:8095/home)
+				 */
+				.loginPage("/").defaultSuccessUrl("/home", true)
+				/*TODOS TEM ACESSO A PAGINA DE LOGIN
+				 */
+				.permitAll()
+			
+			.and()
+				/*
+				 * AQUI ESTAMOS INFORMANDO QUE QUANDO FOR REDIRECIONADO PARA  O LINK http://localhost:8095/logout
+			     *O USUÁRIO DEVE TER SUA SESSÃO FINALIZADA E REDIRECIONADO PARA A PÁGINA DE LOGIN 
+				 */
+				.logout()
+				.logoutSuccessUrl("/")
+				.logoutUrl("/logout")
+				.permitAll();
+		
+		/* PÁGINA COM A MENSAGEM DE ACESSO NEGADO
+		 * QUANDO O USUÁRIO NÃO TIVER UMA DETERMINADA PERMISSÃO DE ACESSO AO SISTEMA ELE VAI SER REDIRECIONADO
+		 * PARA A URL ABAIXO */
+		http.exceptionHandling().accessDeniedPage("/acessoNegado");
+			
+		/* AQUI ESTOU INFORMANDO QUE QUALQUER REQUEST TEM ACESSO AO DIRETÓRIO src/main/resources 
+		 * */
+		http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().permitAll();
+			
+	}
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 		
 		auth.userDetailsService(usuarioRepositoryImpl).passwordEncoder(new BCryptPasswordEncoder());
 	}
-	
-	
-	@Value("${ad.domain}")
-    private String AD_DOMAIN;
-
-    @Value("${ad.url}")
-    private String AD_URL;
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
-        authManagerBuilder.authenticationProvider(activeDirectoryLdapAuthenticationProvider()).userDetailsService(userDetailsService());
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager() {
-        return new ProviderManager(Arrays.asList(activeDirectoryLdapAuthenticationProvider()));
-    }
-    @Bean
-    public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
-        ActiveDirectoryLdapAuthenticationProvider provider = new ActiveDirectoryLdapAuthenticationProvider(AD_DOMAIN, AD_URL);
-        provider.setConvertSubErrorCodesToExceptions(true);
-        provider.setUseAuthenticationRequestCredentials(true);
-
-        return provider;
-}
 	
 //	public static void main(String[] args) {
 //		 

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="base/layout">
+<head>
+<title>Notícias</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Prefeitura" />
+<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<link rel="stylesheet" th:href="@{/css/noticias/noticia.css}" />
+<script type="text/javascript" th:src="@{/js/noticia/noticia.js}"></script>
+</head>
+<body>
+	<section layout:fragment="content">
+		<script>
+			$(document).ready(function() {
+				// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+				$('.modal').modal();
+				$('.slider').slider();
+			});
+		</script>
+		<!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->
+		<div class="mdl-grid">
+			<div class="mdl-layout-spacer"></div>
+			<section
+				class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
+
+
+				<!-- Modal Structure -->
+				<div class="row">
+				<div id="modal1" class="col s10 m10 modal modal-fixed-footer offset-m1">
+					<div class=" col s10 m10 modal-content">
+						<h4 class="modal-title center-align"></h4>
+						<p class="modal-subtitle"></p>
+						<div class="slider">
+							<ul class="slides">
+								<li><img src="https://lorempixel.com/580/250/nature/1" /> <!-- random image -->
+									<div class="caption center-align">
+										<h3>This is our big Tagline!</h3>
+										<h5 class="light grey-text text-lighten-3">Here's our
+											small slogan.</h5>
+									</div></li>
+								<li><img src="https://lorempixel.com/580/250/nature/2" /> <!-- random image -->
+									<div class="caption left-align">
+										<h3>Left Aligned Caption</h3>
+										<h5 class="light grey-text text-lighten-3">Here's our
+											small slogan.</h5>
+									</div></li>
+								<li><img src="https://lorempixel.com/580/250/nature/3" /> <!-- random image -->
+									<div class="caption right-align">
+										<h3>Right Aligned Caption</h3>
+										<h5 class="light grey-text text-lighten-3">Here's our
+											small slogan.</h5>
+									</div></li>
+								<li><img src="https://lorempixel.com/580/250/nature/4" /> <!-- random image -->
+									<div class="caption center-align">
+										<h3>This is our big Tagline!</h3>
+										<h5 class="light grey-text text-lighten-3">Here's our
+											small slogan.</h5>
+									</div></li>
+							</ul>
+						</div>
+						<p>A Dança da Chuva, no entanto, era diferente, dependendo da
+							tribo e do local. A Tribo Hopi, dos Estados Unidos, colocavam
+							cobras na boca e sussurravam orações, acreditando que as preces
+							seriam levadas pelos animais aos deuses-serpentes. Além do líder,
+							dois outros índios também dançavam no ritual, em torno de um
+							círculo. Os Índios Zuni, também dos Estados Unidos, cantavam e
+							dançavam em zigue-zague. Homens e mulheres usavam pulseiras e
+							máscaras, com o peito adornado de pelas e colares. Alguns povos
+							eslavos também realizavam a dança. As moças jovens usavam
+							máscaras de folhas e gravelhos, e dançavam em frente às casas do
+							seus povoados. Os donos das casas costumavam jogar água sobre as
+							garotas, a fim de pedir chuvas. Os não-índios e/ou praticantes de
+							religiões "pagãs" que desejam realizar uma Dança da Chuva,
+							aconselha-se vestir-se de roupas feitas com elementos da
+							natureza, como folhas e galhos de árvores, peles, penas, terra,
+							pedras etc. Deve-se girar em sentido horário, em um campo aberto,
+							com seu próprio canto de chuva, que deve ser rítmico e fácil (ou
+							procure a tribo indígena mais próxima).</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#!"
+							class="modal-action modal-close waves-effect waves-green btn-flat ">Fechar</a>
+					</div>
+				</div>
+</div>
+
+				<div class="">
+					<!-- NEWS -->
+					<div class="news">
+
+						<h5 class="green-text text-darken-2 title-conf">NOTÍCIAS</h5>
+
+						<div class="row news-board">
+
+
+							<div class="col s6 m6 mt0">
+
+								<div class="row mb0">
+
+									<div class="col s10 m10">
+										<a href="#modal1" onmouseover="addTagEffect($(this))"
+											onmouseout="removeTagEffect($(this))"
+											class="valign-wrapper left-align news-link-conf modal-trigger" onclick="modalFeed($(this)) "> 
+											
+											<img class="col s6 m6 news-img " src="/img/i3.jpg" />
+
+											<div class="col s4 m4 p20">
+												<span class="news-sub-date">25 JAN 2018</span>
+												<span class="pl12 news-sub-theme">INDIOS</span>
+												<h5 class="link-text mt5 truncate">Dança da Chuva</h5>
+											</div>
+										</a>
+
+									</div>
+
+									<div class="col s10 m10 mt20">
+										<a href="#modal1" onmouseover="addTagEffect($(this))"
+											onmouseout="removeTagEffect($(this))"
+											class="valign-wrapper left-align news-link-conf modal-trigger" onclick="modalFeed($(this))"> <img
+											class="col s6 m6 news-img " src="/img/i4.jpg" />
+
+											<div class="col s4 m4 p20">
+												<span class="news-sub-date">27 JAN 2018</span> <span
+													class="pl12 news-sub-theme">racismo</span>
+												<h5 class="link-text mt5 title">Dança da Chuva</h5>
+											</div>
+										</a>
+
+									</div>
+
+									<div class="col s10 m10 mt20">
+										<a href="#modal1" onmouseover="addTagEffect($(this))"
+											onmouseout="removeTagEffect($(this))"
+											class="valign-wrapper left-align news-link-conf modal-trigger" 
+											onclick="modalFeed($(this))"> <img
+											class="col s6 m6 news-img " src="/img/i5.jpg" />
+											<div class="col s4 m4 p20">
+												<span class="news-sub-date">22 JAN 2018</span><span
+													class="pl12 news-sub-theme">beleza</span>
+												<h5 class="link-text mt5">Dança da Chuva grande e
+													bonita que me merece oscar de melhor chuva do ano e do
+													milenio</h5>
+											</div>
+										</a>
+
+									</div>
+
+								</div>
+							</div>
+
+							<div class="col s6 m6 mt0">
+
+								<div class="row mb0">
+
+									<div class="col s10 m10">
+										<a href="#modal1" onmouseover="addTagEffect($(this))"
+											onmouseout="removeTagEffect($(this))"
+											class="valign-wrapper left-align news-link-conf modal-trigger"
+											onclick="modalFeed($(this))"> <img
+											class="col s6 m6 news-img " src="/img/i3.jpg" />
+
+											<div class="col s4 m4 p20">
+												<span class="news-sub-date">25 JAN 2018</span><span
+													class="pl12 news-sub-theme">INDIOS</span>
+												<h5 class="link-text mt5">Dança da Chuva</h5>
+											</div>
+										</a>
+
+									</div>
+
+									<div class="col s10 m10 mt20">
+										<a hhref="#modal1" onmouseover="addTagEffect($(this))"
+											onmouseout="removeTagEffect($(this))" 
+											class="valign-wrapper left-align news-link-conf modal-trigger"
+											onclick="modalFeed($(this))"> <img
+											class="col s6 m6 news-img " src="/img/i4.jpg" />
+
+											<div class="col s4 m4 p20">
+												<span class="news-sub-date">27 JAN 2018</span><span
+													class="pl12 news-sub-theme">racismo</span>
+												<h5 class="link-text mt5">Dança da Chuva</h5>
+											</div>
+
+										</a>
+
+									</div>
+
+									<div class="col s10 m10 mt20">
+										<a href="#modal1" onmouseover="addTagEffect($(this))"
+											onmouseout="removeTagEffect($(this))"
+											class="valign-wrapper left-align news-link-conf modal-trigger" onclick="modalFeed($(this))"> <img
+											class="col s6 m6 news-img " src="/img/i5.jpg"  />
+
+											<div class="col s4 m4 p20">
+												<span class="news-sub-date">22 JAN 2018</span><span
+													class="pl12 news-sub-theme">beleza</span>
+												<h5 class="link-text mt5">Dança da Chuva grande e
+													bonita que me merece oscar de melhor chuva do ano e do
+													milenio</h5>
+											</div>
+										</a>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div>
+							<h6 class="green-text text-darken-2 title-conf">NOTÍCIAS
+								ANTIGAS</h6>
+
+							<div class="row col s6 m6 ml15">
+								<div class="col s6 m6">
+									<a href="#" onmouseover="addTagEffect($(this))"
+										onmouseout="removeTagEffect($(this))"
+										class="valign-wrapper left-align">
+
+										<div class="col s12 m12 p20">
+											<span class="news-sub-date">22 JAN 2018</span> <span
+												class="pl12 news-sub-theme">beleza</span>
+											<h5 class="link-text mt5">Mas pense numa notícia antiga
+											</h5>
+										</div>
+									</a>
+								</div>
+								<div class="col s6 m6">
+									<a href="#" onmouseover="addTagEffect($(this))"
+										onmouseout="removeTagEffect($(this))"
+										class="valign-wrapper left-align news-link-conf" onclick="modalFeed($(this))">
+
+										<div class="col s12 m12 p20">
+											<span class="news-sub-date">22 JAN 2018</span> <span
+												class="pl12 news-sub-theme">beleza</span>
+											<h5 class="link-text mt5 truncate">Dança da Chuva grande
+												e bonita que me merece oscar de melhor chuva do ano e do
+												milenio</h5>
+										</div>
+									</a>
+								</div>
+							</div>
+
+							<div class="row col s6 m6 ml15">
+								<div class="col s6 m6">
+									<a href="#" onmouseover="addTagEffect($(this))"
+										onmouseout="removeTagEffect($(this))"
+										class="valign-wrapper left-align" onclick="modalFeed($(this))">
+
+										<div class="col s12 m12 p20">
+											<span class="news-sub-date">22 JAN 2018</span> <span
+												class="pl12 news-sub-theme">beleza</span>
+											<h5 class="link-text mt5">Prefeito de Araguaçu não
+												aguenta a pressão e cria porco na escola</h5>
+										</div>
+									</a>
+								</div>
+								<div class="col s6 m6">
+									<a href="#" onmouseover="addTagEffect($(this))"
+										onmouseout="removeTagEffect($(this))"
+										class="valign-wrapper left-align news-link-conf" onclick="modalFeed($(this))">
+
+										<div class="col s12 m12 p20">
+											<span class="news-sub-date">22 JAN 2018</span> <span
+												class="pl12 news-sub-theme">beleza</span>
+											<h5 class="link-text mt5 truncate">Teste mais testado do
+												brasil</h5>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+		</div>
+
+	</section>
+
+</body>
+</html>
