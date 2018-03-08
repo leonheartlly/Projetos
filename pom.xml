@@ -97,6 +97,11 @@
 			<version>2.1.2</version>
 		</dependency>
 		
+		<dependency>
+    		<groupId>net.sourceforge.nekohtml</groupId>
+    		<artifactId>nekohtml</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -110,6 +115,26 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<skipTests>${skipTests}</skipTests>
+				</configuration>
+			</plugin>
+			<!-- Plugin do Flyway -->
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>5.0.2</version>
+
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
+					<url>jdbc:mysql://localhost:3306/prefeitura</url>
+					<user>root</user>
+					<password>159753</password>
+					<schemas>
+						<schema>prefeitura</schema>
+					</schemas>
+					<locations>
+						<location>classpath:db.migration</location>
+					</locations>
+					<initOnMigrate>true</initOnMigrate>
 				</configuration>
 			</plugin>
 		</plugins>

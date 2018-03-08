@@ -14,24 +14,62 @@
 	<section layout:fragment="content">
 
 <div class="mt20 background">
+ 
 		<div class="row">
-			<form class="col s12">
+			<form class="col s12" >
 				<div class="row">
+				
 					<div class="input-field col s6">
+					   <select >
+					     <option value="" disabled selected>Dados Consolidados</option>
+					     <option value="1">Option 1</option>
+      					 <option value="2">Option 2</option>
+      					 <option value="3">Option 3</option>
+					   </select>
+					   <label>Orgão:</label>
+					</div>
+					
+					<div class=" input-field col s3">
+						<label>Data Inicial:</label>
+					 	<input type="text" class="datepicker"/>
+					</div>
+					 
+					<div class="input-field col s3">
+						<label>Data Final:</label>
+						<input type="text" class="datepicker"/>
+					</div>
+					  
+				</div>
+				
+				<div class="row">
+				
+					<div class="input-field col s2">
 						<input placeholder="CPF/CNPJ" id="first_name" type="text"
 							class="validate" /> 
 							<label for="first_name">CPF/CNPJ Fornecedor/Credor:</label>
 					</div>
-					<div class="input-field col s6">
+					
+					<div class="input-field col s4">
 						<input placeholder="Nome/Razão Social" id="first_name" type="text"
 							class="validate" /> 
 							<label for="first_name">Fornecedor/Credor:</label>
 					</div>
+					
+					<div class="input-field col s6">
+					    <select>
+					      <option value="" selected="selected">Modalidade</option>
+					      <option value="1">Option 1</option>
+					      <option value="2">Option 2</option>
+					      <option value="3">Option 3</option>
+					    </select>
+					    <label>Modalidade da Licitação:</label>
+					</div>
 				</div>
+				
 
 				<div class="row">
-					<div class="input-field col s6">
-						<input placeholder="Nome/Razão Social" id="first_name" type="text"
+					<div class="input-field col s12">
+						<input placeholder="Digite parte do objeto da licitação desejada" id="first_name" type="text"
 							class="validate" /> 
 							<label for="first_name">Objeto:</label>
 					</div>
@@ -56,7 +94,8 @@
         </thead>
 
         <tbody>
-          <tr>
+          <tr class="tr-conf" onclick="displayDetails()">
+          	<td class="hide">1</td>
             <td class="bold">PROCESSO FMS N° 003/2018</td>
             <td>PREGÃO PRESENCIAL N° 001/2018</td>
             <td>05/03/2018</td>
@@ -64,8 +103,96 @@
             <td>O Ordenador de Despesas do EM/6ª RPM, no uso das atribuições que lhe competem, torna público que devido a problemas administrativos, o Pregão Eletrônico 01/2018, Processo nº 1251852 01/2018, Unidade de Compra 125 1852, aquisição de ração para os cães do canil do 8º BPM/6ª RPM, está sendo prorrogado, informaremos em breve a nova data do certame. Outras informações à respeito poderão ser obtidas através do email: almox.caa6@gmail.com ou através dos telefones (035) 3829.3222/ 3829-3229.</td>
             <td>Em andamento</td>
             <td>R$ 138.506,66</td>
+           
           </tr>
-           <tr>
+          <tr id="1" class="remove-line hide-box">
+          	<td class="p0 col s12 m12 bb0 b0" colspan="12">
+	            <div class="hidden-tr-conf ">
+	            	<div class="z-depth-2">
+		            	<p class="m0 hidden-tr-title mb20">DETALHES DA LICITAÇÃO</p>
+		            	<div class="row hidden-tr-body">
+		            		<div>
+		            			<label class="col m3">SITUAÇÃO: <span class="bold">EM ANDAMENTO</span></label>
+		            			<label class="col m2">N° PROCESSO: <span class="bold">processo pmbs 004/2018</span></label>
+		            			<label class="col m2">N° EDITAL: <span class="bold">p.presencial pmbs 002/2018</span></label>
+		            			
+		            		</div>
+		            		<div class="row col s12 m12 mt10 pl0 mb0">
+		            			<label class="col m3 pl0">DATA ABERTURA: <span class="bold">16/02/2018</span></label>
+		            			<label class="col m2">data homologação: <span class="bold">16/02/2018</span></label>
+		            			<label class="col m2">data adjudicação: <span class="bold">16/02/2018</span></label>
+		            		</div>
+		            		<div class="row col s12 m12 mt10 pl0 mb0">
+		            			<label class="col m3 pl0">orgão: <span class="bold">prefeitura municipal de araguaçu</span></label>
+		            		</div>
+		            		<div class="row col s12 m12 mt10 pl0 mb0">
+		            			<label class="col m3 pl0">modalidade licitação: <span class="bold">pregão presencial</span></label>
+		            		</div>
+		            		<div class="row col s12 m12 mt10 pl0 mb0">
+		            			<label class="col m3 pl0">valor: <span class="bold green-text text-darken-3">R$ 630.500,00</span></label>
+		            		</div>
+		            		<div class="row col s12 m12 mt10 pl0 mb20">
+		            			<label class="col m10 pl0">objeto: <span class="bold red-text text-darken-2">registro de preços para aquisição de peças e acessórios, prestação de serviços de retifica e prestação de serviços de mecâncica para os veículos automotores e máquinas deste município durante o ano de 2018.</span></label>
+		            		</div>
+		            	</div>
+	            	</div> 
+	            </div>
+	         </td>
+	      </tr>
+       	  <tr id="at-1" class="hide-box">
+			<td class="p0 col s12 m12" colspan="12">
+				<div class="hidden-tr-conf">
+					<div class="z-depth-2">
+						<p class="m0 hidden-tr-title mb20">ANEXOS</p>
+						<div class="row hidden-tr-body">
+							<div class="row">
+								<div class="col s1 m1">
+								</div>
+								<div class="col s9 m9 bold">
+									Nome
+								</div>
+								<div class="col s2 m2 bold center-align">
+									Anexo
+								</div>
+							</div>
+							
+							<div class="row attachment-box">
+							
+								<div class=" mt10 mb10 box-line valign-wrapper">
+									
+										<span class="col s1 m1 ">1</span>
+										<span class="col s9 m9">retificação de aviso</span>
+										<span class=" col s2 m2 center-align">
+											<a class="waves-effect waves-light btn" onclick="displayPDF('/pdf/contratos.pdf','contratos')">visualizar/baixar</a>
+										</span>
+									
+								</div>
+								
+								<div class=" mt10 mb10 box-line valign-wrapper">
+									<span class="col s1 m1">2 </span>
+									<span class="col s9 m9">edital</span>
+									<span class=" col s2 m2 center-align">
+										<a class="waves-effect waves-light btn">visualizar/baixar</a>
+									</span>
+									
+								</div>
+								
+								<div class="mt10 mb10 box-line valign-wrapper">
+									<span class="col s1 m1">3</span>
+									<span class="col s9 m9">aviso</span>
+									<span class=" col s2 m2 center-align">
+										<a class="waves-effect waves-light btn">visualizar/baixar</a>
+									</span>
+								</div>
+								
+							</div>
+
+						</div>
+					</div>
+					</div>
+				</td>
+			</tr>
+           <tr class="tr-conf">
             <td class="bold">PROCESSO FMS N° 003/2018</td>
             <td>PREGÃO PRESENCIAL N° 001/2018</td>
             <td>05/03/2018</td>
@@ -74,7 +201,7 @@
             <td>Em andamento</td>
             <td>R$ 156.799,99</td>
           </tr>
-            <tr>
+            <tr class="tr-conf">
             <td class="bold">PROCESSO FMS N° 003/2018</td>
             <td>PREGÃO PRESENCIAL N° 001/2018</td>
             <td>05/03/2018</td>
@@ -83,7 +210,7 @@
             <td>Em andamento</td>
             <td>R$ 10.532,50</td>
           </tr>
-            <tr>
+            <tr class="tr-conf">
             <td class="bold">PROCESSO FMS N° 003/2018</td>
             <td>PREGÃO PRESENCIAL N° 001/2018</td>
             <td>05/03/2018</td>
@@ -92,7 +219,7 @@
             <td>Em andamento</td>
             <td>R$ 23.650,00</td>
           </tr>
-            <tr>
+            <tr class="tr-conf">
             <td class="bold">PROCESSO FMS N° 003/2018</td>
             <td>PREGÃO PRESENCIAL N° 001/2018</td>
             <td>05/03/2018</td>
