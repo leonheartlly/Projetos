@@ -1,4 +1,4 @@
-package br.com.prefeitura.web.entity;
+package br.com.prefeitura.web.domain.entity;
 
 
 import java.io.Serializable;

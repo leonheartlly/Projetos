@@ -1,10 +1,15 @@
-function displayDetails(){
-	if($("#1").hasClass('hide-box')){
-		$("#1").removeClass('hide-box');
-		$("#at-1").removeClass('hide-box');
-	}else{
-		$("#1").addClass('hide-box');
-		$("#at-1").addClass('hide-box');
+function displayDetails(id){
+	var nextElem = parseInt(id) + parseInt(1);
+	if($("#"+nextElem).hasClass('hide-box')){
+		$("#"+ nextElem).removeClass('hide-box');
+		
+		nextElem = parseInt(nextElem) + parseInt(1)
+		$("#" + nextElem).removeClass('hide-box');
+	}
+	else{
+		$("#"+nextElem).addClass('hide-box');
+		nextElem = parseInt(nextElem) + parseInt(1)
+		$("#"+nextElem).addClass('hide-box');
 	}
 }
 
@@ -16,9 +21,17 @@ function displayPDF(file, titulo){
 	return false;
 }
 
+function teste(){
+//	alert($('select[name=selector]').val());
+	return 1;
+}
+
 $(document).ready(function() {
 	
-    $('select').material_select();
+	
+	$('select').material_select();
+    
+    
     
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
@@ -32,4 +45,12 @@ $(document).ready(function() {
         close: 'Ok',
         closeOnSelect: false // Close upon selecting a date,
       });
+    
+    $('#detailBody >tr').each(function(index){
+    	
+    		$(this).attr('id', index);
+    });
+    
+    	
 });
+

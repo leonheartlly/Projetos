@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" th:lang="${#locale.language}">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,17 +16,12 @@
 	rel="stylesheet" />
 
 <script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/materialize.js}"></script>
 <script type="text/javascript" th:src="@{/js/geral.js}"></script>
 
 </head>
 <body>
 
-<script type="text/javascript">
-
-
-
-</script>
 
 	<!-- FORM QUE VAI SER USADO PARA REALIZAR O LOGOUT -->
 	<form th:action="@{/logout}" id="form_logou" th:method="post">
@@ -91,7 +86,7 @@
 						<a href="" class="dropdown-button mr15 ml15" onmouseover="teste2('serviceMenu')">Serviços</a> 
 						<a href="" class="mr15 ml15" onmouseover="teste2('')">Editais</a>
 						<a href="" class="mr15 ml15" onmouseover="teste2('prefectureMenu')">A Prefeitura</a> 
-						<a class="mr15 ml15" th:href="@{/licitacao}">Secretarias</a> 
+						<a class="mr15 ml15" th:href="@{/editais/licitacao}">Secretarias</a> 
 						<a class="mr15 ml15" th:href="@{/noticia}">Transparência</a>
 					</div>
 
@@ -201,10 +196,10 @@
             <div class="row">
 	            <div>
 		              <div class="col l2 m6 footer-conf offset-m3 offset-l3">
-		                <div class="white-text footer-title">PREFEITURA DE ARAGUAÇU</div>
+		                <div class="white-text footer-title" th:text="#{messages.index.footer.prefeitura}"></div>
 		                <p class="grey-text text-lighten-4">Rua do Postinho, 10. Esq. Açougue do zé</p>
 		                <p class="grey-text text-lighten-4">(44) 3235-3354</p>
-		                <p class="grey-text text-lighten-4 ">Funcionamento:</p>
+		                <p class="grey-text text-lighten-4 " th:text="#{messages.index.footer.funcionamento}"></p>
 		                <p class="grey-text text-lighten-4 mt0">de 9h às 18h</p>
 		              </div>
 		              
@@ -214,13 +209,13 @@
 		              </div>
 		              
 		              <div class="col l2">
-		               <div class="white-text">Sobre a prefeitura</div>
+		               <div class="white-text" th:text="#{messages.index.footer.sobre}"></div>
 		               
-		                  <a class="grey-text text-lighten-3" href="#!">Mapa do site</a><br/>
-		                  <a class="grey-text text-lighten-3" href="#!">Fale conosco</a><br/>
-		                  <a class="grey-text text-lighten-3" href="#!">Ouvidoria</a><br/>
-		                  <a class="grey-text text-lighten-3" href="#!">Telefones úteis</a><br/>
-		                  <a class="grey-text text-lighten-3" href="#!">Email institucional</a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.mapa}"></a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.fale.conosco}"></a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.ouvidoria}"></a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.telefones}"></a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.email}"></a><br/>
 		                
 		              </div>
 	              </div>

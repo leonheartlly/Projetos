@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.prefeitura.web.model.GrupoModel;
-import br.com.prefeitura.web.model.UsuarioModel;
+import br.com.prefeitura.web.domain.model.Grupo;
+import br.com.prefeitura.web.domain.model.Usuario;
 import br.com.prefeitura.web.service.GrupoService;
 import br.com.prefeitura.web.service.UsuarioService;
 
 /**
  * 
- * @author Cícero Ednilson
+ * @author Lucas Ferreira
  * 
  *         OBJETO RESPONSÁVEL POR REALIZAR AS ROTINAS DE USUÁRIO.
  * 
@@ -58,7 +58,7 @@ public class UsuarioController {
 		model.addAttribute("grupos", grupoService.consultarGrupos());
 
 		/* OBJETO QUE VAMOS ATRIBUIR OS VALORES DOS CAMPOS */
-		model.addAttribute("usuarioModel", new UsuarioModel());
+		model.addAttribute("usuarioModel", new Usuario());
 
 		return new ModelAndView("novoCadastro");
 	}
@@ -77,7 +77,7 @@ public class UsuarioController {
 		model.addAttribute("grupos", grupoService.consultarGrupos());
 
 		/* OBJETO QUE VAMOS ATRIBUIR OS VALORES DOS CAMPOS */
-		model.addAttribute("usuarioModel", new UsuarioModel());
+		model.addAttribute("usuarioModel", new Usuario());
 
 		return new ModelAndView("novoCadastro");
 	}
@@ -88,18 +88,18 @@ public class UsuarioController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/licitacao", method = RequestMethod.GET)
-	public ModelAndView licitacao(Model model) {
+//	@RequestMapping(value = "/licitacao", method = RequestMethod.GET)
+//	public ModelAndView licitacao(Model model) {
 
-		LOGGER.info("[LOG-INFO] "+ UsuarioController.class.getSimpleName()+" - NOTICIAS.");
+//		LOGGER.info("[LOG-INFO] "+ UsuarioController.class.getSimpleName()+" - NOTICIAS.");
 		/* LISTA DE GRUPOS QUE VAMOS MOSTRAR NA PÁGINA */
-		model.addAttribute("grupos", grupoService.consultarGrupos());
+//		model.addAttribute("grupos", grupoService.consultarGrupos());
 
 		/* OBJETO QUE VAMOS ATRIBUIR OS VALORES DOS CAMPOS */
-		model.addAttribute("usuarioModel", new UsuarioModel());
+//		model.addAttribute("usuarioModel", new UsuarioModel());
 
-		return new ModelAndView("novoCadastro");
-	}
+//		return new ModelAndView("novoCadastro");
+//	}
 
 	/***
 	 * CONSULTA TODOS USUÁRIOS CADASTRADOS NO SISTEMA
@@ -143,7 +143,7 @@ public class UsuarioController {
 	 * @return
 	 */
 	@RequestMapping(value = "/salvarUsuario", method = RequestMethod.POST)
-	public ModelAndView salvarUsuario(@ModelAttribute @Valid UsuarioModel usuarioModel, final BindingResult result,
+	public ModelAndView salvarUsuario(@ModelAttribute @Valid Usuario usuarioModel, final BindingResult result,
 			Model model, RedirectAttributes redirectAttributes) {
 
 		/*
@@ -152,7 +152,7 @@ public class UsuarioController {
 		 */
 		if (result.hasErrors()) {
 
-			List<GrupoModel> gruposModel = grupoService.consultarGrupos();
+			List<Grupo> gruposModel = grupoService.consultarGrupos();
 
 			/*
 			 * POSICIONANDO OS CKECKBOX SELECIONADOS
@@ -217,10 +217,10 @@ public class UsuarioController {
 	public ModelAndView editarCadastro(@RequestParam("codigoUsuario") Long codigoUsuario, Model model) {
  
 		/*CONSULTA OS GRUPOS CADASTRADOS*/
-		List<GrupoModel> gruposModel =grupoService.consultarGrupos();			
+		List<Grupo> gruposModel =grupoService.consultarGrupos();			
  
 		/*CONSULTA O USUÁRIO PELO CÓDIGO*/
-		UsuarioModel usuarioModel = this.usuarioService.consultarUsuario(codigoUsuario);
+		Usuario usuarioModel = this.usuarioService.consultarUsuario(codigoUsuario);
  
 		/*DEIXA SELECIONADO OS GRUPOS CADASTRADOS PARA O USUÁRIO*/
 		gruposModel.forEach(grupo ->{
@@ -256,7 +256,7 @@ public class UsuarioController {
 	 */
 	@RequestMapping(value="/salvarAlteracao", method= RequestMethod.POST)
 	public ModelAndView salvarAlteracao(@ModelAttribute 
-					    @Valid UsuarioModel usuarioModel, 
+					    @Valid Usuario usuarioModel, 
 					    final BindingResult result,
 					    Model model,
 					   RedirectAttributes redirectAttributes){
@@ -278,7 +278,7 @@ public class UsuarioController {
 			
 			
  
-		    List<GrupoModel> gruposModel =grupoService.consultarGrupos();			
+		    List<Grupo> gruposModel =grupoService.consultarGrupos();			
  
 		    gruposModel.forEach(grupo ->{
  

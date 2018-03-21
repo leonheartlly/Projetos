@@ -14,11 +14,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import br.com.prefeitura.web.entity.GrupoEntity;
-import br.com.prefeitura.web.entity.PermissaoEntity;
-import br.com.prefeitura.web.entity.UsuarioEntity;
-import br.com.prefeitura.web.model.UsuarioModel;
-import br.com.prefeitura.web.model.UsuarioSecurityModel;
+import br.com.prefeitura.web.domain.entity.GrupoEntity;
+import br.com.prefeitura.web.domain.entity.PermissaoEntity;
+import br.com.prefeitura.web.domain.entity.UsuarioEntity;
+import br.com.prefeitura.web.domain.model.Usuario;
+import br.com.prefeitura.web.domain.model.UsuarioSecurity;
 import br.com.prefeitura.web.repository.IGrupoRepository;
 import br.com.prefeitura.web.repository.IPermissaoRepository;
 import br.com.prefeitura.web.repository.IUsuarioRepository;
@@ -69,7 +69,7 @@ public class UsuarioService implements UserDetailsService {
 			throw new DisabledException("Usuário não está ativo no sistema!");
 		}
 
-		return new UsuarioSecurityModel(usuarioEntity.getLogin(), usuarioEntity.getSenha(), usuarioEntity.isAtivo(),
+		return new UsuarioSecurity(usuarioEntity.getLogin(), usuarioEntity.getSenha(), usuarioEntity.isAtivo(),
 				this.buscarPermissoesUsuario(usuarioEntity));
 	}
 
@@ -110,7 +110,7 @@ public class UsuarioService implements UserDetailsService {
 			}
 		}
 
-		System.out.println("permissao foi arrumada");
+//		System.out.println("permissao foi arrumada");
 		return auths;
 	}
 	
@@ -118,7 +118,7 @@ public class UsuarioService implements UserDetailsService {
 	 * Salva um novo registo de usuário.
 	 * @param usuarioModel
 	 */
-	public void salvarUsuario(UsuarioModel usuarioModel){
+	public void salvarUsuario(Usuario usuarioModel){
 		
 		UsuarioEntity usuarioEntity =  new UsuarioEntity();
 		
@@ -144,13 +144,13 @@ public class UsuarioService implements UserDetailsService {
 	 * Consulta usuarios cadastrados.
 	 * @return
 	 */
-	 public List<UsuarioModel> consultarUsuarios(){
+	 public List<Usuario> consultarUsuarios(){
 		 
-		 List<UsuarioModel> usuariosModel = new ArrayList<>();
+		 List<Usuario> usuariosModel = new ArrayList<>();
 		 List<UsuarioEntity> usuariosEntity = this.usuarioRepository.findAll();
 		 
 		 usuariosEntity.forEach(usuarioEntity -> {
-			 usuariosModel.add(new UsuarioModel(usuarioEntity.getCodigo(),
+			 usuariosModel.add(new Usuario(usuarioEntity.getCodigo(),
 					 usuarioEntity.getNome(),
 					 usuarioEntity.getLogin(),
 					 null,
@@ -174,7 +174,7 @@ public class UsuarioService implements UserDetailsService {
 	  * @param codigoUsuario
 	  * @return
 	  */
-	 public UsuarioModel consultarUsuario(Long codigoUsuario){
+	 public Usuario consultarUsuario(Long codigoUsuario){
 		 UsuarioEntity usuarioEntity = this.usuarioRepository.findOne(codigoUsuario);
 		 
 		 List<Long> grupos =  new ArrayList<Long>();
@@ -183,7 +183,7 @@ public class UsuarioService implements UserDetailsService {
 			 grupos.add(grupo.getCodigo());
 		 });
 		 
-		 return new UsuarioModel(usuarioEntity.getCodigo(),
+		 return new Usuario(usuarioEntity.getCodigo(),
 				 usuarioEntity.getNome(),
 				 usuarioEntity.getLogin(),
 				 null,
@@ -195,7 +195,7 @@ public class UsuarioService implements UserDetailsService {
 	  * Altera Informações do usuário
 	  * @param usuarioModel
 	  */
-	 public void alterarUsuario(UsuarioModel usuarioModel){
+	 public void alterarUsuario(Usuario usuarioModel){
 		 UsuarioEntity usuarioEntity = this.usuarioRepository.findOne(usuarioModel.getCodigo());
 		 
 		 usuarioEntity.setAtivo(usuarioModel.isAtivo());

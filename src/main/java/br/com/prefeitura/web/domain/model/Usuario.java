@@ -1,4 +1,4 @@
-package br.com.prefeitura.web.model;
+package br.com.prefeitura.web.domain.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Data
-public class UsuarioModel {
+public class Usuario {
 
 	private Long codigo;
 	
@@ -22,7 +22,7 @@ public class UsuarioModel {
 	@NotEmpty(message="Não existe nenhum grupo selecionado.")
 	private List<Long> grupos;
 	
-	public UsuarioModel (Long codigo, String nome, String login, String senha, boolean ativo, List<Long> grupos) {
+	public Usuario (Long codigo, String nome, String login, String senha, boolean ativo, List<Long> grupos) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -32,7 +32,7 @@ public class UsuarioModel {
 		this.grupos = grupos;
 	}	
 	
-	public UsuarioModel(){
+	public Usuario(){
 		 
 		System.out.println("Passei " + LocalDate.now());
 	}

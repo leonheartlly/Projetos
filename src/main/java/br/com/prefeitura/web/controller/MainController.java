@@ -1,5 +1,8 @@
 package br.com.prefeitura.web.controller;
 
+import java.util.Locale;
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -7,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
 
+	private static final Logger LOGGER = 
+		      Logger.getLogger(MainController.class); 
+	
 	/***
 	 * ESSE MÉTODO CARREGA A PÁGINA (index.html) DE LOGIN DA NOSSA APLICAÇÃO
 	 * 
@@ -56,8 +62,8 @@ public class MainController {
 	 * @return
 	 */
 	@RequestMapping(value = "/licitacao", method = RequestMethod.GET)
-	public String licitacao() {
-
+	public String licitacao(Locale locale) {
+		LOGGER.info("essa é a linguagem" + locale);
 		return "licitacao";
 	}
 

@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="base/layout">
 <head>
-<title>Home Page</title>
+<title th:text="#{messages.home}"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="author" content="Prefeitura" />
 <link rel="stylesheet" th:href="@{/css/home/home.css}" />
@@ -41,24 +41,24 @@
 
 								<a class="col s3 m2 shortcut-size shortcut-button btn1 hoverable button-effect" >
 									<img src="/img/certif.png" class="pl20 pr20 pb10 center" height="45" />
-									<p class="center-align mt0 mb0">CONTRATOS</p>
+									<p class="center-align mt0 mb0" th:text="#{messages.home.contratos}"></p>
 								</a> 
 								
-								<a class="col s3 m2 shortcut-size shortcut-button btn5"> <img
+								<a class="col s3 m2 shortcut-size shortcut-button btn5" th:href="@{/editais/licitacao}"> <img
 									src="/img/auction.png" class="pl20 pr20 pb10 center" height="45"/>
-									<p class="center-align mt0 mb0">LICITAÇÕES</p>
+									<p class="center-align mt0 mb0" th:text="#{messages.home.licitacoes}"></p>
 								</a> <a
 									class="col s3 m2 shortcut-size shortcut-button btn3 hoverable">
 									<img src="/img/constr.png" class="pl20 pr20 pb10 center" height="45"/>
-									<p class="center-align mt0 mb0">OBRAS</p>
+									<p class="center-align mt0 mb0" th:text="#{messages.home.obras}"></p>
 								</a> <a
 									class="col s3 m2 shortcut-size shortcut-button btn7 hoverable">
 									<img src="/img/garg.png" class="pl20 pr20 pb10 center" height="45"/>
-									<p class="center-align mt0 mb0">COLETA DE LIXO</p>
+									<p class="center-align mt0 mb0" th:text="#{messages.home.coleta}"></p>
 								</a> <a href="#"
 									class="col s3 m2 shortcut-size shortcut-button btn5 hoverable">
 									<img src="/img/legis.png" class="pl20 pr20 pb10 center" height="45"/>
-									<p class="center-align mt0 mb0">LEGISLAÇÃO</p>
+									<p class="center-align mt0 mb0" th:text="#{messages.home.legislacao}"></p>
 								</a> <a
 									class="col s3 m2 shortcut-size shortcut-button btn1 hoverable">
 									<img src="/img/contract.png" class="pl20 pr20 pb10 center" height="45"/>
@@ -276,21 +276,21 @@
 								<div class="col s12 m12 mini-maps-conf blue darken-1 waves-effect" onclick="initMap(0)">
 									<a class="shortcut-size shortcut-button btn1 hoverable " >
 										<img src="/img/city-hall.png" class="pl20 pr20 pb10 center" height="120" />
-										<p class="center-align mt0 mb0 bold">PREFEITURA</p>
+										<p class="center-align mt0 mb0 bold" th:text="#{messages.home.map.prefeitura}"></p>
 									</a> 
 									 
 								</div>
 								<div class="col s12 m12 mini-maps-conf blue darken-4 waves-effect" onclick="initMap(1)">
 									<a class="shortcut-size shortcut-button btn1 hoverable" >
 										<img src="/img/police.png" class="pl20 pt10 pr20 pb15 center" height="122" />
-										<p class="center-align mt0 mb0 bold">POLÍCIA</p>
+										<p class="center-align mt0 mb0 bold" th:text="#{messages.home.map.policia}"></p>
 									</a> 
 									 
 								</div>
 								<div class="col s12 m12 mini-maps-conf blue darken-2 waves-effect" onclick="initMap(2)">
 									<a class="shortcut-size shortcut-button btn1 hoverable" >
 										<img src="/img/hospital.png" class="pl20 pr20 pb10 center" height="110" />
-										<p class="center-align mt0 mb0 bold">HOSPITAL</p>
+										<p class="center-align mt0 mb0 bold" th:text="#{messages.home.map.hospital}"></p>
 									</a> 
 								</div>
 							</div>
@@ -340,7 +340,7 @@
 
 					<div class="col s6 m6 mt15">
 
-						<h5 class="facebook-div mb20">CALENDARIO</h5>
+						<h5 class="facebook-div mb20" th:text="#{messages.home.calendario}"></h5>
 						
 						<div class="col s8 m8 offset-s2 offset-m2 board-conf">
 						

@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="base/layout">
 <head>
-<title>Notícias</title>
+<title th:text="#{messages.noticias}"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="author" content="Prefeitura" />
 <link rel="stylesheet" th:href="@{/css/home/home.css}" />
@@ -14,7 +14,6 @@
 	<section layout:fragment="content">
 		<script>
 			$(document).ready(function() {
-				// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
 				$('.modal').modal();
 				$('.slider').slider();
 			});
@@ -90,7 +89,7 @@
 					<!-- NEWS -->
 					<div class="news">
 
-						<h5 class="green-text text-darken-2 title-conf">NOTÍCIAS</h5>
+						<h5 class="green-text text-darken-2 title-conf" th:text="#{messages.noticias.title}"></h5>
 
 						<div class="row news-board">
 
@@ -108,7 +107,7 @@
 
 											<div class="col s4 m4 p20">
 												<span class="news-sub-date">25 JAN 2018</span>
-												<span class="pl12 news-sub-theme">INDIOS</span>
+												<span class="pl12 news-sub-theme" >INDIOS</span>
 												<h5 class="link-text mt5 truncate">Dança da Chuva</h5>
 											</div>
 										</a>
@@ -207,9 +206,10 @@
 								</div>
 							</div>
 						</div>
+						
+						<!-- NOTICIAS ANTIGAS -->
 						<div>
-							<h6 class="green-text text-darken-2 title-conf">NOTÍCIAS
-								ANTIGAS</h6>
+							<h6 class="green-text text-darken-2 title-conf" th:text="#{messages.noticias.antigas}"></h6>
 
 							<div class="row col s6 m6 ml15">
 								<div class="col s6 m6">

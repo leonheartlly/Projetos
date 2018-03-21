@@ -2,8 +2,8 @@ package br.com.prefeitura.web.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.prefeitura.web.entity.GrupoEntity;
-import br.com.prefeitura.web.entity.PermissaoEntity;
+import br.com.prefeitura.web.domain.entity.GrupoEntity;
+import br.com.prefeitura.web.domain.entity.PermissaoEntity;
 
 import java.util.List;
 

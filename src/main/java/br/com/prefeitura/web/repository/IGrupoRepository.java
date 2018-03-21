@@ -3,8 +3,8 @@ package br.com.prefeitura.web.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.prefeitura.web.entity.GrupoEntity;
-import br.com.prefeitura.web.entity.UsuarioEntity;
+import br.com.prefeitura.web.domain.entity.GrupoEntity;
+import br.com.prefeitura.web.domain.entity.UsuarioEntity;
 
 import java.util.List;
 

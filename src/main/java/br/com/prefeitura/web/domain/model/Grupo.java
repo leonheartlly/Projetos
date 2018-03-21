@@ -1,11 +1,11 @@
-package br.com.prefeitura.web.model;
+package br.com.prefeitura.web.domain.model;
 
 import lombok.Data;
 
 @Data
-public class GrupoModel {
+public class Grupo {
 
-	public GrupoModel(Long codigo, String description) {
+	public Grupo(Long codigo, String description) {
 		this.codigo = codigo;
 		this.descricao = description;
 	}
