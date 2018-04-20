@@ -1,4 +1,4 @@
-package br.com.prefeitura.web.domain.model;
+package br.com.prefeitura.web.model;
 
 import lombok.Data;
 
@@ -12,4 +12,5 @@ public class Modalidade {
 	
 	private Long id;
 	private String modalidade;
+	
 }

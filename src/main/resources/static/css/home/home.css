@@ -1,5 +1,20 @@
 .bg-img {
-	background-image: url('/img/i5.jpg');
+	background-image: url('/img/vacas.jpg');
+}
+
+.container img {
+	max-width: 375px;
+	width: auto;
+}
+
+.container {
+	clear: both;
+	margin-top: 0px;
+}
+
+img {
+	vertical-align: top;
+	horizontal-align: left;
 }
 
 .big-blank-hole {
@@ -74,6 +89,14 @@
 	z-index: 999 !important;
 }
 
+.graph-conf .tabs {
+	
+}
+
+.tabs .indicator {
+	background-color: #4caf50;
+}
+
 /*******************************/
 /*		DIV PHOTOS  			*/
 /*******************************/
@@ -121,7 +144,8 @@
 }
 
 .card .card-image>img {
-	height: 175px !important;
+	/**height: 175px !important; **/
+	
 }
 
 .news  .card {
@@ -146,6 +170,19 @@
 
 .news-link-conf span {
 	text-transform: uppercase;
+}
+
+.news-link-conf img {
+	border-radius: 3px;
+}
+
+.news-link-conf img:HOVER {
+	color: #ffa000;
+	
+}
+
+.news-link-conf:HOVER img{
+	 box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
 .link-text {
@@ -275,5 +312,165 @@
 hr {
 	height: 3px;
 	background: #f1f1f1;
-	background: linear-gradient(to right, transparent,#689f38,#558b2f,#33691e, #558b2f ,#689f38 ,transparent);
+	background: linear-gradient(to right, transparent, #689f38, #558b2f, #33691e,
+		#558b2f, #689f38, transparent);
 }
+
+.calendar-conf .card {
+	border-radius: 7px !important;
+	background-color: transparent;
+	cursor: pointer;
+	webkit-box-shadow: none !important;
+	box-shadow: none;
+}
+
+.calendar-img-conf {
+	padding: 0px !important;
+	position: relative;
+}
+
+.calendar span {
+	background-color: #fff !important;
+}
+
+.num-conf span {
+	background-color: green !important;
+}
+
+.calendar-conf .card .card-content {
+	padding: 0px;
+}
+
+.card .calendar {
+	/**background-color: #fafafa;**/
+	
+}
+
+.card-reveal p {
+	text-transform: none;
+}
+
+.card-reveal p::first-letter {
+	font-size: 120%;
+	color: #ff9800;
+	margin-left: 15px;
+}
+
+.options {
+	font-size: 16px !important;
+	text-transform: none;
+}
+
+.collapsible {
+	border-radius: 7px;
+}
+
+.ehover4 button.info {
+	width: 80%;
+	height: 80%;
+}
+
+.prvBtn {
+	position: absolute; 
+	top : 50%;
+	left: -90%;
+	bottom: 50%;
+}
+
+.prvBtn:HOVER{
+	 -webkit-animation: swing 1s ease;
+     animation: swing 1s ease;
+     -webkit-animation-iteration-count: 1;
+     animation-iteration-count: 1;
+}
+
+.nxtBtn {
+	position: absolute; 
+	top: 50%;
+	left: 90%;
+	bottom: 50%;
+}
+
+.nxtBtn:HOVER{
+	 -webkit-animation: swing 1s ease;
+     animation: swing 1s ease;
+     -webkit-animation-iteration-count: 1;
+     animation-iteration-count: 1;
+}
+
+.day {
+	font-size: 200%;
+}
+
+.month {
+	font-size: 250%;
+	font-weight: 400;
+}
+
+@-webkit-keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+       transform: translateX(-5px);
+    } 
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+@keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+

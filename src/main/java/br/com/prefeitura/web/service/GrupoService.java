@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.prefeitura.web.domain.entity.GrupoEntity;
-import br.com.prefeitura.web.domain.model.Grupo;
+import br.com.prefeitura.web.model.Grupo;
 import br.com.prefeitura.web.repository.IGrupoRepository;
 
 @Service

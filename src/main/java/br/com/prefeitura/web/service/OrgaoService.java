@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.prefeitura.web.domain.entity.OrgaoEntity;
-import br.com.prefeitura.web.domain.model.Orgao;
+import br.com.prefeitura.web.model.Orgao;
 import br.com.prefeitura.web.repository.IOrgaoRepository;
 
 @Service

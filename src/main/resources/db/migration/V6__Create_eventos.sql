@@ -22,3 +22,27 @@ ADD CONSTRAINT `categoria`
   REFERENCES `prefeitura`.`categoria_noticias` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+  
+  ALTER TABLE `prefeitura`.`fornecedores` 
+ADD UNIQUE INDEX `cnpj_UNIQUE` (`cnpj` ASC);
+
+
+ALTER TABLE `prefeitura`.`contratos` 
+ADD COLUMN `objeto` VARCHAR(5000) NOT NULL AFTER `id_orgao`;
+
+INSERT INTO `prefeitura`.`fornecedores` (`id`, `nome`, `razao_social`, `tipo_fornecedor`, `cpf`, `cnpj`)
+VALUES ( 2, 'L.W. ASSIS BARROS EIRELI - ME',
+'L.W. ASSIS BARROS EIRELI - ME', 'J', null, '23.456.456/0001-01');
+
+INSERT INTO `prefeitura`.`fornecedores` (`id`, `nome`, `razao_social`, `tipo_fornecedor`, `cpf`, `cnpj`)
+VALUES ( 3, 'JANILSON MARTINS DA SILVA',
+null, 'F', '20630811318', null);
+
+INSERT INTO prefeitura.contratos (`id`,`numero`,`data_assinatura`,`data_vigencia`,`data_publicacao`,`valor`,`id_fornecedor`,`id_orgao`,`objeto`)
+VALUES (1 , 12 , STR_TO_DATE('16/01/2018', '%d/%m/%Y'), STR_TO_DATE('31/12/2018', '%d/%m/%Y'), STR_TO_DATE('16/01/2018', '%d/%m/%Y'), "252.000,00", 2, 1, "Despesa com prestação de serviços com locação de imóvel com quatro comodos e um 
+banheiro devidamente instalado para dar suporte a paciente com doença cronica degenerativa. Conforme objeto do contrato");
+
+INSERT INTO prefeitura.contratos (`id`,`numero`,`data_assinatura`,`data_vigencia`,`data_publicacao`,`valor`,`id_fornecedor`,`id_orgao`,`objeto`)
+VALUES (2 , 13 , STR_TO_DATE('02/01/2018', '%d/%m/%Y'), STR_TO_DATE('31/12/2018', '%d/%m/%Y'), STR_TO_DATE('01/02/2018', '%d/%m/%Y'), "6.240,00", 3, 1, "Despesa com prestação de serviços com locação de imóvel com quatro comodos e um 
+banheiro devidamente instalado para dar suporte a paciente com doença cronica degenerativa. Conforme objeto do contrato");

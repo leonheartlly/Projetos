@@ -1,27 +1,75 @@
 <!DOCTYPE html>
-<html
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorator="base/layout">
+<html  xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="base/blank_layout">
 <head>
-    <title>Acesso Negado</title>
- 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title th:text="#{messages.error.title}"></title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/error/error.css}" />
+<link rel="stylesheet" th:href="@{/css/error/error-pages.css}"/>
+<script type="text/javascript" th:src="@{/js/error/error.js}"></script>
 </head>
-<body>
-<section layout:fragment="content">
- 
-    <!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->   
-   <div class="mdl-grid">   
-    <div class="mdl-layout-spacer"></div>    
-    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
- 
-    	<h4>&nbsp;Você não tem acesso a essa funcionalidade do sistema!!!&nbsp;</h4>
- 
-	</section>	
-    <div class="mdl-layout-spacer"></div>
-</div>
- 
-</section>
- 
+
+<body class="cyan">
+	<section layout:fragment="content">
+
+		<!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->
+		<div class="mdl-grid">
+			<div class="mdl-layout-spacer"></div>
+
+
+			<div id="error-page">
+
+				<div class="row">
+					<div class="col s12">
+						<div class="col s10 m10 offset-m1 browser-window center-align">
+							<!-- BARRA SUPERIOR -->
+							<div class="top-bar">
+								<div class="circles">
+									<div id="close-circle" class="circle"></div>
+									<div id="minimize-circle" class="circle"></div>
+									<div id="maximize-circle" class="circle"></div>
+								</div>
+							</div>
+							
+							<div class="content">
+								<div class="row">
+									<!-- BARRA DE AVISO -->
+									<div id="site-layout-example-top" class="col s12">
+									
+										<p class="flat-text-logo center white-text caption-uppercase">Desculpe!
+											esta página não foi forjada.</p>
+									</div>
+									<div class="row relative">
+										<div class="absolute">
+											<a class="btn-floating waves-effect waves-light red shaker" onclick="openEye()"><i class="material-icons">arrow_back</i></a>
+										</div>
+										 <div class="absolute right-eye">
+										 	<span class="the-eye eye-hidden ">&#9673;</span>
+										 </div>
+										 <div class="absolute left-eye">
+										 	<span class="the-eye eye-hidden left-eye">&#9673;</span>
+										 </div>
+										<div class="absolute error-conf">
+											<span class="foo letter" data-letter="4"></span>
+											<span class="foo letter" data-letter="0"></span>
+											<span class="foo letter" data-letter="4"></span>
+										
+										</div>
+										<img class="responsive-img" th:src="@{/img/error/blacksmith.png}" />
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
 </body>
 </html>

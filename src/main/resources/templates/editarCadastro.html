@@ -34,7 +34,7 @@
 	  <span style="padding-left:5px;">Editar cadastro de Usuário</span>			  
         </div>			
  
-       <form action="#" id="formulario-cadastro" th:action="@{../usuario/salvarAlteracao}" th:object="${usuarioModel}" method="post">
+       <form action="#" id="formulario-cadastro" th:action="@{../usuario/salvarAlteracao}" th:object="${usuario}" method="post">
 	<fieldset>
            <ul class="mdl-list">
 	      <li class="mdl-list__item" th:if="${msg_resultado}">						 	

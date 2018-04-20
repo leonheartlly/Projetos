@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.prefeitura.web.domain.model.Grupo;
-import br.com.prefeitura.web.domain.model.Usuario;
+import br.com.prefeitura.web.model.Grupo;
+import br.com.prefeitura.web.model.Usuario;
 import br.com.prefeitura.web.service.GrupoService;
 import br.com.prefeitura.web.service.UsuarioService;
 

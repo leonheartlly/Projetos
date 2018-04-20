@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -15,7 +14,7 @@ import lombok.Data;
 @Data
 @Table(name="licitacao", schema="prefeitura")
 @Entity
-public class LicitacaoEntity implements Serializable{
+public class LicitacaoEntity implements Serializable {
 
 	/**
 	 * 
@@ -60,12 +59,15 @@ public class LicitacaoEntity implements Serializable{
 	private boolean possuiAnexo;
 	
 //	@ManyToOne
-	@JoinTable(name="fornecedores", joinColumns=@JoinColumn(name="id_fornecedor",referencedColumnName="id" ))
+//	@JoinTable(name="fornecedores", joinColumns=@JoinColumn(name="id_fornecedor",referencedColumnName="id" ))
 //	inverseJoinColumns=@JoinColumn(name="id_permissao", referencedColumnName="id_permissao"))
-	@Column(name="id_fornecedor")
-	private String fornecedor;
+	@ManyToOne
+	@JoinColumn(name="id_fornecedor")
+//	@Column(name="id_fornecedor")
+	private FornecedorEntity fornecedor;
 	
 	@ManyToOne
 	@JoinColumn(name="id_situacao")
 	private SituacaoEntity situacao;
+	
 }

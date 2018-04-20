@@ -1,4 +1,4 @@
-package br.com.prefeitura.web.domain.model;
+package br.com.prefeitura.web.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

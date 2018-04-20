@@ -47,16 +47,21 @@
 	text-transform: uppercase;
 }
 
-.box-line{
+.box-line {
 	padding-bottom: 10px;
 	border-bottom: 1px solid #ccc;
 }
 
-.hide-box{
+.hide-box {
 	display: none !important;
 	transition: display 0s, opacity 0.2s linear;
-	opacity: 0; 
+	opacity: 0;
 }
-.display-box{
+
+.display-box {
 	opacity: 1;
+}
+
+.mover:HOVER {
+	color: #90caf9 !important;
 }

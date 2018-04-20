@@ -8,6 +8,10 @@
 	position: absolute;
 }
 
+.relative {
+	position: relative;
+}
+
 .bold {
 	font-weight: bolder;
 }
@@ -69,8 +73,13 @@
 .mb5 {
 	margin-bottom: 5px;
 }
-.mb10{
+
+.mb10 {
 	margin-bottom: 10px;
+}
+
+.mb18 {
+	margin-bottom: 18px !important;
 }
 
 .mb20 {
@@ -84,9 +93,11 @@
 .mt5 {
 	margin-top: 5px !important;
 }
-.mt10{
+
+.mt10 {
 	margin-top: 10px;
 }
+
 .mt20 {
 	margin-top: 20px;
 }
@@ -166,9 +177,10 @@
 }
 
 .p0 {
-	padding: 0px;
+	padding: 0px !important;
 }
-.p10{
+
+.p10 {
 	padding: 10px;
 }
 
@@ -178,6 +190,10 @@
 
 .pt5 {
 	padding-top: 5px;
+}
+
+.pt15 {
+	padding-top: 15px;
 }
 
 .pt10 {

@@ -34,11 +34,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/usuario/novoCadastro").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
 			
 			.antMatchers("/editais/licitacao").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
+			.antMatchers("/editais/contratos").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
+			.antMatchers("/referencias/noticias").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
+			.antMatchers("/referencias/paginaTeste").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
 			/*
 			 * DETERMINA QUE PARA REALIZAR ESSA REQUEST PRECISA TER UMA DAS PERMISSÕES ABAIXO
 			 * EXEMPLO DA URL: http://localhost:8095/usuario/consultar
 			 */
 			.antMatchers("/usuario/consultar").access("hasRole('ADMIN') or hasRole('CONSULTA_USUARIO')")
+			.antMatchers("/editais/pesquisaLicitacao").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
 			
 			/*DETERMINA QUE PARA ACESSAR A PÁGINA INICIAL DA APLICAÇÃO PRECISA ESTÁ AUTENTICADO
 			 */

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.prefeitura.web.domain.entity.ModalidadeEntity;
-import br.com.prefeitura.web.domain.model.Modalidade;
+import br.com.prefeitura.web.model.Modalidade;
 import br.com.prefeitura.web.repository.IModalidadeRespository;
 
 @Service

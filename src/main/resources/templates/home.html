@@ -7,8 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="author" content="Prefeitura" />
 <link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<link th:href="@{css/effects.css}" rel="stylesheet"/>
 <script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/home/home.js}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYMJk65pzbscAc6L-hLlcGQyVMv1jJUY0&amp;callback=initMap" async="defer"></script>
+<script src="https://www.google.com/recaptcha/api.js" async="defer"></script>
+
 
 
 
@@ -39,30 +43,30 @@
 						<div class="row">
 							<div class="col s12 m12 no-pad">
 
-								<a class="col s3 m2 shortcut-size shortcut-button btn1 hoverable button-effect" >
-									<img src="/img/certif.png" class="pl20 pr20 pb10 center" height="45" />
+								<a class="col s3 m2 shortcut-size shortcut-button btn1 hoverable button-effect" th:href="@{/editais/contratos}" >
+									<img th:src="@{/img/icons/certif.png}" class="pl20 pr20 pb10 center" height="45" />
 									<p class="center-align mt0 mb0" th:text="#{messages.home.contratos}"></p>
 								</a> 
 								
-								<a class="col s3 m2 shortcut-size shortcut-button btn5" th:href="@{/editais/licitacao}"> <img
-									src="/img/auction.png" class="pl20 pr20 pb10 center" height="45"/>
+								<a class="col s3 m2 shortcut-size shortcut-button btn5" th:href="@{/editais/licitacao}"> 
+									<img th:src="@{/img/icons/auction.png}" class="pl20 pr20 pb10 center" height="45"/>
 									<p class="center-align mt0 mb0" th:text="#{messages.home.licitacoes}"></p>
-								</a> <a
-									class="col s3 m2 shortcut-size shortcut-button btn3 hoverable">
-									<img src="/img/constr.png" class="pl20 pr20 pb10 center" height="45"/>
+								</a> 
+								<a class="col s3 m2 shortcut-size shortcut-button btn3 hoverable">
+									<img th:src="@{/img/icons/constr.png}" class="pl20 pr20 pb10 center" height="45"/>
 									<p class="center-align mt0 mb0" th:text="#{messages.home.obras}"></p>
-								</a> <a
-									class="col s3 m2 shortcut-size shortcut-button btn7 hoverable">
-									<img src="/img/garg.png" class="pl20 pr20 pb10 center" height="45"/>
+								</a> 
+								<a class="col s3 m2 shortcut-size shortcut-button btn7 hoverable">
+									<img th:src="@{/img/icons/garg.png}" class="pl20 pr20 pb10 center" height="45"/>
 									<p class="center-align mt0 mb0" th:text="#{messages.home.coleta}"></p>
-								</a> <a href="#"
-									class="col s3 m2 shortcut-size shortcut-button btn5 hoverable">
-									<img src="/img/legis.png" class="pl20 pr20 pb10 center" height="45"/>
+								</a> 
+								<a href="#" class="col s3 m2 shortcut-size shortcut-button btn5 hoverable">
+									<img th:src="@{/img/icons/legis.png}" class="pl20 pr20 pb10 center" height="45"/>
 									<p class="center-align mt0 mb0" th:text="#{messages.home.legislacao}"></p>
-								</a> <a
-									class="col s3 m2 shortcut-size shortcut-button btn1 hoverable">
-									<img src="/img/contract.png" class="pl20 pr20 pb10 center" height="45"/>
-									<p class="center-align mt0 mb0">E-SIC</p>
+								</a> 
+								<a class="col s3 m2 shortcut-size shortcut-button btn1 hoverable">
+									<img th:src="@{/img/icons/contract.png}" class="pl20 pr20 pb10 center" height="45"/>
+									<p class="center-align mt0 mb0" th:text="#{messages.home.esic}"></p>
 								</a>
 
 							</div>
@@ -72,27 +76,23 @@
 					</div>
 					<!-- END SHORTCUT BUTTONS -->
 
-					<!-- CITY PHOTOS -->
-
-
 				</div>
-				<!-- END PHOTOS -->
 
-				<!-- GRAPH -->
 				<div class="row mb0">
 
+					<!-- GRAPH -->
 					<div class="col s6 m6 pl0 pr0">
 						<div class="row pl0 pr0 mb0">
-							<div class="col s12 pr0 pl0">
+							<div class="col s12 pr0 pl0 graph-conf">
 								<ul class="tabs">
-									<li class="tab col s4 m4"><a class="active" href="#test1">Gráfico</a></li>
-									<li class="tab col s4 m4 z-depth-2"><a href="#test2">Licitações</a></li>
-									<li class="tab col s4 m4 "><a href="#test3">Roubos</a></li>
+									<li class="tab col s4 m4"><a class="active" href="#test1" th:text="#{messages.home.graph.folha.pagamento}"></a></li>
+									<li class="tab col s4 m4 z-depth-2"><a href="#test2" th:text="#{messages.home.graph.dividas}"></a></li>
+									<li class="tab col s4 m4 "><a href="#test3" th:text="#{messages.home.graph.despesas}"></a></li>
 								</ul>
 							</div>
 							<div id="test1" class="col s12 pl0 pr0 input-bg bg-test white">
 								<canvas id="myChart" class="col s5 m5 chart-size"></canvas>
-
+	
 								<script>
 									var ctx = document
 											.getElementById("myChart");
@@ -131,7 +131,7 @@
 										  options: {
 										    title: {
 										      display: true,
-										      text: 'Propinas de Araguaçu(Em Milhoes)'
+										      text: 'Riquezas de Araguaçu(Em Milhoes)'
 										    },
 										    legend: {
 									            display: true,
@@ -142,8 +142,8 @@
 									        }
 										  }
 										});
-
-
+	
+	
 								</script>
 							</div>
 							<div id="test2" class="col s12">Test 2</div>
@@ -156,75 +156,65 @@
 					<div class="news white">
 						<div class="col s6 m6 mt0">
 							<div class="row mb0">
-
-								<div class="col s12 m12 z-depth-2">
-									<a href="#" onmouseover="addTagEffect($(this))"
-										onmouseout="removeTagEffect($(this))"
-										class="valign-wrapper left-align news-link-conf">
-
-
-										<div class="row col s6 m6 p20">
-											<span class="news-sub-date">25 JAN 2018</span><span
-												class="pl12 news-sub-theme">INDIOS</span>
-											<h5 class="link-text mt5">Dança da Chuva</h5>
-										</div> <img class="col s6 m6 news-link-conf" src="/img/i3.jpg" />
-									</a>
-
+								<div th:each="noticia, iter : ${noticias}">
+									<div th:if="${iter.index &lt; 3 and iter.index &#37;2 == 0}" class="col s12 m12" >
+										<a href="#" onmouseover="addTagEffect($(this))"
+											onmouseout="removeTagEffect($(this))"
+											class="valign-wrapper left-align news-link-conf">
+											<div class="row col s6 m6 p20" >
+												<span class="news-sub-date" th:text="${noticia.dataNoticia}"></span>
+												<span class="pl12 news-sub-theme" th:text="${noticia.categoria.categoria}"></span>
+												<h5 class="link-text mt5" th:text="${noticia.titulo}"></h5>
+											</div> 
+											<img class="col s6 m6 news-link-conf" src="/img/i3.jpg" />
+										</a>
+									 </div>
+	
+									<div class="col s12 m12" th:if="${iter.index &lt; 3 and iter.index &#37;2 &#33;= 0}" >
+										<a href="#" onmouseover="addTagEffect($(this))"
+											onmouseout="removeTagEffect($(this))"
+											class="valign-wrapper left-align news-link-conf"> 
+											<img class="col s6 m6 news-link-conf" src="/img/i4.jpg" />
+											<div class="col s6 m6 p20">
+												<span class="news-sub-date" th:text="${noticia.dataNoticia}"></span>
+												<span class="pl12 news-sub-theme" th:text="${noticia.categoria.categoria}"></span>
+												<h5 class="link-text mt5" th:text="${noticia.titulo}"></h5>
+											</div>
+										</a>
+									</div>
 								</div>
-
-								<div class="col s12 m12">
-									<a href="#" onmouseover="addTagEffect($(this))"
-										onmouseout="removeTagEffect($(this))"
-										class="valign-wrapper left-align news-link-conf"> <img
-										class="col s6 m6 news-link-conf" src="/img/i4.jpg" />
-										<div class="col s6 m6 p20">
-											<span class="news-sub-date">27 JAN 2018</span><span
-												class="pl12 news-sub-theme">racismo</span>
-											<h5 class="link-text mt5">Dança da Chuva</h5>
-										</div>
-									</a>
-
-								</div>
-
-								<div class="col s12 m12 z-depth-2">
-									<a href="#" onmouseover="addTagEffect($(this))"
-										onmouseout="removeTagEffect($(this))"
-										class="valign-wrapper left-align news-link-conf">
-										<div class="col s6 m6 p20">
-											<span class="news-sub-date">22 JAN 2018</span><span
-												class="pl12 news-sub-theme">beleza</span>
-											<h5 class="link-text mt5">Dança da Chuva grande e bonita
-												que me merece oscar de melhor chuva do ano e do milenio</h5>
-										</div> <img class="col s6 m6 news-link-conf" src="/img/i5.jpg" />
-									</a>
-
-								</div>
-
 							</div>
 						</div>
 					</div>
 
-
 				</div>
 
-				<!-- GREEN BOX -->
+				
 				<div class="row mb0 trd-block-h">
+				
+					<!-- GREEN BOX -->
 					<div class="col s6 m6 pl0 pr0 ">
 
 						<div class="row input-processos mt0 green darken-3 mb0 trd-block-h">
-							<h5 class="col s12 m12 white-text">CONSULTA DE PROCESSOS</h5>
+							<h5 class="col s12 m12 white-text" th:text="#{messages.home.consulta.title}"></h5>
 
 
 
-							<h6 class="white-text consulta mt0">Consulte o andamento
-								informando o número do processo/ano e o CPF ou CNPJ de um dos
-								interessados.</h6>
-
-							<form class="col s12">
+							<h6 class="white-text consulta mt0" th:text="#{messages.home.consulta.info}"></h6>
+							<script type="text/javascript">
+														
+									var onloadCallback = function() {
+							 		grecaptcha.render('example2', {
+						          'sitekey' : '6LcqnVMUAAAAAPtdoD-lqWOGgTVYcUq4AnotsPX7'
+						        });
+						      };
+						      
+							    </script>
+							<form class="col s12 mb0" action="?" method="POST">
 								<div class="row input-box-conf">
 									<div class=" col s12 m12 lbl-cpf white-text">
-										<h6 class="col s6 m6 pl0">NÚMERO/ANO</h6>
-										<h6 class="col s6 m6">CPF</h6>
+										<h6 class="col s6 m6 pl0" th:text="#{messages.home.consulta.numero}"></h6>
+										<h6 class="col s6 m6" th:text="#{messages.home.consulta.cpf}"></h6>
 									</div>
 
 									<div class="input-field col s6">
@@ -238,25 +228,23 @@
 									</div>
 								</div>
 
-								<div class="row">
-									<div class="input-field col s6 offset-m3 captcha-box mt0 mb0">
+								<div class="row mb0">
+									<div class="input-field col s6 offset-m3 mt0 mb0">
 
-										<input type="checkbox" id="test5" /> <label for="test5">Eu
-											sou um Robô</label>
+      									<div id="example2" data-callback="correctCaptcha" class="mb0">
+      									
+      									</div>
 										<p class="grey-text darken-3"></p>
-
+										
 									</div>
-								</div>
+									<div class="row mb0">
+										<a class="col m10 offset-m1 waves-effect waves-light btn-large green darken-4" th:text="#{messages.home.consulta.consultar}"></a>
+									</div>
 
-								<div class="row">
-
-									<a
-										class="col m10 offset-m1 waves-effect waves-light btn-large green darken-4 ">CONSULTAR</a>
 								</div>
 
 							</form>
-
-
+						<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit" async="defer"></script>
 
 						</div>
 
@@ -265,8 +253,8 @@
 
 					<!-- GOOGLE MAPS -->
 					<div class="col s6 m6 trd-block-h  pl0 pr0">
-						<div class="row mb0">
-							<div class="col s9 m9 grey">
+						<div class="row mb0 ">
+							<div class="col s9 m9 pl0 pr0">
 								 <div id="map" class="trd-block-h  pl0 pr0"></div>
 
 								
@@ -301,110 +289,80 @@
 
 				<div class="row">
 
+					<!-- FACEBOOK -->
 					<div class="col s6 m6 mt15">
 
-						<h5 class="facebook-div mb20">FACEBOOK</h5>
+						<h5 class="facebook-div mb20" th:text="#{messages.home.facebook.title}"></h5>
 						<script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5" async ="defer"></script>  
 						<div id="fb-root"></div>
-							<script> window.fbAsyncInit = function() {
-							    FB.init({
-							        appId            : 'your-app-id',
-							        autoLogAppEvents : true,
-							        xfbml            : true,
-							        version          : 'v2.12'
-							      });
-							    };
-
-							    (function(d, s, id){
-							       var js, fjs = d.getElementsByTagName(s)[0];
-							       if (d.getElementById(id)) {return;}
-							       js = d.createElement(s); js.id = id;
-							       js.src = "https://connect.facebook.net/en_US/sdk.js";
-							       fjs.parentNode.insertBefore(js, fjs);
+							<script> 
+								window.fbAsyncInit = function() {
+								    FB.init({
+								        appId            : 'your-app-id',
+								        autoLogAppEvents : true,
+								        xfbml            : true,
+								        version          : 'v2.12'
+								      });
+								    };
+	
+								    (function(d, s, id){
+								       var js, fjs = d.getElementsByTagName(s)[0];
+								       if (d.getElementById(id)) {return;}
+								       js = d.createElement(s); js.id = id;
+								       js.src = "https://connect.facebook.net/en_US/sdk.js";
+								       fjs.parentNode.insertBefore(js, fjs);
 							     }(document, 'script', 'facebook-jssdk'));
 							</script>
 
-							<div class="fb-page col s10 m10 offset-s2 offset-m2" data-href="https://www.facebook.com/Eu-moro-em-aragua%C3%A7u-1395710157341266/" 
+							<div class="fb-page col s10 m10 offset-s2 offset-m2" data-href="https://www.facebook.com/Gov.Mun.Araguacu/" 
 								data-tabs="timeline" 
 								data-small-header="false" 
 								data-adapt-container-width="true"  
 								data-width="600" 
 								data-hide-cover="false" 
 								data-show-facepile="true">
-								<blockquote cite="https://www.facebook.com/Eu-moro-em-aragua%C3%A7u-1395710157341266/" class="fb-xfbml-parse-ignore">
-									<a href="https://www.facebook.com/Eu-moro-em-aragua%C3%A7u-1395710157341266/">Prefeitura de Araguaçu</a>
+								<blockquote cite="https://www.facebook.com/Gov.Mun.Araguacu/" class="fb-xfbml-parse-ignore">
+									<a href="https://www.facebook.com/Gov.Mun.Araguacu/">Prefeitura de Araguaçu</a>
 								</blockquote>
 							</div>
 
-					</div>
+					 </div>
 
-					<div class="col s6 m6 mt15">
+					<!-- CALENDARIO -->
+					<div class="col s6 m6 mt15 ">
 
 						<h5 class="facebook-div mb20" th:text="#{messages.home.calendario}"></h5>
 						
-						<div class="col s8 m8 offset-s2 offset-m2 board-conf">
-						
-							<div>
-								<div class="col s3 m3 ml20 mt20 block-conf pl0 pr0">
-									<div class="top center-align">
-										<p class="mt0 mb0 pt20 pb20">14</p>
+				         <div th:id="'event'+${cal.id}" th:classappend="${iter.index == 0} ? '' : hide" class="card col s10 m9 calendar-img-conf offset-m1" th:each="cal, iter : ${calendario}">
+					        <script th:inline="javascript">
+							   function getData(){
+							   		return [[${calendario}]];
+								}
+						    </script>
+						    	<div>
+								    <div class="card-image pointer waves-effect waves-block waves-light hover ehover4" >
+								    	<img  class="img-responsive" src="img/girl.jpg"/>
+								      <div class="overlay">
+						                    <h2 th:text="${cal.titulo}"></h2>
+						                    <button class="info activator mt10 day" th:inline="text">[[${cal.dia}]]<span class="month" th:Utext="'&lt;br&#47;&gt;' + ${cal.mes}"></span></button>
+						                </div>
+								    	<a th:attr="fakeId=${cal.id}" onclick="viewPrev($(this).attr('fakeId'), getData())" class="prvBtn left" id="calPrevBtn"><i class="medium material-icons">arrow_back</i></a>
+							    		<a th:attr="fakeId=${cal.id}" onclick="viewNext($(this).attr('fakeId'), getData())" class="nxtBtn" id="calNextBtn"><i class="medium material-icons">arrow_forward</i></a>
+								    </div>
+							    </div>
+							    <div class="card-reveal">
+								    <span class="card-title orange-text text-darken-2" th:inline="text">[[${cal.titulo}]]<i class="orange-text material-icons right">close</i></span>
+								    <span class="green-text text-darken-1 options mt10" th:text="${cal.dataInicio} + ' a ' + ${cal.dataFim}"></span>
+								    <span class="card-title green-text text-darken-1 options" th:text="'Horário: ' +  ${cal.horarioInicio} + ' às ' + ${cal.horarioFim}"></span>
+								    <p th:text="${cal.descricao}" class="grey-text text-darken-1 pt15"></p><br/>
+								    <div class="row mb0">
+									    <span class="grey-text options col s4 m2" th:text="#{messages.home.calendario.endereco}"></span><span class="grey-text text-darken-1 col s8 m10" th:text="${cal.rua} +', ' + ${cal.numero}"></span>
 									</div>
-									
-									<div class="botton center-align">
-										<p class="mt0 mb0">FEV</p>
+									<div class="row">
+								    	<span class="grey-text options col s4 m2" th:text="#{messages.home.calendario.bairro}"></span><span class="grey-text text-darken-1 col s8 m10 pl0" th:text="${cal.bairro}"></span>
 									</div>
-								</div>
-								
-								<div class="col s9 m9 mt25 pl20 board-message-conf">
-									CARNAVAL COM SATANÁS
-								</div>
-							
-								<hr class="col s12 m12"></hr>
-							</div>
-								
-							<div>
-								<div class="col s3 m3 ml20 mt20 block-conf pl0 pr0">
-									<div class="top center-align">
-										<p class="mt0 mb0 pt20 pb20">15</p>
-									</div>
-									
-									<div class="botton center-align">
-										<p class="mt0 mb0">NOV</p>
-									</div>
-								</div>
-								
-								<div class="col s9 m9 mt25 pl20 board-message-conf">
-									NASCIMENTO FILHOS DO CARNAVAL
-								</div>
-							
-								<hr class="col s12 m12"></hr>
-							</div>
-							
-							<div>
-								<div class="col s3 m3 ml20 mt20 block-conf pl0 pr0">
-									<div class="top center-align">
-										<p class="mt0 mb0 pt20 pb20">29</p>
-									</div>
-									
-									<div class="botton center-align">
-										<p class="mt0 mb0">DEZ</p>
-									</div>
-								</div>
-								
-								<div class="col s9 m9 mt25 pl20 board-message-conf">
-									FIM DO MUNDO
-								</div>
-							
-								<hr class="col s12 m12"></hr>
-							</div>
-							
-							<div class="col s5 m5 offset-m7 offset-s7">
-								<a class="waves-effect waves-light btn"> MAIS EVENTOS</a>
-							</div>
-							
-						</div>
-						
-						
+							    </div>
+						  </div>
 						
 						
 					</div>

@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.prefeitura.web.domain.entity.AnexoEntity;
 
-public interface IAnexoRepository extends JpaRepository<AnexoEntity, Long> {
+public interface AnexoRepository extends JpaRepository<AnexoEntity, Long> {
 
 }

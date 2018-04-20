@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.prefeitura.web.domain.entity.AnexoEntity;
-import br.com.prefeitura.web.domain.model.Anexo;
-import br.com.prefeitura.web.repository.IAnexoRepository;
+import br.com.prefeitura.web.model.Anexo;
+import br.com.prefeitura.web.repository.AnexoRepository;
 
 @Service
 @Transactional
@@ -21,7 +21,7 @@ public class AnexoService {
 		      Logger.getLogger(AnexoService.class); 
 	
 	@Autowired
-	private IAnexoRepository anexoRepository;
+	private AnexoRepository anexoRepository;
 	
 
 	/**

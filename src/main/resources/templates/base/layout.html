@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" th:lang="${#locale.language}">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title th:text="#{messages.header.title}"></title>
+	
+	<link rel="icon" href="/img/brasaoleft.png"/>
+	<link rel="stylesheet" th:href="@{/css/materialize.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/geral.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/header/header.css}" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
+	
+	<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/materialize.js}"></script>
+	<script type="text/javascript" th:src="@{/js/geral.js}"></script>
+</head>
+<body>
+
+
+	<!-- FORM QUE VAI SER USADO PARA REALIZAR O LOGOUT -->
+	<form th:action="@{/logout}" id="form_logou" th:method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}"
+			th:value="${_csrf.token}" />
+	</form>
+
+		<div class="card-panel grey lighten-5 z-depth-1">
+			<div class="row valign-wrapper">
+				<div class="col s12">
+
+					<!-- UPPER MENU -->
+					<div class="ar-upper-bar ar-upper-text">
+						<ul  class="left ">
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-275 current_page_item menu-item-2025">
+								<a href="" th:text="#{messages.header.webmail}"></a>
+							</li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5057">
+								<a href="" th:text="#{messages.header.contatos}"></a>
+							</li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5639">
+								<a href="" th:text="#{messages.header.portal.servidor}"></a>
+							</li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5638">
+								<a href="" th:text="#{messages.header.portal.cidadao}"></a>
+							</li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5637">
+								<a href="" th:text="#{messages.header.graficos}"></a>
+							</li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5637">
+								<a href="" th:text="#{messages.header.mapa.site}"></a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="ar-upper-bar ml50">
+						<ul class="right ">
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-275 current_page_item menu-item-2025">
+								<a><i class="material-icons">format_strikethrough</i></a>
+							</li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5057"><a
+								href=""><i class="material-icons">format_size</i>
+							</a></li>
+							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5639"><a
+								href=""><i
+									class="material-icons">accessible</i></a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	<div class="ar-upper-nav-card">
+		<nav class="white ar-nav-card valign-wrapper">
+			
+			<div class="container">
+				
+				
+				<div class=" row nav-wrapper ar-nav-menu">
+					
+					<div id="logo-container" class="col s4">
+						<a href="/home">
+							<img width="60" class="ml15 icon hide-on-med-and-down"  th:src="@{/img/prefeitura.png}" align="top" alt="" />
+						</a>	
+					</div>		
+
+					<!-- MENU -->
+					<div class="col s5">
+						<a href="" class="dropdown-button mr15 ml15" onmouseover="teste2('serviceMenu')" th:text="#{messages.header.menu.servicos}"></a> 
+						<a href="" class="mr15 ml15" onmouseover="teste2('prefectureMenu')" th:text="#{messages.header.menu.prefeitura}"></a> 
+						<a class="mr15 ml15" th:href="@{/referencias/noticias}" th:text="#{messages.header.menu.noticias}"></a> 
+						<a class="mr15 ml15" th:text="#{messages.header.menu.transparencia}"></a>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	<!-- SUB MENU -->
+	<div id="menuBox" class="ar-box ar-box-display uper-index">
+		<div class="row">
+			<div class="col s12 teste">
+			
+				<div id="serviceMenu" class="header-options-box inactive">
+					<div class="col s3 offset-s1 ar-box-mrbt">
+							<h5 th:text="#{messages.header.menu.servicos}"></h5>
+							<ul>
+								<li><a id="byAservices" href="#" onclick="showBlock('todos-os-servicos', this.id)" class="has-second-tier ar-box-active" th:text="#{messages.header.submenu.iptu}"></a></li>
+								<li><a  id="byAccessed" href="#" onclick="showBlock('mais-acessados',this.id)" class="has-second-tier" th:text="#{messages.header.submenu.certidao}"></a></li>
+							</ul>
+					</div>
+				</div>
+				<div id="prefectureMenu" class="header-options-box inactive">
+					<div class="col s3 offset-s1 ar-box-mrbt">
+						<h5 th:text="#{messages.header.submenu.prefeitura}"></h5>
+						<ul>
+							<li><a id="byAservices" href="#" onclick="showBlock('todos-os-servicos', this.id)" class="has-second-tier ar-box-active" th:text="#{messages.header.menu.prefeitura}"></a></li>
+							<li><a  id="bySecretary" href="#" onclick="showBlock('por-secretaria')" class="has-second-tier" th:text="#{messages.header.menu.secreataria}"></a></li>
+						</ul>
+					</div>
+					
+				</div>
+				
+			</div>	
+		</div>
+	</div>
+	
+			
+		
+	
+		<!-- PARTE QUE VAI SER SUBSTITUÍDA PELO CONTEUDO DAS PÁGINAS -->
+		<main class="mdl-layout__content mdl-color--blue-grey-100">
+			<div class="page-content">
+
+				<!-- CONTEUDO A SER SUBSTITUÍDO -->
+				<div layout:fragment="content">Essa parte vai ser substituída</div>
+			</div>
+		</main>
+		
+	 <footer class="page-footer green darken-3">
+	 
+          <div class="container green darken-3">
+            <div class="row">
+	            <div>
+		              <div class="col l2 m6 footer-conf offset-m3 offset-l3">
+		                <div class="white-text footer-title" th:text="#{messages.index.footer.prefeitura}"></div>
+		                <p class="grey-text text-lighten-4" th:text="#{messages.index.footer.endereco}"></p>
+		                <p class="grey-text text-lighten-4" th:text="#{messages.index.footer.fone}"></p>
+		                <p class="grey-text text-lighten-4 " th:text="#{messages.index.footer.funcionamento}"></p>
+		                <p class="grey-text text-lighten-4 mt0" th:text="#{messages.index.footer.horario}"></p>
+		              </div>
+		              
+		              <div class=" col l2 m4 brasao">
+		              
+		              	<img src="/img/brasaoleft.png"/>
+		              </div>
+		              
+		              <div class="col l2">
+		               <div class="white-text" th:text="#{messages.index.footer.sobre}"></div>
+		               
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.mapa}"></a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.fale.conosco}"></a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.ouvidoria}"></a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.telefones}"></a><br/>
+		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.email}"></a><br/>
+		                
+		              </div>
+	              </div>
+            </div>
+          </div>
+          
+          <div class="footer-copyright green darken-4">
+            <div class="container right">
+            	<a class="grey-text text-lighten-4 right" href="#!">© 2018 Blacksmith</a>
+            </div>
+          </div>
+          
+        </footer>
+
+</body>
+</html>

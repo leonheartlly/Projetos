@@ -2,6 +2,11 @@ INSERT INTO `prefeitura`.`fornecedores` (`id`, `nome`, `razao_social`, `tipo_for
 VALUES ( 1, 'João Dória',
 'Proparoxitona Foundations', 'J', null, '123.456.456/0001-01');
 
+ALTER TABLE `prefeitura`.`licitacao` ADD column `id_situacao` int not null after `id_fornecedor`;
+ALTER TABLE `prefeitura`.`licitacao` 
+ADD CONSTRAINT `situacao`
+  FOREIGN KEY (`id_situacao`)
+  REFERENCES `prefeitura`.`situacao` (`id`);
 
 INSERT INTO `prefeitura`.`licitacao` (`id`, `processo`, `edital`, `data_abertura`, `data_homolog`, `data_adjudicacao`, `id_modalidade`, `objeto`, `valor`, `id_orgao`, `flag_anexo`, `id_fornecedor`, `id_situacao`)
 VALUES

@@ -149,12 +149,5 @@ CREATE TABLE PREFEITURA.anexo (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='caminho dos anexos do site.';
 
   
-ALTER TABLE `prefeitura`.`licitacao` 
-ADD INDEX `situacao_idx` (`id_situacao` ASC);
-ALTER TABLE `prefeitura`.`licitacao` 
-ADD CONSTRAINT `situacao`
-  FOREIGN KEY (`id_situacao`)
-  REFERENCES `prefeitura`.`situacao` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+
 
