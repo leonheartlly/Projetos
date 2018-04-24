@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.prefeitura.web.domain.entity.OrgaoEntity;
 import br.com.prefeitura.web.model.Orgao;
-import br.com.prefeitura.web.repository.IOrgaoRepository;
+import br.com.prefeitura.web.repository.OrgaoRepository;
 
 @Service
 @Transactional
@@ -21,7 +21,7 @@ public class OrgaoService {
 		      Logger.getLogger(OrgaoService.class); 
 	
 	@Autowired
-	private IOrgaoRepository iOrgaoRepository;
+	private OrgaoRepository iOrgaoRepository;
 	
 
 	/**

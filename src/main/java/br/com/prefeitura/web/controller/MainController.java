@@ -55,7 +55,6 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/paginaTeste", method = RequestMethod.GET)
 	public String paginaTeste( Model model) {
-		System.out.println(model);
 		return "paginaTeste";
 	}
 
@@ -63,9 +62,13 @@ public class MainController {
 	 * CARREGA À PÁGINA INICIAL DA APLICAÇÃO APÓS EFETUARMOS O LOGIN
 	 * 
 	 * @return
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
+//	@ExceptionHandler(ConversionNotSupportedException.class)
 	public String home(Model model) {
+		
+		
 
 		LOGGER.info("[LOG-INFO] "+ MainController.class.getSimpleName()+" - HOME.");
 		
@@ -75,6 +78,8 @@ public class MainController {
 		model.addAttribute("calendario", eventos);
 		model.addAttribute("noticias", noticias);
 //		model.addAttribute("oldNews", isOldNews);
+		
+		
 		
 		return "home";
 	}
@@ -88,6 +93,17 @@ public class MainController {
 	public String noticia() {
 
 		return "noticia";
+	}
+	
+	/***
+	 * CARREGA À PÁGINA NOTÍCIA
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/grafico", method = RequestMethod.GET)
+	public String graficos() {
+
+		return "graficos";
 	}
 	
 	/***
@@ -121,7 +137,7 @@ public class MainController {
 	@RequestMapping(value = "/acessoNegado", method = RequestMethod.GET)
 	public String acessoNegado() {
 
-		return "acessoNegado";
+		return "error";
 	}
 
 }

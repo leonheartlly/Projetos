@@ -1,0 +1,32 @@
+.title-conf {
+	font-weight: bold;
+	padding-left: 20px;
+}
+
+
+
+.subtitle-conf {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.statistics {
+	padding-left: 10px;
+	font-size: 18px;
+}
+
+.data-numbers {
+	font-weight: bold;
+}
+.percent-number {
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+.negative-percent {
+	color: #f44336;
+}
+
+.positive-percent {
+	color: #4caf50;
+}

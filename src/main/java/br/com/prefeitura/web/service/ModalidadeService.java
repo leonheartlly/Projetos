@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.prefeitura.web.domain.entity.ModalidadeEntity;
 import br.com.prefeitura.web.model.Modalidade;
-import br.com.prefeitura.web.repository.IModalidadeRespository;
+import br.com.prefeitura.web.repository.ModalidadeRespository;
 
 @Service
 @Transactional
@@ -22,7 +22,7 @@ public class ModalidadeService {
 		      Logger.getLogger(ModalidadeService.class); 
 	
 	@Autowired
-	private IModalidadeRespository iModalidadeRespository;
+	private ModalidadeRespository iModalidadeRespository;
 	
 
 	/**

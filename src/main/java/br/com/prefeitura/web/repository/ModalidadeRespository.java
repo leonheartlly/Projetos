@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.prefeitura.web.domain.entity.ModalidadeEntity;
 
-public interface IModalidadeRespository extends JpaRepository<ModalidadeEntity, Long>{
+public interface ModalidadeRespository extends JpaRepository<ModalidadeEntity, Long>{
 
 }

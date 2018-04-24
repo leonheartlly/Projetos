@@ -15,18 +15,18 @@ import br.com.prefeitura.web.model.Contrato;
 import br.com.prefeitura.web.model.Fornecedor;
 import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.repository.FornecedorRepository;
-import br.com.prefeitura.web.repository.ILicitacaoRepository;
-import br.com.prefeitura.web.repository.IOrgaoRepository;
+import br.com.prefeitura.web.repository.LicitacaoRepository;
+import br.com.prefeitura.web.repository.OrgaoRepository;
 import br.com.prefeitura.web.utils.PortalPrefeituraUtils;
 
 @Service
 public class LicitacaoService extends ServiceHelper{
 
 	@Autowired
-	private IOrgaoRepository orgaoRepository;
+	private OrgaoRepository orgaoRepository;
 	
 	@Autowired
-	private ILicitacaoRepository licitacaoRepository;
+	private LicitacaoRepository licitacaoRepository;
 	
 	@Autowired
 	private FornecedorRepository fornecedorRepository;

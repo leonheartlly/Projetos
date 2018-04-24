@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.prefeitura.web.domain.entity.LicitacaoEntity;
 
-public interface ILicitacaoRepository extends JpaRepository<LicitacaoEntity, Long>{
+public interface LicitacaoRepository extends JpaRepository<LicitacaoEntity, Long>{
 
 	/**
 	 * 

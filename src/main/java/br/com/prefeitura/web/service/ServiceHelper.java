@@ -14,6 +14,7 @@ import br.com.prefeitura.web.domain.entity.CalendarioEventosEntity;
 import br.com.prefeitura.web.domain.entity.CategoriaEntity;
 import br.com.prefeitura.web.domain.entity.ContratoEntity;
 import br.com.prefeitura.web.domain.entity.FornecedorEntity;
+import br.com.prefeitura.web.domain.entity.GraphEntity;
 import br.com.prefeitura.web.domain.entity.ImagemNoticiaEntity;
 import br.com.prefeitura.web.domain.entity.LicitacaoEntity;
 import br.com.prefeitura.web.domain.entity.NoticiaEntity;
@@ -23,12 +24,14 @@ import br.com.prefeitura.web.model.CalendarioEventos;
 import br.com.prefeitura.web.model.Categoria;
 import br.com.prefeitura.web.model.Contrato;
 import br.com.prefeitura.web.model.Fornecedor;
+import br.com.prefeitura.web.model.Grafico;
 import br.com.prefeitura.web.model.ImagemNoticia;
 import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.model.Modalidade;
 import br.com.prefeitura.web.model.Noticia;
 import br.com.prefeitura.web.model.Orgao;
 import br.com.prefeitura.web.model.Situacao;
+import br.com.prefeitura.web.utils.GraphEnum;
 import br.com.prefeitura.web.utils.PortalPrefeituraUtils;
 
 public class ServiceHelper {
@@ -113,6 +116,11 @@ public class ServiceHelper {
 		return noticias;
 	}
 	
+	/**
+	 * Converte um objeto do tipo Calendario entity para calendario model.
+	 * @param entities lista de entidades.
+	 * @return lista de eventos.
+	 */
 	public List<CalendarioEventos> convertEventsObject(List<CalendarioEventosEntity> entities) {
 		List<CalendarioEventos> noticias = entities.stream().map(entity -> {
 			return CalendarioEventos.calendarBuilder()
@@ -133,9 +141,38 @@ public class ServiceHelper {
 	}
 	
 	/**
-	 * 
-	 * @param entity
-	 * @return
+	 * Converte uma entidade grafico em modelo grafico.
+	 * @param entities entidade resgatada da base.
+	 * @return modelo grafico.
+	 */
+	protected List<Grafico> convertGraficosObject(List<GraphEntity> entities) {
+		List<Grafico> graficos = entities.stream().map(entity -> {
+			return Grafico.graphBuilder()
+			 	.id(entity.getId())
+			 	.receita(entity.getReceita())
+			 	.despesa(entity.getDespesa())
+			 	.data(entity.getData())
+			 	.tipoGrafico(findWichGraphIs(entity.getTipo()))
+			 	.orgao(findOrgao(entity.getOrgao()))
+			 	.build();
+		}).collect(Collectors.toList());
+		
+		return graficos;
+	}
+	
+	/**
+	 * Obtém o tipo de gráfico correspondente.
+	 * @param graph grafico resgatado da base.
+	 * @return grafico.
+	 */
+	protected GraphEnum findWichGraphIs(int graph){
+		return GraphEnum.DEFAULT.findGraph(graph);
+	}
+	
+	/**
+	 * Obtém um modelo de autor.
+	 * @param entity entidade autor.
+	 * @return model autor.
 	 */
 	protected Autor findAutor(AutorEntity entity){
 		
@@ -194,7 +231,10 @@ public class ServiceHelper {
 	 * @return Orgao Model.
 	 */
 	protected Orgao findOrgao(OrgaoEntity entity) {
-		return new Orgao(entity.getId(), entity.getOrgao());
+		if(!ObjectUtils.isEmpty(entity)){
+			return new Orgao(entity.getId(), entity.getOrgao());
+		}
+		return new Orgao();
 	}
 
 	/**

@@ -11,4 +11,11 @@ public class Orgao {
 	}
 	private Long id;
 	private String orgao;
+	
+	
+	public Orgao() {
+		super();
+	}
+	
+	
 }

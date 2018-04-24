@@ -27,6 +27,11 @@ public class PortalPrefeituraUtils {
 	private static final String DATE_FORMAT = "dd/MM/yyyy";
 	
 	/**
+	 * Obtém as 3 primeiras letras do mês.
+	 */
+	private static final String DATE_MMM = "MMM";
+	
+	/**
 	 * Constante de formato de data
 	 */
 	private static final String DATE_FORMAT_MONTH = "dd MMM YYYY";
@@ -129,6 +134,25 @@ public class PortalPrefeituraUtils {
 	}
 	
 	/**
+	 * Obtem o objeto Date da data obtida no banco.
+	 * @param date data do banco.
+	 * @return objeto Date.
+	 */
+	public static Date getDateTimeMMM(String date) {
+		try {
+			if(StringUtils.isNotBlank(date)){
+				Date data;
+				SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+				data = formatter.parse(date);
+				return data;
+			}
+		} catch (ParseException e) {
+			LOGGER.warn("[LOG-WARN] - NÃO FOI POSSÍVEL OBTER A DATA DAS MENSAGENS. " + e);
+		}
+		return null;
+	}
+	
+	/**
 	 * Obtém o mes de um ano.
 	 * @param date data do do evento.
 	 * @return mes do evento.
@@ -139,7 +163,28 @@ public class PortalPrefeituraUtils {
 				
 				DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
 				LocalDate data = LocalDate.parse(date, dtFormatter);
-				dtFormatter = DateTimeFormatter.ofPattern("MMM");
+				dtFormatter = DateTimeFormatter.ofPattern(DATE_MMM);
+				
+				return dtFormatter.format(data);
+			}
+		} catch(Exception e){
+			LOGGER.warn("[LOG-WARN] - ERRO AO BUSCAR O MÊS. " + e);
+		}
+		return null;
+	}
+	
+	/**
+	 * Obtém o mes de um ano.
+	 * @param date data do do evento.
+	 * @return mes do evento.
+	 */
+	public static String getFullMonthName(String date) {
+		try {
+			if(StringUtils.isNotBlank(date)){
+				
+				DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+				LocalDate data = LocalDate.parse(date, dtFormatter);
+				dtFormatter = DateTimeFormatter.ofPattern("MMMM");
 				
 				return dtFormatter.format(data);
 			}
@@ -221,15 +266,21 @@ public class PortalPrefeituraUtils {
 	
 	public static void main(String[] args) {
 //		String data = converDateDBFormat("2018-10-10");
-		String data2 = getMonth("10/10/2018");
+//		String data2 = getMonth("10/10/2018");
+//		
+//		byte data = getDay("10/10/2018");
+//		
+//		
+//		
+//		short data3 = getYear("10/10/2018");
+//		
+//		System.out.println(data2);
+//		System.out.println(data);
+//		System.out.println(data3);
 		
-		byte data = getDay("10/10/2018");
+		String teste = getFullMonthName("2018-10-10");
 		
-		short data3 = getYear("10/10/2018");
-		
-		System.out.println(data2);
-		System.out.println(data);
-		System.out.println(data3);
+		System.out.println(teste);
 		
 //		boolean cnpj = cnpjFormatIsValid("14.218.835/0001-27");
 		
