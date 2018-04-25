@@ -82,6 +82,10 @@ div+a:hover+li {
 	z-index: 999!important;
 }
 
+.sub-menu-conf{
+	position: absolute;
+	width: 100%;
+}
 
 
 *********************************************

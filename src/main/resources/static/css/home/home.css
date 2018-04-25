@@ -269,6 +269,17 @@ img {
 	background-color: #08088A;
 }
 
+.mini-maps-conf:HOVER {
+	transform: translate3d(0, 0, 0) scale(1.1, 1.1);
+	/** default is 1, scale it to 1.5 */
+	opacity: 1;
+	z-index: 999 !important;
+}
+.mini-effect:HOVER {
+	box-shadow: 0 0 2px 2px rgba(0, 140, 186, 0.5);
+	border-radius: 5px;
+}
+
 /*******************************/
 /*		FACEBOOK     			*/
 /*******************************/

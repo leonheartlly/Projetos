@@ -38,10 +38,10 @@
 					</div>
 
 					<!-- SHORTCUT BUTTONS -->
-					<div class="col s12 m12 no-spacing">
+					<div class="col l12 xl12 no-spacing">
 
 						<div class="row">
-							<div class="col s12 m12 no-pad">
+							<div class="col l12 xl12 no-pad">
 
 								<a class="col s3 m2 shortcut-size shortcut-button btn1 hoverable button-effect" th:href="@{/editais/contratos}" >
 									<img th:src="@{/img/icons/certif.png}" class="pl20 pr20 pb10 center" height="45" />
@@ -81,22 +81,30 @@
 				<div class="row mb0">
 
 					<!-- GRAPH -->
-					<div class="col s6 m6 pl0 pr0">
+					<div class="col l6 xl6 pl0 pr0">
 						<div class="row pl0 pr0 mb0">
-							<div class="col s12 pr0 pl0 graph-conf">
+							<div class="col l12 pr0 pl0 graph-conf">
 								<ul class="tabs">
-									<li class="tab col s4 m4"><a class="active" href="#pie" th:text="#{messages.home.graph.folha.pagamento}"></a></li>
-									<li class="tab col s4 m4 z-depth-2"><a href="#line" th:text="#{messages.home.graph.dividas}" onclick="findLineData();"></a></li>
-									<li class="tab col s4 m4 "><a href="#bar" th:text="#{messages.home.graph.despesas}" onclick="findBarData();"></a></li>
+									<li class="tab col l4 xl4">
+										<a class="active" href="#pie" th:text="#{messages.home.graph.folha.pagamento}"></a>
+									</li>
+									<li class="tab col l4 xl4">
+										<a href="#line" th:text="#{messages.home.graph.dividas}" onclick="findLineData();"></a>
+									</li>
+									<li class="tab col l4 xl4">
+										<a href="#bar" th:text="#{messages.home.graph.despesas}" onclick="findBarData();"></a>
+									</li>
 								</ul>
 							</div>
-							<div id="pie" class="col s8 pl0 pr0 input-bg bg-test white">
-								<div class="center-align">
+							<div class="coll l12 xl12">
+							<div id="pie" class="col l12 xl10 pl0 pr0 input-bg white valign">
+								<div class="col l12 xl12">
 									<canvas id="pieChart"></canvas>
 								</div>
 							</div>
-							<div id="line" class="row  valign-wrapper">
-								<div class="col s10 m8 offset-m1 l10 offset-l1">
+							</div>
+							<div id="line" class="row  ">
+								<div class="col xl11 l10 offset-l1 valign-wrapper">
 									<canvas id="lineChart"></canvas>
 								</div>
 							</div>
@@ -156,10 +164,10 @@
 				<div class="row mb0 trd-block-h">
 				
 					<!-- GREEN BOX -->
-					<div class="col s6 m6 pl0 pr0 ">
+					<div class="col l6 xl6 pl0 pr0 ">
 
 						<div class="row input-processos mt0 green darken-3 mb0 trd-block-h">
-							<h5 class="col s12 m12 white-text" th:text="#{messages.home.consulta.title}"></h5>
+							<h5 class="col l12 xl12 white-text" th:text="#{messages.home.consulta.title}"></h5>
 
 
 
@@ -173,11 +181,11 @@
 						      };
 						      
 							    </script>
-							<form class="col s12 mb0" action="?" method="POST">
+							<form class="col l12 mb0" action="?" method="POST">
 								<div class="row input-box-conf">
-									<div class=" col s12 m12 lbl-cpf white-text">
-										<h6 class="col s6 m6 pl0" th:text="#{messages.home.consulta.numero}"></h6>
-										<h6 class="col s6 m6" th:text="#{messages.home.consulta.cpf}"></h6>
+									<div class=" col l12 xl12 lbl-cpf white-text">
+										<h6 class="col l6 xl6 pl0" th:text="#{messages.home.consulta.numero}"></h6>
+										<h6 class="col l6 xl6" th:text="#{messages.home.consulta.cpf}"></h6>
 									</div>
 
 									<div class="input-field col s6">
@@ -215,32 +223,30 @@
 					</div>
 
 					<!-- GOOGLE MAPS -->
-					<div class="col s6 m6 trd-block-h  pl0 pr0">
+					<div class="col l6 xl6 trd-block-h  pl0 pr0">
 						<div class="row mb0 ">
-							<div class="col s9 m9 pl0 pr0">
+							<div class="col l9 xl9 pl0 pr0">
 								 <div id="map" class="trd-block-h  pl0 pr0"></div>
-
-								
 							</div>
 
-							<div class="col s3 m3 pl0 pr0">
-								<div class="col s12 m12 mini-maps-conf blue darken-1 waves-effect" onclick="initMap(0)">
-									<a class="shortcut-size shortcut-button btn1 hoverable " >
-										<img src="/img/city-hall.png" class="pl20 pr20 pb10 center" height="120" />
+							<div class="col l3 xl3 pl0 pr0">
+								<div class="col l12 xl12 mini-maps-conf blue darken-1 waves-effect mini-effect" onclick="initMap(0)">
+									<a class="shortcut-size shortcut-button hoverable" >
+										<img th:src="@{/img/icons/city-hall.png}" class="pl20 pr20 pb10 center responsive-img" height="120" />
 										<p class="center-align mt0 mb0 bold" th:text="#{messages.home.map.prefeitura}"></p>
 									</a> 
 									 
 								</div>
-								<div class="col s12 m12 mini-maps-conf blue darken-4 waves-effect" onclick="initMap(1)">
-									<a class="shortcut-size shortcut-button btn1 hoverable" >
-										<img src="/img/police.png" class="pl20 pt10 pr20 pb15 center" height="122" />
+								<div class="col l12 xl12 mini-maps-conf blue darken-4 waves-effect mini-effect" onclick="initMap(1)">
+									<a class="shortcut-size shortcut-button hoverable" >
+										<img th:src="@{/img/icons/police2.png}" class="pl20 pt10 pr20 pb15 center responsive-img" height="122" />
 										<p class="center-align mt0 mb0 bold" th:text="#{messages.home.map.policia}"></p>
 									</a> 
 									 
 								</div>
-								<div class="col s12 m12 mini-maps-conf blue darken-2 waves-effect" onclick="initMap(2)">
-									<a class="shortcut-size shortcut-button btn1 hoverable" >
-										<img src="/img/hospital.png" class="pl20 pr20 pb10 center" height="110" />
+								<div class="col l12 xl12 mini-maps-conf blue darken-2 waves-effect mini-effect" onclick="initMap(2)">
+									<a class="shortcut-size shortcut-button hoverable" >
+										<img th:src="@{/img/icons/hospital.png}" class="pl20 pr20 pb10 center responsive-img" height="110" />
 										<p class="center-align mt0 mb0 bold" th:text="#{messages.home.map.hospital}"></p>
 									</a> 
 								</div>

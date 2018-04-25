@@ -99,17 +99,21 @@
 	</div>
 
 	<!-- SUB MENU -->
-	<div id="menuBox" class="ar-box ar-box-display uper-index">
-		<div class="row">
+	<div id="menuBox" class="row col l12 xl12 ar-box ar-box-display uper-index sub-menu-conf">
+		<div class="col l12 xl12">
 			<div class="col s12 teste">
 			
 				<div id="serviceMenu" class="header-options-box inactive">
 					<div class="col s3 offset-s1 ar-box-mrbt">
 							<h5 th:text="#{messages.header.menu.servicos}"></h5>
-							<ul>
-								<li><a id="byAservices" href="#" onclick="showBlock('todos-os-servicos', this.id)" class="has-second-tier ar-box-active" th:text="#{messages.header.submenu.iptu}"></a></li>
-								<li><a  id="byAccessed" href="#" onclick="showBlock('mais-acessados',this.id)" class="has-second-tier" th:text="#{messages.header.submenu.certidao}"></a></li>
-							</ul>
+							 <ul>
+								<li>
+									<a id="byAservices" href="#" onclick="showBlock('todos-os-servicos', this.id)" class="has-second-tier ar-box-active" th:text="#{messages.header.submenu.iptu}"></a>
+								</li>
+								<li>
+									<a  id="byAccessed" href="#" onclick="showBlock('mais-acessados',this.id)" class="has-second-tier" th:text="#{messages.header.submenu.certidao}"></a>
+								</li>
+							</ul> 
 					</div>
 				</div>
 				<div id="prefectureMenu" class="header-options-box inactive">
@@ -144,7 +148,7 @@
           <div class="container green darken-3">
             <div class="row">
 	            <div>
-		              <div class="col l2 m6 footer-conf offset-m3 offset-l3">
+		              <div class="col l2 xl2 footer-conf offset-xl3 offset-l3">
 		                <div class="white-text footer-title" th:text="#{messages.index.footer.prefeitura}"></div>
 		                <p class="grey-text text-lighten-4" th:text="#{messages.index.footer.endereco}"></p>
 		                <p class="grey-text text-lighten-4" th:text="#{messages.index.footer.fone}"></p>
@@ -152,12 +156,12 @@
 		                <p class="grey-text text-lighten-4 mt0" th:text="#{messages.index.footer.horario}"></p>
 		              </div>
 		              
-		              <div class=" col l2 m4 brasao">
+		              <div class=" col l2 xl2 brasao">
 		              
-		              	<img src="/img/brasaoleft.png"/>
+		              	<img src="/img/brasaoleft.png" class="responsive-img"/>
 		              </div>
 		              
-		              <div class="col l2">
+		              <div class="col l2 xl2">
 		               <div class="white-text" th:text="#{messages.index.footer.sobre}"></div>
 		               
 		                  <a class="grey-text text-lighten-3" href="#!" th:text="#{messages.index.footer.mapa}"></a><br/>

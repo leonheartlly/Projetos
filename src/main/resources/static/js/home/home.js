@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	createPieChart('pieChart', 0);
+//	alert($(window).height());
+//	alert($(window).width());
 });
 
 /**
