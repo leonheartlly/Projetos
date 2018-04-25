@@ -1,18 +1,4 @@
 
-
-/* general styling for the hover page */
-
-body {
-  font-family: 'colaborate-thinregular', sans-serif;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  background-image: url("../images/back3.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: #FFF;
-}
-
- 
 h1 {
   font-size: 50px;
 }

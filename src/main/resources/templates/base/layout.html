@@ -30,27 +30,27 @@
 
 		<div class="card-panel grey lighten-5 z-depth-1">
 			<div class="row valign-wrapper">
-				<div class="col s12">
+				<div class="col l12 xl12">
 
 					<!-- UPPER MENU -->
 					<div class="ar-upper-bar ar-upper-text">
 						<ul  class="left ">
-							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-275 current_page_item menu-item-2025">
+							<li class="fl ml15">
 								<a href="" th:text="#{messages.header.webmail}"></a>
 							</li>
-							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5057">
+							<li class="fl ml15">
 								<a href="" th:text="#{messages.header.contatos}"></a>
 							</li>
-							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5639">
+							<li class="fl ml15">
 								<a href="" th:text="#{messages.header.portal.servidor}"></a>
 							</li>
-							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5638">
+							<li class="fl ml15">
 								<a href="" th:text="#{messages.header.portal.cidadao}"></a>
 							</li>
-							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5637">
+							<li class="fl ml15">
 								<a th:href="@{/estatisticas/graficos}" th:text="#{messages.header.graficos}" ></a>
 							</li>
-							<li class="fl ml15 menu-item menu-item-type-post_type menu-item-object-page menu-item-5637">
+							<li class="fl ml15">
 								<a href="" th:text="#{messages.header.mapa.site}"></a>
 							</li>
 						</ul>
@@ -79,23 +79,20 @@
 			
 			<div class="container">
 				
-				
-				<div class=" row nav-wrapper ar-nav-menu">
-					
-					<div id="logo-container" class="col s4">
+				<div class=" row nav-wrapper">
+					<div id="logo-container" class="col l4 xl3">
 						<a href="/home">
-							<img width="60" class="ml15 icon hide-on-med-and-down"  th:src="@{/img/prefeitura.png}" align="top" alt="" />
+							<img class="ml15 responsive-img col l12 xl12"   th:src="@{/img/prefeitura.png}" align="top" alt="" />
 						</a>	
 					</div>		
 
 					<!-- MENU -->
-					<div class="col s5">
-						<a href="" class="dropdown-button mr15 ml15" onmouseover="teste2('serviceMenu')" th:text="#{messages.header.menu.servicos}"></a> 
-						<a href="" class="mr15 ml15" onmouseover="teste2('prefectureMenu')" th:text="#{messages.header.menu.prefeitura}"></a> 
+					<div class="col l8 xl9 fs25">
+						<a class="mr15 ml15" onmouseover="teste2('serviceMenu')" th:text="#{messages.header.menu.servicos}"></a> 
+						<a class="mr15 ml15" onmouseover="teste2('prefectureMenu')" th:text="#{messages.header.menu.prefeitura}"></a> 
 						<a class="mr15 ml15" th:href="@{/referencias/noticias}" th:text="#{messages.header.menu.noticias}"></a> 
 						<a class="mr15 ml15" th:text="#{messages.header.menu.transparencia}"></a>
 					</div>
-
 				</div>
 			</div>
 		</nav>

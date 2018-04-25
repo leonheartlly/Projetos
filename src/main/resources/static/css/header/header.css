@@ -4,6 +4,10 @@
 	z-index: 101;
 }
 
+.fs25 {
+	font-size: 25px;
+}
+
 .ar-box-vline {
 	border-left: 1px solid rgba(0, 0, 0, 0.2);
 	/* escone a div */

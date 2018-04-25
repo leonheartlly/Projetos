@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/font/Montserrat-Regular.otf') format('otf'), /* Super Modern Browsers */
+       url('/font/Montserrat-Regular.otf') format('otf'), /* Pretty Modern Browsers */
+       url('Montserrat-Regular.otf')  format('otf'), /* Safari, Android, iOS */
+       url('Montserrat-Regular.otf') format('otf'); /* Legacy iOS */
+}
+
+body, html {
+	font-family: 'Montserrat';
+	color: #757575 !important;
+}
+
+a {
+	color: #616161 !important;
+}
+
 .alinhar-centro {
 	display: inline-flex;
 	vertical-align: middle;

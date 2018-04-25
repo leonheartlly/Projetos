@@ -6,31 +6,12 @@
  * Made By TANIOS
  */
 
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/font/Montserrat-Regular.otf') format('otf'), /* Super Modern Browsers */
-       url('/font/Montserrat-Regular.otf') format('otf'), /* Pretty Modern Browsers */
-       url('Montserrat-Regular.otf')  format('otf'), /* Safari, Android, iOS */
-       url('Montserrat-Regular.otf') format('otf'); /* Legacy iOS */
-}
-
-body, html {
-	font-family: 'Montserrat';
-	color: black;
-}
 
 body {
 	background-color: #F6F4F1 !important;
 	overflow-x: hidden;
 }
-/* COLORS */
-a {
-	color: black !important;
-}
 
-.acaramel-text {
-	color: #E0BB8E !important;
-}
 
 .ablue-text {
 	color: #86A8A8 !important;
@@ -377,7 +358,6 @@ footer.page-footer {
 }
 
 .ar-upper-text {
-	font-size: 13pt;
 	text-transform: uppercase;
 }
 
