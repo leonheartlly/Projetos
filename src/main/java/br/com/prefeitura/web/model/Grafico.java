@@ -28,8 +28,6 @@ public class Grafico {
 		this.orgao = orgao;
 	}
 	
-	
-	
 	public Grafico() {
 	}
 

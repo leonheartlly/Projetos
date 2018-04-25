@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="@{~/base/layout}">
+<head>
+<title th:text="#{messages.licitacao}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Prefeitura" />
+<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<link rel="stylesheet" th:href="@{/css/licitacao/licitacao.css}" />
+<script type="text/javascript" th:src="@{/js/licitacao/licitacao.js}"></script>
+<script type="text/javascript" th:src="@{/js/CSVGenerator.js}"></script>
+</head>
+<body>
+	<section layout:fragment="content">
+
+		<div class="background">
+
+			<div class="row">
+			
+				<form class="col s12" 
+						id="licitacao-form" 
+						th:action="@{../editais/pesquisaLicitacao}" 
+						th:object="${licitacao}" 
+						method="post">
+					
+					
+					<div class="row">
+
+						<div class="input-field col s6">
+						
+							<select th:name="orgaoVO">
+								<option th:each="orgao : ${orgaos}" th:value="${orgao.id}" th:text="${orgao.orgao}"></option>
+							</select> 
+							<label th:text="#{messages.licitacao.orgaos}"></label>
+
+						</div>
+
+						<div class=" input-field col s3">
+							<label th:text="#{messages.licitacao.dots.data.inicial}"></label> 
+							<input type="text" class="datepicker" id="data-inicial" th:name="dataInicialVO"/>
+						</div>
+
+						<div class="input-field col s3">
+							<label th:text="#{messages.licitacao.dots.data.final}" ></label> 
+							<input type="text" class="datepicker" id="data-final" th:name="dataFinalVO" />
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="input-field col s2">
+							<input placeholder="CNPJ" id="cnpj-licitacao" form="licitacao-form" type="text" class="validate"  th:name="cnpjVO" /> 
+							<label for="cnpj-licitacao" th:text="#{messages.licitacao.cpf.cnpj}"></label>
+						</div>
+
+						<div class="input-field col s4">
+							<input placeholder="Razão Social" id="fornecedor-licitacao" th:name="fornecedorVO" type="text" class="validate" /> 
+							<label for="fornecedor-licitacao" th:text="#{messages.licitacao.fornecedor}"></label>
+						</div>
+
+						<div class="input-field col s6">
+							<select id="modalidade-id" th:name="modalidadeVO">
+								<option th:each="modalidade : ${modalidades}" th:value="${modalidade.id}" th:text="${modalidade.modalidade}"></option>
+							</select> <label for="modalidade" th:text="#{messages.licitacao.dot.modalidade}"></label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="input-field col s12">
+							<input type="text" form="licitacao-form" placeholder="Digite parte do objeto da licitação desejada" th:name="objeto" maxlength="5000" id="objeto-licitacao" class="validate" /> 
+								<label for="objeto-licitacao" th:text="#{messages.licitacao.objeto.dots}"></label>
+								
+						</div>
+					</div>
+					
+					<div class="row">
+						<button class="waves-effect waves-light btn right green darken-3 z-depth-3" type="submit">
+							<i class="material-icons left">search</i>PESQUISAR
+						</button>
+						
+						<a class="waves-effect waves-green btn right transparent green-text text-darken-3 z-depth-3" onclick="refresh()">
+							<i class="material-icons left">refresh</i>LIMPAR
+						</a>
+					</div>
+					
+				</form>
+				
+			</div>
+
+		</div>
+<div >
+		<table class="highlight bordered table-licitacoes fileTable">
+			<thead>
+				<tr>
+					<th class="th" th:text="#{messages.licitacao.nprocesso}"></th>
+					<th class="th" th:text="#{messages.licitacao.edital}"></th>
+					<th class="th" th:text="#{messages.licitacao.dt.abertura}"></th>
+					<th class="th" th:text="#{messages.licitacao.modalidade}"></th>
+					<th class="th" th:text="#{messages.licitacao.objeto}"></th>
+					<th class="th" th:text="#{messages.licitacao.situacao}"></th>
+					<th class="th" th:text="#{messages.licitacao.valor}"></th>
+				</tr>
+			</thead>
+
+			<tbody id="detailBody">
+				
+				<tr class="tr-conf tr"  th:each="lic : ${licitacao}" onclick="displayDetails($(this).attr('id'))">
+					<td th:text="${lic.processo}" class="bold td"></td>
+					<td th:text="${lic.edital}" class="td"></td>
+					<td th:text="${lic.dataAbertura}" class="td"></td>
+					<td th:text="${lic.modalidade.modalidade}" class="td"></td>
+					<td th:text="${lic.objeto}" class="td"></td>
+					<td th:text="${lic.situacao.descricao}" class="td"></td>
+					<td th:text="'R$ ' + ${lic.valor}" class="td"></td>
+				
+					<!-- BLOCO DE DETALHES -->	
+					<tr class="remove-line hide-box">
+						<td class="p0 col s12 m12 bb0 b0" colspan="12">
+							<div class="hidden-tr-conf ">
+								<div class="z-depth-2">
+									<p class="m0 hidden-tr-title mb20" th:text="#{messages.licitacao.detalhes}"></p>
+									<div class="row hidden-tr-body">
+										<div>
+											<label class="col m3" >SITUAÇÃO: <span class="bold" th:text="${lic.situacao.descricao}"></span></label> 
+											<label class="col m2">N° PROCESSO: <span class="bold" th:text="${lic.processo}"></span></label> 
+											<label class="col m2">N° EDITAL: <span class="bold" th:text="${lic.edital}"></span></label>
+	
+										</div>
+										<div class="row col s12 m12 mt10 pl0 mb0">
+											<label class="col m3 pl0" >DATA ABERTURA: <span class="bold" th:text="${lic.dataAbertura}"></span></label> 
+											<label class="col m2">data homologação: <span class="bold" th:text="${lic.dataHomolog}"></span></label> 
+											<label class="col m2">data adjudicação: <span class="bold" th:text="${lic.dataAdjudicacao}"></span></label>
+										</div>
+										<div class="row col s12 m12 mt10 pl0 mb0">
+											<label class="col m3 pl0">orgão: <span class="bold" th:text="${lic.orgao.orgao}"></span></label>
+										</div>
+										<div class="row col s12 m12 mt10 pl0 mb0">
+											<label class="col m3 pl0">modalidade licitação: <span class="bold" th:text="${lic.modalidade.modalidade}"></span></label>
+										</div>
+										<div class="row col s12 m12 mt10 pl0 mb0">
+											<label class="col m3 pl0">valor: <span class="bold green-text text-darken-3" th:text="'R$ ' + ${lic.valor}"></span></label>
+										</div>
+										<div class="row col s12 m12 mt10 pl0 mb20">
+											<label class="col m10 pl0">objeto: <span class="bold red-text text-darken-2" th:text="${lic.objeto}"></span></label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					
+					<!-- BLOCO DE ANEXOS -->
+					<tr id="at-1" class="hide-box">
+						<td class="p0 col s12 m12" colspan="12">
+							<div class="hidden-tr-conf">
+								<div class="z-depth-2">
+									<p class="m0 hidden-tr-title mb20" th:text="#{messages.licitacao.anexos}"></p>
+									<div class="row hidden-tr-body">
+										<div class="row">
+											<div class="col s1 m1"></div>
+											<div class="col s9 m9 bold" th:text="#{messages.licitacao.nome}"></div>
+											<div class="col s2 m2 bold center-align" th:text="#{messages.licitacao.anexo}"></div>
+										</div>
+	
+										<div class="row attachment-box">
+	
+											<div class=" mt10 mb10 box-line valign-wrapper" th:if=" ${anexo.idLicitacao} == ${lic.id}" th:attr="id=${anexo.idLicitacao}" th:each="anexo : ${anexos}" >
+												<span class="col s1 m1 "  th:text="${anexo.tipoAnexo}"></span> 
+												
+												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '1'" th:text="#{messages.licitacao.retificacao}"></span> 
+												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '2'" th:text="#{messages.licitacao.edital}"></span>	
+												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '3'" th:text="#{messages.licitacao.aviso}"></span>
+												<span class=" col s2 m2 center-align"> 
+													<a class="waves-effect waves-light btn" th:attr="attach=${anexo.caminhoArquivo}" onclick="displayPDF($(this).attr('attach'),'contratos')" th:text="#{messages.visualizar}"></a>
+												</span>
+											</div>
+										</div>
+	
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				
+				</tr>
+				
+			</tbody>
+		</table>
+		</div>
+	
+	<div id="printPDF" class="hide docFile">	
+		<table  class="highlight bordered table-licitacoes fileTable">
+			<thead>
+				<tr>
+					<th class="th" th:text="#{messages.licitacao.nprocesso}"></th>
+					<th class="th" th:text="#{messages.licitacao.edital}"></th>
+					<th class="th" th:text="#{messages.licitacao.dt.abertura}"></th>
+					<th class="th" th:text="#{messages.licitacao.modalidade}"></th>
+					<th class="th" th:text="#{messages.licitacao.objeto}"></th>
+					<th class="th" th:text="#{messages.licitacao.situacao}"></th>
+					<th class="th" th:text="#{messages.licitacao.valor}"></th>
+				</tr>
+			</thead>
+
+			<tbody id="detailBody">
+				<tr class="tr-conf tr"  th:each="lic : ${licitacao}">
+					<td th:text="${lic.processo}" class="bold td"></td>
+					<td th:text="${lic.edital}" class="td"></td>
+					<td th:text="${lic.dataAbertura}" class="td"></td>
+					<td th:text="${lic.modalidade.modalidade}" class="td"></td>
+					<td th:text="${lic.objeto}" class="td"></td>
+					<td th:text="${lic.situacao.descricao}" class="td"></td>
+					<td th:text="'R$ ' + ${lic.valor}" class="td"></td>
+				</tr>
+			</tbody>
+			
+		</table>
+		</div>
+		
+	<script th:inline="javascript">
+		
+		function getData(){
+			 
+			 return [[${licitacao}]];
+		}
+		
+	</script>
+		
+	</section>
+
+</body>
+</html>

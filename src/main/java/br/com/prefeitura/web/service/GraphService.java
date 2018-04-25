@@ -103,36 +103,39 @@ public class GraphService extends ServiceHelper {
 		 }
 	 }
 	 
-	 /**
-	  * converte datas.
-	  * @param graficos
-	  */
-	 private void convertDatas(List<Grafico> graficos){
-		 graficos.forEach(grafico -> {
-			 String convertido = PortalPrefeituraUtils.convertDateFromDB(grafico.getData());
-			 String mes = PortalPrefeituraUtils.getFullMonthName(convertido);
-			 
-			 LocalDate date = LocalDate.parse(grafico.getData());
-			 Month monthNumber = date.getMonth();
-			 
-			 grafico.setNumeroMes(monthNumber.getValue());
-			 grafico.setMes(mes);
-			 grafico.setYear(PortalPrefeituraUtils.getYear(convertido));
-			 grafico.setData(convertido);
-		 });
-	 }
+	/**
+	 * converte datas.
+	 * 
+	 * @param graficos
+	 */
+	private void convertDatas(List<Grafico> graficos) {
+		graficos.forEach(grafico -> {
+			String convertido = PortalPrefeituraUtils.convertDateFromDB(grafico.getData());
+			String mes = PortalPrefeituraUtils.getFullMonthName(convertido);
+
+			LocalDate date = LocalDate.parse(grafico.getData());
+			Month monthNumber = date.getMonth();
+
+			grafico.setNumeroMes(monthNumber.getValue());
+			grafico.setMes(mes);
+			grafico.setYear(PortalPrefeituraUtils.getYear(convertido));
+			grafico.setData(convertido);
+		});
+	}
 	 
 	/**
 	 * Ordena as noticias por data reversa.
-	 * @param graficos lista de noticias.
+	 * 
+	 * @param graficos
+	 *            lista de noticias.
 	 * @return lista de noticias ordenadas.
 	 */
-	public List<Grafico> ordenarGraficoPorData(List<Grafico> graficos){
-		
-		if(!graficos.isEmpty()){
-			
-			graficos = graficos.stream().sorted(
-					(news, nextNews) -> PortalPrefeituraUtils.getDateTimeMMM(news.getData())
+	public List<Grafico> ordenarGraficoPorData(List<Grafico> graficos) {
+
+		if (!graficos.isEmpty()) {
+
+			graficos = graficos.stream()
+					.sorted((news, nextNews) -> PortalPrefeituraUtils.getDateTimeMMM(news.getData())
 					.compareTo(PortalPrefeituraUtils.getDateTimeMMM(nextNews.getData())))
 					.collect(Collectors.toList());
 		}

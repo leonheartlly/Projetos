@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	createPieChart('pieChart', 0);
 });
 
 /**
@@ -59,4 +59,183 @@ function hideEvent(id) {
  */
 function displayEvent(id) {
 	$('#event' + id).removeClass("hide");
+}
+
+
+/**
+ * Cria o grafico de pizza conforme dados.
+ */
+function createPieChart(id, val){
+	
+	var pie = JSON.parse(getPieData());
+	
+	var values = [pie[val].receita, pie[val].despesa];
+	var labels = ["Receita", "Despesa"]
+	
+	var data = {
+		datasets : [ {
+			backgroundColor : [ "#ff5252", "#4caf50" ],
+			data : values
+		} ],
+		labels : labels
+	};
+	
+	var options = createChartOptions(pie);
+	
+	
+	createChart('pie', id, data, options);
+}
+
+/**
+ * Cria o gráfico.
+ * @param chartStyle tipo do gráfico.
+ * @param id id do html.
+ * @returns
+ */
+function createChart(chartStyle, id, data, options){
+	
+	var myPieChart = new Chart(document.getElementById(id), {
+	    type: chartStyle,
+	    data: data,
+	    options: options
+	});
+}
+
+/**
+ * Cria opções de configuração em gráficos.
+ * @param option
+ * @returns
+ */
+function createChartOptions(option) {
+	var options = {
+		legend : {
+			display : option.legend
+		},
+		title : {
+			display : option.legend,
+		}
+	};
+	return options;
+}
+
+
+function findLineData(){
+    $.ajax({url: "/estatisticas/lineChart", 
+    success: function(result){
+    	createLineChart('lineChart', result);
+    }, 
+    error: function(){
+    	alert("fail");
+    }
+    });
+}
+
+
+function findBarData(){
+    $.ajax({url: "/estatisticas/barChart", 
+    success: function(result){
+    	createBarChart('barChart', result);
+    }, 
+    error: function(){
+    	alert("fail");
+    }
+    });
+}
+
+function createLineChart(id, data){
+	
+	var line = JSON.parse(data);
+	
+	var label= new Array();
+	var teste = new Array();
+	var values = new Array();
+	var lineColor = new Array();
+	
+	$.each(line, function(i, obj) {
+		label.push(obj.month);
+		values.push(obj.recipe );
+		teste.push("Arrecadação: R$" + obj.date);
+		lineColor.push("#82b1ff");
+	});
+	
+	var data = {
+		datasets : [ {
+			data : values,
+			label: "Arrecadação: R$",
+			backgroundColor : "#b9f6ca",
+			borderColor: "#0277bd",
+			fill: false
+		} ],
+		labels : label
+	};
+	
+
+	var options = createChartOptions(line);
+
+	createChart('line', id, data, options);
+}
+
+function createBarChart(id, data){
+	
+	var bar = JSON.parse(data);
+	
+	var label= new Array();
+	var valuesFstOrgan = new Array();
+	var valuesSecOrgan = new Array();
+	var valuesTrdOrgan = new Array();
+	var valuesFrtOrgan = new Array();
+	
+	$.each(bar, function(i, obj) {
+		
+		if($.inArray(obj.month, label) == -1){
+			label.push(obj.month);
+		}
+		if(obj.idOrgan == 1){
+			valuesFstOrgan.push(obj.payment);
+		}else if(obj.idOrgan == 2){
+			valuesSecOrgan.push(obj.payment);
+		}else if(obj.idOrgan == 3){
+			valuesTrdOrgan.push(obj.payment);
+		}else if(obj.idOrgan == 4){
+			valuesFrtOrgan.push(obj.payment);
+		}
+//		values.push(obj.payment);
+	});
+	
+	var data = {
+		datasets : [ {
+			data : valuesFstOrgan,
+			label: "Fundo Municipal de Saúde",
+			backgroundColor : "#82b1ff",
+		},
+		{
+			data : valuesSecOrgan,
+			label: "Administração R$",
+			backgroundColor : "#8e5ea2",
+		},
+		{
+			data : valuesTrdOrgan,
+			label: "Fundo Municipal de Assistência Social",
+			backgroundColor : "#3cba9f",
+		},
+		{
+			data : valuesFrtOrgan,
+			label: "Fundo de teste",
+			backgroundColor : "#e8c3b9",
+		},],
+		labels : label
+	};
+	
+	var options = {
+			legend : {
+				labels: {
+					usePointStyle: true,
+				},
+			},
+			title : {
+				display : false,
+			}
+		};
+
+	createChart('bar', id, data, options);
 }

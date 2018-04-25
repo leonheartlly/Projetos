@@ -10,6 +10,7 @@ import java.util.Locale;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,6 +82,52 @@ public class GraficoController {
 		model.addAttribute("locale", locale);
 		
 		return new ModelAndView("graficos");
+	}
+	
+	/**
+	 * Obtém dados do gráfico linear. Usado no ajax da home.
+	 * @param locale
+	 * @param model
+	 * @return
+	 * @throws JsonProcessingException 
+	 */
+	@RequestMapping(value = "/lineChart", method = RequestMethod.GET)
+	public ResponseEntity<?> findlineChart(Locale locale, Model model) throws JsonProcessingException {
+
+		LOGGER.info("[LOG-INFO] "+ GraficoController.class.getSimpleName()+" - GRAFICOS.");
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+		
+		List<Grafico> lineCharts = graphService.findLineChart();
+		List<LineChartVO> lineVOCharts =  secureLineVO(lineCharts);
+		
+		model.addAttribute("lineChart", objectMapper.writeValueAsString(lineVOCharts));
+		
+		return ResponseEntity.ok(objectMapper.writeValueAsString(lineVOCharts));
+	}
+	
+	/**
+	 * Obtém dados do gráfico linear. Usado no ajax da home.
+	 * @param locale
+	 * @param model
+	 * @return
+	 * @throws JsonProcessingException 
+	 */
+	@RequestMapping(value = "/barChart", method = RequestMethod.GET)
+	public ResponseEntity<?> findBarChart(Locale locale, Model model) throws JsonProcessingException {
+
+		LOGGER.info("[LOG-INFO] "+ GraficoController.class.getSimpleName()+" - GRAFICOS.");
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+		
+		List<Grafico> bars = graphService.findBarChart();
+		List<BarChartVO> barVoCharts = secureBarVO(bars);
+		
+//		model.addAttribute("barChart", objectMapper.writeValueAsString(barVoCharts));
+		
+		return ResponseEntity.ok(objectMapper.writeValueAsString(barVoCharts));
 	}
 	
 	/**

@@ -85,71 +85,34 @@
 						<div class="row pl0 pr0 mb0">
 							<div class="col s12 pr0 pl0 graph-conf">
 								<ul class="tabs">
-									<li class="tab col s4 m4"><a class="active" href="#test1" th:text="#{messages.home.graph.folha.pagamento}"></a></li>
-									<li class="tab col s4 m4 z-depth-2"><a href="#test2" th:text="#{messages.home.graph.dividas}"></a></li>
-									<li class="tab col s4 m4 "><a href="#test3" th:text="#{messages.home.graph.despesas}"></a></li>
+									<li class="tab col s4 m4"><a class="active" href="#pie" th:text="#{messages.home.graph.folha.pagamento}"></a></li>
+									<li class="tab col s4 m4 z-depth-2"><a href="#line" th:text="#{messages.home.graph.dividas}" onclick="findLineData();"></a></li>
+									<li class="tab col s4 m4 "><a href="#bar" th:text="#{messages.home.graph.despesas}" onclick="findBarData();"></a></li>
 								</ul>
 							</div>
-							<div id="test1" class="col s12 pl0 pr0 input-bg bg-test white">
-								<canvas id="myChart" class="col s5 m5 chart-size"></canvas>
-	
-								<script>
-									var ctx = document
-											.getElementById("myChart");
-									var myChart = new Chart(document.getElementById("myChart"), {
-										  type: 'line',
-										  data: {
-										    labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
-										    datasets: [{ 
-										        data: [86,114,106,106,107,111,133,221,783,2478],
-										        label: "Prefeito",
-										        borderColor: "#3e95cd",
-										        fill: false
-										      }, { 
-										        data: [282,350,411,502,635,809,947,1402,3700,5267],
-										        label: "Polícia",
-										        borderColor: "#8e5ea2",
-										        fill: false
-										      }, { 
-										        data: [168,170,178,190,203,276,408,547,675,734],
-										        label: "Açougue em Frente",
-										        borderColor: "#3cba9f",
-										        fill: false
-										      }, { 
-										        data: [40,20,10,16,24,38,74,167,508,784],
-										        label: "Cleanto",
-										        borderColor: "#e8c3b9",
-										        fill: false
-										      }, { 
-										        data: [6,3,2,2,7,26,82,172,312,433],
-										        label: "Médicos",
-										        borderColor: "#c45850",
-										        fill: false
-										      }
-										    ]
-										  },
-										  options: {
-										    title: {
-										      display: true,
-										      text: 'Riquezas de Araguaçu(Em Milhoes)'
-										    },
-										    legend: {
-									            display: true,
-									            position: 'right',
-									            labels: {
-									                fontColor: '#333'
-									            }
-									        }
-										  }
-										});
-	
-	
-								</script>
+							<div id="pie" class="col s11 pl0 pr0 input-bg bg-test white">
+								<div class="center-align">
+									<canvas id="pieChart"></canvas>
+								</div>
 							</div>
-							<div id="test2" class="col s12">Test 2</div>
-							<div id="test3" class="col s12">Test 3</div>
+							<div id="line" class="col s12 m11 l12">
+								<div class="center-align">
+									<canvas id="lineChart"></canvas>
+								</div>
+							</div>
+							<div id="bar" class="col s11">
+								<div class="center-align">
+									<canvas id="barChart"></canvas>
+								</div>
+							</div>
+							
 						</div>
 
+						<script th:inline="javascript">
+							function getPieData(){
+							 	return [[${pieChart}]];
+							}
+						</script>
 					</div>
 
 					<!-- NEWS -->
@@ -334,11 +297,11 @@
 						<h5 class="facebook-div mb20" th:text="#{messages.home.calendario}"></h5>
 						
 				         <div th:id="'event'+${cal.id}" th:classappend="${iter.index == 0} ? '' : hide" class="card col s10 m9 calendar-img-conf offset-m1" th:each="cal, iter : ${calendario}">
-					        <script th:inline="javascript">
-							   function getData(){
-							   		return [[${calendario}]];
-								}
-						    </script>
+					     	<script th:inline="javascript">
+						 		function getData(){
+						 			return [[${calendario}]];
+						 		}
+						 	</script>
 						    	<div>
 								    <div class="card-image pointer waves-effect waves-block waves-light hover ehover4" >
 								    	<img  class="img-responsive" src="img/girl.jpg"/>
