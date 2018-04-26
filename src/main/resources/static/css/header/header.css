@@ -3,9 +3,19 @@
 	background: #F4F4F4;
 	z-index: 101;
 }
-
 .fs25 {
 	font-size: 25px;
+}
+@media ( max-width : 1380px) {
+	.fs25 {
+		font-size: 22px;
+	}
+}
+
+@media ( max-width : 1030px) {
+	.fs25 {
+		font-size: 20px;
+	}
 }
 
 .ar-box-vline {
@@ -87,6 +97,40 @@ div+a:hover+li {
 	width: 100%;
 }
 
+.testando{
+	position: inherit;
+	
+}
+.unclick {
+	pointer-events: none;
+	background: none;
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+	background: transparent;
+	cursor: default;
+	font-size: 21px !important;
+}
+
+.dropdown-content li:HOVER{
+	background: none;
+}
+.dropdown-content li a:HOVER{
+	background: none;
+	color: #81c784 !important;
+}
+
+.hoverText {
+	color: #81c784 !important;
+}
+
+.testando:hover{
+	color: #81c784 !important;
+}
 
 *********************************************
 **					FOOTER				   **

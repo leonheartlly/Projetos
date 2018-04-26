@@ -1,23 +1,23 @@
-
-function teste2(menuId) {
-	
-	if(menuId ==''){
-		
-		$(".header-options-box").addClass("inactive");
-		$("div:has(active)").removeClass('active');
-		return;
-	}
-	
-	$("#" + menuId).removeClass("inactive");
-	$("#" + menuId).addClass("active");
-	
-//	if($(".header-options-box:contains('active')").){
+//
+//function teste2(menuId) {
+//	
+//	if(menuId ==''){
 //		
+//		$(".header-options-box").addClass("inactive");
+//		$("div:has(active)").removeClass('active');
+//		return;
 //	}
-	
-	removeUnneededClass(menuId);
-	$(".ar-box-display").css('display', 'block');
-}
+//	
+//	$("#" + menuId).removeClass("inactive");
+//	$("#" + menuId).addClass("active");
+//	
+////	if($(".header-options-box:contains('active')").){
+////		
+////	}
+//	
+//	removeUnneededClass(menuId);
+//	$(".ar-box-display").css('display', 'block');
+//}
 
 /**
  * Renova a CSS de links selecionados.
@@ -56,15 +56,22 @@ $(document).ready(function() {
 	/**
 	 * Fecha a caixa de submenu ao retirar o mouse de cima.
 	 */
-	$("#menuBox").mouseleave(function() {
+//	$("#menuBox").mouseleave(function() {
+//
+//		$(this).fadeOut("fast", function() {
+//			
+//		});
+//		// $(this).hide();
+//	});
+	
+	 $('.dropdown-button').dropdown({
+		 hover: true,
+		 belowOrigin: true,
+		 constrainWidth: false,
+		 stopPropagation: false
+	 });
+	 
 
-		$(this).fadeOut("fast", function() {
-			
-		});
-		// $(this).hide();
-	});
-	
-	
 });
 
 /**
@@ -115,8 +122,21 @@ function initMap(selected) {
     
 }
 
+/**
+ * Adiciona o efeito hover no menu header quando está no dropdown.
+ * @param id id da tag A.
+ */
+function addDropDownHoverEffect(id){
+	$('#'+id).addClass('hoverText');
+}
 
-
+/**
+ * Remove o efeito hover no header quando sai do dropdown.
+ * @param id id da tag A.
+ */
+function removeDropDownHoverEffect(id){
+	$('#'+id).removeClass('hoverText');
+}
 
 function openMap(){
 	alert("teste");

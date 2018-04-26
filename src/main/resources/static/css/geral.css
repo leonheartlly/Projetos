@@ -52,6 +52,11 @@ a {
 .fr {
 	float: right;
 }
+
+.w90p{
+	width: 90% !important;
+}
+
 /*******************************/
 /*		MARGIN      			*/
 /*******************************/
@@ -59,11 +64,15 @@ a {
 	margin: 0px;
 }
 
-
+.ml5p{
+	margin-left: 5%;
+}
 
 .ml15 {
 	margin-left: 15px;
 }
+
+
 
 .ml80 {
 	margin-left: 80px;

@@ -31,6 +31,7 @@
 		<div class="card-panel grey lighten-5 z-depth-1">
 			<div class="row valign-wrapper">
 				<div class="col l12 xl12">
+				
 
 					<!-- UPPER MENU -->
 					<div class="ar-upper-bar ar-upper-text">
@@ -88,18 +89,38 @@
 
 					<!-- MENU -->
 					<div class="col l8 xl9 fs25">
-						<a class="mr15 ml15" onmouseover="teste2('serviceMenu')" th:text="#{messages.header.menu.servicos}"></a> 
-						<a class="mr15 ml15" onmouseover="teste2('prefectureMenu')" th:text="#{messages.header.menu.prefeitura}"></a> 
-						<a class="mr15 ml15" th:href="@{/referencias/noticias}" th:text="#{messages.header.menu.noticias}"></a> 
-						<a class="mr15 ml15" th:text="#{messages.header.menu.transparencia}"></a>
+						<div class="col xl2 l2">
+							<a class=" dropdown-button testando" id="servicosDropdowna" data-activates="servicosDrowpdown"  th:text="#{messages.header.menu.servicos}"></a> 
+							<ul id="servicosDrowpdown" class="dropdown-content" onmouseover="addDropDownHoverEffect('servicosDropdowna')" onmouseleave="removeDropDownHoverEffect('servicosDropdowna')">
+							    <li><a class="green-text text-darken-1 disabled unclick" disabled="true" th:text="#{messages.header.menu.servicos}"></a></li>
+							     <li class="divider ml5p w90p"></li>
+							    <li><a href="#!" th:text="#{messages.header.submenu.iptu}"></a></li>
+							    <li><a href="#!" th:text="#{messages.header.submenu.certidao}"></a></li>
+							</ul> 
+						</div>
+						<div class="col xl2 l3">
+							<a class="dropdown-button testando" id="prefeituraDropdowna" data-activates="prefeituraDropdown"  th:text="#{messages.header.menu.prefeitura}"></a> 
+							<ul id="prefeituraDropdown" class="dropdown-content col xl2 l3" onmouseover="addDropDownHoverEffect('prefeituraDropdowna')" onmouseleave="removeDropDownHoverEffect('prefeituraDropdowna')">
+							    <li><a class="green-text text-darken-1 disabled unclick" th:text="#{messages.header.submenu.prefeitura}"></a></li>
+							     <li class="divider"></li>
+							    <li><a href="#!" th:text="#{messages.header.menu.prefeitura}"></a></li>
+							    <li><a href="#!" th:text="#{messages.header.menu.secreataria}"></a></li>
+							</ul>
+						</div>
+						<a class=" testando col xl2 l2" th:href="@{/referencias/noticias}" th:text="#{messages.header.menu.noticias}"></a> 
+						<a class=" testando col xl2 l2" th:text="#{messages.header.menu.transparencia}"></a>
 					</div>
 				</div>
 			</div>
 		</nav>
 	</div>
+	
+        
+	
 
 	<!-- SUB MENU -->
-	<div id="menuBox" class="row col l12 xl12 ar-box ar-box-display uper-index sub-menu-conf">
+	<!-- <div id="menuBox" class="row col l12 xl12 ar-box ar-box-display uper-index sub-menu-conf">
+		
 		<div class="col l12 xl12">
 			<div class="col s12 teste">
 			
@@ -129,7 +150,7 @@
 				
 			</div>	
 		</div>
-	</div>
+	</div> -->
 	
 			
 		
