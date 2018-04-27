@@ -13,7 +13,8 @@ public enum LegislacaoEnum {
 	ARC("ARRECADADAS", 9),
 	PCT("PRESTACAO DE CONTAS", 10),
 	RREO("REL. RESUMIDO EXEC. ORÇAMENTÁRIA - RREO", 11),
-	RGF("REL. GESTÃO FISCAL - RGF", 12);
+	RGF("REL. GESTÃO FISCAL - RGF", 12),
+	DEFAULT("Default", 13);
 	
 	/**
 	 * Descrição da legislação.
@@ -56,7 +57,7 @@ public enum LegislacaoEnum {
 	 * @param Value código da legislação.
 	 * @return enum.
 	 */
-	public LegislacaoEnum findGraph(int graphValue) {
+	public LegislacaoEnum findLegislacao(int graphValue) {
         switch (graphValue) {
             case 1:
                 return PPA;

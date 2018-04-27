@@ -1,11 +1,13 @@
 package br.com.prefeitura.web.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.prefeitura.web.model.Fornecedor;
+import br.com.prefeitura.web.model.Legislacao;
 import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.service.AnexoService;
 import br.com.prefeitura.web.service.ContratoService;
+import br.com.prefeitura.web.service.LegislacaoService;
 import br.com.prefeitura.web.service.LicitacaoService;
 import br.com.prefeitura.web.service.ModalidadeService;
 import br.com.prefeitura.web.service.OrgaoService;
@@ -40,6 +44,9 @@ public class EditaisController {
 	
 	@Autowired
 	private ContratoService contratoService;
+	
+	@Autowired
+	private LegislacaoService legislacaoService;
 	
 	private static final Logger LOGGER = 
 		      Logger.getLogger(EditaisController.class); 
@@ -140,5 +147,48 @@ public class EditaisController {
 		return  modelAndView;
 		
 	}
+
+	/**
+	 * Busca geral do menu legislação.
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/legislacao", method = RequestMethod.GET)
+	public ModelAndView legislacao(@ModelAttribute Legislacao legislacao, Locale locale, Model model) {
+
+		LOGGER.info("[LOG-INFO] "+ EditaisController.class.getSimpleName()+" - LEGISLAÇÃO.");
+		
+		if(!ObjectUtils.isEmpty(legislacao)){
+//			List<Legislacao> legislacoes = this.legislacaoService.findLegislacaoByFormFilters(legislacao);
+//			model.addAttribute("legislacao", legislacoes);
+			
+		}
+		
+		model.addAttribute("orgaos", orgaoService.consultarOrgaos());
+//		model.addAttribute("noticias", noticias);
+//		model.addAttribute("oldNews", isOldNews);
+//		model.addAttribute("locale", locale);
+		
+		return new ModelAndView("legislacao");
+	}
 	
+	/**
+	 * Busca geral do menu legislação.
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/pesquisarLegislacao", method = RequestMethod.POST)
+	public ModelAndView pesquisarLegislacao(@ModelAttribute Legislacao legislacao, Locale locale, Model model) {
+
+		LOGGER.info("[LOG-INFO] "+ EditaisController.class.getSimpleName()+" - LEGISLAÇÃO.");
+		
+		List<Legislacao> legislacoes = this.legislacaoService.findLegislacaoByFormFilters(legislacao);
+		model.addAttribute("legislacao", legislacoes);
+		
+		model.addAttribute("orgaos", orgaoService.consultarOrgaos());
+		
+		return new ModelAndView("legislacao");
+	}
 }

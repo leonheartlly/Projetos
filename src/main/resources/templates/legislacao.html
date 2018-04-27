@@ -3,25 +3,81 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="@{~/base/layout}">
 <head>
-<title th:text="#{messages.licitacao}"></title>
+<title th:text="#{messages.legislacao.title}"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="author" content="Prefeitura" />
 <link rel="stylesheet" th:href="@{/css/home/home.css}" />
 <link rel="stylesheet" th:href="@{/css/licitacao/licitacao.css}" />
+<link rel="stylesheet" th:href="@{/css/legislacao/legislacao.css}" />
 <script type="text/javascript" th:src="@{/js/licitacao/licitacao.js}"></script>
+<script type="text/javascript" th:src="@{/js/legislacao/legislacao.js}"></script>
 <script type="text/javascript" th:src="@{/js/CSVGenerator.js}"></script>
 </head>
 <body>
 	<section layout:fragment="content">
 
-		<div class="background">
-
+		<div class="default-background">
+		
 			<div class="row">
+				<div>
+				    <div class="card col xl4 l4">
+					    <div class="card-image waves-effect waves-block waves-light">
+					    	  <img class="activator responsive-img" src="/img/ara.jpeg"/>
+					    </div>
+					    <div class="card-content">
+					    	<span class="card-title activator center-align" th:text="#{messages.legislacao.leis.orcamentarias}"></span>
+					    </div>
+					    <div class="card-reveal">
+							<span class="card-title green-text" th:inline="text">[[#{messages.legislacao.leis.orcamentarias}]]<i class="material-icons right close deep-orange-text text-accent-3">close</i></span>
+							<ul class="collection with-header">
+						    	<li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.plurianual}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+							    <li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.diretrizes}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+							    <li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.orcamentaria}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+							    <li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.qdd}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+							    <li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.execucao}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+						    </ul>
+						 </div>
+					  </div>
+					  
+					  <div class="card col xl4 l4">
+						   <div class="card-image waves-effect waves-block waves-light">
+						   		<img class="activator responsive-img" src="/img/ara.jpeg"/>
+						   </div>
+						   <div class="card-content">
+						      <span class="card-title activator center-align" th:text="#{messages.legislacao.balancetes}"></span>
+						   </div>
+						   <div class="card-reveal">
+							    <span class="card-title green-text" th:inline="text">[[#{messages.legislacao.balancetes}]]<i class="material-icons right close deep-orange-text text-accent-3">close</i></span>
+						      	<ul class="collection with-header">
+								    <li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.balancetes.financeiros}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+								    <li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.balancetes.patrimonial}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+								    <li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.balancetes.receitas}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+							    </ul>
+						   </div>
+					  </div>
+					  
+					  <div class="card col xl4 l4">
+						  <div class="card-image waves-effect waves-block waves-light">
+						  		<img class="activator responsive-img" src="/img/ara.jpeg"/>
+						  </div>
+						  <div class="card-content">
+						  		<span class="card-title activator center-align" th:text="#{messages.legislacao.relatorios}"></span>
+						  </div>
+					      <div class="card-reveal">
+					      	<span class="card-title green-text" th:inline="text">[[#{messages.legislacao.relatorios}]]<i class="material-icons right close deep-orange-text text-accent-3">close</i></span>
+						    <ul class="collection with-header">
+								<li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.relatorios.contas}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+								<li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.relatorios.rreo}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+								<li class="collection-item"><div th:inline="text" class="link-conf">[[#{messages.legislacao.relatorios.rgf}]]<a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a></div></li>
+							</ul>
+					      </div>
+					  </div>
+			    </div>
 			
 				<form class="col s12" 
 						id="licitacao-form" 
-						th:action="@{../editais/pesquisaLicitacao}" 
-						th:object="${licitacao}" 
+						th:action="@{../editais/pesquisarLegislacao}" 
+						th:object="${legislacao}" 
 						method="post">
 					
 					
@@ -29,7 +85,7 @@
 
 						<div class="input-field col s6">
 						
-							<select th:name="orgaoVO">
+							<select th:name="idOrgao">
 								<option th:each="orgao : ${orgaos}" th:value="${orgao.id}" th:text="${orgao.orgao}"></option>
 							</select> 
 							<label th:text="#{messages.licitacao.orgaos}"></label>
@@ -38,59 +94,42 @@
 
 						<div class=" input-field col s3">
 							<label th:text="#{messages.licitacao.dots.data.inicial}"></label> 
-							<input type="text" class="datepicker" id="data-inicial" th:name="dataInicialVO"/>
+							<input type="text" class="datepicker" id="data-inicial" th:name="dataInicial"/>
 						</div>
 
 						<div class="input-field col s3">
 							<label th:text="#{messages.licitacao.dots.data.final}" ></label> 
-							<input type="text" class="datepicker" id="data-final" th:name="dataFinalVO" />
+							<input type="text" class="datepicker" id="data-final" th:name="dataFinal" />
 						</div>
 
-					</div>
-
-					<div class="row">
-
-						<div class="input-field col s2">
-							<input placeholder="CNPJ" id="cnpj-licitacao" form="licitacao-form" type="text" class="validate"  th:name="cnpjVO" /> 
-							<label for="cnpj-licitacao" th:text="#{messages.licitacao.cpf.cnpj}"></label>
-						</div>
-
-						<div class="input-field col s4">
-							<input placeholder="Razão Social" id="fornecedor-licitacao" th:name="fornecedorVO" type="text" class="validate" /> 
-							<label for="fornecedor-licitacao" th:text="#{messages.licitacao.fornecedor}"></label>
-						</div>
-
-						<div class="input-field col s6">
-							<select id="modalidade-id" th:name="modalidadeVO">
-								<option th:each="modalidade : ${modalidades}" th:value="${modalidade.id}" th:text="${modalidade.modalidade}"></option>
-							</select> <label for="modalidade" th:text="#{messages.licitacao.dot.modalidade}"></label>
-						</div>
 					</div>
 
 					<div class="row">
 						<div class="input-field col s12">
-							<input type="text" form="licitacao-form" placeholder="Digite parte do objeto da licitação desejada" th:name="objeto" maxlength="5000" id="objeto-licitacao" class="validate" /> 
-								<label for="objeto-licitacao" th:text="#{messages.licitacao.objeto.dots}"></label>
+							<input type="text" form="licitacao-form"  th:name="nome" maxlength="5000" id="objeto-licitacao" class="validate" /> 
+								<label for="objeto-licitacao" th:text="#{messages.legislacao.pesquisa.nome}"></label>
 								
 						</div>
 					</div>
 					
+					<input class="hide" value="1" th:name="tipo"></input>
+					
 					<div class="row">
-						<button class="waves-effect waves-light btn right green darken-3 z-depth-3" type="submit">
-							<i class="material-icons left">search</i>PESQUISAR
+						<button class="waves-effect waves-light btn right green darken-3 z-depth-3 btn-floating" type="submit">
+							<i class="material-icons left">search</i>
 						</button>
 						
-						<a class="waves-effect waves-green btn right transparent green-text text-darken-3 z-depth-3" onclick="refresh()">
-							<i class="material-icons left">refresh</i>LIMPAR
+						<a class="waves-effect waves-green btn right transparent green-text text-darken-3 z-depth-3 btn-floating" onclick="refresh()">
+							<i class="material-icons left green-text">refresh</i>
 						</a>
+						
 					</div>
 					
 				</form>
-				
-			</div>
-
+		
+	</div>
 		</div>
-<div >
+	<div class="hide" >
 		<table class="highlight bordered table-licitacoes fileTable">
 			<thead>
 				<tr>

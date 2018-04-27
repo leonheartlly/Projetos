@@ -106,7 +106,7 @@ public class JDBCRepositoryConfig {
 	 * @param whereQuery
 	 *            query dinamica.
 	 */
-	private void checkQuery(StringBuilder whereQuery) {
+	protected void checkQuery(StringBuilder whereQuery) {
 		if (whereQuery.length() > 5) {
 			whereQuery.append(AND);
 		}

@@ -26,11 +26,8 @@ public class LegislacaoEntity implements Serializable {/**
 	@Column(name="nome")
 	private String nome;
 	
-	@Column(name="exercicio")
-	private Integer exercicio;
-	
-	@Column(name="mes")
-	private Integer mes;
+	@Column(name="data")
+	private String data;
 	
 	@Column(name="resumo")
 	private String resumo;

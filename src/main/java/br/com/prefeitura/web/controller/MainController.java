@@ -149,5 +149,17 @@ public class MainController {
 
 		return "error";
 	}
+	
+	/***
+	 * MOSTRA UM PÁGINA COM A MENSAGEM DE ACESSO NEGADO QUANDO O USUÁRIO NÃO
+	 * TIVER PERMISSÃO DE ACESSAR UMA DETERMINADA FUNÇÃO DO SISTEMA
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/legislacao", method = RequestMethod.GET)
+	public String legislacao() {
+
+		return "legislacao";
+	}
 
 }

@@ -16,7 +16,7 @@ import br.com.prefeitura.web.model.Noticia;
 import br.com.prefeitura.web.service.NoticiaService;
 
 @Controller
-@RequestMapping("/referencias")
+@RequestMapping("/menu")
 public class NoticiaController {
 	
 

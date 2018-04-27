@@ -7,7 +7,7 @@
 	
 	<title th:text="#{messages.header.title}"></title>
 	
-	<link rel="icon" href="/img/brasaoleft.png"/>
+	<link rel="icon" th:href="@{/img/brasaoleft.png}"/>
 	<link rel="stylesheet" th:href="@{/css/materialize.min.css}" />
 	<link rel="stylesheet" th:href="@{/css/geral.css}" />
 	<link rel="stylesheet" th:href="@{/css/style.css}" />
@@ -89,7 +89,7 @@
 
 					<!-- MENU -->
 					<div class="col l8 xl9 fs25">
-						<div class="col xl2 l2">
+						<div class="col xl2 l2 center-align">
 							<a class=" dropdown-button testando" id="servicosDropdowna" data-activates="servicosDrowpdown"  th:text="#{messages.header.menu.servicos}"></a> 
 							<ul id="servicosDrowpdown" class="dropdown-content" onmouseover="addDropDownHoverEffect('servicosDropdowna')" onmouseleave="removeDropDownHoverEffect('servicosDropdowna')">
 							    <li><a class="green-text text-darken-1 disabled unclick" disabled="true" th:text="#{messages.header.menu.servicos}"></a></li>
@@ -98,7 +98,7 @@
 							    <li><a href="#!" th:text="#{messages.header.submenu.certidao}"></a></li>
 							</ul> 
 						</div>
-						<div class="col xl2 l3">
+						<div class="col xl2 l3 center-align">
 							<a class="dropdown-button testando" id="prefeituraDropdowna" data-activates="prefeituraDropdown"  th:text="#{messages.header.menu.prefeitura}"></a> 
 							<ul id="prefeituraDropdown" class="dropdown-content col xl2 l3" onmouseover="addDropDownHoverEffect('prefeituraDropdowna')" onmouseleave="removeDropDownHoverEffect('prefeituraDropdowna')">
 							    <li><a class="green-text text-darken-1 disabled unclick" th:text="#{messages.header.submenu.prefeitura}"></a></li>
@@ -107,8 +107,8 @@
 							    <li><a href="#!" th:text="#{messages.header.menu.secreataria}"></a></li>
 							</ul>
 						</div>
-						<a class=" testando col xl2 l2" th:href="@{/referencias/noticias}" th:text="#{messages.header.menu.noticias}"></a> 
-						<a class=" testando col xl2 l2" th:text="#{messages.header.menu.transparencia}"></a>
+						<a class=" testando col xl2 l2 center-align" th:href="@{/menu/noticias}" th:text="#{messages.header.menu.noticias}"></a> 
+						<a class=" testando col xl2 l2 center-align" th:text="#{messages.header.menu.transparencia}"></a>
 					</div>
 				</div>
 			</div>

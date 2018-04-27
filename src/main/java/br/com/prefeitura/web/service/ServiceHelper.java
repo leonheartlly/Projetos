@@ -16,6 +16,7 @@ import br.com.prefeitura.web.domain.entity.ContratoEntity;
 import br.com.prefeitura.web.domain.entity.FornecedorEntity;
 import br.com.prefeitura.web.domain.entity.GraphEntity;
 import br.com.prefeitura.web.domain.entity.ImagemNoticiaEntity;
+import br.com.prefeitura.web.domain.entity.LegislacaoEntity;
 import br.com.prefeitura.web.domain.entity.LicitacaoEntity;
 import br.com.prefeitura.web.domain.entity.NoticiaEntity;
 import br.com.prefeitura.web.domain.entity.OrgaoEntity;
@@ -26,6 +27,7 @@ import br.com.prefeitura.web.model.Contrato;
 import br.com.prefeitura.web.model.Fornecedor;
 import br.com.prefeitura.web.model.Grafico;
 import br.com.prefeitura.web.model.ImagemNoticia;
+import br.com.prefeitura.web.model.Legislacao;
 import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.model.Modalidade;
 import br.com.prefeitura.web.model.Noticia;
@@ -138,6 +140,27 @@ public class ServiceHelper {
 		}).collect(Collectors.toList());
 		
 		return noticias;
+	}
+	
+	/**
+	 * Converte um ou mais objetos do tipo legislação entity para legislacao model.
+	 * @param entities lista de entidades.
+	 * @return lista de legislacoes.
+	 */
+	public List<Legislacao> convertLegislacaoObject(List<LegislacaoEntity> entities) {
+		List<Legislacao> legislacoes = entities.stream().map(entity -> {
+			return Legislacao.legislacaoBuilder()
+			 	.id(entity.getId())
+			 	.nome(entity.getNome())
+			 	.data(entity.getData())
+			 	.resumo(entity.getResumo())
+			 	.orgao(findOrgao(entity.getOrgao()))
+			 	.arquivo(entity.getArquivo())
+			 	.tipo(entity.getTipo())
+			 	.build();
+		}).collect(Collectors.toList());
+		
+		return legislacoes;
 	}
 	
 	/**
