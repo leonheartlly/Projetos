@@ -54,4 +54,25 @@ public class LegislacaoService extends ServiceHelper{
 		 }
 		 return legislacoes;
 	 }
+	 
+	 /**
+		 * Consulta usuarios cadastrados.
+		 * @return
+		 * @throws Exception 
+		 */
+		 public List<Legislacao> findAll() {
+			 
+			 List<Legislacao> legislacoes = new ArrayList<>();
+			 
+			 
+			 try{
+				List<LegislacaoEntity> legislacoesEntity = this.legislacaoRepository.findAll();
+				
+				 legislacoes = convertLegislacaoObject(legislacoesEntity);
+			 }catch(Exception e){
+				 LOGGER.error("[LOG-ERROR] " + LegislacaoService.class.getSimpleName()
+							+ " ERRO INESPERADO AO EFETUAR A CONSULTA. " + e);
+			 }
+			 return legislacoes;
+		 }
 }

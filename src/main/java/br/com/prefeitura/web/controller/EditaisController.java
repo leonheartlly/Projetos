@@ -1,21 +1,32 @@
 package br.com.prefeitura.web.controller;
 
+import java.awt.PageAttributes.MediaType;
 import java.util.List;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import br.com.prefeitura.web.model.Fornecedor;
+import br.com.prefeitura.web.model.Grafico;
 import br.com.prefeitura.web.model.Legislacao;
 import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.service.AnexoService;
@@ -24,6 +35,8 @@ import br.com.prefeitura.web.service.LegislacaoService;
 import br.com.prefeitura.web.service.LicitacaoService;
 import br.com.prefeitura.web.service.ModalidadeService;
 import br.com.prefeitura.web.service.OrgaoService;
+import br.com.prefeitura.web.vo.BarChartVO;
+import br.com.prefeitura.web.vo.Teste;
 
 @Controller
 @RequestMapping("/editais")
@@ -166,9 +179,6 @@ public class EditaisController {
 		}
 		
 		model.addAttribute("orgaos", orgaoService.consultarOrgaos());
-//		model.addAttribute("noticias", noticias);
-//		model.addAttribute("oldNews", isOldNews);
-//		model.addAttribute("locale", locale);
 		
 		return new ModelAndView("legislacao");
 	}
@@ -178,17 +188,25 @@ public class EditaisController {
 	 * @param locale
 	 * @param model
 	 * @return
+	 * @throws JsonProcessingException 
 	 */
-	@RequestMapping(value = "/pesquisarLegislacao", method = RequestMethod.POST)
-	public ModelAndView pesquisarLegislacao(@ModelAttribute Legislacao legislacao, Locale locale, Model model) {
+	@RequestMapping(value = "/filtrarLegislacao", method=RequestMethod.POST)
+	public String pesquisarPorFiltro(@RequestBody Teste teste, Locale locale, Model model) throws JsonProcessingException {
 
 		LOGGER.info("[LOG-INFO] "+ EditaisController.class.getSimpleName()+" - LEGISLAÇÃO.");
 		
-		List<Legislacao> legislacoes = this.legislacaoService.findLegislacaoByFormFilters(legislacao);
-		model.addAttribute("legislacao", legislacoes);
+		List<Legislacao> legislacoes = this.legislacaoService.findAll();
+		model.addAttribute("legislacoes", legislacoes);
 		
-		model.addAttribute("orgaos", orgaoService.consultarOrgaos());
+//		ObjectMapper objectMapper = new ObjectMapper();
 		
-		return new ModelAndView("legislacao");
+		return "legislacao :: results";
 	}
+	
+//	@RequestMapping(value = "/guests", method = RequestMethod.GET)
+//	public String showGuestList(Model model) {
+//	    model.addAttribute("guests", hotelService.getGuestsList());
+//
+//	    return "results :: resultsList";
+//	}
 }

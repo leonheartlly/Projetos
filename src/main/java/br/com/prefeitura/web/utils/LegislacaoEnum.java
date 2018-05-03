@@ -84,7 +84,7 @@ public enum LegislacaoEnum {
             case 12:
             	return RGF;
             default:
-                return null;
+                return DEFAULT;
         }
     }
 }

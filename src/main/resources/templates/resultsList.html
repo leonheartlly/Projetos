@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	>
+<head>
+<title th:text="#{messages.graficos.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Prefeitura" />
+<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<link rel="stylesheet" th:href="@{/css/licitacao/licitacao.css}" />
+<link rel="stylesheet" th:href="@{/css/legislacao/legislacao.css}" />
+<script type="text/javascript" th:src="@{/js/licitacao/licitacao.js}"></script>
+<script type="text/javascript" th:src="@{/js/legislacao/legislacao.js}"></script>
+<script type="text/javascript" th:src="@{/js/CSVGenerator.js}"></script>
+</head>
+<body>
+
+<th:block class="mt20" th:fragment="resultsList"  >
+		<div class="divider"></div>
+		<table class="highlight bordered table-licitacoes fileTable">
+			<thead class="white">
+				<tr>
+					<th class="th center-align black-text" th:text="#{messages.legislacao.result.nome}"></th>
+					<th class="th center-align black-text" th:text="#{messages.legislacao.result.exercicio}"></th>
+					<th class="th center-align black-text" th:text="#{messages.legislacao.result.mes}"></th>
+					<th class="th center-align black-text" th:text="#{messages.legislacao.result.resumo}"></th>
+					<th class="th center-align black-text" th:text="#{messages.legislacao.result.orgao}"></th>
+					<th class="th center-align black-text" th:text="#{messages.legislacao.result.arquivo}"></th>
+				</tr>
+			</thead>
+
+			<tbody id="detailBody">
+				 <tr class="tr-conf tr white"  th:each="legislacao : ${legislacoes}">
+					<td th:text="${legislacao.nome}" class="td center-align"></td>
+					<td th:text="${legislacao.exercicio}" class="td center-align"></td>
+					<td th:text="${legislacao.mes}" class="td center-align"></td>
+					<td th:text="${legislacao.resumo}" class="td center-align"></td>
+					<td th:text="${legislacao.orgao.orgao}" class="td center-align"></td>
+					<td class="td center-align"> <i class="small material-icons green-text text-darken-4 pointer download">cloud_download</i></td>
+				</tr>
+				 <!-- <tr class="tr-conf tr white" th:each="legislacao : ${legislacoes}">
+					<td th:text="${legislacao.nome}" class="td center-align"></td>
+					<td th:text="${legislacao.exercicio}" class="td center-align"></td>
+					<td th:text="${legislacao.mes}" class="td center-align"></td>
+					<td th:text="${legislacao.resumo}" class="td center-align"></td>
+					<td th:text="${legislacao.orgao.orgao}" class="td center-align"></td>
+					<td class="td center-align"> <i class="small material-icons green-text text-darken-4 pointer download">cloud_download</i></td>
+				</tr> -->
+			</tbody>
+		</table>
+	</th:block>>
+</body>
+</html>

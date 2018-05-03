@@ -3,6 +3,15 @@
 	margin-top: 2px !important;
 }
 
+.breadcrumb-line {
+	line-height: 35px;
+	height: 35px;
+}
+
+.page-align {
+	margin-left: 20px;
+}
+
 .list-bg {
 	background-color: #F6F4F1 !important;
 }
@@ -25,6 +34,10 @@
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	background-color: #fafafa;
+}
+
+.card:HOVER .card-content span {
+	color: #42a5f5 !important;
 }
 
 .card-reveal {
@@ -52,9 +65,51 @@
 	color: #42a5f5 !important;
 }
 
+.second-effect .mask {
+	opacity: 0;
+	overflow: visible;
+	border: 0px solid rgba(0, 0, 0, 0.7);
+	box-sizing: border-box;
+	transition: all 0.4s ease-in-out;
+}
 
+.second-effect a.info {
+	position: relative;
+	top: -10px;
+	opacity: 0;
+	transform: scale(0, 0);
+	transition: transform 0.2s 0.1s ease-in, opacity 0.1s ease-in-out;
+}
 
+.second-effect:hover .mask {
+	opacity: 1;
+	border: 230px solid rgba(0, 0, 0, 0.7);
+}
 
+.second-effect:hover a.info {
+	opacity: 1;
+	transform: scale(1, 1);
+	transition-delay: 0.3s;
+}
 
+.view a.info {
+	background: url('/img/icons/search.png') no-repeat;
+	display: inline-block;
+	text-decoration: none;
+	padding: 0;
+	text-indent: -9999px;
+	width: 30px;
+	height: 30px;
+}
 
+.hidden {
+	display: none;
+}
 
+.download {
+	transition: all .2s ease-in-out;
+}
+
+.download:HOVER {
+	transform: scale(1.8);
+}

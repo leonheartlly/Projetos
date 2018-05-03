@@ -8,17 +8,8 @@
 
 
 body {
-	background-color: #F6F4F1 !important;
+	background-color: #fafafa !important;
 	overflow-x: hidden;
-}
-
-
-.ablue-text {
-	color: #86A8A8 !important;
-}
-
-.ablue-text.lighten-4 {
-	color: #B3C8C7 !important;
 }
 
 hr {
@@ -47,7 +38,6 @@ hr {
 
 .brand-logo {
 	color: #006d38 !important;
-	font-family: 'Abel', sans-serif;
 	text-transform: uppercase;
 	left: 50px;
 }

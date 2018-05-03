@@ -53,8 +53,12 @@ a {
 	float: right;
 }
 
-.w90p{
+.w90p {
 	width: 90% !important;
+}
+
+.pointer {
+	cursor: pointer;
 }
 
 /*******************************/
@@ -69,7 +73,7 @@ a {
 }
 
 .ml15 {
-	margin-left: 15px;
+	margin-left: 15px !important;
 }
 
 
