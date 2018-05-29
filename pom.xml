@@ -48,10 +48,17 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- TOMCAT EMBED -->
+		<!-- TOMCAT EMBED PARA USAR LOCAL DESCOMENTAR
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>-->
+		
+		<!-- PARA TOMCAT EXTERNO, PARA USAR LOCAL COMENTAR -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
 
@@ -85,10 +92,10 @@
 		</dependency>
 
 
-<dependency>
+		<dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-</dependency>
+		</dependency>
 
 
 		<dependency>
@@ -137,11 +144,13 @@
 				</configuration>
 			</plugin>
 			<!-- Plugin do Flyway -->
+			
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>5.0.2</version>
 
+				<!-- 
 				<configuration>
 					<driver>com.mysql.jdbc.Driver</driver>
 					<url>jdbc:mysql://localhost:3306/prefeitura</url>
@@ -149,6 +158,20 @@
 					<password>159753</password>
 					<schemas>
 						<schema>prefeitura</schema>
+					</schemas>
+					<locations>
+						<location>classpath:db.migration</location>
+					</locations>
+					<initOnMigrate>true</initOnMigrate>
+				</configuration> 
+				-->
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
+					<url>jdbc:mysql://mysql.araguacu.to.gov.br/araguacu</url>
+					<user>araguacu_add2</user>
+					<password>Macario123</password>
+					<schemas>
+						<schema>araguacu</schema>
 					</schemas>
 					<locations>
 						<location>classpath:db.migration</location>

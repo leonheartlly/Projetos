@@ -75,6 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			
 		/* AQUI ESTOU INFORMANDO QUE QUALQUER REQUEST TEM ACESSO AO DIRETÓRIO src/main/resources 
 		 * */
+//		http.authorizeRequests().antMatchers("/classes/**").permitAll().anyRequest().permitAll();
 		http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().permitAll();
 			
 	}

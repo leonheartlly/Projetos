@@ -3,22 +3,16 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="base/layout">
 <head>
-<title th:text="#{messages.home}"></title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="author" content="Prefeitura" />
-<link rel="stylesheet" th:href="@{/css/home/home.css}" />
-<link th:href="@{css/effects.css}" rel="stylesheet"/>
-<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/home/home.js}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYMJk65pzbscAc6L-hLlcGQyVMv1jJUY0&amp;callback=initMap" async="defer"></script>
-<script src="https://www.google.com/recaptcha/api.js" async="defer"></script>
-
-
-
-
-<script th:src="@{/js/moment.min.js}"></script>
-
-
+	<title th:text="#{messages.home}"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="author" content="Prefeitura" />
+	<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+	<link th:href="@{css/effects.css}" rel="stylesheet"/>
+	<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/home/home.js}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYMJk65pzbscAc6L-hLlcGQyVMv1jJUY0&amp;callback=initMap" async="defer"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async="defer"></script>
+	<script th:src="@{/js/moment.min.js}"></script>
 </head>
 <body>
 	<section layout:fragment="content">
@@ -26,12 +20,11 @@
 		<!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->
 		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>
-			<section
-				class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
+			
+			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
 				
 
 				<div class="row bg-img mb0">
-
 
 					<div class="col s12 m12 l12">
 						<div class="big-blank-hole"></div>
@@ -137,7 +130,7 @@
 												<span class="pl12 news-sub-theme" th:text="${noticia.categoria.categoria}"></span>
 												<h5 class="link-text mt5" th:text="${noticia.titulo}"></h5>
 											</div> 
-											<img class="col s6 m6 news-link-conf" src="/img/i3.jpg" />
+											<img class="col s6 m6 news-link-conf" th:src="@{/img/i3.jpg}" />
 										</a>
 									 </div>
 	
@@ -145,7 +138,7 @@
 										<a href="#" onmouseover="addTagEffect($(this))"
 											onmouseout="removeTagEffect($(this))"
 											class="valign-wrapper left-align news-link-conf"> 
-											<img class="col s6 m6 news-link-conf" src="/img/i4.jpg" />
+											<img class="col s6 m6 news-link-conf" th:src="@{/img/i4.jpg}" />
 											<div class="col s6 m6 p20">
 												<span class="news-sub-date" th:text="${noticia.dataNoticia}"></span>
 												<span class="pl12 news-sub-theme" th:text="${noticia.categoria.categoria}"></span>
@@ -308,37 +301,37 @@
 						 			return [[${calendario}]];
 						 		}
 						 	</script>
-						    	<div>
-								    <div class="card-image pointer waves-effect waves-block waves-light hover ehover4" >
-								    	<img  class="img-responsive" src="img/girl.jpg"/>
-								      <div class="overlay">
-						                    <h2 th:text="${cal.titulo}"></h2>
-						                    <button class="info activator mt10 day" th:inline="text">[[${cal.dia}]]<span class="month" th:Utext="'&lt;br&#47;&gt;' + ${cal.mes}"></span></button>
-						                </div>
-								    	<a th:attr="fakeId=${cal.id}" onclick="viewPrev($(this).attr('fakeId'), getData())" class="prvBtn left" id="calPrevBtn"><i class="medium material-icons">arrow_back</i></a>
-							    		<a th:attr="fakeId=${cal.id}" onclick="viewNext($(this).attr('fakeId'), getData())" class="nxtBtn" id="calNextBtn"><i class="medium material-icons">arrow_forward</i></a>
-								    </div>
+						    <div>
+							    <div class="card-image pointer waves-effect waves-block waves-light hover ehover4" >
+							    	<img  class="img-responsive" th:src="@{/img/girl.jpg}"/>
+							      <div class="overlay">
+					                    <h2 th:text="${cal.titulo}"></h2>
+					                    <button class="info activator mt10 day" th:inline="text">[[${cal.dia}]]<span class="month" th:Utext="'&lt;br&#47;&gt;' + ${cal.mes}"></span></button>
+					                </div>
+							    	<a th:attr="fakeId=${cal.id}" onclick="viewPrev($(this).attr('fakeId'), getData())" class="prvBtn left" id="calPrevBtn"><i class="medium material-icons">arrow_back</i></a>
+						    		<a th:attr="fakeId=${cal.id}" onclick="viewNext($(this).attr('fakeId'), getData())" class="nxtBtn" id="calNextBtn"><i class="medium material-icons">arrow_forward</i></a>
 							    </div>
-							    <div class="card-reveal">
-								    <span class="card-title orange-text text-darken-2" th:inline="text">[[${cal.titulo}]]<i class="orange-text material-icons right">close</i></span>
-								    <span class="green-text text-darken-1 options mt10" th:text="${cal.dataInicio} + ' a ' + ${cal.dataFim}"></span>
-								    <span class="card-title green-text text-darken-1 options" th:text="'Horário: ' +  ${cal.horarioInicio} + ' às ' + ${cal.horarioFim}"></span>
-								    <p th:text="${cal.descricao}" class="grey-text text-darken-1 pt15"></p><br/>
-								    <div class="row mb0">
-									    <span class="grey-text options col s4 m2" th:text="#{messages.home.calendario.endereco}"></span><span class="grey-text text-darken-1 col s8 m10" th:text="${cal.rua} +', ' + ${cal.numero}"></span>
-									</div>
-									<div class="row">
-								    	<span class="grey-text options col s4 m2" th:text="#{messages.home.calendario.bairro}"></span><span class="grey-text text-darken-1 col s8 m10 pl0" th:text="${cal.bairro}"></span>
-									</div>
-							    </div>
+							</div>
+						    <div class="card-reveal">
+							    <span class="card-title orange-text text-darken-2" th:inline="text">[[${cal.titulo}]]<i class="orange-text material-icons right">close</i></span>
+							    <span class="green-text text-darken-1 options mt10" th:text="${cal.dataInicio} + ' a ' + ${cal.dataFim}"></span>
+							    <span class="card-title green-text text-darken-1 options" th:text="'Horário: ' +  ${cal.horarioInicio} + ' às ' + ${cal.horarioFim}"></span>
+							    <p th:text="${cal.descricao}" class="grey-text text-darken-1 pt15"></p><br/>
+							    <div class="row mb0">
+								    <span class="grey-text options col s4 m2" th:text="#{messages.home.calendario.endereco}"></span><span class="grey-text text-darken-1 col s8 m10" th:text="${cal.rua} +', ' + ${cal.numero}"></span>
+								</div>
+								<div class="row">
+							    	<span class="grey-text options col s4 m2" th:text="#{messages.home.calendario.bairro}"></span><span class="grey-text text-darken-1 col s8 m10 pl0" th:text="${cal.bairro}"></span>
+								</div>
+						    </div>
 						  </div>
 						
 						
 					</div>
 				</div>
 
-
 			</section>
+			
 			<div class="mdl-layout-spacer"></div>
 		</div>
 

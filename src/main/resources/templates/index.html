@@ -2,10 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description" content="Blog www.ciceroednilson.com.br" />
-<meta name="author" content="Cícero Ednilson" />
 
-<link rel="stylesheet" href="css/material.min.css" />
+<link rel="stylesheet" th:href="@{/css/material.min.css}" />
 <style type="text/css">
 .mdl-layout {
 	align-items: center;
@@ -18,7 +16,7 @@
 }
 </style>
 
-<script type="text/javascript" src="js/material.min.js"></script>
+<script type="text/javascript" th:src="@{/js/material.min.js}"></script>
 <title>Login</title>
 </head>
 <body>

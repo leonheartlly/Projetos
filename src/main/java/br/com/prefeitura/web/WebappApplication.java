@@ -6,6 +6,8 @@ import javax.sql.DataSource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
@@ -18,12 +20,8 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @SpringBootApplication
-public class WebappApplication extends WebMvcConfigurerAdapter {
+public class WebappApplication extends SpringBootServletInitializer { //public class WebappApplication extends WebMvcConfigurerAdapter { roda local assim
 
-//	@Override
-//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-//		return application.sources(WebappApplication.class);
-//	}
 	
 	@Bean
 	public LocaleResolver localeResolver() {
@@ -47,31 +45,6 @@ public class WebappApplication extends WebMvcConfigurerAdapter {
         return messageSource;
     }
 	
-//	@Bean
-//    public DataSource dataSource() {
-//        BasicDataSource dataSource = new BasicDataSource();
-//        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//        dataSource.setUrl("jdbc:mysql://localhost:3306/test");
-//        dataSource.setUsername("root");
-//        dataSource.setPassword("root");
-//        return dataSource;
-//    }
-	
-//	@Bean
-//    public DataSource dataSource() {
-//        HikariDataSource ds = new HikariDataSource();
-//        ds.setMaximumPoolSize(100);
-//        ds.setDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlDataSource");
-//        ds.addDataSourceProperty("url", "jdbc:mysql://localhost:3306/test");
-//        ds.addDataSourceProperty("user", "root");
-//        ds.addDataSourceProperty("password", "password");
-//        ds.addDataSourceProperty("cachePrepStmts", true);
-//        ds.addDataSourceProperty("prepStmtCacheSize", 250);
-//        ds.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
-//        ds.addDataSourceProperty("useServerPrepStmts", true);
-//        return ds;
-//    }
-	
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
@@ -80,20 +53,24 @@ public class WebappApplication extends WebMvcConfigurerAdapter {
     }
 	
 	 //Add converter and configuration annotation
-    @Override
-    public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new ConverterFornecedor());
-    }
+//    @Override
+//    public void addFormatters(FormatterRegistry registry) {
+//        registry.addConverter(new ConverterFornecedor());
+//    }
 	
-	@Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
-    }
+//	@Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(localeChangeInterceptor());
+//    }
 	
 //	@Override
 //	  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 //	      return builder.sources(SpringBootMain.class);
 //	  }
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(WebappApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebappApplication.class, args);

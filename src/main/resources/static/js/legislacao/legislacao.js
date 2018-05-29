@@ -10,7 +10,8 @@ $(document).ready(function() {
 			url: "/editais/filtrarLegislacao", 
 			type: 'POST', 
 			contentType: "application/json",
-			data: {idOrgao:"1", tipo:"1"}, 
+			dataType: 'json',
+			data: JSON.stringify({"idOrgao":"1", "tipo":"1"}), 
 			cache:false,
 		    success: function(result){
 		    	$("#results").replaceWith(result);

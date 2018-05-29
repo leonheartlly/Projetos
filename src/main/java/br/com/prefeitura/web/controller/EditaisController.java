@@ -191,22 +191,16 @@ public class EditaisController {
 	 * @throws JsonProcessingException 
 	 */
 	@RequestMapping(value = "/filtrarLegislacao", method=RequestMethod.POST)
-	public String pesquisarPorFiltro(@RequestBody Teste teste, Locale locale, Model model) throws JsonProcessingException {
+	public @ResponseBody String pesquisarPorFiltro(@RequestBody Teste teste, Locale locale, Model model) throws JsonProcessingException { 
+		
+		//TODO isso funfa
+		//@RequestParam(value="idOrgao") String idOrgao, @RequestParam(value="tipo") String tipo, 
 
 		LOGGER.info("[LOG-INFO] "+ EditaisController.class.getSimpleName()+" - LEGISLAÇÃO.");
 		
 		List<Legislacao> legislacoes = this.legislacaoService.findAll();
 		model.addAttribute("legislacoes", legislacoes);
 		
-//		ObjectMapper objectMapper = new ObjectMapper();
-		
 		return "legislacao :: results";
 	}
-	
-//	@RequestMapping(value = "/guests", method = RequestMethod.GET)
-//	public String showGuestList(Model model) {
-//	    model.addAttribute("guests", hotelService.getGuestsList());
-//
-//	    return "results :: resultsList";
-//	}
 }
