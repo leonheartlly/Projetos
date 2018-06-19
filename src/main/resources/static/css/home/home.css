@@ -38,6 +38,16 @@ img {
 
 .button-effect:HOVER p {
 	font-weight: bolder;
+	/*transform: translate3d(0, 0, 0) scale(1.1, 1.1);
+	opacity: 1;
+	z-index: 999 !important;*/
+}
+
+.btn-effect:HOVER{
+	font-weight: bolder;
+	
+	/*box-shadow: 0 0 2px 2px rgba(0, 140, 186, 0.5);
+	border-radius: 5px; */
 }
 
 .btn1 {
@@ -83,10 +93,10 @@ img {
 }
 
 .shortcut-size:HOVER {
-	transform: translate3d(0, 0, 0) scale(1.1, 1.1);
+	transform: translate3d(0, 0, 0) scale(1.1, 1.1); 
 	/** default is 1, scale it to 1.5 */
 	opacity: 1;
-	z-index: 999 !important;
+	z-index: 999 !important; 
 }
 
 .graph-conf .tabs {
@@ -178,7 +188,6 @@ img {
 
 .news-link-conf img:HOVER {
 	color: #ffa000;
-	
 }
 
 .news-link-conf:HOVER img{

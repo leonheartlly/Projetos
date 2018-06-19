@@ -168,8 +168,8 @@
 				<configuration>
 					<driver>com.mysql.jdbc.Driver</driver>
 					<url>jdbc:mysql://mysql.araguacu.to.gov.br/araguacu</url>
-					<user>araguacu_add2</user>
-					<password>Macario123</password>
+					<user>root</user>
+					<password>l159753l</password>
 					<schemas>
 						<schema>araguacu</schema>
 					</schemas>

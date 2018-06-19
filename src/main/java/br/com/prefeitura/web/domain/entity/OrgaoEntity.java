@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@Table(name="orgaos", schema="prefeitura")
+@Table(name="orgaos", schema="araguacu")
 @Entity
 public class OrgaoEntity implements Serializable {
 

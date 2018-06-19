@@ -191,9 +191,10 @@
 											<div class=" mt10 mb10 box-line valign-wrapper" th:if=" ${anexo.idLicitacao} == ${lic.id}" th:attr="id=${anexo.idLicitacao}" th:each="anexo : ${anexos}" >
 												<span class="col s1 m1 "  th:text="${anexo.tipoAnexo}"></span> 
 												
-												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '1'" th:text="#{messages.licitacao.retificacao}"></span> 
-												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '2'" th:text="#{messages.licitacao.edital}"></span>	
-												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '3'" th:text="#{messages.licitacao.aviso}"></span>
+												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '1'" th:text="#{messages.licitacao.edital}"></span> 
+												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '2'" th:text="#{messages.licitacao.aviso}"></span>	
+												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '3'" th:text="#{messages.licitacao.cancelamento}"></span>
+												<span class="col s9 m9" th:if="${anexo.tipoAnexo} == '4'" th:text="#{messages.licitacao.outros}"></span>
 												<span class=" col s2 m2 center-align"> 
 													<a class="waves-effect waves-light btn" th:attr="attach=${anexo.caminhoArquivo}" onclick="displayPDF($(this).attr('attach'),'contratos')" th:text="#{messages.visualizar}"></a>
 												</span>

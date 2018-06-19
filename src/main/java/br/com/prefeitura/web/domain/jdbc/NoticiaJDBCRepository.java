@@ -30,8 +30,8 @@ public class NoticiaJDBCRepository {
 
 		String sql = "SELECT noti.id, noti.noticia, noti.data_noticia, noti.id_autor, noti.id_categoria, noti.titulo, "
 				+ "cat.id, cat.categoria, cat.descricao "
-				+ "FROM prefeitura.noticias noti "
-				+ "JOIN prefeitura.categoria_noticias cat ON cat.id = noti.id_categoria "
+				+ "FROM araguacu.noticias noti "
+				+ "JOIN araguacu.categoria_noticias cat ON cat.id = noti.id_categoria "
 				+ "ORDER BY noti.data_noticia DESC LIMIT 3";
 
 		try {

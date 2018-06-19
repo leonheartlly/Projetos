@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name="tb_permissao", schema="prefeitura")
+@Table(name="tb_permissao", schema="araguacu")
 public class PermissaoEntity implements Serializable{/**
 	 * 
 	 */

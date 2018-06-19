@@ -11,16 +11,15 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @SpringBootApplication
-public class WebappApplication extends SpringBootServletInitializer { //public class WebappApplication extends WebMvcConfigurerAdapter { roda local assim
+public class WebappApplication extends WebMvcConfigurerAdapter { //public class WebappApplication extends WebMvcConfigurerAdapter { roda local assim
 
 	
 	@Bean
@@ -51,6 +50,14 @@ public class WebappApplication extends SpringBootServletInitializer { //public c
         jdbcTemplate.setResultsMapCaseInsensitive(true);
         return jdbcTemplate;
     }
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/licitacoes/**").addResourceLocations("file:/araguacu/licitacoes/");
+        super.addResourceHandlers(registry);
+    }
+    
+    
 	
 	 //Add converter and configuration annotation
 //    @Override
@@ -67,10 +74,10 @@ public class WebappApplication extends SpringBootServletInitializer { //public c
 //	  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 //	      return builder.sources(SpringBootMain.class);
 //	  }
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(WebappApplication.class);
-	}
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(WebappApplication.class);
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebappApplication.class, args);

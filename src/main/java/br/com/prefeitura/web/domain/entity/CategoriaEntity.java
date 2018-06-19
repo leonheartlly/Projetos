@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@Table(name="categoria_noticias", schema="prefeitura")
+@Table(name="categoria_noticias", schema="araguacu")
 @Entity
 public class CategoriaEntity implements Serializable {
 

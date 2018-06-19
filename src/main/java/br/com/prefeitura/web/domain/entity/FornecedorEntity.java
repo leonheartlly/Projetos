@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="fornecedores", schema="prefeitura")
+@Table(name="fornecedores", schema="araguacu")
 public class FornecedorEntity implements Serializable {
 
 	/**

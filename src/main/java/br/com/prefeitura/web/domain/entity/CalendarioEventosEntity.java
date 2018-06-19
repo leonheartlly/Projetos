@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@Table(name="calendario_eventos", schema="prefeitura")
+@Table(name="calendario_eventos", schema="araguacu")
 @Entity
 public class CalendarioEventosEntity implements Serializable {
 	

@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@Table(name="tb_grupo", schema="prefeitura")
+@Table(name="tb_grupo", schema="araguacu")
 @Entity
 public class GrupoEntity implements Serializable{
 

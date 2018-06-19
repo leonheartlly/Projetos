@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@Table(name="situacao", schema="prefeitura")
+@Table(name="situacao", schema="araguacu")
 @Entity
 public class SituacaoEntity {
 

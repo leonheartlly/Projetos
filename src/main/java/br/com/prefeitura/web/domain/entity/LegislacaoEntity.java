@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@Table(name="legislacao", schema="prefeitura")
+@Table(name="legislacao", schema="araguacu")
 @Entity
 public class LegislacaoEntity implements Serializable {/**
 	 * 

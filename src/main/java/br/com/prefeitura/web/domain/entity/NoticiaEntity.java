@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="noticias", schema="prefeitura")
+@Table(name="noticias", schema="araguacu")
 public class NoticiaEntity implements Serializable {
 
 	/**
