@@ -5,14 +5,25 @@
 <head>
 	<title th:text="#{messages.home}"></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="author" content="Prefeitura" />
+	
 	<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+	<link rel="stylesheet" th:href="@{/css/noticias/lightgallery.css}" />
 	<link th:href="@{css/effects.css}" rel="stylesheet"/>
 	<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/home/home.js}"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYMJk65pzbscAc6L-hLlcGQyVMv1jJUY0&amp;callback=initMap" async="defer"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdt8TYNH_GXTN_HWqnv2-jCfgudZm3Psg&amp;callback=initMap" async="defer"></script>
 	<script src="https://www.google.com/recaptcha/api.js" async="defer"></script>
 	<script th:src="@{/js/moment.min.js}"></script>
+	
+	<link rel="stylesheet" th:href="@{/css/noticias/lg-theme-default.scss}" />
+	
+	<script type="text/javascript" th:src="@{/js/imageZoom/lightgallery.js}"></script>
+<script type="text/javascript" th:src="@{/js/imageZoom/picturefill.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/imageZoom/lg-fullscreen.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/imageZoom/jquery.mousewheel.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/imageZoom/lg-hash.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/imageZoom/lg-zoom.js}"></script>
+
 </head>
 <body>
 	<section layout:fragment="content">
@@ -36,28 +47,33 @@
 						<div class="row">
 							<div class="col l12 xl12 no-pad">
 
-								<a class="col s3 m2 shortcut-size shortcut-button btn1 button-effect btn-effect mini-effect waves-effect" th:href="@{/editais/contratos}" >
+								<a class="col s3 m2 shortcut-size shortcut-button btn1 button-effect btn-effect btn-effect-hover waves-effect" th:href="@{/editais/contratos}" >
 									<img th:src="@{/img/icons/certif.png}" class="pl20 pr20 pb10 center" height="45" />
 									<p class="center-align mt0 mb0" th:text="#{messages.home.contratos}"></p>
 								</a> 
 								
-								<a class="col s3 m2 shortcut-size shortcut-button btn5 button-effect mini-effect waves-effect" th:href="@{/editais/licitacao}"> 
+								<a class="col s3 m2 shortcut-size shortcut-button btn5 button-effect btn-effect-hover waves-effect" th:href="@{/editais/licitacao}"> 
 									<img th:src="@{/img/icons/auction.png}" class="pl20 pr20 pb10 center" height="45"/>
 									<p class="center-align mt0 mb0" th:text="#{messages.home.licitacoes}"></p>
 								</a> 
-								<a class="col s3 m2 shortcut-size shortcut-button btn3 button-effect mini-effect waves-effect">
+								<a class="col s3 m2 shortcut-size shortcut-button btn3 button-effect btn-effect-hover waves-effect">
 									<img th:src="@{/img/icons/constr.png}" class="pl20 pr20 pb10 center" height="45"/>
 									<p class="center-align mt0 mb0" th:text="#{messages.home.obras}"></p>
 								</a> 
-								<a class="col s3 m2 shortcut-size shortcut-button btn7 button-effect mini-effect waves-effect">
+								<a class="col s3 m2 shortcut-size shortcut-button btn7 button-effect btn-effect-hover waves-effect">
+	            						<ul class="list-unstyled row negocio h0 mt0">
+							                <li class=" center-align valign-wrapper " th:attr="data-src='/img/mapa-cidade-coleta.png', data-sub-html='&lt;h4&gt;'+'Coleta de Lixo'+'&lt;/h4&gt;'"  >
+							                   <img class="img-responsive gallery-img visibility" th:src="@{'/img/mapa-cidade-coleta.png'}"/>
+							                </li>
+							            </ul>
 									<img th:src="@{/img/icons/garg.png}" class="pl20 pr20 pb10 center" height="45"/>
 									<p class="center-align mt0 mb0" th:text="#{messages.home.coleta}"></p>
 								</a> 
-								<a th:href="@{/editais/legislacao}" class="col s3 m2 shortcut-size shortcut-button btn5 button-effect mini-effect waves-effect">
+								<a th:href="@{/editais/legislacao}" class="col s3 m2 shortcut-size shortcut-button btn5 button-effect btn-effect-hover waves-effect">
 									<img th:src="@{/img/icons/legis.png}" class="pl20 pr20 pb10 center" height="45"/>
 									<p class="center-align mt0 mb0" th:text="#{messages.home.legislacao}"></p>
 								</a> 
-								<a class="col s3 m2 shortcut-size shortcut-button btn1 button-effect mini-effect waves-effect">
+								<a class="col s3 m2 shortcut-size shortcut-button btn1 button-effect btn-effect-hover waves-effect">
 									<img th:src="@{/img/icons/contract.png}" class="pl20 pr20 pb10 center" height="45"/>
 									<p class="center-align mt0 mb0" th:text="#{messages.home.esic}"></p>
 								</a>
@@ -75,8 +91,8 @@
 
 					<!-- GRAPH -->
 					<div class="col l6 xl6 pl0 pr0">
-						<div class="row pl0 pr0 mb0">
-							<div class="col l12 pr0 pl0 graph-conf">
+						<div class="row pl0 pr0 mb0 ">
+							<div class="col l12 pr0 pl0 graph-conf ">
 								<ul class="tabs">
 									<li class="tab col l4 xl4">
 										<a class="active" href="#pie" th:text="#{messages.home.graph.folha.pagamento}"></a>
@@ -89,7 +105,7 @@
 									</li>
 								</ul>
 							</div>
-							<div class="coll l12 xl12">
+							<div class="coll l12 xl12 relative pgraph-top">
 							<div id="pie" class="col l12 xl10 pl0 pr0 input-bg white valign">
 								<div class="col l12 xl12">
 									<canvas id="pieChart"></canvas>

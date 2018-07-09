@@ -28,6 +28,7 @@ function createPieChart(id, val){
  */
 function createLineChart(id){
 	
+	
 	var line = JSON.parse(getLineData());
 	
 	var label= new Array();

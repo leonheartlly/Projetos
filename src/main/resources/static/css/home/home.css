@@ -50,6 +50,12 @@ img {
 	border-radius: 5px; */
 }
 
+
+.btn-effect-hover:HOVER {
+	box-shadow: 0 0 3px 3px rgba(165, 214, 167, 0.5);
+	border-radius: 5px;
+}
+
 .btn1 {
 	background-color: #04773b;
 }
@@ -125,6 +131,29 @@ img {
 	background-color: #0dab76;
 	color: white !important;
 	font-weight: bold;
+}
+
+.relative {
+	position: relative;
+}
+
+.pgraph-top {
+	top: 90px;
+	left: 7%;
+}
+
+@media ( max-width : 1380px) {
+	.pgraph-top {
+		top: 70px;
+		left: 1%;
+	}
+}
+
+@media ( max-width : 1030px) {
+	.pgraph-top {
+		top: 70px;
+		left: -15%;
+	}
 }
 
 .chart-size {

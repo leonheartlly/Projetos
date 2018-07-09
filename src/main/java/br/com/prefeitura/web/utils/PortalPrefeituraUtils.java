@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import org.apache.commons.lang3.StringUtils;
@@ -182,9 +183,9 @@ public class PortalPrefeituraUtils {
 		try {
 			if(StringUtils.isNotBlank(date)){
 				
-				DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+				DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT).withLocale(new Locale ("pt", "BR"));
 				LocalDate data = LocalDate.parse(date, dtFormatter);
-				dtFormatter = DateTimeFormatter.ofPattern("MMMM");
+				dtFormatter = DateTimeFormatter.ofPattern("MMMM").withLocale(new Locale ("pt", "BR"));
 				
 				return dtFormatter.format(data);
 			}

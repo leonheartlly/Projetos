@@ -1,5 +1,9 @@
 $(document).ready(function() {
 	createPieChart('pieChart', 0);
+	
+	 $('.negocio').lightGallery({
+	        thumbnail:true
+	    }); 
 //	alert($(window).height());
 //	alert($(window).width());
 });

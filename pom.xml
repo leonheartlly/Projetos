@@ -167,7 +167,7 @@
 				-->
 				<configuration>
 					<driver>com.mysql.jdbc.Driver</driver>
-					<url>jdbc:mysql://mysql.araguacu.to.gov.br/araguacu</url>
+					<url>jdbc:mysql://localhost:3306/araguacu</url>
 					<user>root</user>
 					<password>l159753l</password>
 					<schemas>

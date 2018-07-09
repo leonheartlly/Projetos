@@ -21,6 +21,13 @@ a {
 	align-items: center;
 }
 
+.visibility{
+	visibility: hidden;
+}
+
+.h0{
+	height: 0px;
+}
 .absolute {
 	position: absolute;
 }
