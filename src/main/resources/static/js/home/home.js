@@ -80,13 +80,26 @@ function createPieChart(id, val){
 	
 	var data = {
 		datasets : [ {
-			backgroundColor : [ "#ff5252", "#4caf50" ],
+			backgroundColor : [ "#4caf50", "#ff5252" ],
 			data : values
 		} ],
 		labels : labels
 	};
 	
-	var options = createChartOptions(pie);
+	var options = {
+			legend : {
+				display : true,
+				position: 'bottom',
+				labels: {
+					usePointStyle: true,
+				},
+			},
+			title : {
+				display : false,
+			}
+		};
+	
+	//var options = createChartOptions(pie);
 	
 	
 	createChart('pie', id, data, options);

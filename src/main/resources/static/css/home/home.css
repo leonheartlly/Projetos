@@ -156,6 +156,44 @@ img {
 	}
 }
 
+.lgraph-top {
+	top: 70px;
+    /*left: 7%;*/
+}
+
+@media ( max-width : 1380px) {
+	.lgraph-top {
+		top: 60px;
+		left: 1%;
+	}
+}
+
+@media ( max-width : 1030px) {
+	.lgraph-top {
+		top: 60px;
+		left: -15%;
+	}
+}
+
+.bgraph-top {
+	top: 70px;
+    /*left: 7%;*/
+}
+
+@media ( max-width : 1380px) {
+	.bgraph-top {
+		top: 60px;
+		left: 1%;
+	}
+}
+
+@media ( max-width : 1030px) {
+	.bgraph-top {
+		top: 60px;
+		left: -15%;
+	}
+}
+
 .chart-size {
 	height: 450px !important;
 	/*width: 80% !important; */
