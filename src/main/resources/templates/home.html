@@ -7,7 +7,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
 	<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+	<link rel="stylesheet" th:href="@{/css/noticias/noticia.css}" />
 	<link rel="stylesheet" th:href="@{/css/noticias/lightgallery.css}" />
+	
 	<link th:href="@{css/effects.css}" rel="stylesheet"/>
 	<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/home/home.js}"></script>
@@ -18,11 +20,11 @@
 	<link rel="stylesheet" th:href="@{/css/noticias/lg-theme-default.scss}" />
 	
 	<script type="text/javascript" th:src="@{/js/imageZoom/lightgallery.js}"></script>
-<script type="text/javascript" th:src="@{/js/imageZoom/picturefill.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/imageZoom/lg-fullscreen.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/imageZoom/jquery.mousewheel.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/imageZoom/lg-hash.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/imageZoom/lg-zoom.js}"></script>
+	<script type="text/javascript" th:src="@{/js/imageZoom/picturefill.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/imageZoom/lg-fullscreen.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/imageZoom/jquery.mousewheel.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/imageZoom/lg-hash.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/imageZoom/lg-zoom.js}"></script>
 
 </head>
 <body>
@@ -141,9 +143,9 @@
 							<div class="row mb0">
 								<div th:each="noticia, iter : ${noticias}">
 									<div th:if="${iter.index &lt; 3 and iter.index &#37;2 == 0}" class="col s12 m12" >
-										<a href="#" onmouseover="addTagEffect($(this))"
+										<a th:href="'#' + ${noticia.id}" onmouseover="addTagEffect($(this))"
 											onmouseout="removeTagEffect($(this))"
-											class="valign-wrapper left-align news-link-conf">
+											class="valign-wrapper left-align news-link-conf modal-trigger">
 											<div class="row col s6 m6 p20" >
 												<span class="news-sub-date" th:text="${noticia.dataNoticia}"></span>
 												<span class="pl12 news-sub-theme" th:text="${noticia.categoria.categoria}"></span>
@@ -154,9 +156,9 @@
 									 </div>
 	
 									<div class="col s12 m12" th:if="${iter.index &lt; 3 and iter.index &#37;2 &#33;= 0}" >
-										<a href="#" onmouseover="addTagEffect($(this))"
+										<a th:href="'#' + ${noticia.id}" onmouseover="addTagEffect($(this))"
 											onmouseout="removeTagEffect($(this))"
-											class="valign-wrapper left-align news-link-conf"> 
+											class="valign-wrapper left-align news-link-conf modal-trigger"> 
 											<img class="col s6 m6 news-link-conf" th:src="@{/img/i4.jpg}" />
 											<div class="col s6 m6 p20">
 												<span class="news-sub-date" th:text="${noticia.dataNoticia}"></span>
@@ -352,6 +354,37 @@
 			</section>
 			
 			<div class="mdl-layout-spacer"></div>
+		</div>
+		
+		<!-- Modal Noticia -->
+		<div class="row" th:each="noticia : ${noticias}">
+			<div th:id="${noticia.id}" class="col s12 m12 modal modal-fixed-footer  modal-config">
+				<div class=" col s10 m10 modal-content">
+					<h4 class="modal-title center-align" th:text="${noticia.titulo}"></h4>
+					<span class="modal-subtitle bold orange-text" th:text="${noticia.dataNoticia}"></span><span class="bold" th:text="'  -  ' + ${noticia.categoria.categoria}"></span>
+					
+						  <div class="photo-gallery center-align">
+          						<ul class="list-unstyled row negocio ">
+				                <li th:each="imagem : ${noticia.imagens}" class=" center-align valign-wrapper " th:attr="data-src=${imagem.caminho} + ${imagem.nome}, data-sub-html='&lt;h4&gt;'+${imagem.titulo}+'&lt;/h4&gt;&lt;p&gt;'+${imagem.descricao}+'&lt;/p&gt;'">
+				                    <a href="#" class="center-align">
+				                        <img class="img-responsive gallery-img" th:src="@{${imagem.caminho} + ${imagem.nome}}"/>
+				                      <div class="demo-gallery-poster">
+				                      	<img th:src="@{/img/icons/search.png}"/>
+				                      </div>
+				                    </a>
+				                </li>
+				            </ul>
+				        </div> 
+  							
+					<p class="modal-text" th:utext="${noticia.noticia}">
+					</p>
+					<span class="right" th:text="${noticia.autor.nome}"></span>
+				</div>
+				<div class="modal-footer">
+					<a href="#!"
+						class="modal-action modal-close waves-effect waves-green btn-flat ">Fechar</a>
+				</div>
+			</div>
 		</div>
 
 	</section>
