@@ -6,10 +6,22 @@ $(document).ready(function() {
 	    }); 
 	 
 	 $('.modal').modal();
-//	alert($(window).height());
-//	alert($(window).width());
+	 
+//	 var verifyCallback = function(response) {
+//	        if(response.length == 0 ){
+//	        	
+//	        }else{
+//	        	$("#consult").removeClass("disabled");
+//	        }
+//	      };
+	 
+//	 generateCaptcha();
 });
 
+
+function generateCaptcha(){
+	
+}
 
 function modalFeed( tag, noticia){
 	

@@ -31,32 +31,43 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			 * DETERMINA QUE PARA REALIZAR ESSA REQUEST PRECISA TER UMA DAS PERMISSÕES ABAIXO
 			 * EXEMPLO DA URL: http://localhost:8095/usuario/novoCadastro
 			 */
-			.antMatchers("/usuario/novoCadastro").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
+			//.antMatchers("/usuario/novoCadastro").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
 			
-			.antMatchers("/editais/licitacao").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
-			.antMatchers("/editais/contratos").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
-			.antMatchers("/referencias/noticias").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
-			.antMatchers("/editais/filtrarLegislacao").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
+			.antMatchers("/editais/licitacao").permitAll()
+			//.access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')").
+			.antMatchers("/editais/contratos").permitAll()
+			//.access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
+			.antMatchers("/referencias/noticias").permitAll()
+			//.access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
+			.antMatchers("/editais/filtrarLegislacao").permitAll()
+			//.access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
 			/*
 			 * DETERMINA QUE PARA REALIZAR ESSA REQUEST PRECISA TER UMA DAS PERMISSÕES ABAIXO
 			 * EXEMPLO DA URL: http://localhost:8095/usuario/consultar
 			 */
-			.antMatchers("/usuario/consultar").access("hasRole('ADMIN') or hasRole('CONSULTA_USUARIO')")
-			.antMatchers("/editais/pesquisaLicitacao").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
+			//.antMatchers("/usuario/consultar").access("hasRole('ADMIN') or hasRole('CONSULTA_USUARIO')")
+			.antMatchers("/editais/pesquisaLicitacao").permitAll()
+			//.access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
 			
 			/*DETERMINA QUE PARA ACESSAR A PÁGINA INICIAL DA APLICAÇÃO PRECISA ESTÁ AUTENTICADO
 			 */
-			.antMatchers("/home").authenticated()
-			.anyRequest().authenticated()
-			.and()
-				.formLogin()
+			//.antMatchers("/home").authenticated()
+			.antMatchers("/home").permitAll()
+			//.antMatchers("/resources/**").permitAll().anyRequest().permitAll()
+//			.
+//			.
+//			.anyRequest().
+			//.anyRequest().authenticated()
+			//.anyRequest()
+			//.and()
+				//.formLogin()
 				/*INFORMANDO O CAMINHO DA PÁGINA DE LOGIN, E SE O LOGIN FOR EFETUADO COM SUCESSO
 				 * O USUÁRIO DEVE SER REDIRECIONADO PARA /home(http://localhost:8095/home)
 				 */
-				.loginPage("/").defaultSuccessUrl("/home", true)
+				//.loginPage("/").defaultSuccessUrl("/home", true)
 				/*TODOS TEM ACESSO A PAGINA DE LOGIN
 				 */
-				.permitAll()
+				//.permitAll()
 			
 			.and()
 				/*

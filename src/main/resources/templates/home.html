@@ -49,7 +49,7 @@
 						<div class="row">
 							<div class="col l12 xl12 no-pad">
 
-								<a class="col s3 m2 shortcut-size shortcut-button btn1 button-effect btn-effect btn-effect-hover waves-effect" th:href="@{/editais/contratos}" >
+								<a class="col s3 m2 shortcut-size shortcut-button btn1 button-effect btn-effect btn-effect-hover waves-effect" href="http://177.107.46.162:8091/portalaraguacu/atalho/contratos.xhtml" target="_blank" > <!-- th:href="@{/editais/contratos}" -->
 									<img th:src="@{/img/icons/certif.png}" class="pl20 pr20 pb10 center" height="45" />
 									<p class="center-align mt0 mb0" th:text="#{messages.home.contratos}"></p>
 								</a> 
@@ -151,7 +151,7 @@
 												<span class="pl12 news-sub-theme" th:text="${noticia.categoria.categoria}"></span>
 												<h5 class="link-text mt5" th:text="${noticia.titulo}"></h5>
 											</div> 
-											<img class="col s6 m6 news-link-conf" th:src="@{/img/i3.jpg}" />
+											<img class="col s6 m6 news-link-conf" th:src="@{${noticia.imagens[0].caminho} + ${noticia.imagens[0].nome}}" /> <!-- th:src="@{/img/i3.jpg}"  -->
 										</a>
 									 </div>
 	
@@ -159,7 +159,7 @@
 										<a th:href="'#' + ${noticia.id}" onmouseover="addTagEffect($(this))"
 											onmouseout="removeTagEffect($(this))"
 											class="valign-wrapper left-align news-link-conf modal-trigger"> 
-											<img class="col s6 m6 news-link-conf" th:src="@{/img/i4.jpg}" />
+											<img class="col s6 m6 news-link-conf" th:src="@{${noticia.imagens[0].caminho} + ${noticia.imagens[0].nome}}"/>
 											<div class="col s6 m6 p20">
 												<span class="news-sub-date" th:text="${noticia.dataNoticia}"></span>
 												<span class="pl12 news-sub-theme" th:text="${noticia.categoria.categoria}"></span>
@@ -186,15 +186,22 @@
 
 
 							<h6 class="white-text consulta mt0" th:text="#{messages.home.consulta.info}"></h6>
-							<script type="text/javascript">
-														
-									var onloadCallback = function() {
-							 		grecaptcha.render('example2', {
-						          'sitekey' : '6LcqnVMUAAAAAPtdoD-lqWOGgTVYcUq4AnotsPX7'
-						        });
-						      };
-						      
-							    </script>
+<script type="text/javascript">
+		
+var verifyCallback = function(response) {
+       if(response.length == 0 ){
+       }else{
+       	$("#consult").removeClass("disabled");
+       }
+     };
+
+     var onloadCallback = function() {
+ 		grecaptcha.render('recaptcha', {
+      'sitekey': '6LcqnVMUAAAAAPtdoD-lqWOGgTVYcUq4AnotsPX7',
+      'callback' : verifyCallback
+    });
+  };
+</script>
 							<form class="col l12 mb0" action="?" method="POST">
 								<div class="row input-box-conf">
 									<div class=" col l12 xl12 lbl-cpf white-text">
@@ -223,7 +230,7 @@
 										
 									</div>
 									<div class="row mb0">
-										<a class="col m10 offset-m1 waves-effect waves-light btn-large green darken-4" th:text="#{messages.home.consulta.consultar}"></a>
+										<a id="consult" class="col m10 offset-m1 waves-effect waves-light btn-large green darken-4 disabled" th:text="#{messages.home.consulta.consultar}"></a>
 									</div>
 
 								</div>
