@@ -13,8 +13,8 @@
 	<link th:href="@{css/effects.css}" rel="stylesheet"/>
 	<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/home/home.js}"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdt8TYNH_GXTN_HWqnv2-jCfgudZm3Psg&amp;callback=initMap" async="defer"></script>
-	<script src="https://www.google.com/recaptcha/api.js" async="defer"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdt8TYNH_GXTN_HWqnv2-jCfgudZm3Psg&amp;callback=initMap"></script>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 	<script th:src="@{/js/moment.min.js}"></script>
 	
 	<link rel="stylesheet" th:href="@{/css/noticias/lg-theme-default.scss}" />
@@ -223,7 +223,7 @@ var verifyCallback = function(response) {
 								<div class="row mb0">
 									<div class="input-field col s6 offset-m3 mt0 mb0">
 
-      									<div id="example2" data-callback="correctCaptcha" class="mb0">
+      									<div id="recaptcha" data-callback="correctCaptcha" class="mb0">
       									
       									</div>
 										<p class="grey-text darken-3"></p>

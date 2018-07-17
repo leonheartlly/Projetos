@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			//.antMatchers("/usuario/novoCadastro").access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
 			
 			.antMatchers("/editais/licitacao").permitAll()
+			.antMatchers("/menu/noticias").permitAll()
 			//.access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')").
 			.antMatchers("/editais/contratos").permitAll()
 			//.access("hasRole('ADMIN') or hasRole('ROLE_CADASTRO_USUARIO')")
@@ -53,6 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			 */
 			//.antMatchers("/home").authenticated()
 			.antMatchers("/home").permitAll()
+			.antMatchers("/").permitAll()
 			//.antMatchers("/resources/**").permitAll().anyRequest().permitAll()
 //			.
 //			.
@@ -75,7 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			     *O USUÁRIO DEVE TER SUA SESSÃO FINALIZADA E REDIRECIONADO PARA A PÁGINA DE LOGIN 
 				 */
 				.logout()
-				.logoutSuccessUrl("/")
+				//.logoutSuccessUrl("/")
 				.logoutUrl("/logout")
 				.permitAll();
 		

@@ -7,21 +7,11 @@ $(document).ready(function() {
 	 
 	 $('.modal').modal();
 	 
-//	 var verifyCallback = function(response) {
-//	        if(response.length == 0 ){
-//	        	
-//	        }else{
-//	        	$("#consult").removeClass("disabled");
-//	        }
-//	      };
-	 
-//	 generateCaptcha();
+	 initMap(0);
+
 });
 
 
-function generateCaptcha(){
-	
-}
 
 function modalFeed( tag, noticia){
 	
