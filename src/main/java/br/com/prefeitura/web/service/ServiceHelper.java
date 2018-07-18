@@ -136,6 +136,7 @@ public class ServiceHelper {
 			 	.bairro(entity.getBairro())
 			 	.numero(entity.getNumero())
 			 	.descricao(entity.getDescricao())
+			 	.imagem(entity.getImagem())
 			 	.build();
 		}).collect(Collectors.toList());
 		
