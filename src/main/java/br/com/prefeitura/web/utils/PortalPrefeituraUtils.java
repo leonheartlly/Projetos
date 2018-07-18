@@ -164,7 +164,7 @@ public class PortalPrefeituraUtils {
 				
 				DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
 				LocalDate data = LocalDate.parse(date, dtFormatter);
-				dtFormatter = DateTimeFormatter.ofPattern(DATE_MMM);
+				dtFormatter = DateTimeFormatter.ofPattern(DATE_MMM).withLocale(new Locale ("pt", "BR"));
 				
 				return dtFormatter.format(data);
 			}

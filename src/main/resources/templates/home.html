@@ -331,7 +331,7 @@ var verifyCallback = function(response) {
 						 	</script>
 						    <div>
 							    <div class="card-image pointer waves-effect waves-block waves-light hover ehover4" >
-							    	<img  class="img-responsive" th:src="@{/img/girl.jpg}"/>
+							    	<img  class="img-responsive" th:src="@{${cal.imagem}}"/>
 							      <div class="overlay">
 					                    <h2 th:text="${cal.titulo}"></h2>
 					                    <button class="info activator mt10 day" th:inline="text">[[${cal.dia}]]<span class="month" th:Utext="'&lt;br&#47;&gt;' + ${cal.mes}"></span></button>
