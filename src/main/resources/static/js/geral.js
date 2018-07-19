@@ -138,10 +138,6 @@ function removeDropDownHoverEffect(id){
 	$('#'+id).removeClass('hoverText');
 }
 
-function openMap(){
-	alert("teste");
-}
-
 function showButtonText(tag){
 	tag.children('p').removeClass("hide");
 	tag.children('img').addClass("hide");
@@ -150,4 +146,14 @@ function showButtonText(tag){
 function hideButtonText(tag){
 	tag.children('p').addClass("hide");
 	tag.children('img').removeClass("hide");
+}
+
+/**
+ * Moves page to top.
+ * @returns
+ */
+function moveToTop() {
+	$("html, body").animate({
+		scrollTop : 0
+	}, "slow");
 }

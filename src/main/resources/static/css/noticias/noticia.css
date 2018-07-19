@@ -10,6 +10,11 @@
 	margin-left: 40px !important;
 }
 
+.sliderimg{
+	max-height: 100%;
+	max-width: 100%;
+}
+
 .news-img {
     border: 1px solid #ddd;
     border-radius: 6px;

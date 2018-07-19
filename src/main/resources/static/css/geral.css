@@ -106,7 +106,7 @@ a {
 }
 
 .mb0 {
-	margin-bottom: 0px;
+	margin-bottom: 0px !important;
 }
 
 .mb1{
