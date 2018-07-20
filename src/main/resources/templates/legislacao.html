@@ -16,13 +16,13 @@
 	<section layout:fragment="content">
 
 		<div class="default-background">
-			<!-- BREADCRUMB -->
+		
+			<!-- CAMINHO DE PÃO -->
 			 <nav class="breadcrumb-line">
 			    <div class="nav-wrapper green darken-3">
 			      <div class="col s12 page-align">
-			        <a 	th:href="@{/home}" class="breadcrumb white-text">Home</a>
-			        <a th:href="@{/editais/legislacao}" class="breadcrumb white-text">Legislação</a>
-			        <!-- <a href="#!" class="breadcrumb white-text"></a> -->
+			        <a 	th:href="@{/home}" class="breadcrumb white-text" th:text="#{messages.home.caminhopao}"></a>
+			        <a th:href="@{/editais/legislacao}" class="breadcrumb white-text" th:text="#{messages.legislacao.caminhopao}"></a>
 			      </div>
 			    </div>
 			  </nav>
@@ -30,9 +30,9 @@
 			<div class="row">
 				<div>
 					<!-- FIRST CARD -->
-				    <div class="card col xl4 l4">
-					    <div class="card-image waves-effect waves-block waves-light view second-effect">
-					    	  <img class="activator responsive-img" th:src="@{/img/Leis-azul.png}"/>
+				    <div class="card col xl4 l4 greenHover">
+					    <div class="card-image waves-effect waves-block waves-light view">
+					    	  <img class="activator responsive-img" th:src="@{/img/icons/leis.png}"/>
 					    	  <div class="mask center-align activator">  
 								    <a class="info center-align" title="Full Image"></a>  
 								 </div>
@@ -83,9 +83,9 @@
 					  </div>
 					  
 					  <!-- SECOND CARD -->
-					  <div class="card col xl4 l4">
-						   <div class="card-image waves-effect waves-block waves-light view second-effect">
-						   		<img class="activator responsive-img" th:src="@{/img/balancetes-verde.png}"/>
+					  <div class="card col xl4 l4 blueHover">
+						   <div class="card-image waves-effect waves-block waves-light view">
+						   		<img class="activator responsive-img" th:src="@{/img/icons/balancetes.png}"/>
 						   		<div class="mask center-align activator">  
 								    <a class="info center-align" title="Full Image"></a>  
 								 </div>
@@ -122,9 +122,9 @@
 					  </div>
 					  
 					  <!-- THIRD CARD -->
-					  <div class="card col xl4 l4 activator">
-						   <div class="card-image waves-effect waves-block waves-light view second-effect">
-						  		<img class="activator responsive-img" th:src="@{/img/relatorios-azul.png}"/>
+					  <div class="card col xl4 l4 activator greenHover">
+						   <div class="card-image waves-effect waves-block waves-light view">
+						  		<img class="activator responsive-img" th:src="@{/img/icons/relatorios.png}"/>
 						  		<div class="mask center-align activator">  
 								    <a class="info center-align" title="Full Image"></a>  
 								 </div> 

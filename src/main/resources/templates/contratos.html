@@ -23,7 +23,17 @@
 	<section layout:fragment="content">
 
 		<div class="background">
-
+		
+			<!-- CAMINHO DE PÃO -->
+			 <nav class="breadcrumb-line">
+			    <div class="nav-wrapper green darken-3">
+			      <div class="col s12 page-align">
+			        <a 	th:href="@{/home}" class="breadcrumb white-text" th:text="#{messages.home.caminhopao}"></a>
+			        <a th:href="@{/editais/contratos}" class="breadcrumb white-text" th:text="#{messages.contratos.caminhopao}"></a>
+			      </div>
+			    </div>
+			  </nav>
+			  
 			<div class="row">
 			
 				<div class="col s12  mb10 mt5">

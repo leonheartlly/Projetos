@@ -85,7 +85,7 @@ public class CalendarioEventosService extends ServiceHelper{
 					(event, nextEvent) -> PortalPrefeituraUtils.getDateTime(event.getDataInicio())
 					.compareTo(PortalPrefeituraUtils.getDateTime(nextEvent.getDataInicio())))
 					.collect(Collectors.toList());
-			Collections.reverse(eventos);
+			//Collections.reverse(eventos);
 		}
 		return eventos;
 	}

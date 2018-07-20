@@ -26,6 +26,17 @@
 		
 		<!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->
 		<div class="mdl-grid">
+		
+			<!-- CAMINHO DE PÃO -->
+			 <nav class="breadcrumb-line">
+			    <div class="nav-wrapper green darken-3">
+			      <div class="col s12 page-align">
+			        <a 	th:href="@{/home}" class="breadcrumb white-text" th:text="#{messages.home.caminhopao}"></a>
+			        <a th:href="@{/menu/noticias}" class="breadcrumb white-text" th:text="#{messages.noticias.caminhopao}"></a>
+			      </div>
+			    </div>
+			  </nav>
+		
 			<div class="mdl-layout-spacer"></div>
 			<section
 				class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
@@ -92,7 +103,7 @@
 				</div>
 				
 				<!-- Modal Noticia -->
-				<div class="row" th:each="noticia : ${noticias}">
+				<div class="row mb0" th:each="noticia : ${noticias}">
 					<div th:id="${noticia.id}" class="col s12 m12 modal modal-fixed-footer  modal-config">
 						<div class=" col s10 m10 modal-content">
 							<h4 class="modal-title center-align" th:text="${noticia.titulo}"></h4>

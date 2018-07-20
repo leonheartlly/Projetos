@@ -11,6 +11,20 @@ body, html {
 	color: #757575 !important;
 }
 
+.breadcrumb-line {
+	line-height: 35px;
+	height: 35px;
+}
+
+.default-background {
+	background-color: #fafafa;
+	margin-top: 2px !important;
+}
+
+.page-align {
+	margin-left: 20px;
+}
+
 a {
 	color: #616161 !important;
 }
