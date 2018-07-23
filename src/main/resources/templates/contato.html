@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="base/layout">
+<head>
+<title th:text="#{messages.contato.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<link rel="stylesheet" th:href="@{/css/contato/contato.css}" />
+
+<script type="text/javascript" th:src="@{/js/contato/contato.js}"></script>
+
+
+</head>
+<body>
+	<section layout:fragment="content">
+		
+		<!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->
+		<div class="mdl-grid">
+		
+			<!-- CAMINHO DE PÃO -->
+			 <nav class="breadcrumb-line">
+			    <div class="nav-wrapper green darken-3">
+			      <div class="col s12 page-align">
+			        <a 	th:href="@{/home}" class="breadcrumb white-text" th:text="#{messages.home.caminhopao}"></a>
+			        <a th:href="@{/contato}" class="breadcrumb white-text" th:text="#{messages.contato.caminhopao}"></a>
+			      </div>
+			    </div>
+			  </nav>
+		
+			<div class="mdl-layout-spacer"></div>
+			<section
+				class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
+
+				<div>
+					
+					<div class="news">
+
+						<h5 class="green-text text-darken-2 title-conf" th:text="#{messages.contato.title}"></h5>
+
+						<div class="row news-board">
+ 
+						    <ul class="collection with-header ">
+						    
+						     	<li class="collection-header"><h4 class="green-text text-darken-2" th:text="#{messages.contato.prefeitura.header}"></h4></li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(1);" onmouseleave="removeHover(1);">
+						        	<span  th:text="#{messages.contato.prefeitura.sic}"></span>
+					        		<a  class="secondary-content valign-wrapper">
+					        			<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="1" th:text="#{messages.contato.prefeitura.sic.numero}"></span>
+					        		</a>
+						        </li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(2);" onmouseleave="removeHover(2);" >
+						        	<span th:text="#{messages.contato.prefeitura.administracao}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="2" th:text="#{messages.contato.prefeitura.administracao.numero}"></span>
+						        	</a>
+						        </li>
+						        
+						        <li class="collection-header"><h4 class="green-text text-darken-2" th:text="#{messages.contato.assistencia.header}"></h4></li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(3);" onmouseleave="removeHover(3);">
+						        	<span th:text="#{messages.contato.assistencia.social}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="3" th:text="#{messages.contato.assistencia.social.numero}"></span>
+						        	</a>
+						        </li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(4);" onmouseleave="removeHover(4);">
+						        	<span th:text="#{messages.contato.conselho.tutelar}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="4" th:text="#{messages.contato.conselho.tutelar.numero}"></span>
+						        	</a>
+						        </li>
+						        
+						         <li class="collection-header"><h4 class="green-text text-darken-2" th:text="#{messages.contato.saude.header}"></h4></li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(5);" onmouseleave="removeHover(5);">
+						        	<span th:text="#{messages.contato.posto.saude}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="5" th:text="#{messages.contato.posto.saude.numero}"></span>
+						        	</a>
+						        </li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(6);" onmouseleave="removeHover(6);">
+								    <span th:text="#{messages.contato.posto.araguaia}"></span>   	
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="6" th:text="#{messages.contato.posto.araguaia.numero}"></span>
+						        	</a>
+						        </li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(7);" onmouseleave="removeHover(7);">
+						        	<span th:text="#{messages.contato.posto.aeroporto}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="7" th:text="#{messages.contato.posto.aeroporto.numero}"></span>
+						        	</a>
+						        </li>
+						        
+						         <li class="collection-header"><h4 class="green-text text-darken-2" th:text="#{messages.contato.educacao.header}"></h4></li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(8);" onmouseleave="removeHover(8);">
+						        	<span th:text="#{messages.contato.escola.aldenora}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="8" th:text="#{messages.contato.escola.aldenora.numero}"></span>
+						        	</a>
+						        </li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(9);" onmouseleave="removeHover(9);">
+						        	<span th:text="#{messages.contato.escola.bricio}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="9" th:text="#{messages.contato.escola.bricio.numero}"></span>
+						        	</a>
+						        </li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(10);" onmouseleave="removeHover(10);">
+						        	<span th:text="#{messages.contato.creche.iara}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="10" th:text="#{messages.contato.creche.iara.numero}"></span>
+						        	</a>
+						        </li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(11);" onmouseleave="removeHover(11);">
+						        	<span th:text="#{messages.contato.secretaria}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="11" th:text="#{messages.contato.secretaria.numero}"></span>
+						        	</a>
+								</li>
+								
+								<li class="collection-header"><h4 class="green-text text-darken-2" th:text="#{messages.contato.secretaria.header}"></h4></li>
+						        <li class="collection-item contact-hover" onmouseover="hoverEffect(12);" onmouseleave="removeHover(12);">
+						        	<span th:text="#{messages.contato.secreatria.transporte}"></span>
+						        	<a class="secondary-content valign-wrapper">
+						        		<i class="material-icons green-text text-accent-4">local_phone</i>&nbsp;&nbsp;&nbsp;<span id="12" th:text="#{messages.contato.secreatria.transporte.numero}"></span>
+						        	</a>
+						        </li>
+						      </ul>
+						</div>
+						
+					</div>
+				</div>
+				
+				
+			</section>
+		</div>
+	<a id="pageup" class="btn-large btn-floating pulse hide right grey lighten-5 mr40 btn-swing" onclick="moveToTop(), hideBtn('pageup');"><i class="green-text text-darken-3 material-icons ">arrow_upward</i></a>
+	</section>
+
+</body>
+</html>

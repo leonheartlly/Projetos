@@ -29,6 +29,11 @@ a {
 	color: #616161 !important;
 }
 
+.active-effect li a:HOVER{
+	color: #81c784 !important;
+	cursor: pointer;
+}
+
 .alinhar-centro {
 	display: inline-flex;
 	vertical-align: middle;
@@ -162,6 +167,10 @@ a {
 .mt25 {
 	margin-top: 25px;
 }
+
+.mr40{
+	margin-right: 40px !important;
+}
 /*******************************/
 /*		PADDING      			*/
 /*******************************/
@@ -276,4 +285,79 @@ a {
 .center {
 	display: block;
 	margin: auto;
+}
+
+.btn-swing{
+	 -webkit-animation: swing-up 1s ease;
+     animation: swing-up 1s ease;
+     -webkit-animation-iteration-count: 5;
+     animation-iteration-count: 5;
+}
+
+
+@-webkit-keyframes swing-up
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateY(-5px);
+       transform: translateY(-5px);
+    } 
+    50%
+    {
+        -webkit-transform: translateY(3px);
+        transform: translateY(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateY(-3px);
+        transform: translateY(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+@keyframes swing-up
+{
+    15%
+    {
+        -webkit-transform: translateY(5px);
+        transform: translateY(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateY(3px);
+        transform: translateY(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateY(-3px);
+        transform: translateY(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
 }

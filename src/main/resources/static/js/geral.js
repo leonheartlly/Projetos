@@ -157,3 +157,15 @@ function moveToTop() {
 		scrollTop : 0
 	}, "slow");
 }
+
+function hideBtn(id){
+	$('#'+id).addClass('hide');
+}
+
+window.onscroll = function(ev) {
+	
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && (window.innerHeight + window.scrollY) > 1500) {
+    	
+        $("#pageup").removeClass("hide");
+    }
+};

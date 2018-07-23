@@ -19,9 +19,13 @@
 	}
 }
 
+.active-effect:HOVER{
+	color: #81c784 !important;
+	cursor: pointer;
+}
+
 .ar-box-vline {
 	border-left: 1px solid rgba(0, 0, 0, 0.2);
-	/* escone a div */
 	display: none;
 }
 
@@ -48,8 +52,7 @@
 }
 
 .ar-nav-menu a:HOVER {
-	color: #006d38 !important;
-	border-bottom: 1px solid #006d38;
+	border-bottom: 1px solid;
 	padding-bottom: 25px;
 }
 
@@ -58,7 +61,6 @@
 }
 
 .ar-box a:HOVER {
-	color: #006d38 !important;
 }
 
 div+a:hover+li {

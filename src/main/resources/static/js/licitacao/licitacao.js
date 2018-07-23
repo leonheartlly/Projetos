@@ -118,3 +118,5 @@ function createPDFFile(licitacao){
     });
     doc.output("dataurlnewwindow");
 }
+
+

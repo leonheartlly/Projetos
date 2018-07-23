@@ -47,6 +47,17 @@ public class MainController {
 	}
 	
 	/***
+	 * Carrega a página de Contatos.
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/contato", method = RequestMethod.GET)
+	public String contato() {
+		
+		return "contato";
+	}
+	
+	/***
 	 * ESSE MÉTODO CARREGA A PÁGINA (index.html) DE LOGIN DA NOSSA APLICAÇÃO
 	 * 
 	 * @return
