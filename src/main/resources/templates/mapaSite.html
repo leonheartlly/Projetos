@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="base/layout">
+<head>
+<title th:text="#{messages.mapa.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<link rel="stylesheet" th:href="@{/css/mapa/mapa.css}" />
+
+<script type="text/javascript" th:src="@{/js/contato/contato.js}"></script>
+
+
+</head>
+<body>
+	<section layout:fragment="content">
+		
+		
+		<div class="mdl-grid">
+		
+			<!-- CAMINHO DE PÃO -->
+			 <nav class="breadcrumb-line">
+			    <div class="nav-wrapper green darken-3">
+			      <div class="col s12 page-align">
+			        <a 	th:href="@{/home}" class="breadcrumb white-text" th:text="#{messages.home.caminhopao}"></a>
+			        <a th:href="@{/utilidades/mapa}" class="breadcrumb white-text" th:text="#{messages.mapa.caminhopao}"></a>
+			      </div>
+			    </div>
+			  </nav>
+		
+			<div class="mdl-layout-spacer"></div>
+			<section
+				class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white page-conf">
+
+				<div>
+					
+					<div class="news">
+
+						<h5 class="green-text text-darken-2 title-conf" th:text="#{messages.mapa.title}"></h5>
+						<p class="mt0 ml20">Mantenha o mouse sobre o link por um instante para visualizar uma pequena descrição.</p>
+
+						<div class="row news-board">
+						
+						  <div class="section map-list-conf">
+						    <h5 class="ml20 sub-title" th:text="#{messages.mapa.utilidades}"></h5>
+						    <p><a th:href="@{https://accounts.zoho.com/signin?servicename=VirtualOffice&amp;signupurl=https://workplace.zoho.com/orgsignup.do}" target="_blank" class="tooltipped" data-position="right" data-delay="1050" data-tooltip="Email coorporativo dos servidores públicos da prefeitura de Araguaçu" th:text="#{messages.header.webmail}"></a></p>
+						    <p><a th:href="@{/utilidades/contato}" class="tooltipped" data-position="right" data-delay="1050" data-tooltip="Lista dos contatos dos principais orgãos públicos da cidade de Araguaçu" th:text="#{messages.header.contatos}"></a></p>
+						    <p><a href="" th:text="#{messages.header.portal.servidor}"></a></p>
+						    <p><a href="" th:text="#{messages.header.portal.cidadao}"></a></p>
+						    <p><a th:href="@{/menu/noticias}" class="tooltipped" data-position="right" data-delay="1050" data-tooltip="Principais notícias da cidade de Araguaçu e região" th:text="#{messages.noticias}"></a></p>
+						    <p><a href="" th:text="#{messages.header.submenu.iptu}"></a></p>
+						    <p><a href="" th:text="#{messages.header.submenu.certidao}"></a></p>
+						    <p><a href="" th:text="#{messages.header.menu.prefeitura}"></a></p>
+						    
+						  </div>
+						  <div class="divider divider-conf"></div>
+						  <div class="section map-list-conf">
+						    <h5 class="ml20 sub-title" th:text="#{messages.mapa.editais}"></h5>
+						    <p><a th:href="@{/editais/licitacao}" th:text="#{messages.licitacao}"></a></p>
+						    <p><a href="http://177.107.46.162:8091/portalaraguacu/atalho/contratos.xhtml" target="_blank" th:text="#{messages.contratos.title}"></a></p>
+						    <p><a th:href="@{/editais/legislacao}" th:text="#{messages.legislacao.title}"></a></p>
+						    <p><a href="http://177.107.46.162:8091/portalaraguacu/" target="_blank" th:text="#{messages.header.menu.transparencia}"></a></p>
+						  </div>
+						  <div class="divider divider-conf"></div>
+						  
+						   <div class="section map-list-conf">
+						    <h5 class="ml20 sub-title" th:text="#{messages.mapa.estatisticas}"></h5>
+						    <p><a th:href="@{/estatisticas/graficos}" th:text="#{messages.graficos.title}"></a></p>
+						  </div>
+						  <div class="divider divider-conf"></div>
+						  
+						  <div class="mb20"></div>
+						  
+						</div>
+						
+					</div>
+				</div>
+				
+				
+			</section>
+		</div>
+	<a id="pageup" class="btn-large btn-floating pulse hide right grey lighten-5 mr40 btn-swing" onclick="moveToTop(), hideBtn('pageup');"><i class="green-text text-darken-3 material-icons ">arrow_upward</i></a>
+	</section>
+
+</body>
+</html>

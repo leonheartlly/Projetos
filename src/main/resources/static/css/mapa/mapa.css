@@ -1,0 +1,36 @@
+.map-list-conf p {
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+	margin-left: 40px;
+}
+
+.divider-conf {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.page-conf {
+	margin-left: 20px;
+}
+
+.ml20{
+	margin-left: 20px;
+}
+
+.title-conf{
+	font-weight: bolder;
+	padding: 20px;
+	padding-top: 40px;
+	margin: 0px !important; 
+}
+
+.map-list-conf p a:HOVER {
+	color: #81c784 !important;
+	cursor: pointer;
+}
+
+.sub-title{
+	font-size: 130%;
+	font-weight: bolder;
+	text-decoration: none;
+}

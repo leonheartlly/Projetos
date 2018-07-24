@@ -51,10 +51,21 @@ public class MainController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/contato", method = RequestMethod.GET)
+	@RequestMapping(value = "/utilidades/contato", method = RequestMethod.GET)
 	public String contato() {
 		
 		return "contato";
+	}
+	
+	/***
+	 * Carrega a página de mapa do site.
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/utilidades/mapa", method = RequestMethod.GET)
+	public String mapaSite() {
+		
+		return "mapaSite";
 	}
 	
 	/***
