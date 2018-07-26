@@ -24,8 +24,8 @@
 
 	<!-- FORM QUE VAI SER USADO PARA REALIZAR O LOGOUT -->
 	<form th:action="@{/logout}" id="form_logou" th:method="post">
-		<input type="hidden" th:name="${_csrf.parameterName}"
-			th:value="${_csrf.token}" />
+	<!-- 	<input type="hidden" th:name="${_csrf.parameterName}"
+			th:value="${_csrf.token}" /> -->
 	</form>
 
 		<div class="card-panel grey lighten-5 z-depth-1 mb1">

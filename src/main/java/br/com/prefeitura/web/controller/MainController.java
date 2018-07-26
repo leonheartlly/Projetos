@@ -106,7 +106,6 @@ public class MainController {
 		List<Noticia> noticias = this.noticiaService.findLastThreeNews();
 		
 		List<Grafico> pies = graphService.findPieChart();
-//		StatisticPie statistics = findPieStatisticsAndDatas(pies);
 		
 		model.addAttribute("calendario", eventos);
 		model.addAttribute("noticias", noticias);

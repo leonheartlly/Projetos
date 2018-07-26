@@ -1,17 +1,19 @@
 package br.com.prefeitura.web.controller;
 
-import java.awt.PageAttributes.MediaType;
 import java.util.List;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,6 +42,7 @@ import br.com.prefeitura.web.vo.Teste;
 
 @Controller
 @RequestMapping("/editais")
+@Secured("permitAll")
 public class EditaisController {
 	
 
@@ -190,8 +193,8 @@ public class EditaisController {
 	 * @return
 	 * @throws JsonProcessingException 
 	 */
-	@RequestMapping(value = "/filtrarLegislacao", method=RequestMethod.POST)
-	public @ResponseBody String pesquisarPorFiltro(@RequestBody Teste teste, Locale locale, Model model) throws JsonProcessingException { 
+	@RequestMapping(value = "/filtrarLegislacao", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE )
+	public @ResponseBody List<Legislacao> pesquisarPorFiltro(@RequestBody Teste teste, Locale locale, Model model) throws JsonProcessingException { 
 		
 		//TODO isso funfa
 		//@RequestParam(value="idOrgao") String idOrgao, @RequestParam(value="tipo") String tipo, 
@@ -201,6 +204,7 @@ public class EditaisController {
 		List<Legislacao> legislacoes = this.legislacaoService.findAll();
 		model.addAttribute("legislacoes", legislacoes);
 		
-		return "legislacao :: results";
+		return legislacoes;
+				//"legislacao :: results";
 	}
 }

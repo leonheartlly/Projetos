@@ -8,7 +8,7 @@
 <link rel="stylesheet" th:href="@{/css/home/home.css}" />
 <link rel="stylesheet" th:href="@{/css/licitacao/licitacao.css}" />
 <link rel="stylesheet" th:href="@{/css/legislacao/legislacao.css}" />
-<script type="text/javascript" th:src="@{/js/licitacao/licitacao.js}"></script>
+ <script type="text/javascript" th:src="@{/js/licitacao/licitacao.js}"></script>
 <script type="text/javascript" th:src="@{/js/legislacao/legislacao.js}"></script>
 <script type="text/javascript" th:src="@{/js/CSVGenerator.js}"></script>
 </head>
@@ -160,7 +160,7 @@
 					      </div>
 					  </div>
 			    </div>
-			
+				<input type="hidden" id="selectedType" value=""/>
 				<form class="col xl12 l12 hidden" 
 						id="legislacao-form" 
 						th:object="${legislacao}"
@@ -174,7 +174,7 @@
 
 						<div class="input-field col xl6 l6">
 						
-							<select th:name="idOrgao">
+							<select th:name="idOrgao" id="selectedOrgao">
 								<option th:each="orgao : ${orgaos}" th:value="${orgao.id}" th:text="${orgao.orgao}"></option>
 							</select> 
 							<label th:text="#{messages.licitacao.orgaos}"></label>
@@ -201,7 +201,7 @@
 						</div>
 					</div>
 					
-					<input class="hide" value="0" id="UserOption" th:name="tipo"></input>
+					<input class="hide" value="" id="UserOption" th:name="tipo"></input>
 					
 					<div class="row center-align">
 						<a class="waves-effect waves-green btn transparent green-text text-darken-3 z-depth-3 btn-floating" onclick="refresh()">
@@ -217,7 +217,7 @@
 			</div>
 		</div>
 		
-	 <div class="mt20" th:fragment="results" id="results">
+	 <div class="mt20" id="results">
 		<div class="divider"></div>
 		<table class="highlight bordered table-licitacoes fileTable">
 			<thead class="white">
@@ -240,14 +240,14 @@
 					<td th:text="${legislacao.orgao.orgao}" class="td center-align"></td>
 					<td class="td center-align"> <i class="small material-icons green-text text-darken-4 pointer download">cloud_download</i></td>
 				</tr> -->
-				 <tr class="tr-conf tr white" th:each="legislacao : ${legislacoes}">
-					<td th:text="${legislacao.nome}" class="td center-align"></td>
-					<td th:text="${legislacao.exercicio}" class="td center-align"></td>
+				 <!-- <tr class="tr-conf tr white" th:each="legislacao : ${egislacoes}">
+					<td th:text="${legislacao.nome}" class="td center-align"></td> -->
+				<!-- 	<td th:text="${legislacao.exercicio}" class="td center-align"></td>
 					<td th:text="${legislacao.mes}" class="td center-align"></td>
 					<td th:text="${legislacao.resumo}" class="td center-align"></td>
-					<td th:text="${legislacao.orgao.orgao}" class="td center-align"></td>
-					<td class="td center-align"> <i class="small material-icons green-text text-darken-4 pointer download">cloud_download</i></td>
-				</tr>
+					<td th:text="${legislacao.orgao.orgao}" class="td center-align" id="org"></td>
+					<td class="td center-align"> <i class="small material-icons green-text text-darken-4 pointer download">cloud_download</i></td>-->
+				<!-- </tr> -->
 			</tbody>
 		</table>
 	</div>

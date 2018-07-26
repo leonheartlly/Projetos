@@ -10,6 +10,12 @@ public class Teste {
 	
 	public Teste() {
 	}
+
+	public Teste(int idOrgao, int tipo) {
+		super();
+		this.idOrgao = idOrgao;
+		this.tipo = tipo;
+	}
 	
 	
 }
