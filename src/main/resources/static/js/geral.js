@@ -52,17 +52,6 @@ function removeUnneededClass(actualID){
 }
 
 $(document).ready(function() {
-
-	/**
-	 * Fecha a caixa de submenu ao retirar o mouse de cima.
-	 */
-//	$("#menuBox").mouseleave(function() {
-//
-//		$(this).fadeOut("fast", function() {
-//			
-//		});
-//		// $(this).hide();
-//	});
 	
 	 $('.dropdown-button').dropdown({
 		 hover: true,
@@ -169,3 +158,24 @@ window.onscroll = function(ev) {
         $("#pageup").removeClass("hide");
     }
 };
+
+function refreshCustomSelect(id){
+	
+	$('#' + id).val('Escolha um orgão');
+	$('#' + id).attr('selected-Id', '')
+}
+
+/**
+ * Refresh de campos dos forms.
+ * @param id
+ * @returns
+ */
+function refresh(id) {
+	$("#" + id).val("");
+	$("#" + id)[0].reset();
+}
+
+//function refreshDatePicker(initDateId, finalDateId){
+//	$("#" + initDateId).val("")
+//	$("#" + finalDateId).val("")
+//}

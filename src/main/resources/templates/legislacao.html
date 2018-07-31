@@ -45,35 +45,35 @@
 							<ul class="collection with-header">
 						    	<li class="collection-item">
 						    		<div th:inline="text"  th:attr="formTitle=#{messages.legislacao.plurianual}" class="link-conf pointer" onclick="displaySearch(1);changeTitle($(this).attr('formTitle'));" >[[#{messages.legislacao.plurianual}]]
-						    			<a href="#"  class="secondary-content">
+						    			<a href="javascript:void(0);"  class="secondary-content">
 						    				<i class="material-icons green-text">send</i>
 						    			</a>
 						    		</div>
 						    	</li>
 							    <li class="collection-item">
 							    	<div th:inline="text" th:attr="formTitle=#{messages.legislacao.diretrizes}" class="link-conf pointer" onclick="displaySearch(2);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.diretrizes}]]
-							    		<a href="#!" class="secondary-content">
+							    		<a href="javascript:void(0);" class="secondary-content">
 							    			<i class="material-icons green-text">send</i>
 							    		</a>
 							    	</div>
 							    </li>
 							    <li class="collection-item">
 							    	<div th:inline="text" class="link-conf pointer" th:attr="formTitle=#{messages.legislacao.orcamentaria}" onclick="displaySearch(3);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.orcamentaria}]]
-							    		<a href="#!" class="secondary-content">
+							    		<a href="javascript:void(0);" class="secondary-content">
 							    			<i class="material-icons green-text">send</i>
 							    		</a>
 							    	</div>
 							    </li>
 							    <li class="collection-item">
 							    	<div th:inline="text" class="link-conf pointer" th:attr="formTitle=#{messages.legislacao.qdd}" onclick="displaySearch(4);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.qdd}]]
-							    		<a href="#!" class="secondary-content">
+							    		<a href="javascript:void(0);" class="secondary-content">
 							    			<i class="material-icons green-text">send</i>
 							    		</a>
 							    	</div>
 							    </li>
 							    <li class="collection-item">
 							    	<div th:inline="text" class="link-conf pointer" th:attr="formTitle=#{messages.legislacao.execucao}" onclick="displaySearch(5);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.execucao}]]
-							    		<a href="#!" class="secondary-content">
+							    		<a href="javascript:void(0);" class="secondary-content">
 							    			<i class="material-icons green-text">send</i>
 							    		</a>
 							    	</div>
@@ -98,21 +98,21 @@
 						      	<ul class="collection with-header">
 								    <li class="collection-item">
 								    	<div th:inline="text" class="link-conf pointer" th:attr="formTitle=#{messages.legislacao.balancetes.financeiros}" onclick="displaySearch(6);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.balancetes.financeiros}]]
-								    		<a href="#!" class="secondary-content">
+								    		<a href="javascript:void(0);" class="secondary-content">
 								    			<i class="material-icons green-text">send</i>
 								    		</a>
 								    	</div>
 								    </li>
 								    <li class="collection-item">
 								    	<div th:inline="text" class="link-conf pointer" th:attr="formTitle=#{messages.legislacao.balancetes.patrimonial}" onclick="displaySearch(7);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.balancetes.patrimonial}]]
-								    		<a href="#!" class="secondary-content">
+								    		<a href="javascript:void(0);" class="secondary-content">
 								    			<i class="material-icons green-text">send</i>
 								    		</a>
 								    	</div>
 								    </li>
 								    <li class="collection-item">
 								    	<div th:inline="text" class="link-conf pointer" th:attr="formTitle=#{messages.legislacao.balancetes.receitas}" onclick="displaySearch(8);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.balancetes.receitas}]]
-								    		<a href="#!" class="secondary-content">
+								    		<a href="javascript:void(0);" class="secondary-content">
 								    			<i class="material-icons green-text">send</i>
 								    		</a>
 								    	</div>
@@ -137,21 +137,21 @@
 						    <ul class="collection with-header">
 								<li class="collection-item">
 									<div th:inline="text" class="link-conf pointer" th:attr="formTitle=#{messages.legislacao.relatorios.contas}" onclick="displaySearch(10);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.relatorios.contas}]]
-										<a href="#!" class="secondary-content">
+										<a href="javascript:void(0);" class="secondary-content">
 											<i class="material-icons green-text">send</i>
 										</a>
 									</div>
 								</li>
 								<li class="collection-item">
 									<div th:inline="text" class="link-conf pointer" th:attr="formTitle=#{messages.legislacao.relatorios.rreo}" onclick="displaySearch(11);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.relatorios.rreo}]]
-										<a href="#!" class="secondary-content">
+										<a href="javascript:void(0);" class="secondary-content">
 											<i class="material-icons green-text">send</i>
 										</a>
 									</div>
 								</li>
 								<li class="collection-item">
 									<div th:inline="text" class="link-conf pointer" th:attr="formTitle=#{messages.legislacao.relatorios.rgf}" onclick="displaySearch(12);changeTitle($(this).attr('formTitle'));">[[#{messages.legislacao.relatorios.rgf}]]
-										<a href="#!" class="secondary-content">
+										<a href="javascript:void(0);" class="secondary-content">
 											<i class="material-icons green-text">send</i>
 										</a>
 									</div>
@@ -163,7 +163,7 @@
 				<input type="hidden" id="selectedType" value=""/>
 				<form class="col xl12 l12 hidden" 
 						id="legislacao-form" 
-						th:object="${legislacao}"
+						th:object="${legislacao}" 
 						> <!-- th:action="@{../editais/pesquisarLegislacao}" th:object="${legislacao}" -->
 					
 					<div class="row">
@@ -173,12 +173,20 @@
 					<div class="row">
 
 						<div class="input-field col xl6 l6">
-						
-							<select th:name="idOrgao" id="selectedOrgao">
-								<option th:each="orgao : ${orgaos}" th:value="${orgao.id}" th:text="${orgao.orgao}"></option>
-							</select> 
-							<label th:text="#{messages.licitacao.orgaos}"></label>
-
+							<div class="relative col xl12 l12 pl0">
+								<label th:text="#{messages.licitacao.orgaos}"></label>
+								<span class="caret">▼</span>
+								<input class="select-dropdown mb0" readonly="true" id="customSelect" selected-Id="" value="Escolha um orgão" type="text" onclick="openList()"/>
+								<div class='absolute option-drop z-depth-2 pl0 pr0 row col xl12 l12' onmouseleave="hideElement();">
+									 <ul th:name="idOrgao" id="select1" class="hidden pl0 pr0 col xl12 l12">
+										<li th:each="orgao : ${orgaos}" th:id="${orgao.id}" th:value="${orgao.id}" 
+											th:text="${orgao.orgao}" 
+											onclick="chooseElement($(this).text(), $(this).attr('value'));" 
+											class="option-hover">
+										</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 
 						<div class=" input-field col l3 xl3">
@@ -195,23 +203,22 @@
 
 					<div class="row">
 						<div class="input-field col l12 xl12">
-							<input type="text" form="legislacao-form"  th:name="nome" maxlength="5000" id="objeto-licitacao" class="validate" /> 
-								<label for="objeto-licitacao" th:text="#{messages.legislacao.pesquisa.nome}"></label>
-								
+							<input type="text" form="legislacao-form"  th:name="nome" maxlength="5000" id="nome-legislacao" class="validate uppercase" /> 
+							<label for="objeto-licitacao" th:text="#{messages.legislacao.pesquisa.nome}"></label>
 						</div>
 					</div>
 					
 					<input class="hide" value="" id="UserOption" th:name="tipo"></input>
 					
 					<div class="row center-align">
-						<a class="waves-effect waves-green btn transparent green-text text-darken-3 z-depth-3 btn-floating" onclick="refresh()">
+						<a class="waves-effect waves-green btn transparent green-text text-darken-3 z-depth-3 btn-floating" 
+								onclick="refreshCustomSelect('customSelect'), refresh('legislacao-form'), refreshDatePicker('data-inicial', 'data-final');">
 							<i class="material-icons left green-text">refresh</i>
 						</a>
-						<button class="waves-effect waves-light btn green darken-3 z-depth-3 btn-floating ml15" type="submit">
+						<button class="waves-effect waves-light btn green darken-3 z-depth-3 btn-floating ml15" onclick="refreshTable();" type="submit">
 							<i class="material-icons left">search</i>
 						</button>
 					</div>
-					
 				</form>
 		
 			</div>
@@ -232,22 +239,7 @@
 			</thead>
 
 			<tbody id="detailBody">
-				<!--  <tr class="tr-conf tr white"  th:each="legislacao : ${legislacoes}">
-					<td th:text="${legislacao.nome}" class="td center-align"></td>
-					<td th:text="${legislacao.exercicio}" class="td center-align"></td>
-					<td th:text="${legislacao.mes}" class="td center-align"></td>
-					<td th:text="${legislacao.resumo}" class="td center-align"></td>
-					<td th:text="${legislacao.orgao.orgao}" class="td center-align"></td>
-					<td class="td center-align"> <i class="small material-icons green-text text-darken-4 pointer download">cloud_download</i></td>
-				</tr> -->
-				 <!-- <tr class="tr-conf tr white" th:each="legislacao : ${egislacoes}">
-					<td th:text="${legislacao.nome}" class="td center-align"></td> -->
-				<!-- 	<td th:text="${legislacao.exercicio}" class="td center-align"></td>
-					<td th:text="${legislacao.mes}" class="td center-align"></td>
-					<td th:text="${legislacao.resumo}" class="td center-align"></td>
-					<td th:text="${legislacao.orgao.orgao}" class="td center-align" id="org"></td>
-					<td class="td center-align"> <i class="small material-icons green-text text-darken-4 pointer download">cloud_download</i></td>-->
-				<!-- </tr> -->
+				
 			</tbody>
 		</table>
 	</div>
@@ -281,16 +273,9 @@
 		</table>
 	</div>
 		
-	<script th:inline="javascript">
-		
-		//function getData(){
-			 
-			// return [[${licitacao}]];
-		//}
-		
-	</script>
-	
-	<a id="pageup" class="btn-large btn-floating pulse hide right grey lighten-5 mr40 btn-swing" onclick="moveToTop(), hideBtn('pageup');"><i class="green-text text-darken-3 material-icons ">arrow_upward</i></a>
+	<a id="pageup" class="btn-large btn-floating pulse hide right grey lighten-5 mr40 btn-swing" onclick="moveToTop(), hideBtn('pageup');">
+		<i class="green-text text-darken-3 material-icons ">arrow_upward</i>
+	</a>
 		
 	</section>
 

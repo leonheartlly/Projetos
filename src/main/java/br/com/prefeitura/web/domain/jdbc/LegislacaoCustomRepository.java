@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.prefeitura.web.domain.entity.LegislacaoEntity;
 import br.com.prefeitura.web.domain.entity.OrgaoEntity;
+import br.com.prefeitura.web.model.Legislacao;
 
 @Repository
 public class LegislacaoCustomRepository extends JDBCRepositoryConfig {
@@ -54,8 +55,7 @@ public class LegislacaoCustomRepository extends JDBCRepositoryConfig {
 	 *            id da Modalidade informada.
 	 * @return lista de licitacoes encontradas.
 	 */
-	public List<LegislacaoEntity> FindLegislacaoByFilters(String nome, String dataInicial, String dataFinal,
-			Long idOrgao, Integer tipo) throws Exception{
+	public List<LegislacaoEntity> FindLegislacaoByFilters(Legislacao legislacao) throws Exception{
 
 		String sql = "SELECT le.id, le.nome, le.data, le.resumo, le.id_orgao, le.arquivo, le.tipo, "
 				+ "org.id, org.desc "  
@@ -64,10 +64,9 @@ public class LegislacaoCustomRepository extends JDBCRepositoryConfig {
 
 		List<Object> selectedFilters = new ArrayList<>();
 
-		sql += createDynamicQuery(nome, dataInicial, dataFinal, idOrgao, tipo, selectedFilters);
+		sql += createDynamicQuery(legislacao, selectedFilters);
 
 		try {
-
 			List<LegislacaoEntity> licitacoes = this.jdbcTemplate.query(sql, selectedFilters.toArray(),
 					new RowMapper<LegislacaoEntity>() {
 						public LegislacaoEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -102,40 +101,41 @@ public class LegislacaoCustomRepository extends JDBCRepositoryConfig {
 		}
 	}
 
-	private String createDynamicQuery(String nome, String dataInicial, String dataFinal, Long idOrgao, Integer tipo, List<Object> selectedFilters){
+	private String createDynamicQuery(Legislacao legislacao, List<Object> selectedFilters){
 		
 		StringBuilder whereQuery = new StringBuilder(WHERE);
-		if(StringUtils.isNotBlank(nome)){
+		if(StringUtils.isNotBlank(legislacao.getResumo())){
 			whereQuery.append(" le.nome LIKE CONCAT('%',?,'%') OR le.resumo LIKE CONCAT('%',?,'%') ");
-			selectedFilters.add(nome);
-			selectedFilters.add(nome);
+			selectedFilters.add(legislacao.getResumo());
+			selectedFilters.add(legislacao.getResumo());
 		}
 		
-		if(StringUtils.isNotBlank(dataInicial) && StringUtils.isNotBlank(dataFinal)){
+		if(StringUtils.isNotBlank(legislacao.getDataInicial()) && StringUtils.isNotBlank(legislacao.getDataFinal())){
 			checkQuery(whereQuery);
 			whereQuery.append(" le.data BETWEEN ? AND ? ");
-			selectedFilters.add(dataInicial);
-			selectedFilters.add(dataFinal);
-		}else if(StringUtils.isNotBlank(dataInicial) && StringUtils.isBlank(dataFinal)){
+			selectedFilters.add(legislacao.getDataInicial());
+			selectedFilters.add(legislacao.getDataFinal());
+		}else if(StringUtils.isNotBlank(legislacao.getDataInicial()) && StringUtils.isBlank(legislacao.getDataFinal())){
 			checkQuery(whereQuery);
 			whereQuery.append(" le.data > ? ");
-			selectedFilters.add(dataInicial);
-		}else if(StringUtils.isNotBlank(dataFinal) && StringUtils.isBlank(dataInicial)){
+			selectedFilters.add(legislacao.getDataInicial());
+		}else if(StringUtils.isNotBlank(legislacao.getDataFinal()) && StringUtils.isBlank(legislacao.getDataInicial())){
 			checkQuery(whereQuery);
 			whereQuery.append(" le.data < ? ");
-			selectedFilters.add(dataFinal);
+			selectedFilters.add(legislacao.getDataFinal());
 		}
 		
-		if(NumberUtils.isDigits(idOrgao.toString()) && idOrgao > 0){
+		
+		if(legislacao.getIdOrgao() != null && NumberUtils.isDigits(legislacao.getIdOrgao().toString()) && legislacao.getIdOrgao() > 0){
 			checkQuery(whereQuery);
 			whereQuery.append(" le.id_orgao = ? ");
-			selectedFilters.add(idOrgao);
+			selectedFilters.add(legislacao.getIdOrgao());
 		}
 		
-		if(NumberUtils.isDigits(tipo.toString()) && tipo > 0){
+		if(legislacao.getTipo() != null && NumberUtils.isDigits(legislacao.getTipo().toString()) && legislacao.getTipo() > 0){
 			checkQuery(whereQuery);
 			whereQuery.append(" le.tipo = ? ");
-			selectedFilters.add(tipo);
+			selectedFilters.add(legislacao.getTipo());
 		}
 		
 		return whereQuery.toString();

@@ -12,11 +12,10 @@ function displayDetails(id) {
 	}
 }
 
-function refresh() {
-	$("#objeto-licitacao").val("");
-	// $("#objeto-licitacao").text("");
-	$("#licitacao-form")[0].reset();
-}
+//function refresh() {
+//	$("#objeto-licitacao").val("");
+//	$("#licitacao-form")[0].reset();
+//}
 
 function displayPDF(file, titulo) {
 	var PDFwindow = window.open(file, '_blankPage', 'fullscreen=yes');
@@ -24,11 +23,6 @@ function displayPDF(file, titulo) {
 	PDFwindow.document.title = titulo;
 
 	return false;
-}
-
-function teste() {
-	// alert($('select[name=selector]').val());
-	return 1;
 }
 
 $(document).ready(

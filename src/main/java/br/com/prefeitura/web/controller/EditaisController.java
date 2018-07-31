@@ -1,5 +1,6 @@
 package br.com.prefeitura.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -194,17 +195,26 @@ public class EditaisController {
 	 * @throws JsonProcessingException 
 	 */
 	@RequestMapping(value = "/filtrarLegislacao", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE )
-	public @ResponseBody List<Legislacao> pesquisarPorFiltro(@RequestBody Teste teste, Locale locale, Model model) throws JsonProcessingException { 
+	public @ResponseBody List<Legislacao> pesquisarPorFiltro(@RequestBody Legislacao legislacao, Locale locale, Model model) throws JsonProcessingException { 
 		
-		//TODO isso funfa
-		//@RequestParam(value="idOrgao") String idOrgao, @RequestParam(value="tipo") String tipo, 
-
 		LOGGER.info("[LOG-INFO] "+ EditaisController.class.getSimpleName()+" - LEGISLAÇÃO.");
 		
-		List<Legislacao> legislacoes = this.legislacaoService.findAll();
+		List<Legislacao> legislacoes = new ArrayList<>();
+		try{
+			if(legislacao.getIdOrgao() == null && legislacao.getResumo().equals("") 
+					&& legislacao.getDataInicial().equals("") && legislacao.getDataFinal().equals("") && legislacao.getTipo() != null && legislacao.getTipo() > 0){
+				legislacoes = this.legislacaoService.findAll();
+			}else{
+				legislacoes = this.legislacaoService.findLegislacaoByFormFilters(legislacao);
+			}
+		}catch(NullPointerException np){
+			LOGGER.error("[LOG-ERROR] "+ EditaisController.class.getSimpleName()+" - LEGISLAÇÃO. PesquisarPorFiltro() NULLPOINTEREXCEPTION: " + np);
+		}catch(Exception e){
+			LOGGER.error("[LOG-ERROR] "+ EditaisController.class.getSimpleName()+" - LEGISLAÇÃO. PesquisarPorFiltro() EXCEPTION: " + e);
+		}
+		
 		model.addAttribute("legislacoes", legislacoes);
 		
 		return legislacoes;
-				//"legislacao :: results";
 	}
 }

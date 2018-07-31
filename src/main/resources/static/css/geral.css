@@ -40,8 +40,16 @@ a {
 	align-items: center;
 }
 
+.uppercase{
+	text-transform: uppercase;
+}
+
 .visibility{
 	visibility: hidden;
+}
+
+.block{
+	display: block !important;
 }
 
 .h0{
@@ -287,6 +295,10 @@ a {
 	margin: auto;
 }
 
+
+.none{
+	display: none;
+}
 .btn-swing{
 	 -webkit-animation: swing-up 1s ease;
      animation: swing-up 1s ease;

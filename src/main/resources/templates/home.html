@@ -372,7 +372,7 @@ var verifyCallback = function(response) {
 						  <div class="photo-gallery center-align">
           						<ul class="list-unstyled row negocio ">
 				                <li th:each="imagem : ${noticia.imagens}" class=" center-align valign-wrapper " th:attr="data-src=${imagem.caminho} + ${imagem.nome}, data-sub-html='&lt;h4&gt;'+${imagem.titulo}+'&lt;/h4&gt;&lt;p&gt;'+${imagem.descricao}+'&lt;/p&gt;'">
-				                    <a href="#" class="center-align">
+				                    <a href="javascript:void(0);" class="center-align">
 				                        <img class="img-responsive gallery-img" th:src="@{${imagem.caminho} + ${imagem.nome}}"/>
 				                      <div class="demo-gallery-poster">
 				                      	<img th:src="@{/img/icons/search.png}"/>
@@ -387,7 +387,7 @@ var verifyCallback = function(response) {
 					<span class="right" th:text="${noticia.autor.nome}"></span>
 				</div>
 				<div class="modal-footer">
-					<a href="#!"
+					<a href="javascript:void(0);"
 						class="modal-action modal-close waves-effect waves-green btn-flat ">Fechar</a>
 				</div>
 			</div>

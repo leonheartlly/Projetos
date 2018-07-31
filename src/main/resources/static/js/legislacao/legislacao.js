@@ -1,29 +1,28 @@
-
-
 $(document).ready(function() {
 	
 //	var csrf_token = $('meta[name="csrf-token"]').attr('content');
-//	alert(csrf_token);
 //	var token = $('#csrfToken').val();
 //	var header = $('#csrfHeader').val();
-
 	
 	$("#legislacao-form").submit(function(event){
-		var datas = { idOrgao: "1", tipo : "1"};
-		var idOrgao = $("#selectedOrgao").children(":selected").attr("value");
-		var idTipo = $("#selectedType").attr("value");
 		
-		alert(idTipo);
+		var idOrgao = $("#customSelect").attr("selected-Id");
+		var idTipo = $("#selectedType").attr("value");
+		var nameValue= $("#nome-legislacao").val();
+		var initDate= $("#data-inicial").val();
+		var finalDate= $("#data-final").val();
+		
+		var datas = { idOrgao: idOrgao, tipo : idTipo, resumo: nameValue, dataInicial: initDate, dataFinal: finalDate};
 		
 		event.preventDefault();
 		
 		var val = findFormValues();
 		$.ajax({
-			url: "/editais/filtrarLegislacao/", ///editais/filtrarLegislacao
+			url: "/editais/filtrarLegislacao/",
 			type: "POST", 
 			//contentType: "application/json",
 			dataType: 'json',
-			data:JSON.stringify({"idOrgao":"1", "tipo":"1"}),
+			data:JSON.stringify(datas),
 			cache:false,
 			 beforeSend: function(xhr) {
 			        xhr.setRequestHeader("Accept", "application/json");
@@ -31,7 +30,6 @@ $(document).ready(function() {
 //			        xhr.setRequestHeader(header, token);
 			    },
 		    success: function(result){
-//		    	
 		    	$.each(result, function(key, value){
 		    		$('#detailBody').append('<tr>');
 		    		$('#detailBody').append('<td class="td center-align">'+value.nome+'</td>');
@@ -40,13 +38,6 @@ $(document).ready(function() {
 		    		$('#detailBody').append('<td class="td center-align">'+value.resumo+'</td>');
 		    		$('#detailBody').append('<td class="td center-align">'+value.orgao.orgao+'</td>');
 		    		$('#detailBody').append('<td class="td center-align" attach=/img/'+value.arquivo+' onclick="displayPDF($(this).attr('+"'attach'"+'),'+"'legislacao'"+')"> <i class="small material-icons green-text text-darken-4 pointer download" >cloud_download</i></td></tr>');
-//		    		$('#detailBody').append('<td class="td center-align">'+value.nome+'</td>'+
-//		    				'<td class="td center-align">'+value.exercicio+'</td>'+
-//		    				'<td class="td center-align">'+value.mes+'</td>'+
-//		    				'<td class="td center-align">'+value.resumo+'</td>'+
-//		    				'<td class="td center-align">'+value.orgao.orgao+'</td>'+
-//		    				'<td class="td center-align" attach=/img/'+value.arquivo+' onclick="displayPDF($(this).attr('+"'attach'"+'),'+"'legislacao'"+')"> <i class="small material-icons green-text text-darken-4 pointer download" >cloud_download</i></td>');
-		    		//$('#detailBody').html('<td class="td center-align">'+value.exercicio+'</td>');
 		    	});
 		    }, 
 		    error: function(xhr, status, error){
@@ -55,21 +46,48 @@ $(document).ready(function() {
 		    }
 		    });
 	});
+	
 });
 
+function refreshTable(){
+	
+	if(!$("#detailBody").is(":empty")){
+		
+		$("#detailBody").load(window.location.href + " #detailBody");
+	}
+}
 
-function displaySearch(code){
+function openList(){
+	$("#select1").removeClass('hidden');
+}
+
+function chooseElement(text, value){
+	$("#customSelect").val(text);
+	$("#customSelect").attr('selected-Id', value);
+	$("#select1").addClass('hidden');
+}
+
+function hideElement(){
+	$("#select1").addClass('hidden');
+}
+
+function removeMaterializeSelect(){
+	$('.select-dropdown').addClass('none');
+}
+
+
+function displaySearch(code) {
 	var option = $("#UserOption").val();
-	
+
 	setValue(code);
-	
-	if($("#legislacao-form").css('display') == "none"){
-		
+
+	if ($("#legislacao-form").css('display') == "none") {
+
 		$("#legislacao-form").show('slow');
-	}else{
-		
+	} else {
+
 		$("#legislacao-form").hide('slow');
-		if(option != code){
+		if (option != code) {
 			$("#legislacao-form").show('slow');
 		}
 	}

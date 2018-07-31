@@ -1,4 +1,3 @@
-
 .list-bg {
 	background-color: #F6F4F1 !important;
 }
@@ -25,6 +24,7 @@
 
 .card:HOVER .card-content span {
 	/* color: #42a5f5 !important; */
+	
 }
 
 .card-reveal {
@@ -36,14 +36,14 @@
 }
 
 .activator:HOVER {
-	 color: #42a5f5 !important; 
+	color: #42a5f5 !important;
 }
 
-.greenHover:hover .card-content span{
+.greenHover:hover .card-content span {
 	color: #43a047 !important;
 }
 
-.blueHover:hover .card-content span{
+.blueHover:hover .card-content span {
 	color: #42a5f5 !important;
 }
 
@@ -76,20 +76,21 @@
 }
 
 .second-effect:hover .mask {
-/*	opacity: 1;
+	/*	opacity: 1;
 	border: 230px solid rgba(0, 0, 0, 0.7);*/
 	
 }
 
-.view:hover img{
-	transform: translate3d(0, 0, 0) scale(1.1, 1.1); 
+.view:hover img {
+	transform: translate3d(0, 0, 0) scale(1.1, 1.1);
 	opacity: 1;
-	z-index: 999 !important; 
+	z-index: 999 !important;
 }
+
 .second-effect:hover a.info {
-	transform: translate3d(0, 0, 0) scale(1.1, 1.1); 
+	transform: translate3d(0, 0, 0) scale(1.1, 1.1);
 	opacity: 1;
-	z-index: 999 !important; 
+	z-index: 999 !important;
 }
 
 .view a.info {
@@ -100,6 +101,7 @@
 	text-indent: -9999px;
 	width: 30px;
 	height: 30px;*/
+	
 }
 
 .hidden {
@@ -113,3 +115,34 @@
 .download:HOVER {
 	transform: scale(1.8);
 }
+
+.option-hover {
+	font-size: 18px;
+	color: #009688;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	
+}
+
+.option-hover:hover {
+	background-color: #eeeeee;
+}
+
+.caret {
+	color: initial;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 10px;
+	margin: auto 0;
+	font-size: 10px;
+	line-height: 10px;
+}
+
+.option-drop{
+	background-color: #fff;
+	z-index: 999;
+}
+

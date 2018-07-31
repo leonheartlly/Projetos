@@ -3,6 +3,7 @@ package br.com.prefeitura.web.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,15 +43,17 @@ public class LegislacaoService extends ServiceHelper{
 			 legislacao.setOrgao(new Orgao());
 		 }
 		 
+		 if(StringUtils.isNotBlank(legislacao.getResumo())){
+			 String upperName = legislacao.getResumo().toUpperCase();
+			 legislacao.setResumo(upperName);
+		 }
+		 
 		 try{
-			List<LegislacaoEntity> legislacoesEntity = this.legislacaoCustomRepository.FindLegislacaoByFilters(
-					legislacao.getNome(), legislacao.getDataInicial(), legislacao.getDataFinal(),
-					legislacao.getIdOrgao(), legislacao.getTipo());
+			List<LegislacaoEntity> legislacoesEntity = this.legislacaoCustomRepository.FindLegislacaoByFilters(legislacao);
 			
 			 legislacoes = convertLegislacaoObject(legislacoesEntity);
 		 }catch(Exception e){
-			 LOGGER.error("[LOG-ERROR] " + LegislacaoService.class.getSimpleName()
-						+ " ERRO INESPERADO AO EFETUAR A CONSULTA. " + e);
+			 LOGGER.error("[LOG-ERROR] " + LegislacaoService.class.getSimpleName() + " ERRO INESPERADO AO EFETUAR A CONSULTA. " + e);
 		 }
 		 return legislacoes;
 	 }
