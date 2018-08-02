@@ -282,7 +282,7 @@ var verifyCallback = function(response) {
 					<!-- FACEBOOK -->
 					<div class="col s6 m6 mt15">
 
-						<h5 class="facebook-div mb20" th:text="#{messages.home.facebook.title}"></h5>
+						<h5 class="facebook-div mb20 green-text text-darken-2" th:text="#{messages.home.facebook.title}"></h5>
 						<script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5" async ="defer"></script>  
 						<div id="fb-root"></div>
 							<script> 
@@ -321,7 +321,7 @@ var verifyCallback = function(response) {
 					<!-- CALENDARIO -->
 					<div class="col s6 m6 mt15 ">
 
-						<h5 class="facebook-div mb20" th:text="#{messages.home.calendario}"></h5>
+						<h5 class="facebook-div mb20 green-text text-darken-2" th:text="#{messages.home.calendario}"></h5>
 						
 				         <div th:id="'event'+${cal.id}" th:classappend="${iter.index == 0} ? '' : hide" class="card col s10 m9 calendar-img-conf offset-m1" th:each="cal, iter : ${calendario}">
 					     	<script th:inline="javascript">
