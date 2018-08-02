@@ -19,7 +19,7 @@
 <body>
 	<section layout:fragment="content">
 
-		<div class="background">
+		<div>
 		
 		<!-- BREADCRUMB -->
 			 <nav class="breadcrumb-line">
@@ -50,6 +50,7 @@
 							</li>
 						</ul>
 				</div>
+				
 				<form class="col s12" 
 						id="licitacao-form" 
 						th:action="@{../editais/pesquisaLicitacao}" 
@@ -101,20 +102,20 @@
 
 					<div class="row">
 						<div class="input-field col s12">
-							<input type="text" form="licitacao-form" placeholder="Digite parte do objeto da licitação desejada" th:name="objeto" maxlength="5000" id="objeto-licitacao" class="validate" /> 
+							<input type="text" form="licitacao-form" placeholder="Digite parte do objeto da licitação desejada" th:name="objeto" maxlength="5000" id="objeto-licitacao" class="validate uppercase" /> 
 								<label for="objeto-licitacao" th:text="#{messages.licitacao.objeto.dots}"></label>
 								
 						</div>
 					</div>
 					
-					<div class="row">
-						<button class="waves-effect waves-light btn right green darken-3 z-depth-3" type="submit">
-							<i class="material-icons left">search</i>PESQUISAR
+					<div class="row center-align">
+						<a class="waves-effect waves-green btn transparent green-text text-darken-3 z-depth-3 btn-floating" onclick="refresh()">
+							<i class=" green-text material-icons left">refresh</i>
+						</a>
+						<button class="waves-effect waves-light btn green darken-3 z-depth-3 btn-floating" type="submit">
+							<i class="white-text material-icons left">search</i>
 						</button>
 						
-						<a class="waves-effect waves-green btn right transparent green-text text-darken-3 z-depth-3" onclick="refresh()">
-							<i class="material-icons left">refresh</i>LIMPAR
-						</a>
 					</div>
 					
 				</form>
@@ -123,7 +124,7 @@
 
 		</div>
 <div >
-		<table class="highlight bordered table-licitacoes fileTable">
+		<table class="highlight bordered table-licitacoes fileTable white">
 			<thead>
 				<tr>
 					<th class="th" th:text="#{messages.licitacao.nprocesso}"></th>
@@ -219,8 +220,17 @@
 				
 				</tr>
 				
+				
+				
 			</tbody>
 		</table>
+		
+		<div id="notFound" class="center-align mb20 mt20" th:if="${#lists.isEmpty(licitacao)}">
+			<img class="responsive-img center not-found" th:src="@{/img/no-results.png}"/>
+			<p class="not-found-message mb0">Não Existe nada Aqui!</p>
+			<label class="not-found-subtitle">Não conseguimos encontrar nada para sua busca. Mude os filtros e tente novamente.</label>
+		</div>
+		
 		</div>
 	
 	<div id="printPDF" class="hide docFile">	
@@ -255,8 +265,8 @@
 	<script th:inline="javascript">
 		
 		function getData(){
-			 
-			 return [[${licitacao}]];
+				return = [[${licitacao}]];
+			 //return 
 		}
 		
 	</script>

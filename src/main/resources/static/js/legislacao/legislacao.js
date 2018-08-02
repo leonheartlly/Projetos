@@ -30,19 +30,22 @@ $(document).ready(function() {
 //			        xhr.setRequestHeader(header, token);
 			    },
 		    success: function(result){
-		    	$.each(result, function(key, value){
-		    		$('#detailBody').append('<tr>');
-		    		$('#detailBody').append('<td class="td center-align">'+value.nome+'</td>');
-		    		$('#detailBody').append('<td class="td center-align">'+value.exercicio+'</td>');
-		    		$('#detailBody').append('<td class="td center-align">'+value.mes+'</td>');
-		    		$('#detailBody').append('<td class="td center-align">'+value.resumo+'</td>');
-		    		$('#detailBody').append('<td class="td center-align">'+value.orgao.orgao+'</td>');
-		    		$('#detailBody').append('<td class="td center-align" attach=/img/'+value.arquivo+' onclick="displayPDF($(this).attr('+"'attach'"+'),'+"'legislacao'"+')"> <i class="small material-icons green-text text-darken-4 pointer download" >cloud_download</i></td></tr>');
-		    	});
+		    	if($.isEmptyObject(result)){
+		    		showNotFound();
+		    	}else{
+			    	$.each(result, function(key, value){
+			    		$('#detailBody').append('<tr>');
+			    		$('#detailBody').append('<td class="td center-align">'+value.nome+'</td>');
+			    		$('#detailBody').append('<td class="td center-align">'+value.exercicio+'</td>');
+			    		$('#detailBody').append('<td class="td center-align">'+value.mes+'</td>');
+			    		$('#detailBody').append('<td class="td center-align">'+value.resumo+'</td>');
+			    		$('#detailBody').append('<td class="td center-align">'+value.orgao.orgao+'</td>');
+			    		$('#detailBody').append('<td class="td center-align" attach=/img/'+value.arquivo+' onclick="displayPDF($(this).attr('+"'attach'"+'),'+"'legislacao'"+')"> <i class="small material-icons green-text text-darken-4 pointer download" >cloud_download</i></td></tr>');
+			    	});
+		    	}
 		    }, 
 		    error: function(xhr, status, error){
-		    	
-		    	alert("ERRO " + xhr.responseText);
+		    	showHideNotFound();
 		    }
 		    });
 	});
@@ -51,10 +54,7 @@ $(document).ready(function() {
 
 function refreshTable(){
 	
-	if(!$("#detailBody").is(":empty")){
-		
-		$("#detailBody").load(window.location.href + " #detailBody");
-	}
+	$("#detailBody").empty();
 }
 
 function openList(){
@@ -128,4 +128,5 @@ function findTableData(){
     }
     });
 }
+
 

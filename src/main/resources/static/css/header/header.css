@@ -4,9 +4,14 @@
 	z-index: 101;
 }
 
+.header-conf{
+	margin-bottom: 0px;
+}
+
 .fs25 {
 	font-size: 25px;
 }
+
 @media ( max-width : 1380px) {
 	.fs25 {
 		font-size: 22px;

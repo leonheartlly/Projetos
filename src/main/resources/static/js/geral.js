@@ -175,7 +175,19 @@ function refresh(id) {
 	$("#" + id)[0].reset();
 }
 
-//function refreshDatePicker(initDateId, finalDateId){
-//	$("#" + initDateId).val("")
-//	$("#" + finalDateId).val("")
-//}
+function showNotFound(){
+//	if($("#notFound").hasClass('not-found-hide')){
+//		$("#notFound").removeClass('not-found-hide');
+//	}
+	$("#notFound").addClass('not-found-hide');
+}
+
+function hideNotFound(){
+//	if(!$("#notFound").hasClass('not-found-hide')){
+//		$("#notFound").addClass('not-found-hide');
+//	}
+	$("#notFound").removeClass('not-found-hide');
+	setTimeout(function(){
+		
+	},2000);
+}

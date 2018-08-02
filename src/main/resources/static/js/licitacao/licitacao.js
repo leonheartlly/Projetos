@@ -19,7 +19,6 @@ function displayDetails(id) {
 
 function displayPDF(file, titulo) {
 	var PDFwindow = window.open(file, '_blankPage', 'fullscreen=yes');
-	// $(newPage.document).find('html').append('<head><title>'+titulo+'</title></head>');
 	PDFwindow.document.title = titulo;
 
 	return false;

@@ -11,6 +11,7 @@
  <script type="text/javascript" th:src="@{/js/licitacao/licitacao.js}"></script>
 <script type="text/javascript" th:src="@{/js/legislacao/legislacao.js}"></script>
 <script type="text/javascript" th:src="@{/js/CSVGenerator.js}"></script>
+<script type="text/javascript" th:src="@{/js/geral.js}"></script>
 </head>
 <body>
 	<section layout:fragment="content">
@@ -32,7 +33,7 @@
 					<!-- FIRST CARD -->
 				    <div class="card col xl4 l4 greenHover">
 					    <div class="card-image waves-effect waves-block waves-light view">
-					    	  <img class="activator responsive-img" th:src="@{/img/icons/leis.png}"/>
+					    	  <img class="activator responsive-img hoverable" th:src="@{/img/icons/leis.png}"/>
 					    	  <div class="mask center-align activator">  
 								    <a class="info center-align" title="Full Image"></a>  
 								 </div>
@@ -164,7 +165,7 @@
 				<form class="col xl12 l12 hidden" 
 						id="legislacao-form" 
 						th:object="${legislacao}" 
-						> <!-- th:action="@{../editais/pesquisarLegislacao}" th:object="${legislacao}" -->
+						>
 					
 					<div class="row">
 						<h5 id="formTitle" class="page-align blue-text text-lighten-1"></h5>
@@ -215,7 +216,7 @@
 								onclick="refreshCustomSelect('customSelect'), refresh('legislacao-form'), refreshDatePicker('data-inicial', 'data-final');">
 							<i class="material-icons left green-text">refresh</i>
 						</a>
-						<button class="waves-effect waves-light btn green darken-3 z-depth-3 btn-floating ml15" onclick="refreshTable();" type="submit">
+						<button class="waves-effect waves-light btn green darken-3 z-depth-3 btn-floating ml15" onclick="refreshTable(), hideNotFound();" type="submit">
 							<i class="material-icons left">search</i>
 						</button>
 					</div>
@@ -224,7 +225,7 @@
 			</div>
 		</div>
 		
-	 <div class="mt20" id="results">
+	 <div class="mt20 white" id="results">
 		<div class="divider"></div>
 		<table class="highlight bordered table-licitacoes fileTable">
 			<thead class="white">
@@ -238,10 +239,19 @@
 				</tr>
 			</thead>
 
-			<tbody id="detailBody">
+			<tbody id="detailBody" class="white">
 				
 			</tbody>
 		</table>
+		
+		<div id="notFound" class="center-align display-transition white">
+			<br/>
+			<img class="responsive-img center not-found" th:src="@{/img/no-results.png}"/>
+			<p class="not-found-message mb0">Não Existe nada Aqui!</p>
+			<label class="not-found-subtitle">Não conseguimos encontrar nada para sua busca. Mude os filtros e tente novamente.</label>
+			<p></p>
+		</div>
+		
 	</div>
 	
 	<div id="printPDF" class="hide docFile">	

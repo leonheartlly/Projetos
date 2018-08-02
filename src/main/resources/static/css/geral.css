@@ -1,13 +1,15 @@
-@font-face {
+/*@font-face {
   font-family: 'Montserrat';
-  src: url('/font/Montserrat-Regular.otf') format('otf'), /* Super Modern Browsers */
-       url('/font/Montserrat-Regular.otf') format('otf'), /* Pretty Modern Browsers */
-       url('Montserrat-Regular.otf')  format('otf'), /* Safari, Android, iOS */
-       url('Montserrat-Regular.otf') format('otf'); /* Legacy iOS */
+  src: url('/font/Montserrat-Regular.otf') format('otf'), 
+       url('/font/Montserrat-Regular.otf') format('otf'), 
+       url('Montserrat-Regular.otf')  format('otf'), 
+       url('Montserrat-Regular.otf') format('otf'); 
 }
 
+*/
+
 body, html {
-	font-family: 'Montserrat';
+	/*font-family: 'Montserrat';*/
 	color: #757575 !important;
 }
 
@@ -15,6 +17,7 @@ body, html {
 	line-height: 35px;
 	height: 35px;
 }
+
 
 .default-background {
 	background-color: #fafafa;
@@ -34,39 +37,82 @@ a {
 	cursor: pointer;
 }
 
+
+
 .alinhar-centro {
 	display: inline-flex;
 	vertical-align: middle;
 	align-items: center;
 }
 
-.uppercase{
-	text-transform: uppercase;
+/*******************************/
+/*		ERROR PAGE    			*/
+/*******************************/
+.not-found{
+	width: 30%;
 }
 
-.visibility{
-	visibility: hidden;
+.not-found-message{
+	color: #e53935;
+	font-size: x-large;
+	font-weight: bold;
 }
 
-.block{
-	display: block !important;
+.not-found-subtitle{
+	font-size: large;
 }
+
 
 .h0{
 	height: 0px;
 }
+
+.display-transition{
+	overflow: hidden;
+	max-height: 0;
+  	transition: max-height 1s ease-in-out;
+}
+
+.not-found-hide{
+	max-height: 1200px !important;
+	pointer-events: none;
+}
+/*******************************/
+/*		USEFUL      			*/
+/*******************************/
+.uppercase{
+	text-transform: uppercase;
+}
 .absolute {
 	position: absolute;
 }
-
+.block{
+	display: block !important;
+}
+.visibility{
+	visibility: hidden;
+}
 .relative {
 	position: relative;
+}
+.center {
+	display: block;
+	margin: auto;
 }
 
 .bold {
 	font-weight: bolder;
 }
 
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.pointer {
+	cursor: pointer;
+}
 .erro-msg {
 	color: red;
 }
@@ -74,26 +120,19 @@ a {
 .sucesso-msg {
 	color: blue;
 }
-
+.none{
+	display: none;
+}
 .ml50 {
 	margin-left: 50px;
 }
 
-.fl {
-	float: left;
-}
 
-.fr {
-	float: right;
-}
 
 .w90p {
 	width: 90% !important;
 }
 
-.pointer {
-	cursor: pointer;
-}
 
 /*******************************/
 /*		MARGIN      			*/
@@ -290,15 +329,9 @@ a {
 	border: 0px !important;
 }
 
-.center {
-	display: block;
-	margin: auto;
-}
 
 
-.none{
-	display: none;
-}
+
 .btn-swing{
 	 -webkit-animation: swing-up 1s ease;
      animation: swing-up 1s ease;
