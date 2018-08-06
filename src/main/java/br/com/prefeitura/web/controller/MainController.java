@@ -47,6 +47,28 @@ public class MainController {
 	}
 	
 	/***
+	 * ESSE MÉTODO CARREGA A PÁGINA (index.html) DE LOGIN DA NOSSA APLICAÇÃO
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/prefeitura/denuncia", method = RequestMethod.GET)
+	public String denuncia() {
+		
+		return "denuncia";
+	}
+	
+	/***
+	 * ESSE MÉTODO CARREGA A PÁGINA (index.html) DE LOGIN DA NOSSA APLICAÇÃO
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/prefeitura/secretaria", method = RequestMethod.GET)
+	public String secretaria() {
+		
+		return "secretaria";
+	}
+	
+	/***
 	 * Carrega a página de Contatos.
 	 * 
 	 * @return

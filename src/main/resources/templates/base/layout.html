@@ -103,7 +103,8 @@
 							    <li><a class="green-text text-darken-1 disabled unclick" th:text="#{messages.header.submenu.prefeitura}"></a></li>
 							     <li class="divider"></li>
 							    <li><a href="#!" th:text="#{messages.header.menu.prefeitura}"></a></li>
-							    <li><a href="#!" th:text="#{messages.header.menu.secreataria}"></a></li>
+							    <li><a th:href="@{/prefeitura/denuncia}" th:text="#{messages.denuncia.title}"></a></li>
+							    <li><a th:href="@{/prefeitura/secretaria}" th:text="#{messages.header.menu.secreataria}"></a></li>
 							</ul>
 						</div>
 						<a class=" testando col xl2 l2 center-align" th:href="@{/menu/noticias}" th:text="#{messages.header.menu.noticias}"></a> 

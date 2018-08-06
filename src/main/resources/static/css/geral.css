@@ -7,7 +7,6 @@
 }
 
 */
-
 body, html {
 	/*font-family: 'Montserrat';*/
 	color: #757575 !important;
@@ -17,7 +16,6 @@ body, html {
 	line-height: 35px;
 	height: 35px;
 }
-
 
 .default-background {
 	background-color: #fafafa;
@@ -32,12 +30,10 @@ a {
 	color: #616161 !important;
 }
 
-.active-effect li a:HOVER{
+.active-effect li a:HOVER {
 	color: #81c784 !important;
 	cursor: pointer;
 }
-
-
 
 .alinhar-centro {
 	display: inline-flex;
@@ -48,53 +44,57 @@ a {
 /*******************************/
 /*		ERROR PAGE    			*/
 /*******************************/
-.not-found{
+.not-found {
 	width: 30%;
 }
 
-.not-found-message{
+.not-found-message {
 	color: #e53935;
 	font-size: x-large;
 	font-weight: bold;
 }
 
-.not-found-subtitle{
+.not-found-subtitle {
 	font-size: large;
 }
 
-
-.h0{
+.h0 {
 	height: 0px;
 }
 
-.display-transition{
+.display-transition {
 	overflow: hidden;
 	max-height: 0;
-  	transition: max-height 1s ease-in-out;
+	transition: max-height 1s ease-in-out;
 }
 
-.not-found-hide{
+.not-found-hide {
 	max-height: 1200px !important;
 	pointer-events: none;
 }
 /*******************************/
 /*		USEFUL      			*/
 /*******************************/
-.uppercase{
+.uppercase {
 	text-transform: uppercase;
 }
+
 .absolute {
 	position: absolute;
 }
-.block{
+
+.block {
 	display: block !important;
 }
-.visibility{
+
+.visibility {
 	visibility: hidden;
 }
+
 .relative {
 	position: relative;
 }
+
 .center {
 	display: block;
 	margin: auto;
@@ -107,12 +107,15 @@ a {
 .fl {
 	float: left;
 }
+
 .fr {
 	float: right;
 }
+
 .pointer {
 	cursor: pointer;
 }
+
 .erro-msg {
 	color: red;
 }
@@ -120,19 +123,18 @@ a {
 .sucesso-msg {
 	color: blue;
 }
-.none{
+
+.none {
 	display: none;
 }
+
 .ml50 {
 	margin-left: 50px;
 }
 
-
-
 .w90p {
 	width: 90% !important;
 }
-
 
 /*******************************/
 /*		MARGIN      			*/
@@ -141,18 +143,28 @@ a {
 	margin: 0px;
 }
 
-.ml5p{
+.m10 {
+	margin: 10px;
+}
+
+.ml5p {
 	margin-left: 5%;
+}
+
+.ml10 {
+	margin-left: 10px;
 }
 
 .ml15 {
 	margin-left: 15px !important;
 }
 
-
-
 .ml80 {
 	margin-left: 80px;
+}
+
+.mr10 {
+	margin-right: 10px;
 }
 
 .mr15 {
@@ -175,7 +187,7 @@ a {
 	margin-bottom: 0px !important;
 }
 
-.mb1{
+.mb1 {
 	margin-bottom: 1px;
 }
 
@@ -215,7 +227,7 @@ a {
 	margin-top: 25px;
 }
 
-.mr40{
+.mr40 {
 	margin-right: 40px !important;
 }
 /*******************************/
@@ -247,6 +259,14 @@ a {
 
 .pr0 {
 	padding-right: 0px !important;
+}
+
+.pr5 {
+	padding-right: 5px;
+}
+
+.pr10 {
+	padding-right: 10px;
 }
 
 .pb5 {
@@ -328,9 +348,6 @@ a {
 .b0 {
 	border: 0px !important;
 }
-
-
-
 
 .btn-swing{
 	 -webkit-animation: swing-up 1s ease;

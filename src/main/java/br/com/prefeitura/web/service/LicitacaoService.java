@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.prefeitura.web.domain.entity.LicitacaoEntity;
 import br.com.prefeitura.web.domain.jdbc.LicitacaoCustomRepository;
-import br.com.prefeitura.web.model.Contrato;
 import br.com.prefeitura.web.model.Fornecedor;
 import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.repository.FornecedorRepository;

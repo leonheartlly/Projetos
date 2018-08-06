@@ -227,7 +227,10 @@
 		
 		<div id="notFound" class="center-align mb20 mt20" th:if="${#lists.isEmpty(licitacao)}">
 			<img class="responsive-img center not-found" th:src="@{/img/no-results.png}"/>
-			<p class="not-found-message mb0">Não Existe nada Aqui!</p>
+			<div class="valign-wrapper center">
+				<i class="small material-icons prefix red-text darken-2"> warning</i>
+				<span class="not-found-message mb0 center-align">Não Existe nada Aqui!</span><br/>
+			</div>
 			<label class="not-found-subtitle">Não conseguimos encontrar nada para sua busca. Mude os filtros e tente novamente.</label>
 		</div>
 		

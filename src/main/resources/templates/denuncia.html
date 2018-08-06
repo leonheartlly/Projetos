@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="base/layout">
+<head>
+<title th:text="#{messages.denuncia.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<link rel="stylesheet" th:href="@{/css/contato/contato.css}" />
+
+<script type="text/javascript" th:src="@{/js/contato/contato.js}"></script>
+
+
+</head>
+<body>
+	<section layout:fragment="content">
+		
+		<div class="mdl-grid">
+		
+			<!-- CAMINHO DE PÃO -->
+			 <nav class="breadcrumb-line">
+			    <div class="nav-wrapper green darken-3">
+			      <div class="col s12 page-align">
+			        <a 	th:href="@{/home}" class="breadcrumb white-text" th:text="#{messages.home.caminhopao}"></a>
+			        <a th:href="@{/prefeitura/denuncia}" class="breadcrumb white-text" th:text="#{messages.denuncia.caminhopao}"></a>
+			      </div>
+			    </div>
+			  </nav>
+		
+			<div class="mdl-layout-spacer"></div>
+			<section
+				class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
+				<div class="background pl20">
+				
+					<form class="col xl12 l12 hidden" 
+						id="denuncia-form" 
+						
+						> <!-- th:object="${legislacao}"  -->
+					
+					<div class="row">
+						<h5 id="formTitle" class="page-align blue-text text-lighten-1"></h5>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col l6 xl6 valign-wrapper">
+							<i class="large material-icons prefix green-text text-darken-2">person</i>
+							<input type="text" form="legislacao-form"  th:name="nome" maxlength="5000" id="nome-legislacao" class="validate uppercase"/> 
+							<label for="objeto-licitacao" th:text="#{messages.denuncia.nome}"><i class="material-icons">person</i></label>
+						</div>
+						<div class="input-field col xl6 l6">
+							<div class="relative col xl12 l12 pl0">
+								<label th:text="#{messages.licitacao.orgaos}"></label>
+								<span class="caret">▼</span>
+								<input class="select-dropdown mb0" readonly="true" id="customSelect" selected-Id="" value="Escolha um orgão" type="text" onclick="openList()"/>
+								<div class='absolute option-drop z-depth-2 pl0 pr0 row col xl12 l12' onmouseleave="hideElement();">
+									 <ul th:name="idOrgao" id="select1" class="hidden pl0 pr0 col xl12 l12">
+										<li th:each="orgao : ${orgaos}" th:id="${orgao.id}" th:value="${orgao.id}" 
+											th:text="${orgao.orgao}" 
+											onclick="chooseElement($(this).text(), $(this).attr('value'));" 
+											class="option-hover">
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="input-field col l12 xl12 valign-wrapper">
+							<i class="large material-icons prefix red-text text-darken-2">report_problem</i>
+							<textarea form="denuncia-form" th:name="denuncia" id="denuncia" class="materialize-textarea uppercase"></textarea>
+							<label for="denuncia-form" th:text="#{messages.denuncia.title}"></label>
+						</div>
+					</div>
+					
+					<input class="hide" value="" id="UserOption" th:name="tipo"></input>
+					
+					<div class="row center-align">
+						<a class="waves-effect waves-green btn transparent green-text text-darken-3 z-depth-3 btn-floating" 
+								onclick="refreshCustomSelect('customSelect'), refresh('legislacao-form'), refreshDatePicker('data-inicial', 'data-final');">
+							<i class="material-icons left green-text">refresh</i>
+						</a>
+						<button class="waves-effect waves-light btn green darken-3 z-depth-3 btn-floating ml15" onclick="refreshTable(), hideNotFound();" type="submit">
+							<i class="material-icons left">search</i>
+						</button>
+					</div>
+				</form>
+				
+				</div>
+				
+				
+			</section>
+		</div>
+	<a id="pageup" class="btn-large btn-floating pulse hide right grey lighten-5 mr40 btn-swing" onclick="moveToTop(), hideBtn('pageup');"><i class="green-text text-darken-3 material-icons ">arrow_upward</i></a>
+	</section>
+
+</body>
+</html>

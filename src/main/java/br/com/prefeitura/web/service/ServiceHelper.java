@@ -20,6 +20,7 @@ import br.com.prefeitura.web.domain.entity.LegislacaoEntity;
 import br.com.prefeitura.web.domain.entity.LicitacaoEntity;
 import br.com.prefeitura.web.domain.entity.NoticiaEntity;
 import br.com.prefeitura.web.domain.entity.OrgaoEntity;
+import br.com.prefeitura.web.domain.entity.SecretariaEntity;
 import br.com.prefeitura.web.model.Autor;
 import br.com.prefeitura.web.model.CalendarioEventos;
 import br.com.prefeitura.web.model.Categoria;
@@ -32,6 +33,7 @@ import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.model.Modalidade;
 import br.com.prefeitura.web.model.Noticia;
 import br.com.prefeitura.web.model.Orgao;
+import br.com.prefeitura.web.model.Secretaria;
 import br.com.prefeitura.web.model.Situacao;
 import br.com.prefeitura.web.utils.GraphEnum;
 import br.com.prefeitura.web.utils.PortalPrefeituraUtils;
@@ -162,6 +164,29 @@ public class ServiceHelper {
 		}).collect(Collectors.toList());
 		
 		return legislacoes;
+	}
+	
+	/**
+	 * Converte um ou mais objetos do tipo legislação entity para legislacao model.
+	 * @param entities lista de entidades.
+	 * @return lista de legislacoes.
+	 */
+	public Secretaria convertSecretariaObject(SecretariaEntity entity) {
+		
+		if(!ObjectUtils.isEmpty(entity)){
+			return Secretaria.secretariaBuilder()
+					.id(entity.getId())
+					.secretaria(entity.getSecretaria())
+					.secretario(entity.getSecretario())
+					.telefone(entity.getTelefone())
+					.email(entity.getEmail())
+					.endereco(entity.getEndereco())
+					.missao(entity.getMissao())
+					.horarioAbertura(entity.getHorarioAbertura())
+					.horarioFechamento(entity.getHorarioFechamento())
+					.build();
+		}
+		return new Secretaria();
 	}
 	
 	/**
