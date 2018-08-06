@@ -33,6 +33,6 @@ public class ProjetosEntity implements Serializable{
 	private String fotoCapa;
 	
 	@Column(name="id_secretaria")
-	private Long idSecretaria;
+	private Long  idSecretaria;
 
 }

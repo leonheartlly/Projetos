@@ -1,6 +1,7 @@
 package br.com.prefeitura.web.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.Builder;
 import lombok.Data;
@@ -39,7 +40,6 @@ public class Projetos implements Serializable{
 	 */
 	@Builder(builderMethodName="projetosBuilder")
 	public static Projetos newProjetos(Long id, String titulo, String descricao, String fotoCapa, Long idSecretaria) {
-		
 		return new Projetos(id, titulo, descricao, fotoCapa, idSecretaria);
 	}
 

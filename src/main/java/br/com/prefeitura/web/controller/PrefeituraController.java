@@ -1,5 +1,7 @@
 package br.com.prefeitura.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -15,7 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import br.com.prefeitura.web.model.ArquivoProjeto;
+import br.com.prefeitura.web.model.Projetos;
 import br.com.prefeitura.web.model.Secretaria;
+import br.com.prefeitura.web.service.ArquivoProjetoService;
+import br.com.prefeitura.web.service.ProjetosService;
 import br.com.prefeitura.web.service.SecretariaService;
 
 @Controller
@@ -29,28 +35,12 @@ public class PrefeituraController {
 	@Autowired
 	private SecretariaService secretariaService;
 	
-	/**
-	 * Busca geral de notícias.
-	 * @param locale
-	 * @param model
-	 * @return
-	 */
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public ModelAndView home(Locale locale, Model model) {
-//
-//		LOGGER.info("[LOG-INFO] "+ HomeController.class.getSimpleName()+" - HOME.");
-//		
-////		List<Noticia> noticias = NoticiaService.findNoticias();
-////		boolean isOldNews = noticias.size() > 5 ? true : false;
-//		List<CalendarioEventos> eventos = this.calendarioEventosService.findallEvents();
-////		
-//		model.addAttribute("calendario", eventos);
-////		model.addAttribute("oldNews", isOldNews);
-////		model.addAttribute("locale", locale);
-//		
-//		return new ModelAndView("home");
-//	}
-
+	@Autowired
+	private ProjetosService projetosService;
+	
+	@Autowired
+	private ArquivoProjetoService arquivoProjetoService;
+	
 	/**
 	 * Busca geral do menu legislação.
 	 * @param locale
@@ -63,9 +53,16 @@ public class PrefeituraController {
 		
 		LOGGER.info("[LOG-INFO] "+ PrefeituraController.class.getSimpleName()+" - SECRETARIA.");
 		Secretaria secretaria = new Secretaria();
+		List<Projetos> projetos = new ArrayList<>();
+		List<ArquivoProjeto> arquivos = new ArrayList<>();
 		try{
 			if(id != null && id > 0 && id <= 15){
 				secretaria = secretariaService.findSecretariaById(id);
+				projetos = projetosService.findProjetosById(id);
+				arquivos = arquivoProjetoService.findArquivosById(id);
+				
+				secretaria.setListaProjetos(projetos);
+				secretaria.setListaArquivoProjeto(arquivos);
 			}
 		}catch(NullPointerException np){
 			LOGGER.error("[LOG-ERROR] "+ PrefeituraController.class.getSimpleName()+" - SECRETARIA. obterSecretaria() NULLPOINTEREXCEPTION: " + np);

@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 
+import br.com.prefeitura.web.domain.entity.ArquivoProjetoEntity;
 import br.com.prefeitura.web.domain.entity.AutorEntity;
 import br.com.prefeitura.web.domain.entity.CalendarioEventosEntity;
 import br.com.prefeitura.web.domain.entity.CategoriaEntity;
@@ -20,7 +21,9 @@ import br.com.prefeitura.web.domain.entity.LegislacaoEntity;
 import br.com.prefeitura.web.domain.entity.LicitacaoEntity;
 import br.com.prefeitura.web.domain.entity.NoticiaEntity;
 import br.com.prefeitura.web.domain.entity.OrgaoEntity;
+import br.com.prefeitura.web.domain.entity.ProjetosEntity;
 import br.com.prefeitura.web.domain.entity.SecretariaEntity;
+import br.com.prefeitura.web.model.ArquivoProjeto;
 import br.com.prefeitura.web.model.Autor;
 import br.com.prefeitura.web.model.CalendarioEventos;
 import br.com.prefeitura.web.model.Categoria;
@@ -33,6 +36,7 @@ import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.model.Modalidade;
 import br.com.prefeitura.web.model.Noticia;
 import br.com.prefeitura.web.model.Orgao;
+import br.com.prefeitura.web.model.Projetos;
 import br.com.prefeitura.web.model.Secretaria;
 import br.com.prefeitura.web.model.Situacao;
 import br.com.prefeitura.web.utils.GraphEnum;
@@ -72,6 +76,52 @@ public class ServiceHelper {
 		}).collect(Collectors.toList());
 		
 		return licitacoes;
+	}
+	
+	/**
+	 * Converte uma lista de objetos do tipo entity para model.
+	 * @param entities ProjetosEntity
+	 * @return List<Projetos>
+	 */
+	protected List<Projetos> convertProjetosObject(List<ProjetosEntity> entities) {
+		
+		if(entities != null && !entities.isEmpty()){
+			List<Projetos> projetos = entities.stream().map(entity -> {
+				return Projetos.projetosBuilder()
+				 	.id(entity.getId())
+				 	.titulo(entity.getTitulo())
+				 	.descricao(entity.getDescricao())
+				 	.fotoCapa(entity.getFotoCapa())
+				 	.idSecretaria(entity.getIdSecretaria())
+				 	.build();
+			}).collect(Collectors.toList());
+			
+			return projetos;
+		}
+		return new ArrayList<Projetos>();
+	}
+	
+	/**
+	 * Converte uma lista de objetos do tipo Entity para Model
+	 * @param entities ArquivoProjetoEntity
+	 * @return ArquivoProjeto
+	 */
+	protected List<ArquivoProjeto> convertArquivoProjetoObject(List<ArquivoProjetoEntity> entities){
+		
+		if(entities != null && !entities.isEmpty()){
+			List<ArquivoProjeto> arquivos = entities.stream().map(entity -> {
+				return ArquivoProjeto.arquivoProjetoBuilder()
+				 	.id(entity.getId())
+				 	.tipo(entity.getTipo())
+				 	.arquivo(entity.getArquivo())
+				 	.idProjeto(entity.getIdProjeto())
+				 	.nomeArquivo(entity.getNomeArquivo())
+				 	.build();
+			}).collect(Collectors.toList());
+			
+			return arquivos;
+		}
+		return new ArrayList<ArquivoProjeto>();
 	}
 	
 	 /**

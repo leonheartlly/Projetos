@@ -24,15 +24,6 @@ public class SecretariaService extends ServiceHelper{
 	 */
 	 public Secretaria findSecretariaById(Long id) {
 		 
-//		 if(ObjectUtils.isEmpty(legislacao.getOrgao())){
-//			 legislacao.setOrgao(new Orgao());
-//		 }
-		 
-//		 if(StringUtils.isNotBlank(legislacao.getResumo())){
-//			 String upperName = legislacao.getResumo().toUpperCase();
-//			 legislacao.setResumo(upperName);
-//		 }
-		 
 		 Secretaria secretaria = new Secretaria();
 		 try{
 			SecretariaEntity secretariaEntity = this.secretariaRepository.findOne(id);
