@@ -8,10 +8,10 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" th:href="@{/css/error/error.css}" />
 <link rel="stylesheet" th:href="@{/css/error/error-pages.css}"/>
-<script type="text/javascript" th:src="@{/js/error/error.js}"></script>
+ <script type="text/javascript" th:src="@{/js/error/error.js}"></script>
 </head>
 
-<body class="cyan">
+<body class="background">
 	<section layout:fragment="content">
 
 		<!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->
@@ -25,24 +25,24 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 					<div class="col s12">
 						<div class="col s10 m10 offset-m1 browser-window center-align">
 							<!-- BARRA SUPERIOR -->
-							<div class="top-bar">
+							<!-- <div class="top-bar">
 								<div class="circles">
 									<div id="close-circle" class="circle"></div>
 									<div id="minimize-circle" class="circle"></div>
 									<div id="maximize-circle" class="circle"></div>
 								</div>
-							</div>
+							</div>-->
 							
 							<div class="content">
 								<div class="row">
 									<!-- BARRA DE AVISO -->
-									<div id="site-layout-example-top" class="col s12">
+									<!-- <div id="site-layout-example-top" class="col s12">
 									
 										<p class="flat-text-logo center white-text caption-uppercase">Desculpe!
 											esta página não foi forjada.</p>
-									</div>
-									<div class="row relative">
-										<div class="absolute">
+									</div>-->
+									<div class="row relative background">
+										<!-- <div class="absolute">
 											<a class="btn-floating waves-effect waves-light red shaker" onclick="openEye()"><i class="material-icons">arrow_back</i></a>
 										</div>
 										 <div class="absolute right-eye">
@@ -50,14 +50,15 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 										 </div>
 										 <div class="absolute left-eye">
 										 	<span class="the-eye eye-hidden left-eye">&#9673;</span>
-										 </div>
-										<div class="absolute error-conf">
+										 </div> -->
+									<!-- 	<div class="absolute error-conf">
 											<span class="foo letter" data-letter="4"></span>
 											<span class="foo letter" data-letter="0"></span>
 											<span class="foo letter" data-letter="4"></span>
+										</div> -->
 										
-										</div>
-										<img class="responsive-img" th:src="@{/img/error/blacksmith.png}" />
+										<img class="responsive-img center" th:src="@{/img/error/dreamDeveloper.png}" />
+										<h3 class="center mt-25 grey-text text-lighten-2">OPS! a página não pode ser exibida!</h3>
 									</div>
 								</div>
 							</div>

@@ -3,6 +3,14 @@ h1 {
 	text-shadow: none !important;
 }
 
+.background {
+	background-color: #181532 !important;
+}
+
+.mt-25{
+	margin-top: -25px;
+}
+
 .eye-hidden {
 	display: none;
 	-webkit-transition: display .5s ease;
@@ -53,7 +61,7 @@ div.foo {
 	font-size: 8em;
 	margin: 0.2em;
 	position: relative;
-	color: #00B4F1;
+	color: #181532;
 	transform-style: preserve-3d;
 	perspective: 400;
 	z-index: 1;

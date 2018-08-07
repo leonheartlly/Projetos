@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,13 @@ public class ProjetosService extends ServiceHelper{
 	@Autowired
 	private ProjetosRepository projetosRepository;
 	
+	@Value("${caminho.capa.secretaria}")
+	private String caminhoCapaSecretaria;
+	
 	/**
-	 * Consulta usuarios cadastrados.
-	 * 
-	 * @return lista de noticias.
+	 * Consulta projetos relacionados ao Id informado.
+	 * @param id selecionado pelo usuário.
+	 * @return projetos relacionados ao Id.
 	 */
 	public List<Projetos> findProjetosById(Long id) {
 
@@ -33,6 +37,7 @@ public class ProjetosService extends ServiceHelper{
 			List<ProjetosEntity> projetosEntity = this.projetosRepository.findByIdSecretaria(id);
 			projetos = convertProjetosObject(projetosEntity);
 
+			addFilePath(projetos);
 			return projetos;
 		} catch (DataAccessException dae) {
 			LOGGER.error("[LOG-ERROR] " + ProjetosService.class.getSimpleName() + " ERRO DE ACESSO AOS DADOS. " + dae);
@@ -45,5 +50,15 @@ public class ProjetosService extends ServiceHelper{
 
 	}
 
+	/**
+	 * Adiciona caminho configurado para a obtenção dos projetos.
+	 * @param projetos configurados com o caminho correto.
+	 */
+	private void addFilePath(List<Projetos> projetos ){
+		
+		projetos.forEach(projeto ->{
+			projeto.setFotoCapa(caminhoCapaSecretaria + projeto.getFotoCapa());
+		});
+	}
 	
 }

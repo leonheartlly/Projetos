@@ -46,7 +46,7 @@ public class ServiceHelper {
 
 	private static final Logger LOGGER = 
 		      Logger.getLogger(ServiceHelper.class); 
-		
+	
 	@Autowired
 	private FornecedorService fornecedorService;
 	

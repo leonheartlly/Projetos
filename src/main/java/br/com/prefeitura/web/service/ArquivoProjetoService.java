@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,9 @@ public class ArquivoProjetoService extends ServiceHelper{
 	@Autowired
 	private ArquivoProjetoRepository arquivoProjetoRepository;
 	
+	@Value("${caminho.arquivos.secretaria}")
+	private String caminhoArquivo;
+	
 	/**
 	 * Consulta arquivos para download dos projetos.
 	 * 
@@ -34,6 +38,7 @@ public class ArquivoProjetoService extends ServiceHelper{
 			List<ArquivoProjetoEntity> arquivosEntity = this.arquivoProjetoRepository.findByIdProjeto(id);
 			arquivos = convertArquivoProjetoObject(arquivosEntity);
 
+			addFilePath(arquivos);
 			return arquivos;
 		} catch (DataAccessException dae) {
 			LOGGER.error("[LOG-ERROR] " + NoticiaService.class.getSimpleName() + " ERRO DE ACESSO AOS DADOS. " + dae);
@@ -44,6 +49,17 @@ public class ArquivoProjetoService extends ServiceHelper{
 			throw e;
 		}
 
+	}
+	
+	/**
+	 * Adiciona o caminho configurado para os arquivos do projeto.
+	 * @param arquivos configurados com o caminho correto.
+	 */
+	private void addFilePath(List<ArquivoProjeto> arquivos){
+		
+		arquivos.forEach(arquivoProjeto ->{
+			arquivoProjeto.setArquivo(caminhoArquivo + arquivoProjeto.getArquivo());
+		});
 	}
 	
 }

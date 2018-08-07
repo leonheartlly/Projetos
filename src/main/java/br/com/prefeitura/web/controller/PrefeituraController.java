@@ -42,11 +42,12 @@ public class PrefeituraController {
 	private ArquivoProjetoService arquivoProjetoService;
 	
 	/**
-	 * Busca geral do menu legislação.
+	 * 
+	 * @param id
 	 * @param locale
 	 * @param model
 	 * @return
-	 * @throws JsonProcessingException 
+	 * @throws JsonProcessingException
 	 */
 	@RequestMapping(value = "/obterSecretaria", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE )
 	public @ResponseBody Secretaria obterSecretaria(@RequestBody Long id, Locale locale, Model model) throws JsonProcessingException { 

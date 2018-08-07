@@ -18,7 +18,7 @@ public class SecretariaService extends ServiceHelper{
 	private SecretariaRepository secretariaRepository;
 	
 	/**
-	 * Consulta usuarios cadastrados.
+	 * Consulta secretarias por Id.
 	 * @return
 	 * @throws Exception 
 	 */

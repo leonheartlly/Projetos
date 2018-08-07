@@ -1,10 +1,6 @@
 $(document).ready(function(){
 	
 
-    $("#secretaria-form").submit(function(event){
-		alert('funfou');
-		event.preventDefault();
-	});
 		
 });
 
@@ -37,8 +33,7 @@ function findSecretaria(id){
 	    	
 	    	if(!$.isEmptyObject(result.listaProjetos)){
 	    		$.each(result.listaProjetos, function(key, value){
-	    			projectHtml += '<li><div class="collapsible-header row mb0"><div class="col l1 xl1"><img class="circle" width="100" height="100" src="/img/'+ value.fotoCapa + '"/></div><div class="ml20 col l11 xl11"><h5>' + value.titulo + '</h5><br/><span>'+value.descricao+'</span></div></div><div class="collapsible-body"><h5>Arquivos para Download</h5>';
-	    			//$('#secretaria-accordion').append('<li><div class="collapsible-header row"><div class="col l1 xl1"><img class="circle" width="100" height="100" src="/img/'+ value.fotoCapa + '"/></div><div class="ml20 col l11 xl11"><h5>' + value.titulo + '</h5><br/><span>'+value.descricao+'</span></div></div><div class="collapsible-body"><h5 th:text="#{messages.secretaria.arquivos}"></h5>');
+	    			projectHtml += '<li><div class="collapsible-header row mb0"><div class="col l1 xl1"><img class="circle" width="100" height="100" src="'+ value.fotoCapa + '"/></div><div class="ml20 col l11 xl11"><h5>' + value.titulo + '</h5><br/><span>'+value.descricao+'</span></div></div><div class="collapsible-body"><h5>Arquivos para Download</h5>';
 	    			if(!$.isEmptyObject(result.listaArquivoProjeto)){
 		    			$.each(result.listaArquivoProjeto, function(key, value){
 		    				if(value.tipo == 1){ //PDF
@@ -68,7 +63,10 @@ function findSecretaria(id){
 	    });
 }
 		
+/**
+ * Clears the accordion body.
+ * @returns
+ */
 function refreshTable(){
-	
 	$("#secretaria-accordion").empty();
 }
