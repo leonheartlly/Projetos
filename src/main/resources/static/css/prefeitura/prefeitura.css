@@ -5,3 +5,17 @@
 .parallax {
 position: static !important;	
 }
+
+.mayor-effect{
+	
+}
+
+.mayor-effect:HOVER + .teste{
+	background-color: #81c784 !important;
+}
+
+.info-block{
+	height: 150px;
+	border-radius: 5px;
+}
+
