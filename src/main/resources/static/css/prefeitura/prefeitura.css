@@ -1,0 +1,7 @@
+.parallax-container {
+	height: 250px !important;
+}
+
+.parallax {
+position: static !important;	
+}

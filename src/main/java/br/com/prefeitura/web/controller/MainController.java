@@ -62,6 +62,17 @@ public class MainController {
 	 * 
 	 * @return
 	 */
+	@RequestMapping(value = "/prefeitura/historia", method = RequestMethod.GET)
+	public String prefeitura() {
+		
+		return "prefeitura";
+	}
+	
+	/***
+	 * ESSE MÉTODO CARREGA A PÁGINA (index.html) DE LOGIN DA NOSSA APLICAÇÃO
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/prefeitura/secretaria", method = RequestMethod.GET)
 	public String secretaria() {
 		

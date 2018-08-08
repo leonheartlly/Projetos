@@ -102,7 +102,7 @@
 							<ul id="prefeituraDropdown" class="dropdown-content col xl2 l3" onmouseover="addDropDownHoverEffect('prefeituraDropdowna')" onmouseleave="removeDropDownHoverEffect('prefeituraDropdowna')">
 							    <li><a class="green-text text-darken-1 disabled unclick" th:text="#{messages.header.submenu.prefeitura}"></a></li>
 							     <li class="divider"></li>
-							    <li><a href="#!" th:text="#{messages.header.menu.prefeitura}"></a></li>
+							    <li><a th:href="@{/prefeitura/historia}" th:text="#{messages.header.menu.prefeitura}"></a></li>
 							    <li><a th:href="@{/prefeitura/denuncia}" th:text="#{messages.denuncia.title}"></a></li>
 							    <li><a th:href="@{/prefeitura/secretaria}" th:text="#{messages.header.menu.secreataria}"></a></li>
 							</ul>

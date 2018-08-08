@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="@{~/base/layout}">
+<head>
+<title th:text="#{messages.prefeitura.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Prefeitura" />
+<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<link rel="stylesheet" th:href="@{/css/licitacao/licitacao.css}" />
+<link rel="stylesheet" th:href="@{/css/prefeitura/prefeitura.css}" />
+
+<script type="text/javascript" th:src="@{/js/licitacao/licitacao.js}"></script>
+<script type="text/javascript" th:src="@{/js/prefeitura/prefeitura.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/contrato/contrato.js}"></script>
+
+
+</head>
+<body>
+	<section layout:fragment="content">
+
+		<div class="background">
+		
+			<!-- CAMINHO DE PÃO -->
+			 <nav class="breadcrumb-line">
+			    <div class="nav-wrapper green darken-3">
+			      <div class="col s12 page-align">
+			        <a 	th:href="@{/home}" class="breadcrumb white-text" th:text="#{messages.home.caminhopao}"></a>
+			        <a th:href="@{/editais/contratos}" class="breadcrumb white-text" th:text="#{messages.prefeitura.caminhopao}"></a>
+			      </div>
+			    </div>
+			  </nav>
+			  
+			<div class="row pl20">
+			
+				<div class="section white">
+				    <div class="row">
+				    	<div class="center">
+				    		<img class="circle" height="200" width="200" src="/img/fotoCapa.png"/>
+				    		<img class="circle" height="200" width="200" src="/img/fotoCapa.png"/>
+				    	</div>
+				    	<div>
+				    		<h5>História do Município</h5>
+				      		<p class="grey-text text-darken-3 lighten-3" id="prefeitura-historia" th:utext="#{messages.prefeitura.historia}"> </p>
+								
+				    	</div>
+				    </div>
+				</div>
+				<div class="parallax-container">
+				    <div class="parallax"><img src="/img/balancetes-verde.png"/></div>
+				</div>
+				<div class="section white">
+				    <div class="row container">
+				      <h2 class="header">Parallax</h2>
+				      <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+				    </div>
+				</div>
+				
+			</div>
+
+		</div>
+
+	</section>
+
+</body>
+</html>
