@@ -37,7 +37,7 @@
 				class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
 				<div class="background pl20">
 				
-				<h5 class="green-text text-darken-2 mt20 page-title">Ouvidoria</h5>
+				<h5 class="green-text text-darken-2 mt20 page-title" th:text="#{messages.ouvidoria.title}"></h5>
 				    		<div class="divider mr20 mb20"></div>
 				
 					<form class="col xl12 l12" 
@@ -53,12 +53,12 @@
 					
 						<div class="col xl2 l2">
 							<input type="checkbox" onclick="annonimousContact()" id="annoni" />
-	      					<label for="annoni">Denúncia Anônima</label>
+	      					<label for="annoni" th:utext="#{messages.ouvidoria.annonimo}"></label>
       					</div>
 						<div class="input-field col xl6 l6">
 						
 							<div class="relative col xl12 l12 pl0" id="manifest-tag">
-								<label >Tipo de Manifestação:</label>
+								<label th:utext="#{messages.ouvidoria.tipo}"></label>
   
         
 								<span class="caret">▼</span>
@@ -89,7 +89,7 @@
 							
 							<div class="input-field col xl4 l4">
 								<div class="relative col xl12 l12 pl0">
-									<label>Obter Resposta:</label>
+									<label th:text="#{messages.ouvidoria.resposta}"></label>
 									<span class="caret">▼</span>
 									<input class="select-dropdown mb0" readonly="true" id="resposta" selected-Id="" value="Obter resposta" type="text" onclick="openList('resposta-ouvidoria')"/>
 									<div class='absolute option-drop z-depth-2 pl0 pr0 row col xl12 l12' onmouseleave="hideElement('resposta-ouvidoria');">
@@ -159,7 +159,7 @@
 				</script>
 				
 				<div>
-					<h5 class="green-text text-darken-2 mt20 page-title">Estatísticas de Manifestações</h5>
+					<h5 class="green-text text-darken-2 mt20 page-title" th:utext="#{messages.ouvidoria.estatisticas}"></h5>
 				    <div class="divider mr20 mb20"></div>
 				    
 					<div class="row">
