@@ -41,6 +41,14 @@ a {
 	align-items: center;
 }
 
+.page-title{
+	padding-top: 40px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
+
 /*******************************/
 /*		ERROR PAGE    			*/
 /*******************************/
@@ -172,7 +180,7 @@ a {
 }
 
 .mr20{
-	margin-right: 20px;
+	margin-right: 20px !important;
 }
 
 .mt5 {
@@ -345,6 +353,10 @@ a {
 	padding-top: 30px;
 }
 
+.pt40{
+	padding-top: 40px;
+}
+
 .bb0 {
 	border-bottom: 0px !important;
 }
@@ -358,6 +370,48 @@ a {
      animation: swing-up 1s ease;
      -webkit-animation-iteration-count: 5;
      animation-iteration-count: 5;
+}
+
+/***********************************************************/
+/*                     SELECT                              */
+/***********************************************************/
+
+.option-drop{
+	background-color: #fff;
+	z-index: 999;
+}
+
+.caret {
+	color: initial;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 10px;
+	margin: auto 0;
+	font-size: 10px;
+	line-height: 10px;
+}
+
+.hidden {
+	display: none;
+}
+
+.option-hover {
+	font-size: 18px;
+	color: #009688;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	
+}
+
+.select-error{
+	border-bottom-color: #F44336 !important;
+}
+
+.option-hover:hover {
+	background-color: #eeeeee;
 }
 
 

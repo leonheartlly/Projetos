@@ -27,40 +27,40 @@ function displayPDF(file, titulo) {
 $(document).ready(
 		function() {
 
-			$('select').material_select();
-			
-			
+	$('select').material_select();
+	
+	
 
-			$('.datepicker')
-					.pickadate(
-							{
-								selectMonths : true, // Creates a dropdown to
-														// control month
-								monthsFull : [ 'Janeiro', 'Fevereiro', 'Março',
-										'Abril', 'Maio', 'Junho', 'Julho',
-										'Agosto', 'Setembro', 'Outubro',
-										'Novembro', 'Dezembro' ],
-								format : 'dd/mm/yyyy',
-								weekdaysLetter : [ 'D', 'S', 'T', 'Q', 'Q',
-										'S', 'S' ],
-								weekdaysShort : [ 'Dom', 'Seg', 'Ter', 'Qua',
-										'Qui', 'Sex', 'Sab' ],
-								selectYears : 15, // Creates a dropdown of 15
-													// years to control year,
-								today : 'Hoje',
-								clear : 'Limpar',
-								close : 'Ok',
-								closeOnSelect : false
-							// Close upon selecting a date,
-							}
-							);
+	$('.datepicker')
+		.pickadate(
+		{
+			selectMonths : true, // Creates a dropdown to
+									// control month
+			monthsFull : [ 'Janeiro', 'Fevereiro', 'Março',
+					'Abril', 'Maio', 'Junho', 'Julho',
+					'Agosto', 'Setembro', 'Outubro',
+					'Novembro', 'Dezembro' ],
+			format : 'dd/mm/yyyy',
+			weekdaysLetter : [ 'D', 'S', 'T', 'Q', 'Q',
+					'S', 'S' ],
+			weekdaysShort : [ 'Dom', 'Seg', 'Ter', 'Qua',
+					'Qui', 'Sex', 'Sab' ],
+			selectYears : 15, // Creates a dropdown of 15
+								// years to control year,
+			today : 'Hoje',
+			clear : 'Limpar',
+			close : 'Ok',
+			closeOnSelect : false
+		// Close upon selecting a date,
+		}
+	);
 
-			$('#detailBody >tr').each(function(index) {
+	$('#detailBody >tr').each(function(index) {
 
-				$(this).attr('id', index);
-			});
+		$(this).attr('id', index);
+	});
 
-		});
+});
 
 /**
  * Create a CSV file from the results being showed.

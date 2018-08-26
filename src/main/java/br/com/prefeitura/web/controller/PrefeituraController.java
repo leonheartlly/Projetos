@@ -14,15 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import br.com.prefeitura.web.model.ArquivoProjeto;
+import br.com.prefeitura.web.model.Ouvidoria;
 import br.com.prefeitura.web.model.Projetos;
 import br.com.prefeitura.web.model.Secretaria;
 import br.com.prefeitura.web.service.ArquivoProjetoService;
+import br.com.prefeitura.web.service.MailService;
+import br.com.prefeitura.web.service.OuvidoriaService;
 import br.com.prefeitura.web.service.ProjetosService;
 import br.com.prefeitura.web.service.SecretariaService;
+import br.com.prefeitura.web.vo.MailDelation;
 
 @Controller
 @RequestMapping("/prefeitura")
@@ -40,6 +45,12 @@ public class PrefeituraController {
 	
 	@Autowired
 	private ArquivoProjetoService arquivoProjetoService;
+	
+	@Autowired
+	private MailService mail;
+	
+	@Autowired 
+	private OuvidoriaService ouvidoriaService;
 	
 	/**
 	 * 
@@ -75,5 +86,57 @@ public class PrefeituraController {
 		
 		return secretaria;
 	}
+	
+	/**
+	 * 
+	 * @param delation
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(path = "/ouvidoria", method = RequestMethod.GET)
+    public ModelAndView obterOuvidoria(Locale locale, Model model) {
+        
+        Ouvidoria ouvidoria = new Ouvidoria();
+        
+        try{
+        	//consulta novamente as estatísticas apenas se o insert tiver sucesso.
+        	ouvidoria = ouvidoriaService.countTypes();
+        }catch(Exception e){
+        	LOGGER.error("[LOG-ERROR] " + PrefeituraController.class.getSimpleName() + " - OUVIDORIA. obterOuvidoria EXCEPTION: " + e);
+        }
+        model.addAttribute("graficoOuvidoria", ouvidoria);
+
+        return new ModelAndView("ouvidoria");
+    }
+	
+	/**
+	 * Envia email para um orgão destinatário e obtem um gráfico a partir do envio.
+	 * @param delation
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(path = "/mail", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Ouvidoria sendMail(@RequestBody MailDelation delation,Locale locale, Model model) {
+        
+		boolean mailSend = true;
+//        boolean mailSend = mail.sendEmail(delation);
+        Ouvidoria ouvidoria = new Ouvidoria();
+        
+        if(mailSend){
+	        try{
+	        	mailSend = ouvidoriaService.addTypeStatistic(delation.getType());
+//	        	consulta novamente as estatísticas apenas se o insert tiver sucesso.
+	        	if(mailSend){ 
+	        		ouvidoria = ouvidoriaService.countTypes();
+	        	}
+	        }catch(Exception e){
+	        	LOGGER.error("[LOG-ERROR] " + PrefeituraController.class.getSimpleName() + " - OUVIDORIA. sendMail() EXCEPTION: " + e);
+	        }
+        }
+
+        return ouvidoria;
+    }
 	
 }

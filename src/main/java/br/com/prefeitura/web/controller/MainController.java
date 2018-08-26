@@ -46,16 +46,16 @@ public class MainController {
 		return "redirect:/home";
 	}
 	
-	/***
-	 * ESSE MÉTODO CARREGA A PÁGINA (index.html) DE LOGIN DA NOSSA APLICAÇÃO
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/prefeitura/denuncia", method = RequestMethod.GET)
-	public String denuncia() {
-		
-		return "denuncia";
-	}
+//	/***
+//	 * ESSE MÉTODO CARREGA A PÁGINA (index.html) DE LOGIN DA NOSSA APLICAÇÃO
+//	 * 
+//	 * @return
+//	 */
+//	@RequestMapping(value = "/prefeitura/ouvidoria", method = RequestMethod.GET)
+//	public String denuncia() {
+//		
+//		return "ouvidoria";
+//	}
 	
 	/***
 	 * ESSE MÉTODO CARREGA A PÁGINA (index.html) DE LOGIN DA NOSSA APLICAÇÃO

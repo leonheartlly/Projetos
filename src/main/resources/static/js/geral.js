@@ -191,3 +191,32 @@ function hideNotFound(){
 		
 	},2000);
 }
+
+function chooseElement(text, value, id, selector){
+	$("#" + selector).val(text);
+	$("#" + selector).attr('selected-Id', value);
+	$("#" + id).addClass('hidden');
+}
+
+function hideElement(id){
+	$("#" + id).addClass('hidden');
+}
+
+function removeMaterializeSelect(){
+	$('.select-dropdown').addClass('none');
+}
+
+function openList(id){
+	$("#" + id).removeClass('hidden');
+}
+
+function mailValidator(email, id){
+	var mailValidator=/^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(\-[a-z0-9]+)*(\.[a-z0-9]+(\-[a-z0-9]+)*)*\.[a-z]{2,4}$/;
+	if(mailValidator.test(email)){
+		return true;
+	}else{
+		$("#" + id).addClass('invalid');
+		return false;
+	}
+}
+

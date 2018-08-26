@@ -36,11 +36,6 @@ public class LicitacaoService extends ServiceHelper{
 	@Autowired
 	private LicitacaoCustomRepository licitacaoCustom;
 	
-//	@Value ("${licitacao.data.inicial}")
-//    private String dataInicial;
-	
-//	@Value ("${licitacao.data.final}")
-//    private String dataFinal;
 	
 	private static final Logger LOGGER = 
 		      Logger.getLogger(LicitacaoService.class); 

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="base/layout">
+<head>
+<title th:text="#{messages.ouvidoria.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" th:href="@{/css/home/home.css}" />
+<link rel="stylesheet" th:href="@{/css/contato/contato.css}" />
+<link rel="stylesheet" th:href="@{/css/prefeitura/ouvidoria.css}" />
+
+<script type="text/javascript" th:src="@{/js/contato/contato.js}"></script>
+<script type="text/javascript" th:src="@{/js/prefeitura/ouvidoria.js}"></script>
+<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+</head>
+<body>
+	<section layout:fragment="content">
+		
+		<div class="mdl-grid">
+		
+			<!-- CAMINHO DE PÃO -->
+			 <nav class="breadcrumb-line">
+			    <div class="nav-wrapper green darken-3">
+			      <div class="col s12 page-align">
+			        <a 	th:href="@{/home}" class="breadcrumb white-text" th:text="#{messages.home.caminhopao}"></a>
+			        <a th:href="@{/prefeitura/ouvidoria}" class="breadcrumb white-text" th:text="#{messages.ouvidoria.caminhopao}"></a>
+			      </div>
+			    </div>
+			  </nav>
+		
+			<div class="mdl-layout-spacer"></div>
+			<section
+				class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">
+				<div class="background pl20">
+				
+				<h5 class="green-text text-darken-2 mt20 page-title">Ouvidoria</h5>
+				    		<div class="divider mr20 mb20"></div>
+				
+					<form class="col xl12 l12" 
+						id="ouvidoria-form" 
+						th:object="${delation}">
+					
+					
+					<div class="row">
+						<h5 id="formTitle" class="page-align blue-text text-lighten-1"></h5>
+					</div>
+					
+					<div class="row">
+					
+						<div class="col xl2 l2">
+							<input type="checkbox" onclick="annonimousContact()" id="annoni" />
+	      					<label for="annoni">Denúncia Anônima</label>
+      					</div>
+						<div class="input-field col xl6 l6">
+						
+							<div class="relative col xl12 l12 pl0" id="manifest-tag">
+								<label >Tipo de Manifestação:</label>
+  
+        
+								<span class="caret">▼</span>
+								<input class="select-dropdown mb0" readonly="true" id="manifestacao-selector" selected-Id="" value="Tipo Manifestação" type="text" onclick="openList('manifestacao')"/>
+								<div class='absolute option-drop z-depth-2 pl0 pr0 row col xl12 l12' onmouseleave="hideElement('manifestacao');">
+									 <ul th:name="idSolicitacao" id="manifestacao" class="hidden pl0 pr0 col xl12 l12">
+										<li id="sugestao1" value="1" text="Sugestão" 
+											onclick="chooseElement($(this).text(), $(this).attr('value'), 'manifestacao', 'manifestacao-selector');" 
+											class="option-hover">Sugestão
+										</li>
+										<li id="sugestao2" value="2" text="Sugestão" 
+											onclick="chooseElement($(this).text(), $(this).attr('value'), 'manifestacao', 'manifestacao-selector');" 
+											class="option-hover">Reclamação
+										</li>
+										<li id="sugestao3" value="3" text="Sugestão" 
+											onclick="chooseElement($(this).text(), $(this).attr('value'), 'manifestacao', 'manifestacao-selector');" 
+											class="option-hover">Denúncia
+										</li>
+										<li id="sugestao3" value="4" text="Sugestão" 
+											onclick="chooseElement($(this).text(), $(this).attr('value'), 'manifestacao', 'manifestacao-selector');" 
+											class="option-hover">Elogio
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="row" id="ouvidoria-response">
+							
+							<div class="input-field col xl4 l4">
+								<div class="relative col xl12 l12 pl0">
+									<label>Obter Resposta:</label>
+									<span class="caret">▼</span>
+									<input class="select-dropdown mb0" readonly="true" id="resposta" selected-Id="" value="Obter resposta" type="text" onclick="openList('resposta-ouvidoria')"/>
+									<div class='absolute option-drop z-depth-2 pl0 pr0 row col xl12 l12' onmouseleave="hideElement('resposta-ouvidoria');">
+										 <ul th:name="idResposta" id="resposta-ouvidoria" class="hidden pl0 pr0 col xl12 l12">
+											<li  id="resposta1" value="1" onclick="chooseElement($(this).text(), $(this).attr('value'), 'resposta-ouvidoria', 'resposta'), fonteResposta('resposta1');" class="option-hover">Email ou Telefone</li>
+											<li  id="resposta2" value="2" onclick="chooseElement($(this).text(), $(this).attr('value'), 'resposta-ouvidoria', 'resposta'), fonteResposta('resposta2');" class="option-hover">Email</li>
+											<li  id="resposta3" value="3" onclick="chooseElement($(this).text(), $(this).attr('value'), 'resposta-ouvidoria', 'resposta'), fonteResposta('resposta3');" class="option-hover">Telefone</li>
+											<li  id="resposta4" value="4" onclick="chooseElement($(this).text(), $(this).attr('value'), 'resposta-ouvidoria', 'resposta'), fonteResposta('resposta4');" class="option-hover">Nenhuma Resposta</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+					
+					<div class="row">
+						<div class="input-field col l12 xl12 valign-wrapper p0" id="description-tag">
+							<i class="large material-icons prefix green-text text-darken-2">create</i>
+							<textarea form="ouvidoria-form" th:name="description" id="description" class=" materialize-textarea uppercase mr20"></textarea>
+							<label for="ouvidoria-form" th:text="#{messages.ouvidoria.descricao}"></label><br/>
+						</div>
+					</div>
+					
+					<div class="pr20" id="ouvidoria-identify">
+						<div class="row">
+							<div class="input-field valign-wrapper">
+								<i class="large material-icons prefix green-text text-darken-2">person</i>
+								<input type="text" form="ouvidoria-form"  th:name="name" maxlength="100" id="nome-ouvidoria" class="validate uppercase"/> 
+								<label for="nome-ouvidoria" th:text="#{messages.ouvidoria.nome}"><i class="material-icons">person</i></label>
+							</div>
+						</div>
+						<div class="row">
+							
+							<div class="input-field col l6 xl6 valign-wrapper p0" id="email-tag">
+								<i class="large material-icons prefix green-text text-darken-2">email</i>
+								<input type="text" form="ouvidoria-form" th:name="email" maxlength="50" id="email-ouvidoria" onchange="mailValidator($(this).val(), $(this).attr('id'));" class="uppercase"/> 
+								<label for="email-ouvidoria" th:text="#{messages.ouvidoria.email}"></label>
+							</div>
+							<div class="input-field col l6 xl6 valign-wrapper p0" id="phone-tag">
+								<i class="large material-icons prefix green-text text-darken-2">local_phone</i>
+								<input type="tel" form="ouvidoria-form"  th:name="fone" maxlength="50" id="fone-ouvidoria" class="uppercase"/> 
+								<label for="email-ouvidoria" th:text="#{messages.ouvidoria.fone}"></label>
+							</div>
+						</div>
+					</div>
+					
+					<input class="hide" value="" id="UserOption" th:name="tipo"></input>
+					
+					<div class="row center-align">
+						<a class="waves-effect waves-green btn transparent green-text text-darken-3 z-depth-3 btn-floating" 
+								onclick="refreshCustomSelect('customSelect'), refresh('ouvidoria-form'), refreshDatePicker('data-inicial', 'data-final');">
+							<i class="material-icons left green-text">refresh</i>
+						</a>
+						<button class="waves-effect waves-light btn green darken-3 z-depth-3 btn-floating ml15" id="ouvidoria-submit" onclick="checkValues()" type="submit">
+							<i class="material-icons left">send</i>
+						</button>
+					</div>
+				</form>
+				
+				<script th:inline="javascript">
+				//<![CDATA[
+					function getOuvidoriaData(){
+						
+						return [[${graficoOuvidoria}]];
+					}
+					//]]>
+				</script>
+				
+				<div>
+					<h5 class="green-text text-darken-2 mt20 page-title">Estatísticas de Manifestações</h5>
+				    <div class="divider mr20 mb20"></div>
+				    
+					<div class="row">
+						<div class="col s12 m12 pl0 pr0 input-bg">
+							<div class="row">
+								
+								<div class="mt20">
+									<div class="col m8 offset-m2">
+										<canvas id="barChart"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+				
+				</div>
+				
+				
+			</section>
+		</div>
+	<a id="pageup" class="btn-large btn-floating pulse hide right grey lighten-5 mr40 btn-swing" onclick="moveToTop(), hideBtn('pageup');"><i class="green-text text-darken-3 material-icons ">arrow_upward</i></a>
+	</section>
+
+</body>
+</html>
