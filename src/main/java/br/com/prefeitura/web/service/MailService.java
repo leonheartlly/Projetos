@@ -44,14 +44,6 @@ public class MailService {
 	 */
 	public boolean sendEmail(MailDelation delation) {
 
-//		SimpleMailMessage message = new SimpleMailMessage();
-		
-//		message.set
-//		message.setText("\e[1m Nome: "+delation.getName()+"\n"+"<p>" + delation.getDescription()+"</p>");
-//		message.setTo("lucasf.silva@outlook.com");
-//		message.setSubject(findManifestation(delation.getType()));
-//		message.setFrom(mailFrom);
-		
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 
 		try {
@@ -60,7 +52,7 @@ public class MailService {
 			String mailBody = createMailBody(delation);
 					
 			mimeMessage.setContent(mailBody, TEXT_HTML);
-			helper.setTo("lucasf.silva@outlook.com");
+			helper.setTo("Contato@araguacu.to.gov.br");
 			helper.setSubject(findManifestation(delation.getType()));
 			helper.setFrom(mailFrom);
 			mailSender.send(mimeMessage);

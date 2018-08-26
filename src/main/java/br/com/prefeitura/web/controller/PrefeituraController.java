@@ -120,8 +120,8 @@ public class PrefeituraController {
 	@RequestMapping(path = "/mail", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Ouvidoria sendMail(@RequestBody MailDelation delation,Locale locale, Model model) {
         
-		boolean mailSend = true;
-//        boolean mailSend = mail.sendEmail(delation);
+//		boolean mailSend = true;
+        boolean mailSend = mail.sendEmail(delation);
         Ouvidoria ouvidoria = new Ouvidoria();
         
         if(mailSend){
