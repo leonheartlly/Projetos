@@ -44,6 +44,7 @@
 						
 						  <div class="section map-list-conf">
 						    <h5 class="ml20 sub-title" th:text="#{messages.mapa.utilidades}"></h5>
+						    <div class="divider divider-conf"></div>
 						    <p><a th:href="@{https://accounts.zoho.com/signin?servicename=VirtualOffice&amp;signupurl=https://workplace.zoho.com/orgsignup.do}" target="_blank" class="tooltipped" data-position="right" data-delay="1050" data-tooltip="Email coorporativo dos servidores públicos da prefeitura de Araguaçu" th:text="#{messages.header.webmail}"></a></p>
 						    <p><a th:href="@{/utilidades/contato}" class="tooltipped" data-position="right" data-delay="1050" data-tooltip="Lista dos contatos dos principais orgãos públicos da cidade de Araguaçu" th:text="#{messages.header.contatos}"></a></p>
 						    <p><a href="" th:text="#{messages.header.portal.servidor}"></a></p>
@@ -51,24 +52,32 @@
 						    <p><a th:href="@{/menu/noticias}" class="tooltipped" data-position="right" data-delay="1050" data-tooltip="Principais notícias da cidade de Araguaçu e região" th:text="#{messages.noticias}"></a></p>
 						    <p><a href="" th:text="#{messages.header.submenu.iptu}"></a></p>
 						    <p><a href="" th:text="#{messages.header.submenu.certidao}"></a></p>
-						    <p><a href="" th:text="#{messages.header.menu.prefeitura}"></a></p>
 						    
 						  </div>
-						  <div class="divider divider-conf"></div>
+						  
+						  <div class="section map-list-conf">
+						    <h5 class="ml20 sub-title" th:text="#{messages.mapa.prefeitura}"></h5>
+						    <div class="divider divider-conf"></div>
+						    <p><a th:href="@{/prefeitura/historia}" class="tooltipped" data-position="right" data-delay="1050" data-tooltip="A história e o hino da cidade." th:text="#{messages.mapa.historia}"></a></p>
+						    <p><a th:href="@{/prefeitura/ouvidoria}" th:text="#{messages.ouvidoria.title}" data-position="right" data-delay="1050" data-tooltip="Faça sua manifestação junto à prefeitura."></a></p>
+						    <p><a th:href="@{/prefeitura/secretaria}" th:text="#{messages.secretaria.title}" data-position="right" data-delay="1050" data-tooltip="Projetos e secretarias."></a></p>
+						    
+						  </div>
+						  
 						  <div class="section map-list-conf">
 						    <h5 class="ml20 sub-title" th:text="#{messages.mapa.editais}"></h5>
+						    <div class="divider divider-conf"></div>
 						    <p><a th:href="@{/editais/licitacao}" th:text="#{messages.licitacao}"></a></p>
 						    <p><a href="http://177.107.46.162:8091/portalaraguacu/atalho/contratos.xhtml" target="_blank" th:text="#{messages.contratos.title}"></a></p>
 						    <p><a th:href="@{/editais/legislacao}" th:text="#{messages.legislacao.title}"></a></p>
 						    <p><a href="http://177.107.46.162:8091/portalaraguacu/" target="_blank" th:text="#{messages.header.menu.transparencia}"></a></p>
 						  </div>
-						  <div class="divider divider-conf"></div>
 						  
 						   <div class="section map-list-conf">
 						    <h5 class="ml20 sub-title" th:text="#{messages.mapa.estatisticas}"></h5>
+						    <div class="divider divider-conf"></div>
 						    <p><a th:href="@{/estatisticas/graficos}" th:text="#{messages.graficos.title}"></a></p>
 						  </div>
-						  <div class="divider divider-conf"></div>
 						  
 						  <div class="mb20"></div>
 						  
