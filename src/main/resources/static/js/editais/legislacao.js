@@ -57,13 +57,13 @@ function refreshTable(){
 }
 
 function openList(){
-	$("#select1").removeClass('hidden');
+	$("#legislacao-select").removeClass('hidden');
 }
 
 function chooseElement(text, value){
 	$("#customSelect").val(text);
 	$("#customSelect").attr('selected-Id', value);
-	$("#select1").addClass('hidden');
+	$("#legislacao-select").addClass('hidden');
 }
 
 function hideElement(){

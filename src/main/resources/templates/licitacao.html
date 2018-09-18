@@ -15,6 +15,7 @@
 <script type="text/javascript" th:src="@{/js/jspdf.debug.js}"></script>
 <script type="text/javascript" th:src="@{/js/html2pdf.js}"></script>
 <script type="text/javascript" th:src="@{/js/jspdf.plugin.autotable.js}"></script>
+<script type="text/javascript" th:src="@{/js/frameworks/jquery.mask.js}"></script>
 </head>
 <body>
 	<section layout:fragment="content">
@@ -31,7 +32,6 @@
 				      </div>
 				    </div>
 				  </div>
-				<!-- <img class="center" src="/img/loading.gif"/> -->
   			</div>
 		</div>
 		<div>
@@ -108,7 +108,7 @@
 					<div class="row">
 
 						<div class="input-field col s2">
-							<input placeholder="CNPJ" id="cnpj-licitacao" form="licitacao-form" type="text" class="validate"  th:name="cnpjVO" /> 
+							<input placeholder="CNPJ" id="cnpj-licitacao" form="licitacao-form" type="text" onkeypress="return isNumberKey(event)" class="validate"  th:name="cnpjVO" /> 
 							<label for="cnpj-licitacao" th:text="#{messages.licitacao.cpf.cnpj}"></label>
 						</div>
 

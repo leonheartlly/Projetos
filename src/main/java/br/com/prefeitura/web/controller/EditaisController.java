@@ -73,12 +73,12 @@ public class EditaisController {
 		/* LISTA DE GRUPOS QUE VAMOS MOSTRAR NA PÁGINA */
 		model.addAttribute("orgaos", orgaoService.consultarOrgaos());
 		model.addAttribute("modalidades", modalidadeService.consultarModalidades());
-		model.addAttribute("anexos", anexoService.consultarAnexosPorLicitacao());
+//		model.addAttribute("anexos", anexoService.consultarAnexosPorLicitacao());
 		model.addAttribute("locale", locale);
-		model.addAttribute("forneceor", new Fornecedor(1L, "", "", "", "", ""));
+//		model.addAttribute("forneceor", new Fornecedor(1L, "", "", "", "", ""));
 		
 		/* OBJETO QUE VAMOS ATRIBUIR OS VALORES DOS CAMPOS */
-		model.addAttribute("licitacao", licicitacaoService.consultarLicitacoes());
+//		model.addAttribute("licitacao", licicitacaoService.consultarLicitacoes());
 
 		return new ModelAndView("licitacao");
 	}

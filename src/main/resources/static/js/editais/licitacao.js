@@ -12,11 +12,6 @@ function displayDetails(id) {
 	}
 }
 
-//function refresh() {
-//	$("#objeto-licitacao").val("");
-//	$("#licitacao-form")[0].reset();
-//}
-
 function displayPDF(file, titulo) {
 	var PDFwindow = window.open(file, '_blankPage', 'fullscreen=yes');
 	PDFwindow.document.title = titulo;
@@ -25,8 +20,9 @@ function displayPDF(file, titulo) {
 }
 
 $(document).ready(function() {
-	 $('.modal').modal();
-	 $('.tooltipped').tooltip({delay: 10});
+	$('.modal').modal();
+	$('.tooltipped').tooltip({delay: 10});
+	$("#cnpj-licitacao").mask("99.999.999/9999-99");
 	$('.datepicker')
 					.pickadate(
 							{

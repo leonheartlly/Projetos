@@ -26,6 +26,14 @@ public class Anexo {
 		this.caminhoArquivo = caminhoArquivo;
 	}
 	
+	/**
+	 * Builder anexos.
+	 * @param id
+	 * @param idLicitacao licitação
+	 * @param tipoAnexo tipo do anexo.
+	 * @param caminhoArquivo caminho do arquivo com o nome.
+	 * @return novo Anexo.
+	 */
 	@Builder(builderMethodName = "anexoBuilder")
 	public static Anexo newAnexo(Long id, Long idLicitacao, Long tipoAnexo, String caminhoArquivo) {
 		return new Anexo(id, idLicitacao, tipoAnexo, caminhoArquivo);

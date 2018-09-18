@@ -177,12 +177,12 @@
 							<div class="relative col xl12 l12 pl0">
 								<label th:text="#{messages.licitacao.orgaos}"></label>
 								<span class="caret">▼</span>
-								<input class="select-dropdown mb0" readonly="true" id="customSelect" selected-Id="" value="Escolha um orgão" type="text" onclick="openList()"/>
-								<div class='absolute option-drop z-depth-2 pl0 pr0 row col xl12 l12' onmouseleave="hideElement();">
-									 <ul th:name="idOrgao" id="select1" class="hidden pl0 pr0 col xl12 l12">
+								<input class="select-dropdown mb0" readonly="true" id="legislacao-orgao" selected-Id="" value="Escolha um orgão" type="text" onclick="openList('legislacao-select')"/>
+								<div class='absolute option-drop z-depth-2 pl0 pr0 row col xl12 l12' onmouseleave="hideElement('legislacao-select');">
+									 <ul th:name="idOrgao" id="legislacao-select" class="hidden pl0 pr0 col xl12 l12">
 										<li th:each="orgao : ${orgaos}" th:id="${orgao.id}" th:value="${orgao.id}" 
 											th:text="${orgao.orgao}" 
-											onclick="chooseElement($(this).text(), $(this).attr('value'));" 
+											onclick="chooseElement($(this).text(), $(this).attr('value'), 'legislacao-select', 'legislacao-orgao');" 
 											class="option-hover">
 										</li>
 									</ul>
