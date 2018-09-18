@@ -4,15 +4,14 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import br.com.prefeitura.web.model.Licitacao;
+
 @Repository
 public class JDBCRepositoryConfig {
-
-	private static final Logger LOGGER = Logger.getLogger(JDBCRepositoryConfig.class);
 
 	/**
 	 * Query 'AND'.
@@ -49,51 +48,50 @@ public class JDBCRepositoryConfig {
 	 *            modalidade da licitação.
 	 * @return Query montada de acordo com o filtro selecionado.
 	 */
-	protected String createDynamicQuery(String objeto, String dataInicial, String dataFinal, Long idOrgao,
-			Long idFornecedor, Long idModalidade, List<Object> selectedFilters) {
+	protected String createDynamicQuery(Licitacao licitacao, List<Object> selectedFilters) {
 
 		StringBuilder whereQuery = new StringBuilder(WHERE);
 
-		if (StringUtils.isNotBlank(objeto.trim())) {
+		if (StringUtils.isNotBlank(licitacao.getObjeto().trim())) {
 			whereQuery.append(" li.objeto LIKE CONCAT('%',?,'%') ");
-			selectedFilters.add(objeto);
+			selectedFilters.add(licitacao.getObjeto());
 		}
 
-		if (StringUtils.isNotBlank(dataInicial) && StringUtils.isNotBlank(dataFinal)) {
+		if (StringUtils.isNotBlank(licitacao.getDataInicialVO()) && StringUtils.isNotBlank(licitacao.getDataFinalVO())) {
 			checkQuery(whereQuery);
 			whereQuery.append(" li.data_abertura BETWEEN ? AND ? ");
-			selectedFilters.add(dataInicial);
-			selectedFilters.add(dataFinal);
-		} else if (StringUtils.isNotBlank(dataInicial) && StringUtils.isBlank(dataFinal)) {
+			selectedFilters.add(licitacao.getDataInicialVO());
+			selectedFilters.add(licitacao.getDataFinalVO());
+		} else if (StringUtils.isNotBlank(licitacao.getDataInicialVO()) && StringUtils.isBlank(licitacao.getDataFinalVO())) {
 			checkQuery(whereQuery);
 			whereQuery.append(" li.data_abertura > ? ");
-			selectedFilters.add(dataInicial);
-		} else if (StringUtils.isNotBlank(dataFinal) && StringUtils.isBlank(dataInicial)) {
+			selectedFilters.add(licitacao.getDataInicialVO());
+		} else if (StringUtils.isNotBlank(licitacao.getDataFinalVO()) && StringUtils.isBlank(licitacao.getDataInicialVO())) {
 			checkQuery(whereQuery);
 			whereQuery.append(" li.data_abertura < ? ");
-			selectedFilters.add(dataFinal);
+			selectedFilters.add(licitacao.getDataFinalVO());
 		}
 
-		if (NumberUtils.isDigits(idOrgao.toString()) && idOrgao > 0) {
+		if (licitacao.getOrgaoVO() != null && licitacao.getOrgaoVO() > 0 && NumberUtils.isDigits(licitacao.getOrgaoVO().toString())) {
 			checkQuery(whereQuery);
 			whereQuery.append(" li.id_orgao = ? ");
-			selectedFilters.add(idOrgao);
+			selectedFilters.add(licitacao.getOrgaoVO());
 		}
 
-		if (NumberUtils.isDigits(idFornecedor.toString()) && idFornecedor > 0) {
+		if (StringUtils.isNotBlank(licitacao.getFornecedorVO()) && NumberUtils.isDigits(licitacao.getFornecedorVO())) {
 			checkQuery(whereQuery);
 			whereQuery.append(" li.id_fornecedor = ?");
-			selectedFilters.add(idFornecedor);
+			selectedFilters.add(licitacao.getFornecedorVO());
 		}
 
-		if (NumberUtils.isDigits(idModalidade.toString()) && idModalidade >= 1) {
+		if (licitacao.getModalidadeVO() != null && licitacao.getModalidadeVO() > 0 && NumberUtils.isDigits(licitacao.getModalidadeVO().toString())) {
 			checkQuery(whereQuery);
-			if (idModalidade > 1) {
+			if (licitacao.getModalidadeVO() > 1) {
 				whereQuery.append(" li.id_modalidade = ?");
-				selectedFilters.add(idModalidade);
+				selectedFilters.add(licitacao.getModalidadeVO());
 			} else {
 				whereQuery.append(" li.id_modalidade > ?");
-				selectedFilters.add(idModalidade);
+				selectedFilters.add(licitacao.getModalidadeVO());
 			}
 		}
 

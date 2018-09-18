@@ -15,27 +15,28 @@ import br.com.prefeitura.web.domain.entity.LicitacaoEntity;
 import br.com.prefeitura.web.domain.entity.ModalidadeEntity;
 import br.com.prefeitura.web.domain.entity.OrgaoEntity;
 import br.com.prefeitura.web.domain.entity.SituacaoEntity;
+import br.com.prefeitura.web.model.Licitacao;
 
 @Repository
 public class LicitacaoCustomRepository extends JDBCRepositoryConfig {
 
 	private static final Logger LOGGER = Logger.getLogger(LicitacaoCustomRepository.class);
 
-//	/**
-//	 * Query 'AND'.
-//	 */
-//	private static final String AND = "AND";
-//
-//	/**
-//	 * Query 'WHERE'
-//	 */
-//	private static final String WHERE = "WHERE";
+	// /**
+	// * Query 'AND'.
+	// */
+	// private static final String AND = "AND";
+	//
+	// /**
+	// * Query 'WHERE'
+	// */
+	// private static final String WHERE = "WHERE";
 
-//	/**
-//	 * JDBC Template.
-//	 */
-//	@Autowired
-//	private JdbcTemplate jdbcTemplate;
+	// /**
+	// * JDBC Template.
+	// */
+	// @Autowired
+	// private JdbcTemplate jdbcTemplate;
 
 	/**
 	 * Obtém o resultado de uma consulta costumizada de acordo com os filtros
@@ -55,8 +56,9 @@ public class LicitacaoCustomRepository extends JDBCRepositoryConfig {
 	 *            id da Modalidade informada.
 	 * @return lista de licitacoes encontradas.
 	 */
-	public List<LicitacaoEntity> FindLicitacaoByFilters(String objeto, String dataInicial, String dataFinal,
-			Long idOrgao, Long idFornecedor, Long idModalidade) throws Exception{
+	public List<LicitacaoEntity> FindLicitacaoByFilters(Licitacao licitacao) throws Exception {
+		// String objeto, String dataInicial, String dataFinal,
+		// Long idOrgao, Long idFornecedor, Long idModalidade) throws Exception{
 
 		String sql = "SELECT li.id, li.processo, li.edital, li.data_abertura, li.data_homolog, li.data_adjudicacao, li.objeto, li.valor, li.flag_anexo, "
 				+ "mo.id, mo.desc, " + "fo.id, fo.nome, fo.razao_social, fo.tipo_fornecedor, fo.cpf, fo.cnpj, "
@@ -67,7 +69,9 @@ public class LicitacaoCustomRepository extends JDBCRepositoryConfig {
 
 		List<Object> selectedFilters = new ArrayList<>();
 
-		sql += createDynamicQuery(objeto, dataInicial, dataFinal, idOrgao, idFornecedor, idModalidade, selectedFilters);
+		sql += createDynamicQuery(licitacao, selectedFilters);
+		// objeto, dataInicial, dataFinal, idOrgao, idFornecedor, idModalidade,
+		// selectedFilters);
 
 		try {
 
@@ -113,8 +117,7 @@ public class LicitacaoCustomRepository extends JDBCRepositoryConfig {
 						}
 					});
 			LOGGER.info("[LOG-INFO] " + LicitacaoCustomRepository.class.getSimpleName()
-					+ " A CONSULTA COSTUMIZADA COM FILTROS FOI EFETUADA. " + licitacoes.size()
-					+ " RESULTADOS OBTIDOS.");
+					+ " A CONSULTA COSTUMIZADA RETORNOU. " + licitacoes.size() + " RESULTADOS.");
 			return licitacoes;
 		} catch (DataAccessException dae) {
 			LOGGER.error("[LOG-ERROR] " + LicitacaoCustomRepository.class.getSimpleName()
@@ -122,13 +125,9 @@ public class LicitacaoCustomRepository extends JDBCRepositoryConfig {
 			throw dae;
 		} catch (Exception ex) {
 			LOGGER.error("[LOG-ERROR] " + LicitacaoCustomRepository.class.getSimpleName()
-					+ " ERRO INESPERADO AO EFETUAR A CONSULTA SOLICITADA. " + ex);
+					+ " ERRO INESPERADO AO EFETUAR A CONSULTA. " + ex);
 			throw ex;
 		}
 	}
-
-	
-
-	
 
 }

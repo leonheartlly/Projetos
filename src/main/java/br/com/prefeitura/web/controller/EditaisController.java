@@ -7,29 +7,22 @@ import java.util.Locale;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.prefeitura.web.model.Fornecedor;
-import br.com.prefeitura.web.model.Grafico;
 import br.com.prefeitura.web.model.Legislacao;
 import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.service.AnexoService;
@@ -38,8 +31,6 @@ import br.com.prefeitura.web.service.LegislacaoService;
 import br.com.prefeitura.web.service.LicitacaoService;
 import br.com.prefeitura.web.service.ModalidadeService;
 import br.com.prefeitura.web.service.OrgaoService;
-import br.com.prefeitura.web.vo.BarChartVO;
-import br.com.prefeitura.web.vo.Teste;
 
 @Controller
 @RequestMapping("/editais")
@@ -107,7 +98,7 @@ public class EditaisController {
 		model.addAttribute("licitacao", licicitacaoService.pesquisarLicitacoes(licitacao));
 		model.addAttribute("orgaos", orgaoService.consultarOrgaos());
 		model.addAttribute("modalidades", modalidadeService.consultarModalidades());
-		model.addAttribute("anexos", anexoService.consultarAnexosPorLicitacao());
+		
 
 		/*
 		 * PASSANDO O ATRIBUTO PARA O ModelAndView QUE VAI REALIZAR O
@@ -118,6 +109,36 @@ public class EditaisController {
 		LOGGER.info("[LOG-INFO] "+ licitacao+" - LICITACOES.");
 		return  modelAndView;
 		
+	}
+	
+	/**
+	 * Filtro de licitações.
+	 * @param locale
+	 * @param model
+	 * @return
+	 * @throws JsonProcessingException 
+	 */
+	@RequestMapping(value = "/filtrarLicitacao", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE )
+	public @ResponseBody List<Licitacao> filtroLicitacao(@RequestBody Licitacao licitacao, Locale locale, Model model) throws JsonProcessingException {
+		
+		LOGGER.info("[LOG-INFO] "+ EditaisController.class.getSimpleName()+" - LICITAÇÃO.");
+		
+		List<Licitacao> licitacoes = new ArrayList<>();
+		try{
+			if(!licitacao.isLicitacaoEmpty()){
+				licitacoes = licicitacaoService.pesquisarLicitacoes(licitacao);
+			}
+		}catch(NullPointerException np){
+			LOGGER.error("[LOG-ERROR] "+ EditaisController.class.getSimpleName()+" - LICITAÇÃO. filtroLicitacao() NULLPOINTEREXCEPTION: " + np);
+		}catch(Exception e){
+			LOGGER.error("[LOG-ERROR] "+ EditaisController.class.getSimpleName()+" - LICITAÇÃO. filtroLicitacao() EXCEPTION: " + e);
+		}
+		
+		if(!licitacoes.isEmpty()){
+			anexoService.consultarAnexosPorLicitacao(licitacoes);
+		}
+		
+		return licitacoes;
 	}
 	
 	/***

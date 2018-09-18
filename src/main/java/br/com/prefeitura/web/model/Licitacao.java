@@ -1,6 +1,10 @@
 package br.com.prefeitura.web.model;
 
 
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -32,6 +36,7 @@ public class Licitacao {
 	private Long orgaoVO;
 	private Long modalidadeVO;
 	private String fornecedorVO;
+	private List<Anexo> anexos;
 	
 	/**
 	 * Construtor Padrão.
@@ -83,5 +88,13 @@ public class Licitacao {
 			Fornecedor fornecedor, Situacao situacao){
 		 Licitacao licitacao = new Licitacao(id, processo, edital, dataAbertura, dataHomolog, dataAdjudicacao, modalidade, objeto, valor, orgao, possuiAnexo, fornecedor, situacao);
 		 return licitacao;
+	}
+	
+	public boolean isLicitacaoEmpty(){
+		
+		if(modalidadeVO == null && orgaoVO == null && StringUtils.isEmpty(dataFinalVO) && StringUtils.isEmpty(dataInicialVO) && StringUtils.isEmpty(fornecedorVO) && StringUtils.isEmpty(cnpjVO) && StringUtils.isEmpty(objeto) ){
+			return true;
+		}
+		return false;
 	}
 }

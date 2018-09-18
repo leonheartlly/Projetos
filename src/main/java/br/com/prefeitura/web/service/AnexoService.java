@@ -11,11 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.prefeitura.web.domain.entity.AnexoEntity;
 import br.com.prefeitura.web.model.Anexo;
+import br.com.prefeitura.web.model.Licitacao;
 import br.com.prefeitura.web.repository.AnexoRepository;
 
 @Service
 @Transactional
-public class AnexoService {
+public class AnexoService extends ServiceHelper {
 
 	private static final Logger LOGGER = 
 		      Logger.getLogger(AnexoService.class); 
@@ -46,6 +47,22 @@ public class AnexoService {
 		}
 		
 		return anexos;
+	}
+	
+	/**
+	 * 
+	 * @param licitacoes
+	 * @return
+	 */
+	public List<Licitacao> consultarAnexosPorLicitacao(List<Licitacao> licitacoes){
+		
+		licitacoes.forEach(licitacao -> {
+			List<AnexoEntity> anexosEntity = this.anexoRepository.findByIdLicitacao(licitacao.getId());
+			List<Anexo> anexos = convertAnexosObject(anexosEntity);
+			licitacao.setAnexos(anexos);
+		});
+		
+		return licitacoes;
 	}
 }
 

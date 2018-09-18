@@ -1,5 +1,6 @@
 package br.com.prefeitura.web.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -25,5 +26,8 @@ public class Anexo {
 		this.caminhoArquivo = caminhoArquivo;
 	}
 	
-	
+	@Builder(builderMethodName = "anexoBuilder")
+	public static Anexo newAnexo(Long id, Long idLicitacao, Long tipoAnexo, String caminhoArquivo) {
+		return new Anexo(id, idLicitacao, tipoAnexo, caminhoArquivo);
+	}
 }

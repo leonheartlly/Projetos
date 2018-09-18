@@ -20,7 +20,6 @@ $(document).ready(function() {
 		$.ajax({
 			url: "/editais/filtrarLegislacao/",
 			type: "POST", 
-			//contentType: "application/json",
 			dataType: 'json',
 			data:JSON.stringify(datas),
 			cache:false,

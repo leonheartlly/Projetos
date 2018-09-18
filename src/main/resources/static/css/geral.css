@@ -47,6 +47,9 @@ a {
 	text-transform: uppercase;
 }
 
+.no-overflow-y {
+	overflow-y:hidden;
+}
 
 
 /*******************************/
@@ -151,6 +154,10 @@ a {
 	margin: 0px;
 }
 
+.m5{
+	margin: 5px;
+}
+
 .m10 {
 	margin: 10px;
 }
@@ -165,6 +172,10 @@ a {
 
 .ml15 {
 	margin-left: 15px !important;
+}
+
+.ml20 {
+	margin-left: 20px;
 }
 
 .ml80 {
@@ -325,6 +336,10 @@ a {
 	padding: 0px !important;
 }
 
+.p5 {
+	padding: 5px;
+}
+
 .p10 {
 	padding: 10px;
 }
@@ -339,6 +354,10 @@ a {
 
 .pt15 {
 	padding-top: 15px;
+}
+
+.pt20{
+	padding-top: 20px !important;
 }
 
 .pt10 {
@@ -379,6 +398,11 @@ a {
 .option-drop{
 	background-color: #fff;
 	z-index: 999;
+}
+
+.option-overflow {
+	overflow-y: auto;
+	height: 330px;
 }
 
 .caret {

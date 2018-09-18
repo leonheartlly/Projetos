@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 
+import br.com.prefeitura.web.domain.entity.AnexoEntity;
 import br.com.prefeitura.web.domain.entity.ArquivoProjetoEntity;
 import br.com.prefeitura.web.domain.entity.AutorEntity;
 import br.com.prefeitura.web.domain.entity.CalendarioEventosEntity;
@@ -23,6 +24,7 @@ import br.com.prefeitura.web.domain.entity.NoticiaEntity;
 import br.com.prefeitura.web.domain.entity.OrgaoEntity;
 import br.com.prefeitura.web.domain.entity.ProjetosEntity;
 import br.com.prefeitura.web.domain.entity.SecretariaEntity;
+import br.com.prefeitura.web.model.Anexo;
 import br.com.prefeitura.web.model.ArquivoProjeto;
 import br.com.prefeitura.web.model.Autor;
 import br.com.prefeitura.web.model.CalendarioEventos;
@@ -99,6 +101,28 @@ public class ServiceHelper {
 			return projetos;
 		}
 		return new ArrayList<Projetos>();
+	}
+	
+	/**
+	 * Converte uma lista de objetos do tipo entity para model.
+	 * @param entities Anexo
+	 * @return List<Anexo>
+	 */
+	protected List<Anexo> convertAnexosObject(List<AnexoEntity> entities) {
+		
+		if(entities != null && !entities.isEmpty()){
+			List<Anexo> anexos = entities.stream().map(entity -> {
+				return Anexo.anexoBuilder()
+				 	.id(entity.getId())
+				 	.idLicitacao(entity.getIdLicitacao())
+				 	.tipoAnexo(entity.getTipoAnexo())
+				 	.caminhoArquivo(entity.getCaminhoArquivo())
+				 	.build();
+			}).collect(Collectors.toList());
+			
+			return anexos;
+		}
+		return new ArrayList<Anexo>();
 	}
 	
 	/**

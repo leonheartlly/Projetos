@@ -78,9 +78,7 @@ public class LicitacaoService extends ServiceHelper{
 
 		List<LicitacaoEntity> licitacaoEntity;
 		try {
-			licitacaoEntity = licitacaoCustom.FindLicitacaoByFilters(licitacao.getObjeto(), licitacao.getDataInicialVO(),
-					licitacao.getDataFinalVO(), licitacao.getOrgaoVO(), licitacao.getFornecedor().getId(),
-					licitacao.getModalidadeVO());
+			licitacaoEntity = licitacaoCustom.FindLicitacaoByFilters(licitacao);
 			
 			licitacoes = convertLicitacaoObject(licitacaoEntity);
 			formatDate(licitacoes);
