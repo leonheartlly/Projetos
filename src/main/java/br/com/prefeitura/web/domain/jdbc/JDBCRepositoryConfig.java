@@ -78,10 +78,10 @@ public class JDBCRepositoryConfig {
 			selectedFilters.add(licitacao.getOrgaoVO());
 		}
 
-		if (StringUtils.isNotBlank(licitacao.getFornecedorVO()) && NumberUtils.isDigits(licitacao.getFornecedorVO())) {
+		if (StringUtils.isNotBlank(licitacao.getFornecedor().getCnpj()) && NumberUtils.isDigits(licitacao.getFornecedor().getId().toString())) {
 			checkQuery(whereQuery);
 			whereQuery.append(" li.id_fornecedor = ?");
-			selectedFilters.add(licitacao.getFornecedorVO());
+			selectedFilters.add(licitacao.getFornecedor().getId());
 		}
 
 		if (licitacao.getModalidadeVO() != null && licitacao.getModalidadeVO() > 0 && NumberUtils.isDigits(licitacao.getModalidadeVO().toString())) {

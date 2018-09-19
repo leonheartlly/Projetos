@@ -67,7 +67,7 @@
 				</div>
 				
 			  <div class="chip red lighten-4 red-text text-accent-4 ml20 mb20">
-			    Para efetuar uma consulta, favor selecione um orgão.
+			    Para efetuar uma consulta, preencha pelo menos um filtro.
 			  </div>
         
 				<form class="col s12" 
@@ -108,12 +108,12 @@
 					<div class="row">
 
 						<div class="input-field col s2">
-							<input placeholder="CNPJ" id="cnpj-licitacao" form="licitacao-form" type="text" onkeypress="return isNumberKey(event)" class="validate"  th:name="cnpjVO" /> 
+							<input placeholder="CNPJ" id="cnpj-licitacao" autocomplete="off" form="licitacao-form" type="text" onkeypress="return isNumberKey(event)" class="validate"  th:name="cnpjVO" /> 
 							<label for="cnpj-licitacao" th:text="#{messages.licitacao.cpf.cnpj}"></label>
 						</div>
 
 						<div class="input-field col s4">
-							<input placeholder="Razão Social" id="fornecedor-licitacao" th:name="fornecedorVO" type="text" class="validate" /> 
+							<input placeholder="Razão Social" autocomplete="off" id="fornecedor-licitacao" th:name="fornecedorVO" maxlength="120" type="text" class="validate" /> 
 							<label for="fornecedor-licitacao" th:text="#{messages.licitacao.fornecedor}"></label>
 						</div>
 
@@ -138,17 +138,17 @@
 
 					<div class="row">
 						<div class="input-field col s12">
-							<input type="text" form="licitacao-form" placeholder="Digite parte do objeto da licitação desejada" th:name="objeto" maxlength="5000" id="objeto-licitacao" class="validate uppercase" /> 
+							<input type="text" form="licitacao-form" placeholder="Digite parte do objeto da licitação desejada"  autocomplete="off" th:name="objeto" maxlength="5000" id="objeto-licitacao" class="validate uppercase" /> 
 								<label for="objeto-licitacao" th:text="#{messages.licitacao.objeto.dots}"></label>
 								
 						</div>
 					</div>
 					
 					<div class="row center-align">
-						<a class="waves-effect waves-green btn transparent green-text text-darken-3 z-depth-3 btn-floating" onclick="refresh()">
+						<a class="waves-effect waves-green btn transparent green-text text-darken-3 z-depth-3 btn-floating" onclick="refresh('licitacao-form'), customSelectRefresh('')">
 							<i class=" green-text material-icons left">refresh</i>
 						</a>
-						<button class="waves-effect waves-light btn green darken-3 z-depth-3 btn-floating ml15" type="submit">
+						<button  class="waves-effect waves-light btn green darken-3 z-depth-3 btn-floating ml15" id="licitacao-submit" onclick="validate();" type="submit">
 							<i class="white-text material-icons left">search</i>
 						</button>
 						
@@ -162,18 +162,18 @@
 	<div >
 
 
-<ul class="collapsible" data-collapsible="accordion" id="licitacao-accordion">
-   
-</ul>
+	<ul class="collapsible" data-collapsible="accordion" id="licitacao-accordion">
+	   
+	</ul>
   
 		
 	<div id="notFound" class="center-align display-transition mb20 mt20">
 		<img class="responsive-img center not-found" th:src="@{/img/no-results.png}"/>
 		<div class="valign-wrapper center">
 			<i class="small material-icons prefix red-text darken-2"> warning</i>
-			<span class="not-found-message mb0 center-align">Não Existe nada Aqui!</span><br/>
+			<span class="not-found-message mb0 center-align" th:text="#{messages.portal.araguacu.not.found.title}"></span><br/>
 		</div>
-		<label class="not-found-subtitle">Não conseguimos encontrar nada para sua busca. Mude os filtros e tente novamente.</label>
+		<label class="not-found-subtitle" th:text="#{messages.portal.araguacu.not.found.message}"></label>
 	</div>
 		
 	</div>

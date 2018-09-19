@@ -95,36 +95,30 @@ public class LicitacaoService extends ServiceHelper{
 	  * @param licitacao Objeto licitação.
 	  */
 	private void analiseFiltrosAplicados(Licitacao licitacao) {
-		
-		 Fornecedor fornecedor = findFornecedor(licitacao.getCnpjVO(), licitacao.getFornecedorVO());
-		 licitacao.setFornecedor(fornecedor);
-		 
-		 String dataInicialFormatada = PortalPrefeituraUtils.converDateDBFormat(licitacao.getDataInicialVO());
-		 String dataFinalFormatada = PortalPrefeituraUtils.converDateDBFormat(licitacao.getDataFinalVO());
-		 
-		 if(StringUtils.isNotBlank(dataInicialFormatada)){
-			 licitacao.setDataInicialVO(dataInicialFormatada);
-		 }
-//		 else{
-//			 licitacao.setDataInicialVO(this.dataInicial);
-//			 LOGGER.info("[LOG-WARN] "+ LicitacaoService.class.getSimpleName() +" O CAMPO DATA INICIAL NÃO FOI PREENCHIDO OU NÃO ESTÁ NO PADRÃO NECESSÁRIO. " + this.dataInicial);
-//		 }
-		 
-		 if(StringUtils.isNotBlank(dataFinalFormatada)){
-			 licitacao.setDataFinalVO(dataFinalFormatada);
-		 }
-//		 else{
-//			 licitacao.setDataFinalVO(this.dataFinal);
-//			 LOGGER.info("[LOG-WARN] "+ LicitacaoService.class.getSimpleName() +" O CAMPO DATA FINAL NÃO FOI PREENCHIDO OU NÃO ESTÁ NO PADRÃO NECESSÁRIO. " + this.dataFinal);
-//		 }
-//		 
-		 if(StringUtils.isNotBlank(licitacao.getObjeto())){
-			 boolean isValid = PortalPrefeituraUtils.objectIsValid(licitacao.getObjeto());
-			 if(!isValid){
-				 licitacao.setObjeto("");
-				 LOGGER.info("[LOG-WARN] "+ LicitacaoService.class.getSimpleName() +" O CAMPO OBJETO NÃO ESTÁ NO PADRÃO NECESSÁRIO OU ESTÁ USANDO UM PADRÃO DE BUSCA COM UM CÓDIGO QUE OFERECE RISCO À BASE DE DADOS. " + licitacao.getObjeto());
-			 }
-		 }
+
+		Fornecedor fornecedor = findFornecedor(licitacao.getCnpjVO(), licitacao.getFornecedorVO());
+		licitacao.setFornecedor(fornecedor);
+
+		String dataInicialFormatada = PortalPrefeituraUtils.converDateDBFormat(licitacao.getDataInicialVO());
+		String dataFinalFormatada = PortalPrefeituraUtils.converDateDBFormat(licitacao.getDataFinalVO());
+
+		if (StringUtils.isNotBlank(dataInicialFormatada)) {
+			licitacao.setDataInicialVO(dataInicialFormatada);
+		}
+
+		if (StringUtils.isNotBlank(dataFinalFormatada)) {
+			licitacao.setDataFinalVO(dataFinalFormatada);
+		}
+
+		if (StringUtils.isNotBlank(licitacao.getObjeto())) {
+			boolean isValid = PortalPrefeituraUtils.objectIsValid(licitacao.getObjeto());
+			if (!isValid) {
+				licitacao.setObjeto("");
+				LOGGER.info("[LOG-WARN] " + LicitacaoService.class.getSimpleName()
+						+ " O CAMPO OBJETO NÃO ESTÁ NO PADRÃO NECESSÁRIO OU ESTÁ USANDO UM PADRÃO DE BUSCA COM UM CÓDIGO QUE OFERECE RISCO À BASE DE DADOS. "
+						+ licitacao.getObjeto());
+			}
+		}
 	}
 	
 	/**

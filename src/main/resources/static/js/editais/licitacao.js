@@ -19,10 +19,15 @@ function displayPDF(file, titulo) {
 	return false;
 }
 
+
+
 $(document).ready(function() {
 	$('.modal').modal();
 	$('.tooltipped').tooltip({delay: 10});
 	$("#cnpj-licitacao").mask("99.999.999/9999-99");
+	
+	
+	
 	$('.datepicker')
 					.pickadate(
 							{
@@ -52,6 +57,7 @@ $(document).ready(function() {
 	});
 	
 $("#licitacao-form").submit(function(event){
+	
 		var idOrgao = $("#orgao-selector").attr("selected-Id");
 		var initDate= $("#data-inicial").val();
 		var finalDate= $("#data-final").val();
@@ -60,6 +66,9 @@ $("#licitacao-form").submit(function(event){
 		var idModalidade= $("#modalidade-selector").attr("selected-Id");
 		var objeto= $("#objeto-licitacao").val();
 		
+		
+		
+		if(validate(objeto, idOrgao, initDate, finalDate, cnpj, fornecedor, idModalidade)){
 		var datas = { orgaoVO: idOrgao, dataInicialVO : initDate, dataFinalVO: finalDate, cnpjVO: cnpj, fornecedorVO: fornecedor, modalidadeVO: idModalidade, objeto: objeto};
 		
 		showLoading();
@@ -73,10 +82,10 @@ $("#licitacao-form").submit(function(event){
 			dataType: 'json',
 			data:JSON.stringify(datas),
 			cache:false,
-			 beforeSend: function(xhr) {
+			beforeSend: function(xhr) {
 			        xhr.setRequestHeader("Accept", "application/json");
 			        xhr.setRequestHeader("Content-Type", "application/json");
-			    },
+			   },
 		    success: function(result){
 		    	
 		    	
@@ -141,11 +150,63 @@ $("#licitacao-form").submit(function(event){
 		    	$("#loading").modal('close');
 		    	showNotFound();
 		    }
-		    });
-		
+		  });
+		}else{
+			//cancela o submit do usuário
+			return false;
+		}
 	});
 	
 });
+
+/**
+ * Validate every possible input field.
+ * 
+ * @returns true or false
+ */
+function validate(objeto, idOrgao, initDate, finalDate, cnpj, fornecedor, idModalidade){
+
+	Materialize.Toast.removeAll();
+	var $toastContent = '';
+	var isValid = true;
+	
+	if(objeto != "" && objeto.trim().length > 0 && objeto.trim().length < 10){
+		$toastContent =  $('<span class="valign-wrapper red-text"><i class="small material-icons prefix red-text pr5">warning</i>A Pesquisa por Objeto de Licitação deve ter mais de 10 caracteres.</span>');
+		Materialize.toast($toastContent, 10000, 'grey lighten-5 rounded');
+		isValid = false;
+	}
+	$toastContent = '';
+	if(idOrgao < 0 || idOrgao > 4){
+		$toastContent =  $('<span class="valign-wrapper red-text"><i class="small material-icons prefix red-text pr5">warning</i>O orgão selecionado é inválido. Tente novamente mais tarde.</span>');
+		Materialize.toast($toastContent, 10000, 'grey lighten-5 rounded');
+		isValid = false;
+	}
+	$toastContent = '';
+	if(idModalidade < 0 || idModalidade > 20){
+		$toastContent =  $('<span class="valign-wrapper red-text"><i class="small material-icons prefix red-text pr5">warning</i>A modalidade selecionada é inválida. Tente novamente mais tarde.</span>');
+		Materialize.toast($toastContent, 10000, 'grey lighten-5 rounded');
+		isValid = false;
+	}
+	$toastContent = '';
+	if(cnpj != ""){
+		var testCNPJ = cnpj.replace('.', '');
+		testCNPJ = testCNPJ.replace('-', '');
+		testCNPJ = testCNPJ.replace('/', '');
+		if(testCNPJ.length > 0 && testCNPJ.length <= 14){
+			$toastContent =  $('<span class="valign-wrapper red-text"><i class="small material-icons prefix red-text pr5">warning</i>O CNPJ deve conter 14 dígitos.</span>');
+			Materialize.toast($toastContent, 10000, 'grey lighten-5 rounded');
+			isValid = false;
+		}
+	}	
+	
+	$toastContent = '';
+	if(objeto === "" && idOrgao ==="" && idModalidade ==="" && fornecedor ==="" && initDate ==="" && finalDate === "" && cnpj === ""){
+		$toastContent =  $('<span class="valign-wrapper red-text"><i class="small material-icons prefix red-text pr5">warning</i>Para efetuar uma pesquisa, preecha pelo menos um filtro.</span>');
+		Materialize.toast($toastContent, 10000, 'grey lighten-5 rounded');
+		isValid = false;
+	}
+	return isValid;
+}
 
 /**
  * Ativa os tooltips.
