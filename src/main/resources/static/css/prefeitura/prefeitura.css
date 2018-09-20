@@ -2,20 +2,23 @@
 	height: 250px !important;
 }
 
-.parallax {
-position: static !important;	
+.parallax-img {
+	width: 100%;
 }
 
-.mayor-effect{
+.parallax {
+	position: static !important;
+}
+
+.mayor-effect {
 	
 }
 
-.mayor-effect:HOVER + .teste{
+.mayor-effect:HOVER+.teste {
 	background-color: #81c784 !important;
 }
 
-.info-block{
+.info-block {
 	height: 150px;
 	border-radius: 5px;
 }
-

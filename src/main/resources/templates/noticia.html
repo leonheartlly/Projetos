@@ -109,35 +109,18 @@
 							<h4 class="modal-title center-align" th:text="${noticia.titulo}"></h4>
 							<span class="modal-subtitle bold orange-text" th:text="${noticia.dataNoticia}"></span><span class="bold" th:text="'  -  ' + ${noticia.categoria.categoria}"></span>
 							
-						 	<!-- <div class="slider" > -->
-								 <!--  <ul class="slides">
-									<li th:each="imagem : ${noticia.imagens}" onclick="pauseSlider()"> 
-									<div th:each="imagem : ${noticia.imagens}">
-										<img  width="250" class="materialboxed" data-caption="A picture of a way with a group of trees in a park" th:src="@{${imagem.caminho} + ${imagem.nome}}" />
-										</div> 
-										 <div class="caption center-align"> 
-											 <h3>This is our big Tagline!</h3>  
-											<h5 class="light grey-text text-lighten-3" th:text="${imagem.descricao}"></h5>
-										</div>
-									</li>
-								</ul> -->
-							<!-- </div> --> 
-								
-								  <div class="photo-gallery center-align">
+								  <div class=" center-align">
 								  
 								   
-								   <div class="slider">
-            						<ul class="list-unstyled row negocio slides">
-						                <li th:each="imagem : ${noticia.imagens}" class=" center-align valign-wrapper" th:attr="data-src=${imagem.caminho} + ${imagem.nome}, data-sub-html='&lt;h4&gt;'+${imagem.titulo}+'&lt;/h4&gt;&lt;p&gt;'+${imagem.descricao}+'&lt;/p&gt;'"    >
-						                    <a href="javascript:void(0);" class="center-align">
-						                        <img class="img-responsive  sliderimg" th:src="@{${imagem.caminho} + ${imagem.nome}}"/> <!-- gallery-img  -->
-						                     <!--  <div class="demo-gallery-poster">
-						                      	<img th:src="@{/img/icons/search.png}"/>
-						                      </div> -->
-						                    </a>
-						                </li>
-						            </ul>
-						        </div> 
+									   <div class="slider">
+	            						<ul class="list-unstyled row negocio slides">
+							                <li th:each="imagem : ${noticia.imagens}" class=" center-align valign-wrapper col l6 offset-l3" th:attr="data-src=${imagem.caminho} + ${imagem.nome}, data-sub-html='&lt;h4&gt;'+${imagem.titulo}+'&lt;/h4&gt;&lt;p&gt;'+${imagem.descricao}+'&lt;/p&gt;'"    >
+							                    <a href="javascript:void(0);" class="center-align col l12">
+							                        <img class="sliderimg z-depth-3 responsive-img" height="400" th:src="@{${imagem.caminho} + ${imagem.nome}}"/>
+							                    </a>
+							                </li>
+							            </ul>
+							        </div> 
     							</div>
 							<p class="modal-text" th:utext="${noticia.noticia}">
 							</p>
